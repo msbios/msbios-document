@@ -1,0 +1,139 @@
+<?php
+/**
+ * @access protected
+ * @author Judzhin Miles <info[woof-woof]msbios.com>
+ */
+namespace Kubnete\Content;
+
+$this->headLink()
+    ->appendStylesheet($this->basePath('backend/assets/js/plugins/codemirror/lib/codemirror.css'));
+
+$this->headScript()
+    // Core
+    ->appendFile($this->basePath('backend/assets/js/plugins/codemirror/lib/codemirror.js'))
+    ->appendFile($this->basePath('backend/assets/js/plugins/codemirror/addon/edit/matchbrackets.js'))
+    ->appendFile($this->basePath('backend/assets/js/plugins/codemirror/mode/htmlmixed/htmlmixed.js'))
+    ->appendFile($this->basePath('backend/assets/js/plugins/codemirror/mode/xml/xml.js'))
+    ->appendFile($this->basePath('backend/assets/js/plugins/codemirror/mode/javascript/javascript.js'))
+    ->appendFile($this->basePath('backend/assets/js/plugins/codemirror/mode/css/css.js'))
+    ->appendFile($this->basePath('backend/assets/js/plugins/codemirror/mode/clike/clike.js'))
+    ->appendFile($this->basePath('backend/assets/js/plugins/codemirror/mode/php/php.js'));
+?>
+
+    <!-- Basic layout-->
+
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">
+                Form template editing
+            </h5>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel-body">
+
+            <p class="content-group-lg">Examples of standard form controls supported in an example form layout.
+                Individual form controls automatically receive some global styling. All textual <code>&lt;input></code>,
+                <code>&lt;textarea></code>, and <code>&lt;select></code> elements with <code>.form-control</code> are
+                set to <code>width: 100%;</code> by default. Wrap labels and controls in <code>.form-group</code> for
+                optimum spacing. Labels in horizontal form require <code>.control-label</code> class.</p>
+
+            <?= $this->form()->openTag($this->form->setAttribute('class', 'form-horizontal')->prepare()); ?>
+
+            <fieldset class="content-group">
+                <legend class="text-bold hide">To create a new template</legend>
+
+                <?php
+                /** @var \Zend\Form\Element\Text $element */
+                $element = $this->form->get('name')
+                    ->setAttribute('class', 'form-control')
+                    ->setLabelAttributes(['class' => 'control-label col-lg-2']);
+                /** @var array $messages */
+                $messages = $element->getMessages();
+                /** @var array $hasError */
+                $hasError = (bool)count($messages);
+                ?>
+                <div class="form-group <?php if ($hasError) :
+?>has-warning has-feedback<?php
+endif; ?>">
+                    <?= $this->formLabel($element); ?>
+                    <div class="col-lg-10">
+                        <?= $this->formElement($element); ?>
+                        <?php if (count($messages)) : ?>
+                            <div class="form-control-feedback">
+                                <i class="icon-notification2"></i>
+                            </div>
+                            <span class="help-block">
+                                    <? foreach ($messages as $message): ?>
+                                        <?= $message; ?>
+                                    <? endforeach; ?>
+                                </span>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
+                <?php
+                /** @var \Zend\Form\Element\Text $element */
+                $element = $this->form->get('form_element')
+                    ->setAttribute('class', 'form-control')
+                    ->setLabelAttributes(['class' => 'control-label col-lg-2']);
+                /** @var array $messages */
+                $messages = $element->getMessages();
+                /** @var array $hasError */
+                $hasError = (bool)count($messages);
+                ?>
+                <div class="form-group <?php if ($hasError) :
+?>has-warning has-feedback<?php
+endif; ?>">
+                    <?= $this->formLabel($element); ?>
+                    <div class="col-lg-10">
+                        <?= $this->formElement($element); ?>
+                        <?php if (count($messages)) : ?>
+                            <div class="form-control-feedback">
+                                <i class="icon-notification2"></i>
+                            </div>
+                            <span class="help-block">
+                                    <? foreach ($messages as $message): ?>
+                                        <?= $message; ?>
+                                    <? endforeach; ?>
+                                </span>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
+            </fieldset>
+
+            <div class="text-right">
+                <?= $this->formRow($this->form->get('id')); ?>
+                <a href="<?= $this->url('backend/development/template'); ?>" class="btn btn-link">
+                    Return to the template list
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    Submit form <i class="icon-arrow-right14 position-right"></i>
+                </button>
+            </div>
+
+            <?= $this->form()->closeTag($this->form); ?>
+        </div>
+    </div>
+
+    <!-- /basic layout -->
+
+<?php $this->inlineScript()->captureStart();
+echo <<<'JS'
+    var editor = CodeMirror.fromTextArea(document.getElementById('mirror'), {
+        lineNumbers: true,
+        matchBrackets: true,
+        mode: "application/x-httpd-php",
+        indentUnit: 4,
+        indentWithTabs: true
+    });
+JS;
+$this->inlineScript()->captureEnd();
+?>

@@ -1,0 +1,188 @@
+<?php
+/**
+ * @access protected
+ * @author Judzhin Miles <info[woof-woof]msbios.com>
+ */
+namespace Kubnete\Content;
+
+use Kubnete\Content\Form\DocumentForm;
+use Zend\Form\Element\Checkbox;
+
+$this->headScript()
+    // Core
+    ->appendFile($this->basePath('backend/assets/js/plugins/tables/datatables/datatables.min.js'))
+    ->appendFile($this->basePath('backend/assets/js/plugins/forms/selects/select2.min.js'))
+
+    // Theme
+    ->appendFile($this->basePath('backend/assets/js/core/app.js'))
+    ->appendFile($this->basePath('backend/assets/js/pages/datatables_basic.js'));
+?>
+
+<!-- Basic datatable -->
+<div class="panel panel-flat">
+    <div class="panel-heading">
+        <h5 class="panel-title">Basic datatable</h5>
+        <div class="heading-elements">
+            <ul class="icons-list">
+                <li><a data-action="collapse"></a></li>
+                <li><a data-action="reload"></a></li>
+                <li><a data-action="close"></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        The <code>DataTables</code> is a highly flexible tool, based upon the foundations of progressive enhancement, and will add advanced interaction controls to any HTML table. DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function. Searching, ordering, paging etc goodness will be immediately added to the table, as shown in this example. <strong>Datatables support all available table styling.</strong>
+        <p class="content-group">
+            <button type="button" data-toggle="modal" data-target="#create_document_form_model" class="btn btn-primary">
+                Create document
+            </button>
+        </p>
+
+        <!-- Document add form modal -->
+        <div id="create_document_form_model" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h5 class="modal-title">Create document form</h5>
+                    </div>
+
+                    <?php
+                    /** @var DocumentForm $form */
+                    $form = $this->form;
+                    $form->setAttribute(
+                        'action',
+                        $this->url('backend/content/document/add')
+                    )->prepare();
+                    ?>
+                    <?= $this->form()->openTag($form); ?>
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <?php $element = $form->get('name'); ?>
+                            <?= $this->formLabel($element); ?>
+                            <?= $this->formElement($element->setAttribute('class', 'form-control')); ?>
+                        </div>
+
+                        <div class="form-group">
+                            <?php $element = $form->get('uri'); ?>
+                            <?= $this->formLabel($element); ?>
+                            <?= $this->formElement($element->setAttribute('class', 'form-control')); ?>
+                        </div>
+
+                        <div class="form-group">
+                            <?php $element = $form->get('document_type_id'); ?>
+                            <?= $this->formLabel($element); ?>
+                            <?= $this->formElement($element->setAttribute('class', 'form-control')); ?>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                    <?= $this->form()->closeTag($form); ?>
+                </div>
+            </div>
+        </div>
+        <!-- /document add form modal -->
+    </div>
+
+    <table class="table table-bordered table-striped table-hover datatable-basic">
+        <thead>
+        <tr>
+            <th style="width: 50px;">#</th>
+            <th>Name</th>
+            <th>Uri</th>
+            <th>Status</th>
+            <th>Order</th>
+            <th>Navigation</th>
+            <th>Cached</th>
+            <th>Locale</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+
+            <th class="text-center" width="100px">Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <?php foreach ($this->documents as $row) : ?>
+            <tr>
+                <td><?= $row['id']; ?></td>
+                <td><?= $row['name']; ?></td>
+                <td><?= $row['uri']; ?></td>
+                <td class="text-center" style="width: 50px;">
+                    <?= $row['status']; ?>
+                </td>
+                <td class="text-center" style="width: 50px;">
+                    <?= $row['order_in']; ?>
+                </td>
+                <td class="text-center" style="width: 50px;">
+                    <?= $this->formCheckbox((new Checkbox('in_navigation'))
+                        ->setValue($row['in_navigation'])
+                        ->setAttribute('class', 'styled')); ?>
+                </td>
+                <td class="text-center" style="width: 50px;">
+                    <?= $this->formCheckbox((new Checkbox('is_cached'))
+                        ->setValue($row['is_cached'])
+                        ->setAttribute('class', 'styled')); ?>
+                </td>
+                <td><?= $row['locale']; ?></td>
+                <td><?= $row['created_at']; ?></td>
+                <td><?= $row['updated_at']; ?></td>
+
+                <?php $params = ['id' => $row['id']]; ?>
+                <td class="text-center">
+                    <ul class="icons-list">
+                        <li><a href="<?= $this->url('backend/content/document/edit', $params); ?>">
+                                <i class="icon-pencil7"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="modal"
+                               data-target="#document_model_warning_<?= $row['id']; ?>">
+                                <i class="icon-trash"></i>
+                            </a>
+                        </li>
+                        <li><a href="#"><i class="icon-cog7"></i></a></li>
+                    </ul>
+
+                    <!-- Document remove modal -->
+                    <div id="document_model_warning_<?= $row['id']; ?>" class="modal fade text-left">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header bg-warning">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h6 class="modal-title">Information</h6>
+                                </div>
+
+                                <div class="modal-body">
+                                    <h6 class="text-semibold ">Confirmation to delete</h6>
+                                    <p>You really want to delete the selected entry, return or repair is
+                                        impossible</p>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-link" data-dismiss="modal">Cancel
+                                    </button>
+                                    <a
+                                        href="<?= $this->url('backend/content/document/delete', $params); ?>"
+                                        class="btn btn-warning">
+                                        Confirm
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Document remove modal -->
+
+                </td>
+            </tr>
+        <?php endforeach; ?>
+
+        </tbody>
+    </table>
+</div>
+<!-- /basic datatable -->

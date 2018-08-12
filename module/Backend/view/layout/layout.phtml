@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <?= $this->headTitle('Kubnete CMS by Judzhin Miles')
+        ->setSeparator(' - ')
+        ->setAutoEscape(false);
+    ?>
+
+    <?= $this->headMeta()
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ->appendName('viewport', 'width=device-width, initial-scale=1')
+    ?>
+
+    <!-- Global stylesheets -->
+    <?=
+    $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'])
+        ->prependStylesheet($this->basePath('backend/assets/css/colors.css'))
+        ->prependStylesheet($this->basePath('backend/assets/css/components.css'))
+        ->prependStylesheet($this->basePath('backend/assets/css/core.css'))
+        ->prependStylesheet($this->basePath('backend/assets/css/bootstrap.css'))
+        ->prependStylesheet($this->basePath('backend/assets/css/icons/icomoon/styles.css'))
+        ->prependStylesheet('https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900')
+    ?>
+    <!-- /global stylesheets -->
+
+    <!-- Core JS files -->
+    <?= $this->headScript()
+        ->prependFile($this->basePath('backend/assets/js/plugins/ui/drilldown.js'))
+        ->prependFile($this->basePath('backend/assets/js/plugins/ui/nicescroll.min.js'))
+        ->prependFile($this->basePath('backend/assets/js/plugins/loaders/blockui.min.js'))
+        ->prependFile($this->basePath('backend/assets/js/core/libraries/bootstrap.min.js'))
+        ->prependFile($this->basePath('backend/assets/js/core/libraries/jquery.min.js'))
+        ->prependFile($this->basePath('backend/assets/js/plugins/loaders/pace.min.js'))
+    ?>
+    <!-- /core JS files -->
+
+</head>
+
+<body>
+
+<!-- Main navbar -->
+<div class="navbar navbar-inverse">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">
+            <img src="/backend/assets/images/logo_light.png" alt="">
+        </a>
+
+        <ul class="nav navbar-nav pull-right visible-xs-block">
+            <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+        </ul>
+    </div>
+
+    <div class="navbar-collapse collapse" id="navbar-mobile">
+
+        <p class="navbar-text"><span class="label bg-success-400">Online</span></p>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown language-switch">
+                <a class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="/backend/assets/images/flags/gb.png" class="position-left" alt="">
+                    English
+                    <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li><a class="deutsch"><img src="/backend/assets/images/flags/de.png" alt=""> Deutsch</a></li>
+                    <li><a class="ukrainian"><img src="/backend/assets/images/flags/ua.png" alt=""> Українська</a></li>
+                    <li><a class="english"><img src="/backend/assets/images/flags/gb.png" alt=""> English</a></li>
+                    <li><a class="espana"><img src="/backend/assets/images/flags/es.png" alt=""> España</a></li>
+                    <li><a class="russian"><img src="/backend/assets/images/flags/ru.png" alt=""> Русский</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown dropdown-user">
+                <a class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="/backend/assets/images/placeholder.jpg" alt="">
+                    <span>Victoria</span>
+                    <i class="caret"></i>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
+                    <li><a href="#"><i class="icon-coins"></i> My balance</a></li>
+                    <li><a href="#"><span class="badge badge-warning pull-right">58</span> <i
+                                class="icon-comment-discussion"></i> Messages</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>
+                    <li><a href="#"><i class="icon-switch2"></i> Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /main navbar -->
+
+<!-- Second navbar -->
+<div class="navbar navbar-default" id="navbar-second">
+    <ul class="nav navbar-nav no-border visible-xs-block">
+        <li><a class="text-center collapsed" data-toggle="collapse" data-target="#navbar-second-toggle"><i
+                    class="icon-menu7"></i></a></li>
+    </ul>
+
+    <div class="navbar-collapse collapse" id="navbar-second-toggle">
+
+        <?=
+        $this->navigation('navigation')
+            ->menu()
+            ->setPartial('partial/menu');
+        ?>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="<?= $this->url('backend/changelog'); ?>">
+                    <i class="icon-history position-left"></i>
+                    Changelog
+                    <span class="label label-inline position-right bg-success-400">0.0.1</span>
+                </a>
+            </li>
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-cog3"></i>
+                    <span class="visible-xs-inline-block position-right">Share</span>
+                    <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#"><i class="icon-user-lock"></i> Account security</a></li>
+                    <li><a href="#"><i class="icon-statistics"></i> Analytics</a></li>
+                    <li><a href="#"><i class="icon-accessibility"></i> Accessibility</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="icon-gear"></i> All settings</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /second navbar -->
+
+<?=
+$this->navigation('navigation')
+    ->breadcrumbs()
+    ->setPartial('partial/breadcrumbs');
+?>
+
+
+<!-- Page container -->
+<div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+
+            <?php foreach ($this->flashMessenger()->getMessages() as $message) : ?>
+                <div class="alert alert-info alert-bordered alert-rounded">
+                    <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
+                        <span class="sr-only">Close</span></button>
+                    <?= $message; ?>
+                </div>
+            <?php endforeach; ?>
+
+            <?= $this->content ?>
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+<!-- Footer -->
+<div class="footer text-muted">
+    &copy; 2017. <a href="#">Limitless Web App Kit</a> by <a href="http://msbios.com" target="_blank">Judzhin Miles</a>
+</div>
+<!-- /footer -->
+
+<?= $this->inlineScript() ?>
+</body>
+</html>

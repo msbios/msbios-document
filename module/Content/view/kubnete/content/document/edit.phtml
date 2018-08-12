@@ -1,0 +1,255 @@
+<?php
+/**
+ * @access protected
+ * @author Judzhin Miles <info[woof-woof]msbios.com>
+ */
+namespace Kubnete\Content;
+
+?>
+
+<div class="panel panel-flat">
+    <div class="panel-heading">
+        <h5 class="panel-title">
+            Form document editing
+        </h5>
+        <div class="heading-elements">
+            <ul class="icons-list">
+                <li><a data-action="collapse"></a></li>
+                <li><a data-action="reload"></a></li>
+                <li><a data-action="close"></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="panel-body">
+
+        <p class="content-group-lg">Examples of standard form controls supported in an example form layout.
+            Individual form controls automatically receive some global styling. All textual <code>&lt;input&gt;</code>,
+            <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> elements with <code>.form-control</code> are
+            set to <code>width: 100%;</code> by default. Wrap labels and controls in <code>.form-group</code> for
+            optimum spacing. Labels in horizontal form require <code>.control-label</code> class.</p>
+
+        <?= $this->form()->openTag($this->form->setAttribute('class', 'form-horizontal')->prepare()); ?>
+
+        <fieldset class="content-group">
+            <legend class="text-bold hide">To create a new template</legend>
+
+            <div class="tabbable">
+                <ul class="nav nav-tabs nav-tabs-top">
+
+                    <?php foreach ($this->tabs as $i => $objTabRow) : ?>
+                        <li<?php if (! $i) :
+?> class="active"<?php
+endif; ?>>
+                            <a href="#tab-item-<?= $i; ?>" data-toggle="tab">
+                                <?= $objTabRow['name']; ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+
+                    <li>
+                        <a href="#tab-information" data-toggle="tab">Document information</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+
+                    <?php $values = $this->form->get('values'); ?>
+
+                    <?php foreach ($this->tabs as $i => $objTabRow) : ?>
+                        <div class="tab-pane<?php if (! $i) :
+?> active<?php
+endif; ?>"
+                             id="tab-item-<?= $i; ?>">
+
+                            <?php foreach ($objTabRow['properties'] as $objPropertyRow) : ?>
+                                <?php $value = $values->get($objPropertyRow['identifier']); ?>
+
+                                <?php
+                                /** @var \Zend\Form\Element\Text $element */
+                                $element = $value->get('value')
+                                    ->setAttribute('class', 'form-control');
+                                /** @var array $messages */
+                                $messages = $element->getMessages();
+                                /** @var array $hasError */
+                                $hasError = (bool)count($messages);
+                                ?>
+                                <div
+                                    class="form-group <?php if ($hasError) :
+?>has-warning has-feedback<?php
+endif; ?>">
+
+                                    <label class="control-label col-lg-2">
+                                        <?= $objPropertyRow['name']; ?>
+                                    </label>
+
+                                    <div class="col-lg-10">
+                                        <?= $this->formElement($element); ?>
+                                        <?php if (count($messages)) : ?>
+                                            <div class="form-control-feedback">
+                                                <i class="icon-notification2"></i>
+                                            </div>
+                                            <span class="help-block">
+                                                    <? foreach ($messages as $message): ?>
+                                                        <?= $message; ?>
+                                                    <? endforeach; ?>
+                                                </span>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+
+                                <?= $this->formElement($value->get('id')); ?>
+                                <?= $this->formElement($value->get('document_id')); ?>
+                                <?= $this->formElement($value->get('property_id')); ?>
+
+                            <?php endforeach; ?>
+
+                        </div>
+                    <?php endforeach; ?>
+
+                    <div class="tab-pane" id="tab-information">
+
+                        <?php
+                        /** @var \Zend\Form\Element\Text $element */
+                        $element = $this->form->get('name')
+                            ->setAttribute('class', 'form-control')
+                            ->setLabelAttributes(['class' => 'control-label col-lg-2']);
+                        /** @var array $messages */
+                        $messages = $element->getMessages();
+                        /** @var array $hasError */
+                        $hasError = (bool)count($messages);
+                        ?>
+                        <div class="form-group <?php if ($hasError) :
+?>has-warning has-feedback<?php
+endif; ?>">
+                            <?= $this->formLabel($element); ?>
+                            <div class="col-lg-10">
+                                <?= $this->formElement($element); ?>
+                                <?php if (count($messages)) : ?>
+                                    <div class="form-control-feedback">
+                                        <i class="icon-notification2"></i>
+                                    </div>
+                                    <span class="help-block">
+                                        <? foreach ($messages as $message): ?>
+                                            <?= $message; ?>
+                                        <? endforeach; ?>
+                                    </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <?php
+                        /** @var \Zend\Form\Element\Text $element */
+                        $element = $this->form->get('uri')
+                            ->setAttribute('class', 'form-control')
+                            ->setLabelAttributes(['class' => 'control-label col-lg-2']);
+                        /** @var array $messages */
+                        $messages = $element->getMessages();
+                        /** @var array $hasError */
+                        $hasError = (bool)count($messages);
+                        ?>
+                        <div class="form-group <?php if ($hasError) :
+?>has-warning has-feedback<?php
+endif; ?>">
+                            <?= $this->formLabel($element); ?>
+                            <div class="col-lg-10">
+                                <?= $this->formElement($element); ?>
+                                <?php if (count($messages)) : ?>
+                                    <div class="form-control-feedback">
+                                        <i class="icon-notification2"></i>
+                                    </div>
+                                    <span class="help-block">
+                                            <? foreach ($messages as $message): ?>
+                                                <?= $message; ?>
+                                            <? endforeach; ?>
+                                        </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2" for="name">Locale</label>
+                            <div class="col-lg-10">
+                                <input type="text" name="locale" class="form-control" value="">
+                            </div>
+                        </div>
+
+                        <?php
+                        /** @var \Zend\Form\Element\Text $element */
+                        $element = $this->form->get('view_id')
+                            ->setAttribute('class', 'form-control')
+                            ->setLabelAttributes(['class' => 'control-label col-lg-2']);
+                        /** @var array $messages */
+                        $messages = $element->getMessages();
+                        /** @var array $hasError */
+                        $hasError = (bool)count($messages);
+                        ?>
+                        <div class="form-group <?php if ($hasError) :
+?>has-warning has-feedback<?php
+endif; ?>">
+                            <?= $this->formLabel($element); ?>
+                            <div class="col-lg-10">
+                                <?= $this->formElement($element); ?>
+                                <?php if (count($messages)) : ?>
+                                    <div class="form-control-feedback">
+                                        <i class="icon-notification2"></i>
+                                    </div>
+                                    <span class="help-block">
+                                            <? foreach ($messages as $message): ?>
+                                                <?= $message; ?>
+                                            <? endforeach; ?>
+                                        </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <?php
+                        /** @var \Zend\Form\Element\Text $element */
+                        $element = $this->form->get('layout_id')
+                            ->setAttribute('class', 'form-control')
+                            ->setLabelAttributes(['class' => 'control-label col-lg-2']);
+                        /** @var array $messages */
+                        $messages = $element->getMessages();
+                        /** @var array $hasError */
+                        $hasError = (bool)count($messages);
+                        ?>
+                        <div class="form-group <?php if ($hasError) :
+?>has-warning has-feedback<?php
+endif; ?>">
+                            <?= $this->formLabel($element); ?>
+                            <div class="col-lg-10">
+                                <?= $this->formElement($element); ?>
+                                <?php if (count($messages)) : ?>
+                                    <div class="form-control-feedback">
+                                        <i class="icon-notification2"></i>
+                                    </div>
+                                    <span class="help-block">
+                                            <? foreach ($messages as $message): ?>
+                                                <?= $message; ?>
+                                            <? endforeach; ?>
+                                        </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+
+        <div class="text-right">
+            <?= $this->formHidden($this->form->get('id')); ?>
+            <?= $this->formHidden($this->form->get('document_type_id')); ?>
+            <a href="<?= $this->url('backend/content/document'); ?>" class="btn btn-link">
+                Return to the document type list
+            </a>
+            <button type="submit" class="btn btn-primary">
+                Submit form <i class="icon-arrow-right14 position-right"></i>
+            </button>
+        </div>
+
+        <?= $this->form()->closeTag($this->form); ?>
+    </div>
+</div>

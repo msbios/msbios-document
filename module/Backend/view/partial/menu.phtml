@@ -1,0 +1,44 @@
+<?php
+/**
+ * @access protected
+ * @author Judzhin Miles <info[woof-woof]msbios.com>
+ */
+namespace Kubnete\Backend;
+
+?>
+<ul class="nav navbar-nav">
+    <?php foreach ($this->container as $page) : ?>
+        <?php if ($this->navigation()->accept($page)) : ?>
+
+            <?php if (! $page->hasPages()) : ?>
+                <li>
+                    <a href="<?= $page->getHref(); ?>">
+                        <i class="<?= $page->getClass(); ?>"></i>
+                        <?= $page->getLabel() . PHP_EOL; ?>
+                    </a>
+                </li>
+            <?php else : ?>
+                <li class="dropdown">
+                    <a aria-expanded="false"
+                       role="button"
+                       href="#"
+                       class="dropdown-toggle"
+                       data-toggle="dropdown">
+                        <i class="<?= $page->getClass(); ?>"></i>
+                        <?= $page->getLabel(); ?> <span class="caret"></span>
+                    </a>
+                    <ul role="menu" class="dropdown-menu">
+                        <?php foreach ($page->getPages() as $child) : ?>
+                            <li>
+                                <a href="<?= $child->getHref(); ?>">
+                                    <i class="<?= $child->getClass(); ?>"></i>
+                                    <?= $child->getLabel() . PHP_EOL; ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </li>
+            <?php endif; ?>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</ul>

@@ -1,0 +1,784 @@
+<?php
+/**
+ * @access protected
+ * @author Judzhin Miles <info[woof-woof]msbios.com>
+ */
+namespace Kubnete\Development;
+
+use Zend\Form\Element\Checkbox;
+use Zend\Form\Element\Select;
+use Zend\Form\Element\Text;
+
+$this->headScript()
+    ->appendFile($this->basePath('backend/assets/js/plugins/tmpl/jquery.tmpl.min.js'))
+    ->appendFile($this->basePath('backend/assets/js/kubnete.js'))
+?>
+
+<?= $this->form()->openTag($this->form->setAttribute('class', 'form-horizontal')->prepare()); ?>
+
+    <fieldset class="content-group">
+        <legend class="text-bold hide">To create a new template</legend>
+
+        <div class="tabbable">
+            <ul class="nav nav-tabs nav-tabs-top">
+                <li class="active">
+                    <a href="#tab-info" data-toggle="tab">Info</a>
+                </li>
+                <li><a href="#tab-views" data-toggle="tab">Views</a></li>
+                <li><a href="#tab-properties" data-toggle="tab">Properties</a></li>
+                <li><a href="#tab-tabs" data-toggle="tab">Tabs</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab-info">
+
+                    <?php
+                    /** @var \Zend\Form\Element\Text $element */
+                    $element = $this->form->get('name')
+                        ->setAttribute('class', 'form-control')
+                        ->setLabelAttributes(['class' => 'control-label col-lg-2']);
+                    /** @var array $messages */
+                    $messages = $element->getMessages();
+                    /** @var array $hasError */
+                    $hasError = (bool)count($messages);
+                    ?>
+                    <div class="form-group <?php if ($hasError) :
+?>has-warning has-feedback<?php
+endif; ?>">
+                        <?= $this->formLabel($element); ?>
+                        <div class="col-lg-10">
+                            <?= $this->formElement($element); ?>
+                            <?php if (count($messages)) : ?>
+                                <div class="form-control-feedback">
+                                    <i class="icon-notification2"></i>
+                                </div>
+                                <span class="help-block">
+                                    <? foreach ($messages as $message): ?>
+                                        <?= $message; ?>
+                                    <? endforeach; ?>
+                                </span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+
+                    <?php
+                    /** @var \Zend\Form\Element\Text $element */
+                    $element = $this->form->get('description')
+                        ->setAttribute('class', 'form-control')
+                        ->setLabelAttributes(['class' => 'control-label col-lg-2']);
+                    /** @var array $messages */
+                    $messages = $element->getMessages();
+                    /** @var array $hasError */
+                    $hasError = (bool)count($messages);
+                    ?>
+                    <div class="form-group <?php if ($hasError) :
+?>has-warning has-feedback<?php
+endif; ?>">
+                        <?= $this->formLabel($element); ?>
+                        <div class="col-lg-10">
+                            <?= $this->formElement($element); ?>
+                            <?php if (count($messages)) : ?>
+                                <div class="form-control-feedback">
+                                    <i class="icon-notification2"></i>
+                                </div>
+                                <span class="help-block">
+                                    <? foreach ($messages as $message): ?>
+                                        <?= $message; ?>
+                                    <? endforeach; ?>
+                                </span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="tab-pane" id="tab-views">
+                    <?php
+                    /** @var \Zend\Form\Element\Text $element */
+                    $element = $this->form->get('default_view_id')
+                        ->setAttribute('class', 'form-control')
+                        ->setLabelAttributes(['class' => 'control-label col-lg-2']);
+                    /** @var array $messages */
+                    $messages = $element->getMessages();
+                    /** @var array $hasError */
+                    $hasError = (bool)count($messages);
+                    ?>
+                    <div class="form-group <?php if ($hasError) :
+?>has-warning has-feedback<?php
+endif; ?>">
+                        <?= $this->formLabel($element); ?>
+                        <div class="col-lg-10">
+                            <?= $this->formElement($element); ?>
+                            <?php if (count($messages)) : ?>
+                                <div class="form-control-feedback">
+                                    <i class="icon-notification2"></i>
+                                </div>
+                                <span class="help-block">
+                                    <? foreach ($messages as $message): ?>
+                                        <?= $message; ?>
+                                    <? endforeach; ?>
+                                </span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="tab-properties">
+
+                    <a data-toggle="modal"
+                       data-target="#property-modal-form-add"
+                       class="btn btn-default btn-xs" href="#">
+                        <i class="icon-plus2 position-left"></i> Add property
+                    </a>
+
+                    <a data-toggle="modal"
+                       data-target="#tab-modal-form-add"
+                       class="btn btn-default btn-xs" href="#">
+                        <i class="icon-plus2 position-left"></i> Add tab
+                    </a>
+
+                    <hr>
+
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs nav-tabs-highlight">
+
+                            <?php foreach ($this->form->get('tabs') as $i => $tab) : ?>
+                                <li class="<?php if (! $i) :
+?>active<?php
+endif; ?>">
+                                    <a href="#tab-properties-<?= $i; ?>" data-toggle="tab">
+                                        <?= $tab->get('name')->getValue(); ?>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+
+                        <div class="tab-content">
+                            <?php foreach ($this->form->get('tabs') as $t => $tab) : ?>
+                                <div class="tab-pane <?php if (! $t) :
+?>active<?php
+endif; ?>"
+                                     id="tab-properties-<?= $t; ?>">
+
+                                    <div class="panel-group accordion-sortable content-group-lg ui-sortable"
+                                         id="accordion-controls-<?= $t ?>">
+
+                                        <?php foreach ($tab->get('properties') as $p => $property) : ?>
+                                            <div class="property-item panel panel-white">
+                                                <div class="panel-heading">
+                                                    <h6 class="panel-title">
+                                                        <a data-toggle="collapse"
+                                                           data-parent="#accordion-controls-<?= $t ?>"
+                                                           href="#property-item-<?= $t; ?>-<?= $p; ?>"
+                                                           aria-expanded="true" class="">
+                                                            <?= $property->get('name')->getValue(); ?>
+                                                        </a>
+                                                        <a class="heading-elements-toggle">
+                                                            <i class="icon-more"></i>
+                                                        </a>
+                                                    </h6>
+                                                    <div class="heading-elements">
+                                                        <ul class="icons-list">
+                                                            <li><a data-action="move" class="ui-sortable-handle"></a>
+                                                            </li>
+                                                            <li><a data-action="close"></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div id="property-item-<?= $t; ?>-<?= $p; ?>"
+                                                     class="panel-collapse collapse <?php if (! $p) :
+?>in<?php
+endif; ?>"
+                                                     aria-expanded="true">
+                                                    <div class="panel-body">
+
+                                                        <?php
+                                                        /** @var \Zend\Form\Element\Text $element */
+                                                        $element = $property->get('name');
+                                                        $element->setAttribute('class', 'form-control')
+                                                            ->setLabelAttributes(['class' => 'control-label col-lg-2']);
+                                                        /** @var array $messages */
+                                                        $messages = $element->getMessages();
+                                                        /** @var array $hasError */
+                                                        $hasError = (bool)count($messages);
+                                                        ?>
+                                                        <div
+                                                            class="form-group <?php if ($hasError) :
+?>has-warning has-feedback<?php
+endif; ?>">
+                                                            <?= $this->formLabel($element); ?>
+                                                            <div class="col-lg-10">
+                                                                <?= $this->formElement($element); ?>
+                                                                <?php if (count($messages)) : ?>
+                                                                    <div class="form-control-feedback">
+                                                                        <i class="icon-notification2"></i>
+                                                                    </div>
+                                                                    <span class="help-block">
+                                                                        <? foreach ($messages as $message): ?>
+                                                                            <?= $message; ?>
+                                                                        <? endforeach; ?>
+                                                                    </span>
+                                                                <?php endif; ?>
+                                                            </div>
+                                                        </div>
+
+                                                        <?php
+                                                        /** @var \Zend\Form\Element\Text $element */
+                                                        $element = $property->get('identifier');
+                                                        $element->setAttribute('class', 'form-control')
+                                                            ->setLabelAttributes(['class' => 'control-label col-lg-2']);
+                                                        /** @var array $messages */
+                                                        $messages = $element->getMessages();
+                                                        /** @var array $hasError */
+                                                        $hasError = (bool)count($messages);
+                                                        ?>
+                                                        <div
+                                                            class="form-group <?php if ($hasError) :
+?>has-warning has-feedback<?php
+endif; ?>">
+                                                            <?= $this->formLabel($element); ?>
+                                                            <div class="col-lg-10">
+                                                                <?= $this->formElement($element); ?>
+                                                                <?php if (count($messages)) : ?>
+                                                                    <div class="form-control-feedback">
+                                                                        <i class="icon-notification2"></i>
+                                                                    </div>
+                                                                    <span class="help-block">
+                                                                        <? foreach ($messages as $message): ?>
+                                                                            <?= $message; ?>
+                                                                        <? endforeach; ?>
+                                                                    </span>
+                                                                <?php endif; ?>
+                                                            </div>
+                                                        </div>
+
+                                                        <?php
+                                                        /** @var \Zend\Form\Element\Text $element */
+                                                        $element = $property->get('datatype_id');
+                                                        $element->setAttribute('class', 'form-control')
+                                                            ->setLabelAttributes(['class' => 'control-label col-lg-2']);
+                                                        /** @var array $messages */
+                                                        $messages = $element->getMessages();
+                                                        /** @var array $hasError */
+                                                        $hasError = (bool)count($messages);
+                                                        ?>
+                                                        <div
+                                                            class="form-group <?php if ($hasError) :
+?>has-warning has-feedback<?php
+endif; ?>">
+                                                            <?= $this->formLabel($element); ?>
+                                                            <div class="col-lg-10">
+                                                                <?= $this->formElement($element); ?>
+                                                                <?php if (count($messages)) : ?>
+                                                                    <div class="form-control-feedback">
+                                                                        <i class="icon-notification2"></i>
+                                                                    </div>
+                                                                    <span class="help-block">
+                                                                        <? foreach ($messages as $message): ?>
+                                                                            <?= $message; ?>
+                                                                        <? endforeach; ?>
+                                                                    </span>
+                                                                <?php endif; ?>
+                                                            </div>
+                                                        </div>
+
+                                                        <?php
+                                                        /** @var \Zend\Form\Element\Text $element */
+                                                        $element = $property->get('description');
+                                                        $element->setAttribute('class', 'form-control')
+                                                            ->setLabelAttributes(['class' => 'control-label col-lg-2']);
+                                                        /** @var array $messages */
+                                                        $messages = $element->getMessages();
+                                                        /** @var array $hasError */
+                                                        $hasError = (bool)count($messages);
+                                                        ?>
+                                                        <div
+                                                            class="form-group <?php if ($hasError) :
+?>has-warning has-feedback<?php
+endif; ?>">
+                                                            <?= $this->formLabel($element); ?>
+                                                            <div class="col-lg-10">
+                                                                <?= $this->formElement($element); ?>
+                                                                <?php if (count($messages)) : ?>
+                                                                    <div class="form-control-feedback">
+                                                                        <i class="icon-notification2"></i>
+                                                                    </div>
+                                                                    <span class="help-block">
+                                                                        <? foreach ($messages as $message): ?>
+                                                                            <?= $message; ?>
+                                                                        <? endforeach; ?>
+                                                                    </span>
+                                                                <?php endif; ?>
+                                                            </div>
+                                                        </div>
+
+                                                        <?php
+                                                        /** @var \Zend\Form\Element\Text $element */
+                                                        $element = $property->get('required');
+                                                        // $element->setAttribute('class', 'styled');
+                                                        ?>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10 col-lg-offset-2">
+                                                                <?= $this->formCheckbox($element); ?>
+                                                            </div>
+                                                        </div>
+
+                                                        <?= $this->formElement($property->get('id')); ?>
+                                                        <?= $this->formElement($property->get('tab_id')); ?>
+                                                        <?= $this->formElement($property->get('order_in')); ?>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
+
+                                    </div>
+
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="tab-pane" id="tab-tabs">
+
+                    <a data-toggle="modal"
+                       data-target="#tab-modal-form-add"
+                       class="btn btn-default btn-xs" href="#">
+                        <i class="icon-plus2 position-left"></i> Add tab
+                    </a>
+
+                    <hr>
+
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th class="text-center" style="width: 10px;">#</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th class="text-center" style="width: 10px;">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <?php $tabs = []; ?>
+                        <?php foreach ($this->form->get('tabs') as $i => $fields) : ?>
+                            <tr id="tabs-item-<?= $i; ?>">
+                                <td class="text-center">
+                                    <a href="#" class="btn btn-link btn-xs">
+                                        <i class="icon-move"></i>
+                                    </a>
+                                </td>
+
+                                <td>
+                                    <?php
+
+                                    /** @var \Zend\Form\Element\Text $element */
+                                    $element = $fields->get('name');
+                                    $tabs[$i] = $element->getValue();
+                                    $element->setAttribute('class', 'form-control');
+                                    /** @var array $messages */
+                                    $messages = $element->getMessages();
+                                    foreach ($messages as $message) :
+                                        $element->setAttribute('placeholder', $message);
+                                    endforeach;
+                                    /** @var array $hasError */
+                                    $hasError = (bool)count($messages);
+                                    ?>
+                                    <div class="<?php if ($hasError) :
+?>has-warning has-feedback<?php
+endif; ?>">
+
+                                        <?= $this->formElement($element); ?>
+                                        <?php if (count($messages)) : ?>
+                                            <div class="form-control-feedback">
+                                                <i class="icon-notification2"></i>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <?php
+                                    /** @var \Zend\Form\Element\Text $element */
+                                    $element = $fields->get('description');
+                                    $element->setAttribute('class', 'form-control');
+                                    /** @var array $messages */
+                                    $messages = $element->getMessages();
+                                    foreach ($messages as $message) :
+                                        $element->setAttribute('placeholder', $message);
+                                    endforeach;
+                                    /** @var array $hasError */
+                                    $hasError = (bool)count($messages);
+                                    ?>
+                                    <div class="<?php if ($hasError) :
+?>has-warning has-feedback<?php
+endif; ?>">
+
+                                        <?= $this->formElement($element); ?>
+                                        <?php if (count($messages)) : ?>
+                                            <div class="form-control-feedback">
+                                                <i class="icon-notification2"></i>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                </td>
+
+                                <td class="text-center">
+                                    <?= $this->formElement($fields->get('id')); ?>
+                                    <?= $this->formElement($fields->get('document_type_id')); ?>
+                                    <?= $this->formElement($fields->get('order_in')); ?>
+                                    <a href="#"
+                                       class="btn btn-danger btn-xs"
+                                       data-toggle="modal"
+                                       data-target="#tab-modal-alert-remove-<?= $i; ?>">
+                                        <i class="icon-trash-alt"></i>
+                                    </a>
+
+                                    <!-- Tab modal alert remove -->
+                                    <div id="tab-modal-alert-remove-<?= $i; ?>"
+                                         class="tab-remove modal fade text-left">
+                                        <div class="modal-dialog modal-sm">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-warning">
+                                                    <button type="button" class="close"
+                                                            data-dismiss="modal">&times;</button>
+                                                    <h6 class="modal-title">Information</h6>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <h6 class="text-semibold ">Confirmation to delete</h6>
+                                                    <p>You really want to delete the selected entry, return or repair is
+                                                        impossible</p>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-link" data-dismiss="modal">
+                                                        Cancel
+                                                    </button>
+                                                    <button type="button"
+                                                            class="btn btn-danger"
+                                                            data-tab-index="<?= $i; ?>">
+                                                        Remove
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /tab modal alert remove -->
+
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </fieldset>
+
+    <div class="text-right">
+        <?= $this->formRow($this->form->get('id')); ?>
+        <a href="<?= $this->url('backend/development/document-type'); ?>" class="btn btn-link">
+            Return to the document type list
+        </a>
+        <button type="submit" class="btn btn-primary">
+            Submit form <i class="icon-arrow-right14 position-right"></i>
+        </button>
+    </div>
+
+<?= $this->form()->closeTag($this->form); ?>
+
+    <!-- Property form modal -->
+    <div id="property-modal-form-add" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h5 class="modal-title">Form property create</h5>
+                </div>
+
+                <form action="#">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>Name</label>
+                                    <?= $this->formText((new Text('name'))
+                                        ->setAttribute('class', 'form-control')); ?>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label>Identifier</label>
+                                    <?= $this->formText((new Text('identifier'))
+                                        ->setAttribute('class', 'form-control')); ?>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <label>Description</label>
+                                    <?= $this->formText((new Text('description'))
+                                        ->setAttribute('class', 'form-control')); ?>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>Tab</label>
+                                    <?= $this->formSelect((new Select('tab_id'))
+                                        ->setAttribute('class', 'form-control')
+                                        ->setValueOptions($tabs)); ?>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label>Datatype</label>
+                                    <input type="text" class="form-control" name="datatype_id">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <?= $this->formCheckbox((new Checkbox('required'))
+                                    ->setAttribute('class', 'styled')); ?>
+                                    Required
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Submit form</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /property form modal -->
+
+    <!-- Tab model form add -->
+    <div id="tab-modal-form-add" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h5 class="modal-title">Form tab create</h5>
+                </div>
+
+                <form action="#">
+                    <div class="modal-body">
+
+                        <p class="content-group-lg">Examples of standard form controls supported in an example form
+                            layout.
+                            Individual form controls automatically receive some global styling. All textual <code>&lt;input&gt;</code>,
+                            <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> elements with <code>.form-control</code>
+                            are
+                            set to <code>width: 100%;</code> by default. Wrap labels and controls in
+                            <code>.form-group</code> for
+                            optimum spacing. Labels in horizontal form require <code>.control-label</code> class.</p>
+
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" name="name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" class="form-control" name="description">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Submit form</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /tab model form add -->
+
+    <script id="property-item-tmpl" type="text/x-jquery-tmpl">
+        <div class="panel panel-white">
+            <div class="panel-heading">
+                <h6 class="panel-title">
+                    <a data-toggle="collapse"
+                    data-parent="#accordion-controls-${tabId}"
+                    href="#property-item-${tabId}-${item}"
+                    aria-expanded="false" class="">
+                    ${name}
+                    </a>
+                    <a class="heading-elements-toggle">
+                        <i class="icon-more"></i>
+                    </a>
+                </h6>
+                <div class="heading-elements">
+                    <ul class="icons-list">
+                        <li><a data-action="move" class="ui-sortable-handle"></a></li>
+                        <li><a data-action="close"></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="property-item-${tabId}-${item}" class="panel-collapse collapse" aria-expanded="false">
+                <div class="panel-body">
+
+                    <div class="form-group ">
+                        <label class="control-label col-lg-2" for="tabs[${tabId}][properties][${item}][name]">
+                            Name
+                        </label>
+                        <div class="col-lg-10">
+                            <input type="text" name="tabs[${tabId}][properties][${item}][name]" class="form-control" value="${name}">
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <label class="control-label col-lg-2" for="tabs[${tabId}][properties][${item}][identifier]">
+                            Identifier
+                        </label>
+                        <div class="col-lg-10">
+                            <input type="text" name="tabs[${tabId}][properties][${item}][identifier]" class="form-control" value="${identifier}">
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <label class="control-label col-lg-2" for="tabs[${tabId}][properties][${item}][datatype_id]">
+                            Datatype
+                        </label>
+                        <div class="col-lg-10">
+                            <select name="tabs[${tabId}][properties][${item}][datatype_id]" class="form-control" value="${dataTypeId}">
+                                <option value="1" selected="selected">Text filed</option>
+                                <option value="2">Text Area</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <label class="control-label col-lg-2" for="tabs[${tabId}][properties][${item}][description]">
+                            Description
+                        </label>
+                        <div class="col-lg-10">
+                            <input type="text" name="tabs[${tabId}][properties][${item}][description]" class="form-control" value="${description}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <input type="checkbox" name="tabs[${tabId}][properties][${item}][required]" value="${required}">
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="tabs[${tabId}][properties][${item}][id]" value="">                                                        <input type="hidden" name="tabs[0][properties][1][tab_id]" value="1">                                                        <input type="hidden" name="tabs[0][properties][1][order_in]" value="0">
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="tab-properties-header-tmpl" type="text/x-jquery-tmpl">
+        <li>
+            <a href="#tab-properties-${item}" data-toggle="tab">
+                ${name}
+            </a>
+        </li>
+    </script>
+
+    <script id="tab-properties-content-tmpl" type="text/x-jquery-tmpl">
+        <div class="tab-pane"
+             id="tab-properties-${item}">
+
+            <div class="panel-group accordion-sortable content-group-lg ui-sortable"
+                 id="accordion-controls-${item}">
+            </div>
+
+        </div>
+    </script>
+
+    <script id="tabs-item-tmpl" type="text/x-jquery-tmpl">
+        <tr id="tabs-item-${item}">
+            <td class="text-center">
+                <a href="#" class="btn btn-link btn-xs">
+                    <i class="icon-move"></i>
+                </a>
+            </td>
+
+            <td>
+                <input type="text"
+                name="tabs[${item}][name]"
+                class="form-control" value="${name}">
+            </td>
+            <td>
+                <input
+                type="text"
+                name="tabs[${item}][description]"
+                class="form-control"
+                value="${description}">
+            </td>
+
+            <td class="text-center">
+                <input type="hidden" name="tabs[${item}][id]" value="">
+                <input type="hidden" name="tabs[${item}][document_type_id]" value="">
+                <input type="hidden" name="tabs[${item}][order_in]" value="${item}">
+                <a href="#"
+                   class="btn btn-danger btn-xs"
+                   data-toggle="modal"
+                   data-target="#tab-modal-alert-remove-${item}">
+                    <i class="icon-trash-alt"></i>
+                </a>
+
+                <!-- Tab modal alert remove -->
+                <div id="tab-modal-alert-remove-${item}"
+                     class="tab-remove modal fade text-left">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header bg-warning">
+                                <button type="button" class="close"
+                                        data-dismiss="modal">&times;</button>
+                                <h6 class="modal-title">Information</h6>
+                            </div>
+
+                            <div class="modal-body">
+                                <h6 class="text-semibold ">Confirmation to delete</h6>
+                                <p>You really want to delete the selected entry, return or repair is
+                                    impossible</p>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-link" data-dismiss="modal">
+                                    Cancel
+                                </button>
+                                <button type="button"
+                                        class="btn btn-danger"
+                                        data-tab-index="${item}">
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /tab modal alert remove -->
+            </td>
+        </tr>
+    </script>
+
+<?php $this->inlineScript()->captureStart();
+echo <<<'JS'
+    Kubnete.initDocumentType({
+        $property: $("#property-item-tmpl"),
+        $tabHeader: $("#tab-properties-header-tmpl"),
+        $tabContent: $("#tab-properties-content-tmpl"),
+        $tab: $("#tabs-item-tmpl")
+    });
+JS;
+$this->inlineScript()->captureEnd();
+?>

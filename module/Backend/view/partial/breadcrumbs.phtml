@@ -1,0 +1,63 @@
+<?php
+/**
+ * @access protected
+ * @author Judzhin Miles <info[woof-woof]msbios.com>
+ */
+namespace Kubnete\Backend;
+
+/** @var array $pages */
+$pages = $this->pages;
+?>
+
+<?php if (count($pages)) : ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-header-content">
+            <div class="page-title">
+                <h4>
+                    <i class="icon-arrow-left52 position-left"></i>
+                    <?php $current = $this->navigation()->findOneBy('active', 1); ?>
+                    <?= $current->getTitle(); ?>
+                    <?php $this->headTitle()->prepend($current->getTitle()); ?>
+                    <small class="display-block hidden">Good morning, Victoria Baker!</small>
+                </h4>
+
+                <ul class="breadcrumb breadcrumb-caret position-right">
+                    <li><a href="<?= $this->url('backend'); ?>">Dashboard</a></li>
+
+                    <?php foreach ($pages as $key => $page) : ?>
+
+                        <?php if ($key < count($this->pages) - 1) : ?>
+                            <li>
+                                <a href="<?= $page->getHref(); ?>">
+                                    <?= $page->getLabel(); ?>
+                                </a>
+                            </li>
+                        <?php else : ?>
+                            <li class="active">
+                                <strong>
+                                    <?= $page->getLabel(); ?>
+                                </strong>
+                            </li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </ul>
+
+            </div>
+
+            <div class="heading-elements">
+                <div class="heading-btn-group">
+                    <a href="#" class="btn btn-link btn-float has-text"><i class="icon-bars-alt text-primary"></i><span>Statistics</span></a>
+                    <a href="#" class="btn btn-link btn-float has-text"><i class="icon-calculator text-primary"></i>
+                        <span>Invoices</span></a>
+                    <a href="#" class="btn btn-link btn-float has-text"><i class="icon-calendar5 text-primary"></i>
+                        <span>Schedule</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /page header -->
+
+
+<?php endif; ?>
