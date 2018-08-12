@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b234ba082ec4434a6f6e753b4ac82e80",
+    "content-hash": "081ec4e351607dd8e4a26b594f4c2147",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -280,6 +280,56 @@
             "time": "2018-03-18T15:21:18+00:00"
         },
         {
+            "name": "msbios/authentication",
+            "version": "v1.0.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/msbios/msbios-authentication.git",
+                "reference": "8947eb9d8c3f615819b3102c22a8d1bb06899335"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/msbios/msbios-authentication/zipball/8947eb9d8c3f615819b3102c22a8d1bb06899335",
+                "reference": "8947eb9d8c3f615819b3102c22a8d1bb06899335",
+                "shasum": ""
+            },
+            "require": {
+                "zendframework/zend-authentication": "^2.5",
+                "zendframework/zend-crypt": "^3.2"
+            },
+            "require-dev": {
+                "msbios/resource": "^1.0",
+                "msbios/test": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "zf": {
+                    "component": "MSBios\\Authentication"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MSBios\\Authentication\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Judzhin Miles",
+                    "email": "info@msbios.com"
+                }
+            ],
+            "description": "MSBios Authentication",
+            "homepage": "https://github.com/msbios/msbios-authentication",
+            "keywords": [
+                "php"
+            ],
+            "time": "2018-03-03T21:15:50+00:00"
+        },
+        {
             "name": "msbios/cache",
             "version": "v1.0.3",
             "source": {
@@ -388,6 +438,264 @@
                 "php"
             ],
             "time": "2018-08-12T19:35:13+00:00"
+        },
+        {
+            "name": "msbios/db",
+            "version": "v1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/msbios/msbios-db.git",
+                "reference": "6be510a1409cc6c4d7f0e31889aee46bf1bd6a5b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/msbios/msbios-db/zipball/6be510a1409cc6c4d7f0e31889aee46bf1bd6a5b",
+                "reference": "6be510a1409cc6c4d7f0e31889aee46bf1bd6a5b",
+                "shasum": ""
+            },
+            "require": {
+                "msbios/msbios": "^1.0",
+                "zendframework/zend-db": "^2.8"
+            },
+            "require-dev": {
+                "msbios/test": "^1.0"
+            },
+            "bin": [
+                "bin/database-backup.sh"
+            ],
+            "type": "library",
+            "extra": {
+                "zf": {
+                    "component": "MSBios\\Db"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MSBios\\Db\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Judzhin Miles",
+                    "email": "info@msbios.com"
+                }
+            ],
+            "description": "MSBios Db",
+            "homepage": "https://github.com/msbios/msbios-db",
+            "keywords": [
+                "php"
+            ],
+            "time": "2018-08-01T09:55:45+00:00"
+        },
+        {
+            "name": "msbios/form",
+            "version": "v1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/msbios/msbios-form.git",
+                "reference": "4ba9bb50b0e6f45f5e0aee74b88232259e6a19d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/msbios/msbios-form/zipball/4ba9bb50b0e6f45f5e0aee74b88232259e6a19d2",
+                "reference": "4ba9bb50b0e6f45f5e0aee74b88232259e6a19d2",
+                "shasum": ""
+            },
+            "require": {
+                "msbios/msbios": "^1.0",
+                "zendframework/zend-form": "^2.10"
+            },
+            "require-dev": {
+                "msbios/application": "^1.0",
+                "msbios/debug": "^1.0",
+                "msbios/test": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "zf": {
+                    "component": "MSBios\\Form"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MSBios\\Form\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Judzhin Miles",
+                    "email": "info@msbios.com"
+                }
+            ],
+            "description": "MSBios Form",
+            "homepage": "https://github.com/msbios/msbios-form",
+            "keywords": [
+                "php"
+            ],
+            "time": "2018-02-20T08:12:45+00:00"
+        },
+        {
+            "name": "msbios/guard",
+            "version": "v1.0.23",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/msbios/msbios-guard.git",
+                "reference": "4e7f4e3afcdd24caba1f7273a12a2bb2019090c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/msbios/msbios-guard/zipball/4e7f4e3afcdd24caba1f7273a12a2bb2019090c9",
+                "reference": "4e7f4e3afcdd24caba1f7273a12a2bb2019090c9",
+                "shasum": ""
+            },
+            "require": {
+                "msbios/guard-resource": "^1.0",
+                "zendframework/zend-http": "^2.6",
+                "zendframework/zend-permissions-acl": "^2.6"
+            },
+            "require-dev": {
+                "msbios/application": "^1.0",
+                "msbios/authentication": "^1.0",
+                "msbios/debug": "^1.0",
+                "msbios/guard-developer-tools": "^1.0",
+                "msbios/resource": "^1.0",
+                "msbios/test": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "zf": {
+                    "component": "MSBios\\Guard"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MSBios\\Guard\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Judzhin Miles",
+                    "email": "info@msbios.com"
+                }
+            ],
+            "description": "MSBios Guard",
+            "homepage": "https://github.com/msbios/msbios-guard",
+            "keywords": [
+                "php"
+            ],
+            "time": "2018-08-12T19:31:42+00:00"
+        },
+        {
+            "name": "msbios/guard-cpanel",
+            "version": "v1.0.22",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/msbios/msbios-guard-cpanel.git",
+                "reference": "e9f69b53f4aeadcc91ebfcced732e1a1b3a68471"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/msbios/msbios-guard-cpanel/zipball/e9f69b53f4aeadcc91ebfcced732e1a1b3a68471",
+                "reference": "e9f69b53f4aeadcc91ebfcced732e1a1b3a68471",
+                "shasum": ""
+            },
+            "require-dev": {
+                "msbios/application": "^1.0",
+                "msbios/authentication": "^1.0",
+                "msbios/cpanel": "^1.0",
+                "msbios/debug": "^1.0",
+                "msbios/guard": "^1.0",
+                "msbios/guard-resource": "^1.0",
+                "msbios/resource": "^1.0",
+                "msbios/test": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "zf": {
+                    "component": "MSBios\\Guard\\CPanel"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MSBios\\Guard\\CPanel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL"
+            ],
+            "authors": [
+                {
+                    "name": "Judzhin Miles",
+                    "email": "info@msbios.com"
+                }
+            ],
+            "description": "MSBios Guard CPanel",
+            "homepage": "https://github.com/msbios/msbios-guard-cpanel",
+            "keywords": [
+                "php"
+            ],
+            "time": "2017-11-26T17:53:06+00:00"
+        },
+        {
+            "name": "msbios/guard-resource",
+            "version": "v1.0.21",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/msbios/msbios-guard-resource.git",
+                "reference": "caa4d8519d262c445a18aeabdee7ef1cd21808c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/msbios/msbios-guard-resource/zipball/caa4d8519d262c445a18aeabdee7ef1cd21808c6",
+                "reference": "caa4d8519d262c445a18aeabdee7ef1cd21808c6",
+                "shasum": ""
+            },
+            "require-dev": {
+                "msbios/authentication": "^1.0",
+                "msbios/guard": "^1.0",
+                "msbios/resource": "^1.0",
+                "msbios/test": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "zf": {
+                    "component": "MSBios\\Guard\\Resource"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MSBios\\Guard\\Resource\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Judzhin Miles",
+                    "email": "info@msbios.com"
+                }
+            ],
+            "description": "MSBios Guard Resource",
+            "homepage": "https://github.com/msbios/msbios-guard-resource",
+            "keywords": [
+                "php"
+            ],
+            "time": "2018-08-01T13:55:23+00:00"
         },
         {
             "name": "msbios/hydrator",
@@ -650,6 +958,52 @@
             "time": "2017-11-04T22:37:07+00:00"
         },
         {
+            "name": "msbios/resource",
+            "version": "v1.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/msbios/msbios-resource.git",
+                "reference": "28cffe656491e5d575538d847a57263f8654651f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/msbios/msbios-resource/zipball/28cffe656491e5d575538d847a57263f8654651f",
+                "reference": "28cffe656491e5d575538d847a57263f8654651f",
+                "shasum": ""
+            },
+            "require": {
+                "msbios/db": "^1.0",
+                "msbios/form": "^1.0",
+                "msbios/stdlib": "^1.0"
+            },
+            "require-dev": {
+                "msbios/debug": "^1.0",
+                "msbios/test": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MSBios\\Resource\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Judzhin Miles",
+                    "email": "info@msbios.com"
+                }
+            ],
+            "description": "MSBios Resource",
+            "homepage": "https://github.com/msbios/msbios-resource",
+            "keywords": [
+                "php"
+            ],
+            "time": "2018-04-11T10:01:16+00:00"
+        },
+        {
             "name": "msbios/stdlib",
             "version": "v1.0.9",
             "source": {
@@ -848,6 +1202,55 @@
                 "php"
             ],
             "time": "2017-11-03T23:54:20+00:00"
+        },
+        {
+            "name": "paragonie/random_compat",
+            "version": "v2.0.17",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/random_compat.git",
+                "reference": "29af24f25bab834fcbb38ad2a69fa93b867e070d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/29af24f25bab834fcbb38ad2a69fa93b867e070d",
+                "reference": "29af24f25bab834fcbb38ad2a69fa93b867e070d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*|5.*"
+            },
+            "suggest": {
+                "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/random.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com",
+                    "homepage": "https://paragonie.com"
+                }
+            ],
+            "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+            "keywords": [
+                "csprng",
+                "polyfill",
+                "pseudorandom",
+                "random"
+            ],
+            "time": "2018-07-04T16:31:37+00:00"
         },
         {
             "name": "patchwork/utf8",
@@ -1356,6 +1759,116 @@
                 "zf"
             ],
             "time": "2018-04-24T19:26:44+00:00"
+        },
+        {
+            "name": "zendframework/zend-crypt",
+            "version": "3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-crypt.git",
+                "reference": "9c2916faa9b2132a0f91cdca8e95b025c352f065"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-crypt/zipball/9c2916faa9b2132a0f91cdca8e95b025c352f065",
+                "reference": "9c2916faa9b2132a0f91cdca8e95b025c352f065",
+                "shasum": ""
+            },
+            "require": {
+                "container-interop/container-interop": "^1.2",
+                "ext-mbstring": "*",
+                "php": "^5.6 || ^7.0",
+                "zendframework/zend-math": "^3.0",
+                "zendframework/zend-stdlib": "^2.7.7 || ^3.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1.2",
+                "zendframework/zend-coding-standard": "~1.0.0"
+            },
+            "suggest": {
+                "ext-openssl": "Required for most features of Zend\\Crypt"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3.x-dev",
+                    "dev-develop": "3.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Crypt\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Strong cryptography tools and password hashing",
+            "keywords": [
+                "ZendFramework",
+                "crypt",
+                "zf"
+            ],
+            "time": "2018-04-24T22:01:58+00:00"
+        },
+        {
+            "name": "zendframework/zend-db",
+            "version": "2.9.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-db.git",
+                "reference": "5b4f2c42f94c9f7f4b2f456a0ebe459fab12b3d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-db/zipball/5b4f2c42f94c9f7f4b2f456a0ebe459fab12b3d9",
+                "reference": "5b4f2c42f94c9f7f4b2f456a0ebe459fab12b3d9",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0",
+                "zendframework/zend-stdlib": "^2.7 || ^3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7.25 || ^6.4.4",
+                "zendframework/zend-coding-standard": "~1.0.0",
+                "zendframework/zend-eventmanager": "^2.6.2 || ^3.0",
+                "zendframework/zend-hydrator": "^1.1 || ^2.1",
+                "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3"
+            },
+            "suggest": {
+                "zendframework/zend-eventmanager": "Zend\\EventManager component",
+                "zendframework/zend-hydrator": "Zend\\Hydrator component for using HydratingResultSets",
+                "zendframework/zend-servicemanager": "Zend\\ServiceManager component"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.9-dev",
+                    "dev-develop": "2.10-dev"
+                },
+                "zf": {
+                    "component": "Zend\\Db",
+                    "config-provider": "Zend\\Db\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Db\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Database abstraction layer, SQL abstraction, result set abstraction, and RowDataGateway and TableDataGateway implementations",
+            "keywords": [
+                "ZendFramework",
+                "db",
+                "zf"
+            ],
+            "time": "2018-04-09T13:21:36+00:00"
         },
         {
             "name": "zendframework/zend-escaper",
@@ -1932,6 +2445,57 @@
             "time": "2018-04-30T15:20:54+00:00"
         },
         {
+            "name": "zendframework/zend-math",
+            "version": "3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-math.git",
+                "reference": "0aa5ec1b3132dd7d749d4673d7bdc7ab6b2d202a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-math/zipball/0aa5ec1b3132dd7d749d4673d7bdc7ab6b2d202a",
+                "reference": "0aa5ec1b3132dd7d749d4673d7bdc7ab6b2d202a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "paragonie/random_compat": "^2.0.11",
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1.2",
+                "zendframework/zend-coding-standard": "~1.0.0"
+            },
+            "suggest": {
+                "ext-bcmath": "If using the bcmath functionality",
+                "ext-gmp": "If using the gmp functionality"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1.x-dev",
+                    "dev-develop": "3.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Math\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Create cryptographically secure pseudo-random numbers, and manage big integers",
+            "keywords": [
+                "ZendFramework",
+                "math",
+                "zf"
+            ],
+            "time": "2018-07-10T19:00:33+00:00"
+        },
+        {
             "name": "zendframework/zend-modulemanager",
             "version": "2.8.2",
             "source": {
@@ -2401,6 +2965,55 @@
                 "zf"
             ],
             "time": "2018-04-25T20:19:50+00:00"
+        },
+        {
+            "name": "zendframework/zend-permissions-acl",
+            "version": "2.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-permissions-acl.git",
+                "reference": "c9568f4aee2887e43bf07769973f9686e8f61707"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-permissions-acl/zipball/c9568f4aee2887e43bf07769973f9686e8f61707",
+                "reference": "c9568f4aee2887e43bf07769973f9686e8f61707",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1.5",
+                "zendframework/zend-coding-standard": "~1.0.0",
+                "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3"
+            },
+            "suggest": {
+                "zendframework/zend-servicemanager": "To support Zend\\Permissions\\Acl\\Assertion\\AssertionManager plugin manager usage"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.7.x-dev",
+                    "dev-develop": "2.8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Permissions\\Acl\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Provides a lightweight and flexible access control list (ACL) implementation for privileges management",
+            "keywords": [
+                "ZendFramework",
+                "acl",
+                "zf"
+            ],
+            "time": "2018-05-01T21:53:20+00:00"
         },
         {
             "name": "zendframework/zend-router",

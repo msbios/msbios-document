@@ -25,7 +25,12 @@
     },
     "require": {
         "msbios/application": "^1.0",
-        "msbios/cpanel": "^1.0"
+        "msbios/cpanel": "^1.0",
+        "msbios/resource": "^1.0",
+        "msbios/authentication": "^1.0",
+        "msbios/guard": "^1.0",
+        "msbios/guard-cpanel": "^1.0",
+        "msbios/guard-resource": "^1.0"
     },
     "require-dev": {
         "msbios/debug": "^1.0",
