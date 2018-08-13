@@ -38,6 +38,23 @@ return [
         'routes' => [
             'cpanel' => [
                 'child_routes' => [
+
+                    'document-type' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => 'document-type/[:action[/[:id[/]]]]',
+                            'defaults' => [
+                                'controller' => Controller\DocumentTypeController::class,
+                                'action' => 'index'
+                            ],
+                            'constraints' => [
+                                'action' => 'add|edit|drop',
+                                'document_id' => '[0-9]+',
+                                'id' => '[0-9]+'
+                            ],
+                        ],
+                    ],
+
                     'development' => [
                         'type' => \Zend\Router\Http\Segment::class,
                         'options' => [
@@ -46,21 +63,7 @@ return [
                         'may_terminate' => true,
                         'child_routes' => [
 
-                            'document-type' => [
-                                'type' => Segment::class,
-                                'options' => [
-                                    'route' => 'document-type/[:action[/[:id[/]]]]',
-                                    'defaults' => [
-                                        'controller' => Controller\DocumentTypeController::class,
-                                        'action' => 'index'
-                                    ],
-                                    'constraints' => [
-                                        'action' => 'add|edit|drop',
-                                        'document_id' => '[0-9]+',
-                                        'id' => '[0-9]+'
-                                    ],
-                                ],
-                            ],
+
 
                             //'document-type' => [
                             //    'type' => \Zend\Router\Http\Segment::class,
@@ -225,18 +228,18 @@ return [
                     'document-type' => [
                         'label' => 'Document types',
                         'title' => 'List of Document types',
-                        'route' => 'cpanel/development/document-type',
+                        'route' => 'cpanel/document-type',
                         'order' => 0,
                         'class' => 'icon-file-empty2 position-left',
                         'pages' => [
                             [
                                 'label' => 'Add',
                                 'title' => 'To create a new document type',
-                                'route' => 'cpanel/development/document-type/add',
+                                'route' => 'cpanel/document-type/add',
                             ], [
                                 'label' => 'Edit',
                                 'title' => 'Edit the selected document type',
-                                'route' => 'cpanel/development/document-type/edit',
+                                'route' => 'cpanel/document-type/edit',
                             ]
                         ]
                     ],

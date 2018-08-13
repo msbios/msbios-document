@@ -96,7 +96,10 @@ $this->headScript()
                                     <ul class="icons-list">
 
                                         <li>
-                                            <a href="#">
+                                            <a href="<?= $this->url('cpanel/document-type', [
+                                                'action' => 'edit',
+                                                'id' => $item['id']
+                                            ]); ?>">
                                                 <i class="icon-pencil"></i>
                                             </a>
                                         </li>

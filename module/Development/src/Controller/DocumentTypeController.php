@@ -12,6 +12,7 @@ use Kubnete\Resource\Table\PropertyTable;
 use Kubnete\Resource\Table\TabTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Paginator\Paginator;
 use Zend\View\Model\ViewModel;
 
 /**
@@ -60,8 +61,11 @@ class DocumentTypeController extends AbstractActionController
      */
     public function indexAction()
     {
+        /** @var Paginator $paginator */
+        $paginator = $this->typeTable->fetchAll();
+
         return new ViewModel([
-            'paginator' => $this->typeTable->fetchAll()
+            'paginator' => $paginator
         ]);
     }
 
