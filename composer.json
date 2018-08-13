@@ -15,7 +15,17 @@
     ],
     "autoload": {
         "psr-4": {
-            "MSBios\\Document\\": "src/"
+            "MSBios\\Document\\": "src/",
+            "Kubnete\\Backend\\": "module/Backend/src/",
+            "Kubnete\\Config\\": "module/Config/src/",
+            "Kubnete\\Content\\": "module/Content/src/",
+            "Kubnete\\DataType\\": "module/DataType/src/",
+            "Kubnete\\Development\\": "module/Development/src/",
+            "Kubnete\\Frontend\\": "module/Frontend/src/",
+            "Kubnete\\Module\\": "module/Module/src/",
+            "Kubnete\\Resource\\": "module/Resource/src/",
+            "Kubnete\\Statistic\\": "module/Statistic/src/",
+            "Kubnete\\Terminal\\": "module/Terminal/src/"
         }
     },
     "autoload-dev": {

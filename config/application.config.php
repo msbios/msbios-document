@@ -40,6 +40,17 @@ return [
 
         'MSBios\Document',
 
+        'Kubnete\Frontend',
+        'Kubnete\Backend',
+        'Kubnete\Config',
+        'Kubnete\Content',
+        'Kubnete\DataType',
+        'Kubnete\Development',
+        'Kubnete\Module',
+        'Kubnete\Resource',
+        'Kubnete\Statistic',
+        'Kubnete\Terminal',
+
         'Zend\Log',
         'ZendDeveloperTools',
     ],

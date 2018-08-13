@@ -10,7 +10,6 @@ use Kubnete\Resource\Model\Document;
 use Kubnete\Resource\Model\Value;
 use Kubnete\Resource\Table\PropertyValueTable;
 use Zend\Db\ResultSet\ResultSet;
-use Zend\Debug\Debug;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -47,6 +46,9 @@ class IndexController extends AbstractActionController
      */
     public function indexAction()
     {
+
+        echo __METHOD__; die();
+
         /** @var ViewModel $viewModel */
         $viewModel = new ViewModel;
 

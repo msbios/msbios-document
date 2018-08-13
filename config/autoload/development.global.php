@@ -6,7 +6,7 @@
 return [
 
     'db' => [
-        'dsn' => 'mysql:dbname=portal.dev;host=127.0.0.1',
+        'dsn' => 'mysql:dbname=kubnete.dev;host=127.0.0.1',
         'username' => 'root',
         'password' => 'root',
     ],
