@@ -6,7 +6,7 @@
 namespace Kubnete\Development\Controller;
 
 use Kubnete\Development\Form\TemplateForm;
-use Kubnete\Resource\Model\Template;
+use Kubnete\Resource\Record\Template;
 use Kubnete\Resource\Table\TemplateTable;
 use Zend\Http\PhpEnvironment\Request;
 use Zend\Mvc\Controller\AbstractActionController;

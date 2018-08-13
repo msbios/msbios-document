@@ -62,8 +62,8 @@ $this->headScript()
                 $hasError = (bool)count($messages);
                 ?>
                 <div class="form-group <?php if ($hasError) :
-?>has-warning has-feedback<?php
-endif; ?>">
+                    ?>has-warning has-feedback<?php
+                endif; ?>">
                     <?= $this->formLabel($element); ?>
                     <div class="col-lg-10">
                         <?= $this->formElement($element); ?>
@@ -91,8 +91,8 @@ endif; ?>">
                 $hasError = (bool)count($messages);
                 ?>
                 <div class="form-group <?php if ($hasError) :
-?>has-warning has-feedback<?php
-endif; ?>">
+                    ?>has-warning has-feedback<?php
+                endif; ?>">
                     <?= $this->formLabel($element); ?>
                     <div class="col-lg-10">
                         <?= $this->formElement($element); ?>
@@ -113,7 +113,7 @@ endif; ?>">
 
             <div class="text-right">
                 <?= $this->formRow($this->form->get('id')); ?>
-                <a href="<?= $this->url('backend/development/template'); ?>" class="btn btn-link">
+                <a href="<?= $this->url('cpanel/development/template'); ?>" class="btn btn-link">
                     Return to the template list
                 </a>
                 <button type="submit" class="btn btn-primary">

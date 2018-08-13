@@ -9,7 +9,7 @@
 namespace Kubnete\Development\Form\TypeTab;
 
 use Kubnete\Resource\Form\Element\DataTypeElement;
-use Kubnete\Resource\Model\Property;
+use Kubnete\Resource\Record\Property;
 use Zend\Form\Element\Checkbox;
 use Zend\Form\Element\Hidden;
 use Zend\Form\Element\Text;

@@ -8,7 +8,7 @@ namespace Kubnete\Frontend\Factory;
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
 use Kubnete\Frontend\View\Helper\DocumentHelper;
-use Kubnete\Resource\Model\Document;
+use Kubnete\Resource\Record\Document;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;

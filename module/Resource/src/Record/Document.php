@@ -3,8 +3,11 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Model;
+namespace Kubnete\Resource\Record;
 
+use Kubnete\Resource\Record\Property\Value;
+use Kubnete\Resource\Table\PropertyValueTable;
+use Zend\Db\ResultSet\ResultSet;
 use Zend\Filter\StringTrim;
 use Zend\Filter\StripTags;
 use Zend\InputFilter\Factory as InputFactory;
@@ -12,16 +15,95 @@ use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
 use Zend\Stdlib\ArrayObject;
+use Zend\Validator\NotEmpty;
 use Zend\Validator\StringLength;
 
 /**
- * Class Tab
+ * Class Document
  * @package Kubnete\Resource\Model
  */
-class Tab extends ArrayObject implements InputFilterAwareInterface
+class Document extends ArrayObject implements InputFilterAwareInterface
 {
+    public $id;
+    public $parentId;
+    public $documentTypeId;
+    public $layoutId;
+    public $viewId;
+    public $name;
+    public $uri;
+    public $status;
+    public $orderIn;
+    public $inNavigation;
+    public $isCached;
+    public $locale;
+    public $createdAt;
+    public $userId;
+    public $updatedAt;
+
+    /** @var PropertyValueTable */
+    protected $table;
+
+    /** @var null */
+    protected $values = null;
+
     /** @var  InputFilter */
     protected $inputFilter;
+
+    /**
+     * @param array|ArrayObject $data
+     */
+    public function exchangeArray($data)
+    {
+        parent::exchangeArray($data);
+
+        $this->parentId = (! isset($data['parent_id']))
+            ?: $data['parent_id'];
+
+        $this->documentTypeId = (! isset($data['document_type_id']))
+            ?: $data['document_type_id'];
+
+        $this->layoutId = (! isset($data['layout_id']))
+            ?: $data['layout_id'];
+
+        $this->viewId = (! isset($data['view_id']))
+            ?: $data['view_id'];
+    }
+
+    /**
+     * @param PropertyValueTable $table
+     * @return $this
+     */
+    public function setPropertyValueTable(PropertyValueTable $table)
+    {
+        $this->table = $table;
+        return $this;
+    }
+
+    /**
+     * @param $identifier
+     * @param bool $single
+     * @return null
+     */
+    public function getValue($identifier, $single = true)
+    {
+        if (is_null($this->values)) {
+            /** @var ResultSet $resultSet */
+            $resultSet = $this->table
+                ->fetchByDocument($this);
+
+            foreach ($resultSet as $row) {
+                $this->values[$row['property']] = $row;
+            }
+        }
+
+        if (is_array($this->values) && ! empty($this->values) && isset($this->values[$identifier])) {
+            /** @var Value $value */
+            $value = $this->values[$identifier];
+            return $single ? $value['value'] : $value;
+        }
+
+        return null;
+    }
 
     /**
      * @return InputFilter
@@ -61,7 +143,7 @@ class Tab extends ArrayObject implements InputFilterAwareInterface
             ]));
 
             $inputFilter->add($factory->createInput([
-                'name' => 'description',
+                'name' => 'uri',
                 'required' => true,
                 'filters'  => [
                     ['name' => StripTags::class],
@@ -80,8 +162,18 @@ class Tab extends ArrayObject implements InputFilterAwareInterface
             ]));
 
             $inputFilter->add($factory->createInput([
-                'name' => 'default_view_id',
-                'required' => true
+                'name' => 'document_type_id',
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => NotEmpty::class,
+                    ],
+                ],
+            ]));
+
+            $inputFilter->add($factory->createInput([
+                'name' => 'layout_id',
+                'required' => false
             ]));
 
             $this->inputFilter = $inputFilter;
@@ -100,9 +192,4 @@ class Tab extends ArrayObject implements InputFilterAwareInterface
     {
         throw new \Exception("Not used");
     }
-
-//    public function getName()
-//    {
-//        return $this['name'];
-//    }
 }

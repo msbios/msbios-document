@@ -5,6 +5,8 @@
  */
 namespace Kubnete\Development;
 
+use Zend\Router\Http\Segment;
+
 return [
 
     'controllers' => [
@@ -34,7 +36,7 @@ return [
 
     'router' => [
         'routes' => [
-            'backend' => [
+            'cpanel' => [
                 'child_routes' => [
                     'development' => [
                         'type' => \Zend\Router\Http\Segment::class,
@@ -43,54 +45,71 @@ return [
                         ],
                         'may_terminate' => true,
                         'child_routes' => [
+
                             'document-type' => [
-                                'type' => \Zend\Router\Http\Segment::class,
+                                'type' => Segment::class,
                                 'options' => [
-                                    'route' => 'document-type[/]',
+                                    'route' => 'document-type/[:action[/[:id[/]]]]',
                                     'defaults' => [
                                         'controller' => Controller\DocumentTypeController::class,
+                                        'action' => 'index'
                                     ],
-                                ],
-                                'may_terminate' => true,
-                                'child_routes' => [
-                                    'add' => [
-                                        'type' => \Zend\Router\Http\Segment::class,
-                                        'options' => [
-                                            'route' => 'add[.html]',
-                                            'defaults' => [
-                                                'action' => 'add',
-                                            ],
-                                        ],
-                                        'may_terminate' => true
-                                    ],
-                                    'edit' => [
-                                        'type' => \Zend\Router\Http\Segment::class,
-                                        'options' => [
-                                            'route' => 'edit/:id[.html]',
-                                            'defaults' => [
-                                                'action' => 'edit',
-                                            ],
-                                            'constraints' => [
-                                                'id' => '[0-9]+',
-                                            ],
-                                        ],
-                                        'may_terminate' => true
-                                    ],
-                                    'delete' => [
-                                        'type' => 'Segment',
-                                        'options' => [
-                                            'route' => '/delete/:id[.html]',
-                                            'defaults' => [
-                                                'action' => 'delete',
-                                            ],
-                                            'constraints' => [
-                                                'id' => '[0-9]+',
-                                            ],
-                                        ],
-                                        'may_terminate' => true
+                                    'constraints' => [
+                                        'action' => 'add|edit|drop',
+                                        'document_id' => '[0-9]+',
+                                        'id' => '[0-9]+'
                                     ],
                                 ],
                             ],
+
+                            //'document-type' => [
+                            //    'type' => \Zend\Router\Http\Segment::class,
+                            //    'options' => [
+                            //        'route' => 'document-type[/]',
+                            //        'defaults' => [
+                            //            'controller' => Controller\DocumentTypeController::class,
+                            //        ],
+                            //    ],
+                            //    'may_terminate' => true,
+                            //    'child_routes' => [
+                            //        'add' => [
+                            //            'type' => \Zend\Router\Http\Segment::class,
+                            //            'options' => [
+                            //                'route' => 'add[.html]',
+                            //                'defaults' => [
+                            //                    'action' => 'add',
+                            //                ],
+                            //            ],
+                            //            'may_terminate' => true
+                            //        ],
+                            //        'edit' => [
+                            //            'type' => \Zend\Router\Http\Segment::class,
+                            //            'options' => [
+                            //                'route' => 'edit/:id[.html]',
+                            //                'defaults' => [
+                            //                    'action' => 'edit',
+                            //                ],
+                            //                'constraints' => [
+                            //                    'id' => '[0-9]+',
+                            //                ],
+                            //            ],
+                            //            'may_terminate' => true
+                            //        ],
+                            //        'delete' => [
+                            //            'type' => 'Segment',
+                            //            'options' => [
+                            //                'route' => '/delete/:id[.html]',
+                            //                'defaults' => [
+                            //                    'action' => 'delete',
+                            //                ],
+                            //                'constraints' => [
+                            //                    'id' => '[0-9]+',
+                            //                ],
+                            //            ],
+                            //            'may_terminate' => true
+                            //        ],
+                            //    ],
+                            //],
                             'template' => [
                                 'type' => \Zend\Router\Http\Segment::class,
                                 'options' => [
@@ -191,12 +210,12 @@ return [
     'view_manager' => [
         'template_path_stack' => [
             'development' => __DIR__ . '/../view',
-            'template' => './data/KubneteCMS/templates'
+            'template' => './data/tmp'
         ],
     ],
 
     'navigation' => [
-        'default' => [
+        \MSBios\CPanel\Navigation\Sidebar::class => [
             'development' => [
                 'label' => 'Development',
                 'uri' => '/uri',
@@ -204,43 +223,43 @@ return [
                 'order' => 400,
                 'pages' => [
                     'document-type' => [
-                        'label' => 'Document type',
+                        'label' => 'Document types',
                         'title' => 'List of Document types',
-                        'route' => 'backend/development/document-type',
+                        'route' => 'cpanel/development/document-type',
                         'order' => 0,
                         'class' => 'icon-file-empty2 position-left',
                         'pages' => [
                             [
                                 'label' => 'Add',
                                 'title' => 'To create a new document type',
-                                'route' => 'backend/development/document-type/add',
+                                'route' => 'cpanel/development/document-type/add',
                             ], [
                                 'label' => 'Edit',
                                 'title' => 'Edit the selected document type',
-                                'route' => 'backend/development/document-type/edit',
+                                'route' => 'cpanel/development/document-type/edit',
                             ]
                         ]
                     ],
                     'template' => [
                         'label' => 'Template',
                         'title' => 'List of Templates',
-                        'route' => 'backend/development/template',
+                        'route' => 'cpanel/development/template',
                         'order' => 200,
                         'class' => 'icon-insert-template position-left',
                         'pages' => [
                             [
                                 'label' => 'Add',
                                 'title' => 'To create a new template',
-                                'route' => 'backend/development/template/add',
+                                'route' => 'cpanel/development/template/add',
                             ], [
                                 'label' => 'Edit',
                                 'title' => 'Edit the selected template',
-                                'route' => 'backend/development/template/edit',
+                                'route' => 'cpanel/development/template/edit',
                             ]
                         ]
                     ],
                     'script' => [
-                        'label' => 'Script',
+                        'label' => 'Scripts',
                         'uri' => '/uri',
                         'order' => 400,
                         'class' => 'icon-qrcode position-left'
@@ -248,18 +267,18 @@ return [
                     'datatype' => [
                         'label' => 'Datatypes',
                         'title' => 'List of Data types',
-                        'route' => 'backend/development/data-type',
+                        'route' => 'cpanel/development/data-type',
                         'order' => 600,
                         'class' => 'icon-drive position-left',
                         'pages' => [
                             [
                                 'label' => 'Add',
                                 'title' => 'To create a new data type',
-                                'route' => 'backend/development/data-type/add',
+                                'route' => 'cpanel/development/data-type/add',
                             ], [
                                 'label' => 'Edit',
                                 'title' => 'Edit the selected data type',
-                                'route' => 'backend/development/data-type/edit',
+                                'route' => 'cpanel/development/data-type/edit',
                             ]
                         ]
                     ],

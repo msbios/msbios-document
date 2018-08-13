@@ -3,7 +3,7 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Model;
+namespace Kubnete\Resource\Record;
 
 use Kubnete\Resource\Table\DocumentTable;
 use Zend\Stdlib\ArrayObject;

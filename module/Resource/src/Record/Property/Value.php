@@ -3,7 +3,7 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Model\Property;
+namespace Kubnete\Resource\Record\Property;
 
 use Zend\Stdlib\ArrayObject;
 

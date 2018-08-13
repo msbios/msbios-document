@@ -7,7 +7,7 @@ namespace Kubnete\Development\Controller;
 
 use Kubnete\Development\Form\DataTypeForm;
 use Kubnete\Development\Form\TemplateForm;
-use Kubnete\Resource\Model\DataType;
+use Kubnete\Resource\Record\DataType;
 use Kubnete\Resource\Table\DataTypeTable;
 use Kubnete\Resource\Table\TemplateTable;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -43,7 +43,7 @@ class DataTypeController extends AbstractActionController
     {
         $this->form->setAttribute(
             'action',
-            $this->url()->fromRoute('backend/development/data-type/add')
+            $this->url()->fromRoute('cpanel/development/data-type/add')
         );
 
         return new ViewModel([
@@ -59,7 +59,7 @@ class DataTypeController extends AbstractActionController
     {
         $this->form->setAttribute(
             'action',
-            $this->url()->fromRoute('backend/development/data-type/add')
+            $this->url()->fromRoute('cpanel/development/data-type/add')
         );
 
         if ($this->getRequest()->isPost()) {
@@ -78,7 +78,7 @@ class DataTypeController extends AbstractActionController
                         sprintf("Data type '%s' was added.", $row['name'])
                     );
                 return $this->redirect()
-                    ->toRoute('backend/development/data-type');
+                    ->toRoute('cpanel/development/data-type');
             }
         }
 
@@ -98,7 +98,7 @@ class DataTypeController extends AbstractActionController
 
         if (! $id) {
             return $this->redirect()
-                ->toRoute('backend/development/data-type/add');
+                ->toRoute('cpanel/development/data-type/add');
         }
 
         try {
@@ -107,12 +107,12 @@ class DataTypeController extends AbstractActionController
                 ->getDataType($id);
         } catch (\Exception $ex) {
             return $this->redirect()
-                ->toRoute('backend/development/data-type');
+                ->toRoute('cpanel/development/data-type');
         }
 
         $this->form->setAttribute(
             'action',
-            $this->url()->fromRoute('backend/development/data-type/edit', [
+            $this->url()->fromRoute('cpanel/development/data-type/edit', [
                 'id' => $row['id']
             ])
         );
@@ -134,7 +134,7 @@ class DataTypeController extends AbstractActionController
                         sprintf("Data type '%s' has been edited.", $row['name'])
                     );
                 return $this->redirect()
-                    ->toRoute('backend/development/data-type');
+                    ->toRoute('cpanel/development/data-type');
             }
         }
 
@@ -160,6 +160,6 @@ class DataTypeController extends AbstractActionController
             $this->table->deleteDataType($id);
         }
 
-        return $this->redirect()->toRoute('backend/development/data-type');
+        return $this->redirect()->toRoute('cpanel/development/data-type');
     }
 }

@@ -16,7 +16,7 @@
     "autoload": {
         "psr-4": {
             "MSBios\\Document\\": "src/",
-            "Kubnete\\Backend\\": "module/Backend/src/",
+            "Kubnete\\CPanel\\": "module/CPanel/src/",
             "Kubnete\\Config\\": "module/Config/src/",
             "Kubnete\\Content\\": "module/Content/src/",
             "Kubnete\\DataType\\": "module/DataType/src/",
@@ -40,7 +40,8 @@
         "msbios/authentication": "^1.0",
         "msbios/guard": "^1.0",
         "msbios/guard-cpanel": "^1.0",
-        "msbios/guard-resource": "^1.0"
+        "msbios/guard-resource": "^1.0",
+        "zendframework/zend-paginator": "^2.8"
     },
     "require-dev": {
         "msbios/debug": "^1.0",

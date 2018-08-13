@@ -6,18 +6,12 @@
 namespace Kubnete\Resource\Factory;
 
 use Interop\Container\ContainerInterface;
-use Interop\Container\Exception\ContainerException;
-use Kubnete\Resource\Model\DataType;
-use Kubnete\Resource\Model\Document;
-use Kubnete\Resource\Model\Property\Value;
+use Kubnete\Resource\Record\DataType;
 use Kubnete\Resource\Table\DataTypeTable;
-use Kubnete\Resource\Table\DocumentTable;
-use Kubnete\Resource\Table\PropertyValueTable;
+use MSBios\Db\TableGateway\TableGateway;
+use MSBios\Db\TableGateway\TableGatewayInterface;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
-use Zend\Db\TableGateway\TableGateway;
-use Zend\ServiceManager\Exception\ServiceNotCreatedException;
-use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
@@ -27,17 +21,10 @@ use Zend\ServiceManager\Factory\FactoryInterface;
 class DataTypeTableFactory implements FactoryInterface
 {
     /**
-     * Create an object
-     *
-     * @param  ContainerInterface $container
-     * @param  string $requestedName
-     * @param  null|array $options
-     * @return object
-     * @throws ServiceNotFoundException if unable to resolve the service.
-     * @throws ServiceNotCreatedException if an exception is raised when
-     *     creating a service.
-     * @throws ContainerException if any other error occurs
-     * @return DocumentTable
+     * @param ContainerInterface $container
+     * @param string $requestedName
+     * @param array|null $options
+     * @return DataTypeTable
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
@@ -45,7 +32,7 @@ class DataTypeTableFactory implements FactoryInterface
         $resultSetPrototype = new ResultSet;
         $resultSetPrototype->setArrayObjectPrototype(new DataType);
 
-        /** @var TableGateway $tableGateway */
+        /** @var TableGatewayInterface $tableGateway */
         $tableGateway = new TableGateway(
             'sys_t_datatypes',
             $container->get(Adapter::class),

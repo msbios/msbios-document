@@ -7,7 +7,7 @@ namespace Kubnete\Resource\Factory;
 
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
-use Kubnete\Resource\Model\Tab;
+use Kubnete\Resource\Record\Tab;
 use Kubnete\Resource\Table\DocumentTable;
 use Kubnete\Resource\Table\TabTable;
 use Zend\Db\Adapter\Adapter;

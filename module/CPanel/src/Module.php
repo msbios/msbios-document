@@ -3,14 +3,15 @@
  * @access protected
  * @author
  */
-namespace Kubnete\Backend;
+namespace Kubnete\CPanel;
 
 /**
  * Class Module
- * @package Kubnete\Backend
+ * @package Kubnete\CPanel
  */
 class Module
 {
+    /** @const VERSION */
     const VERSION = '0.0.1dev';
 
     /**

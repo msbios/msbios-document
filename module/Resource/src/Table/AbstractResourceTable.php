@@ -6,8 +6,12 @@
 namespace Kubnete\Resource\Table;
 
 use Kubnete\Resource\Exception\RowNotFoundException;
+use MSBios\Db\TableGateway\TableGatewayInterface;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
+use Zend\Paginator\Adapter\AdapterInterface;
+use Zend\Paginator\Adapter\DbTableGateway as TableGatewayPaginator;
+use Zend\Paginator\Paginator;
 use Zend\Stdlib\ArrayObject;
 
 /**
@@ -26,6 +30,10 @@ abstract class AbstractResourceTable
     public function __construct(TableGateway $tableGateway)
     {
         $this->tableGateway = $tableGateway;
+    }
+
+    public function fetch($id) {
+
     }
 
     /**
@@ -61,11 +69,24 @@ abstract class AbstractResourceTable
     }
 
     /**
-     * @return ResultSet
+     * @return Paginator
      */
     public function fetchAll()
     {
-        return $this->tableGateway->select();
+        /** @var TableGatewayInterface $tableGateway */
+        $tableGateway = $this->tableGateway;
+
+        /** @var AdapterInterface $adapter */
+        $adapter = new TableGatewayPaginator(
+            new TableGateway(
+                $tableGateway->table,
+                $tableGateway->getAdapter(),
+                null,
+                $tableGateway->getResultSetPrototype()
+            )
+        );
+
+        return new Paginator($adapter);
     }
 
     /**

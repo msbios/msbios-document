@@ -6,8 +6,8 @@
 
 namespace Kubnete\Frontend\Controller;
 
-use Kubnete\Resource\Model\Document;
-use Kubnete\Resource\Model\Value;
+use Kubnete\Resource\Record\Document;
+use Kubnete\Resource\Record\Value;
 use Kubnete\Resource\Table\PropertyValueTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Mvc\Controller\AbstractActionController;

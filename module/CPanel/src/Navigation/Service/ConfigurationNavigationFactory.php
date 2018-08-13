@@ -3,7 +3,7 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Backend\Navigation\Service;
+namespace Kubnete\CPanel\Navigation\Service;
 
 use Zend\Navigation\Service\DefaultNavigationFactory;
 

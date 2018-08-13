@@ -8,7 +8,7 @@
 
 namespace Kubnete\Frontend\View\Helper;
 
-use Kubnete\Resource\Model\Document;
+use Kubnete\Resource\Record\Document;
 use Kubnete\Resource\Table\DocumentTable;
 use Zend\View\Helper\AbstractHelper;
 

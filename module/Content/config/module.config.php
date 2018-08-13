@@ -105,7 +105,7 @@ return [
     ],
 
     'navigation' => [
-        'default' => [
+        \MSBios\CPanel\Navigation\Sidebar::class => [
             'content' => [
                 'label' => 'Content',
                 'route' => 'backend/content',

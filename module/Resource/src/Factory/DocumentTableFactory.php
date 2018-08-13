@@ -7,8 +7,8 @@ namespace Kubnete\Resource\Factory;
 
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
-use Kubnete\Resource\Model\Document;
-use Kubnete\Resource\Model\Property\Value;
+use Kubnete\Resource\Record\Document;
+use Kubnete\Resource\Record\Property\Value;
 use Kubnete\Resource\Table\DocumentTable;
 use Kubnete\Resource\Table\PropertyValueTable;
 use Zend\Db\Adapter\Adapter;

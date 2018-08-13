@@ -6,6 +6,7 @@
 return [
     // Retrieve list of modules used in this application.
     'modules' => [
+        'Zend\Paginator',
         'Zend\Cache',
         'Zend\Serializer',
 
@@ -41,7 +42,7 @@ return [
         'MSBios\Document',
 
         'Kubnete\Frontend',
-        'Kubnete\Backend',
+        'Kubnete\CPanel',
         'Kubnete\Config',
         'Kubnete\Content',
         'Kubnete\DataType',

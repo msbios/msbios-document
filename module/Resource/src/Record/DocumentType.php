@@ -3,7 +3,7 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Model;
+namespace Kubnete\Resource\Record;
 
 use Zend\Filter\StringTrim;
 use Zend\Filter\StripTags;
@@ -91,10 +91,8 @@ class DocumentType extends ArrayObject implements InputFilterAwareInterface
     }
 
     /**
-     * Set input filter
-     *
-     * @param  InputFilterInterface $inputFilter
-     * @return InputFilterAwareInterface
+     * @param InputFilterInterface $inputFilter
+     * @throws \Exception
      */
     public function setInputFilter(InputFilterInterface $inputFilter)
     {

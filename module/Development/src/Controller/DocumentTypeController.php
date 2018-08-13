@@ -6,7 +6,7 @@
 namespace Kubnete\Development\Controller;
 
 use Kubnete\Development\Form\DocumentTypeForm;
-use Kubnete\Resource\Model\DocumentType;
+use Kubnete\Resource\Record\DocumentType;
 use Kubnete\Resource\Table\DocumentTypeTable;
 use Kubnete\Resource\Table\PropertyTable;
 use Kubnete\Resource\Table\TabTable;
@@ -21,7 +21,7 @@ use Zend\View\Model\ViewModel;
 class DocumentTypeController extends AbstractActionController
 {
     /** @const ROUTE_PATH */
-    const ROUTE_PATH = 'backend/development/document-type';
+    const ROUTE_PATH = 'cpanel/development/document-type';
 
     /** @var DocumentTypeTable */
     protected $typeTable;
@@ -61,7 +61,7 @@ class DocumentTypeController extends AbstractActionController
     public function indexAction()
     {
         return new ViewModel([
-            'documentTypes' => $this->typeTable->fetchAll()
+            'paginator' => $this->typeTable->fetchAll()
         ]);
     }
 

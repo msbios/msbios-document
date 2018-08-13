@@ -27,7 +27,7 @@
 namespace Kubnete\Development\Form;
 
 use Kubnete\Development\Form\TypeTab\PropertyFieldset;
-use Kubnete\Resource\Model\Tab;
+use Kubnete\Resource\Record\Tab;
 use Zend\Form\Element\Collection;
 use Zend\Form\Element\Hidden;
 use Zend\Form\Element\Text;

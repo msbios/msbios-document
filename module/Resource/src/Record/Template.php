@@ -3,7 +3,7 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Model;
+namespace Kubnete\Resource\Record;
 
 use Zend\Db\TableGateway\Feature\GlobalAdapterFeature;
 use Zend\Filter\StringTrim;

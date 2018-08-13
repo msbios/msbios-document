@@ -43,8 +43,8 @@ $this->headScript()
                     $hasError = (bool)count($messages);
                     ?>
                     <div class="form-group <?php if ($hasError) :
-?>has-warning has-feedback<?php
-endif; ?>">
+                        ?>has-warning has-feedback<?php
+                    endif; ?>">
                         <?= $this->formLabel($element); ?>
                         <div class="col-lg-10">
                             <?= $this->formElement($element); ?>
@@ -72,8 +72,8 @@ endif; ?>">
                     $hasError = (bool)count($messages);
                     ?>
                     <div class="form-group <?php if ($hasError) :
-?>has-warning has-feedback<?php
-endif; ?>">
+                        ?>has-warning has-feedback<?php
+                    endif; ?>">
                         <?= $this->formLabel($element); ?>
                         <div class="col-lg-10">
                             <?= $this->formElement($element); ?>
@@ -104,8 +104,8 @@ endif; ?>">
                     $hasError = (bool)count($messages);
                     ?>
                     <div class="form-group <?php if ($hasError) :
-?>has-warning has-feedback<?php
-endif; ?>">
+                        ?>has-warning has-feedback<?php
+                    endif; ?>">
                         <?= $this->formLabel($element); ?>
                         <div class="col-lg-10">
                             <?= $this->formElement($element); ?>
@@ -143,9 +143,9 @@ endif; ?>">
                         <ul class="nav nav-tabs nav-tabs-highlight">
 
                             <?php foreach ($this->form->get('tabs') as $i => $tab) : ?>
-                                <li class="<?php if (! $i) :
-?>active<?php
-endif; ?>">
+                                <li class="<?php if (!$i) :
+                                    ?>active<?php
+                                endif; ?>">
                                     <a href="#tab-properties-<?= $i; ?>" data-toggle="tab">
                                         <?= $tab->get('name')->getValue(); ?>
                                     </a>
@@ -155,9 +155,9 @@ endif; ?>">
 
                         <div class="tab-content">
                             <?php foreach ($this->form->get('tabs') as $t => $tab) : ?>
-                                <div class="tab-pane <?php if (! $t) :
-?>active<?php
-endif; ?>"
+                                <div class="tab-pane <?php if (!$t) :
+                                    ?>active<?php
+                                endif; ?>"
                                      id="tab-properties-<?= $t; ?>">
 
                                     <div class="panel-group accordion-sortable content-group-lg ui-sortable"
@@ -187,9 +187,9 @@ endif; ?>"
                                                 </div>
 
                                                 <div id="property-item-<?= $t; ?>-<?= $p; ?>"
-                                                     class="panel-collapse collapse <?php if (! $p) :
-?>in<?php
-endif; ?>"
+                                                     class="panel-collapse collapse <?php if (!$p) :
+                                                         ?>in<?php
+                                                     endif; ?>"
                                                      aria-expanded="true">
                                                     <div class="panel-body">
 
@@ -204,9 +204,9 @@ endif; ?>"
                                                         $hasError = (bool)count($messages);
                                                         ?>
                                                         <div
-                                                            class="form-group <?php if ($hasError) :
-?>has-warning has-feedback<?php
-endif; ?>">
+                                                                class="form-group <?php if ($hasError) :
+                                                                    ?>has-warning has-feedback<?php
+                                                                endif; ?>">
                                                             <?= $this->formLabel($element); ?>
                                                             <div class="col-lg-10">
                                                                 <?= $this->formElement($element); ?>
@@ -234,9 +234,9 @@ endif; ?>">
                                                         $hasError = (bool)count($messages);
                                                         ?>
                                                         <div
-                                                            class="form-group <?php if ($hasError) :
-?>has-warning has-feedback<?php
-endif; ?>">
+                                                                class="form-group <?php if ($hasError) :
+                                                                    ?>has-warning has-feedback<?php
+                                                                endif; ?>">
                                                             <?= $this->formLabel($element); ?>
                                                             <div class="col-lg-10">
                                                                 <?= $this->formElement($element); ?>
@@ -264,9 +264,9 @@ endif; ?>">
                                                         $hasError = (bool)count($messages);
                                                         ?>
                                                         <div
-                                                            class="form-group <?php if ($hasError) :
-?>has-warning has-feedback<?php
-endif; ?>">
+                                                                class="form-group <?php if ($hasError) :
+                                                                    ?>has-warning has-feedback<?php
+                                                                endif; ?>">
                                                             <?= $this->formLabel($element); ?>
                                                             <div class="col-lg-10">
                                                                 <?= $this->formElement($element); ?>
@@ -294,9 +294,9 @@ endif; ?>">
                                                         $hasError = (bool)count($messages);
                                                         ?>
                                                         <div
-                                                            class="form-group <?php if ($hasError) :
-?>has-warning has-feedback<?php
-endif; ?>">
+                                                                class="form-group <?php if ($hasError) :
+                                                                    ?>has-warning has-feedback<?php
+                                                                endif; ?>">
                                                             <?= $this->formLabel($element); ?>
                                                             <div class="col-lg-10">
                                                                 <?= $this->formElement($element); ?>
@@ -388,8 +388,8 @@ endif; ?>">
                                     $hasError = (bool)count($messages);
                                     ?>
                                     <div class="<?php if ($hasError) :
-?>has-warning has-feedback<?php
-endif; ?>">
+                                        ?>has-warning has-feedback<?php
+                                    endif; ?>">
 
                                         <?= $this->formElement($element); ?>
                                         <?php if (count($messages)) : ?>
@@ -414,8 +414,8 @@ endif; ?>">
                                     $hasError = (bool)count($messages);
                                     ?>
                                     <div class="<?php if ($hasError) :
-?>has-warning has-feedback<?php
-endif; ?>">
+                                        ?>has-warning has-feedback<?php
+                                    endif; ?>">
 
                                         <?= $this->formElement($element); ?>
                                         <?php if (count($messages)) : ?>
@@ -483,7 +483,7 @@ endif; ?>">
 
     <div class="text-right">
         <?= $this->formRow($this->form->get('id')); ?>
-        <a href="<?= $this->url('backend/development/document-type'); ?>" class="btn btn-link">
+        <a href="<?= $this->url('cpanel/development/document-type'); ?>" class="btn btn-link">
             Return to the document type list
         </a>
         <button type="submit" class="btn btn-primary">
@@ -550,7 +550,7 @@ endif; ?>">
                             <div class="checkbox">
                                 <label>
                                     <?= $this->formCheckbox((new Checkbox('required'))
-                                    ->setAttribute('class', 'styled')); ?>
+                                        ->setAttribute('class', 'styled')); ?>
                                     Required
                                 </label>
                             </div>
@@ -683,6 +683,7 @@ endif; ?>">
                 </div>
             </div>
         </div>
+
     </script>
 
     <script id="tab-properties-header-tmpl" type="text/x-jquery-tmpl">
@@ -691,6 +692,7 @@ endif; ?>">
                 ${name}
             </a>
         </li>
+
     </script>
 
     <script id="tab-properties-content-tmpl" type="text/x-jquery-tmpl">
@@ -702,6 +704,7 @@ endif; ?>">
             </div>
 
         </div>
+
     </script>
 
     <script id="tabs-item-tmpl" type="text/x-jquery-tmpl">
@@ -769,6 +772,7 @@ endif; ?>">
                 <!-- /tab modal alert remove -->
             </td>
         </tr>
+
     </script>
 
 <?php $this->inlineScript()->captureStart();

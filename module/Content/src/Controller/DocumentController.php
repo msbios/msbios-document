@@ -9,10 +9,10 @@
 namespace Kubnete\Content\Controller;
 
 use Kubnete\Content\Form\DocumentForm as DocumentForm;
-use Kubnete\Resource\Model\Document;
-use Kubnete\Resource\Model\DocumentType;
-use Kubnete\Resource\Model\Property;
-use Kubnete\Resource\Model\Tab;
+use Kubnete\Resource\Record\Document;
+use Kubnete\Resource\Record\DocumentType;
+use Kubnete\Resource\Record\Property;
+use Kubnete\Resource\Record\Tab;
 use Kubnete\Resource\Table\DocumentTable;
 
 use Kubnete\Resource\Table\DocumentTypeTable;

@@ -5,9 +5,9 @@
  */
 namespace Kubnete\Resource\Table;
 
-use Kubnete\Resource\Model\DocumentType;
-use Kubnete\Resource\Model\Property;
-use Kubnete\Resource\Model\Tab;
+use Kubnete\Resource\Record\DocumentType;
+use Kubnete\Resource\Record\Property;
+use Kubnete\Resource\Record\Tab;
 use Zend\Db\Sql\Select;
 
 /**

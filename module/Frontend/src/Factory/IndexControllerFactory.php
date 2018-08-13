@@ -8,7 +8,7 @@ namespace Kubnete\Frontend\Factory;
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
 use Kubnete\Frontend\Controller\IndexController;
-use Kubnete\Resource\Model\Document;
+use Kubnete\Resource\Record\Document;
 use Kubnete\Resource\Table\DocumentTable;
 use Kubnete\Resource\Table\PropertyValueTable;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;

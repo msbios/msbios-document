@@ -3,7 +3,7 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Content;
+namespace Kubnete\Development;
 
 $this->headLink()
     ->appendStylesheet($this->basePath('backend/assets/js/plugins/codemirror/lib/codemirror.css'));
@@ -12,6 +12,7 @@ $this->headScript()
     // Core
     ->appendFile($this->basePath('backend/assets/js/plugins/tables/datatables/datatables.min.js'))
     ->appendFile($this->basePath('backend/assets/js/plugins/forms/selects/select2.min.js'))
+
     // Theme
     ->appendFile($this->basePath('backend/assets/js/plugins/codemirror/lib/codemirror.js'))
     ->appendFile($this->basePath('backend/assets/js/plugins/codemirror/addon/edit/matchbrackets.js'))
@@ -21,6 +22,7 @@ $this->headScript()
     ->appendFile($this->basePath('backend/assets/js/plugins/codemirror/mode/css/css.js'))
     ->appendFile($this->basePath('backend/assets/js/plugins/codemirror/mode/clike/clike.js'))
     ->appendFile($this->basePath('backend/assets/js/plugins/codemirror/mode/php/php.js'))
+
     ->appendFile($this->basePath('backend/assets/js/core/app.js'))
     ->appendFile($this->basePath('backend/assets/js/pages/datatables_basic.js'))
 ?>
@@ -40,14 +42,10 @@ $this->headScript()
     </div>
 
     <div class="panel-body">
-        The <code>DataTables</code> is a highly flexible tool, based upon the foundations of progressive enhancement,
-        and will add advanced interaction controls to any HTML table. DataTables has most features enabled by default,
-        so all you need to do to use it with your own tables is to call the construction function. Searching, ordering,
-        paging etc goodness will be immediately added to the table, as shown in this example. <strong>Datatables support
-            all available table styling.</strong>
+        The <code>DataTables</code> is a highly flexible tool, based upon the foundations of progressive enhancement, and will add advanced interaction controls to any HTML table. DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function. Searching, ordering, paging etc goodness will be immediately added to the table, as shown in this example. <strong>Datatables support all available table styling.</strong>
         <p class="content-group">
-            <a href="<?= $this->url('cpanel/development/template/add'); ?>" class="btn btn-primary">
-                Create template
+            <a href="<?= $this->url('cpanel/development/document-type/add'); ?>" class="btn btn-primary">
+                Create Document Type
             </a>
         </p>
 
@@ -57,10 +55,9 @@ $this->headScript()
         <thead>
         <tr>
             <th style="width: 50px;">#</th>
-            <th style="width: 100px">Type</th>
-            <th>Identifier</th>
             <th>Name</th>
             <th>Description</th>
+
             <th>Created At</th>
             <th>Updated At</th>
 
@@ -69,22 +66,20 @@ $this->headScript()
         </thead>
 
         <tbody>
-        <?php foreach ($this->templates as $row) : ?>
+        <?php foreach ($this->paginator as $row) : ?>
             <tr>
                 <td><?= $row['id']; ?></td>
-                <td class="text-center">
-                    <span class="label label-info"><?= $row['type']; ?></span>
-                </td>
-                <td><?= $row['identifier']; ?></td>
                 <td><?= $row['name']; ?></td>
                 <td><?= $row['description']; ?></td>
+
                 <td style="width: 200px;"><?= $row['created_at']; ?></td>
                 <td style="width: 200px;"><?= $row['updated_at']; ?></td>
 
                 <?php $params = ['id' => $row['id']]; ?>
                 <td class="text-center">
                     <ul class="icons-list">
-                        <li><a href="<?= $this->url('cpanel/development/template/edit', $params); ?>">
+                        <li>
+                            <a href="<?= $this->url('cpanel/development/document-type/edit', $params); ?>">
                                 <i class="icon-pencil7"></i>
                             </a>
                         </li>
@@ -115,8 +110,9 @@ $this->headScript()
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-link" data-dismiss="modal">Cancel
                                     </button>
-                                    <a href="<?= $this->url('cpanel/development/template/delete', $params); ?>"
-                                       class="btn btn-warning">
+                                    <a
+                                        href="<?= $this->url('cpanel/development/data-type/delete', $params); ?>"
+                                        class="btn btn-warning">
                                         Confirm
                                     </a>
                                 </div>

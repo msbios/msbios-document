@@ -5,7 +5,7 @@
  */
 namespace Kubnete\Resource\Table;
 
-use Kubnete\Resource\Model\Document;
+use Kubnete\Resource\Record\Document;
 use Kubnete\Resource\Tables;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\Sql\Predicate\Predicate;

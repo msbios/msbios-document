@@ -1,14 +1,12 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: judzhin
- * Date: 1/22/17
- * Time: 12:37 AM
+ * @access protected
+ * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
 namespace Kubnete\Frontend\EventManager;
 
-use Kubnete\Resource\Model\Document;
+use Kubnete\Resource\Record\Document;
 use Kubnete\Resource\Table\DocumentTable;
 use Zend\EventManager\AbstractListenerAggregate;
 use Zend\EventManager\EventInterface;

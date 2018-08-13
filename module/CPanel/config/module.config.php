@@ -3,7 +3,7 @@
  * @access protected
  * @author
  */
-namespace Kubnete\Backend;
+namespace Kubnete\CPanel;
 
 return [
 
@@ -104,13 +104,13 @@ return [
     ],
 
     'navigation' => [
-        'default' => [
-            'dashboard' => [
-                'label' => 'Dashboard',
-                'route' => 'backend',
-                'class' => 'icon-display4 position-left',
-                'order' => 0
-            ],
+        \MSBios\CPanel\Navigation\Sidebar::class => [
+            // 'dashboard' => [
+            //     'label' => 'Dashboard',
+            //     'route' => 'backend',
+            //     'class' => 'icon-display4 position-left',
+            //     'order' => 0
+            // ],
             'module' => [
                 'label' => 'Modules',
                 'uri' => '/uri',
@@ -146,7 +146,7 @@ return [
                         'label' => 'User',
                         'uri' => '/uri',
                     ],
-                ]
+                ],
             ],
         ],
         'configuration' => [

@@ -37,7 +37,8 @@ return [
 
     'service_manager' => [
         'invokables' => [
-            EventManager\DocumentListener::class => EventManager\DocumentListener::class,
+            EventManager\DocumentListener::class =>
+                EventManager\DocumentListener::class,
         ],
         'factories' => [
 

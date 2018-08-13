@@ -6,10 +6,10 @@
 namespace Kubnete\Resource\Table;
 
 use Kubnete\Resource\Exception\RowNotFoundException;
-use Kubnete\Resource\Model\DataType;
-use Kubnete\Resource\Model\Document;
-use Kubnete\Resource\Model\DocumentType;
-use Kubnete\Resource\Model\Template;
+use Kubnete\Resource\Record\DataType;
+use Kubnete\Resource\Record\Document;
+use Kubnete\Resource\Record\DocumentType;
+use Kubnete\Resource\Record\Template;
 use Kubnete\Resource\Views;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\Sql\Predicate\Predicate;

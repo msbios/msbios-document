@@ -9,7 +9,7 @@ use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
 use Kubnete\Frontend\View\Helper\ChildrenHelper;
 use Kubnete\Frontend\View\Helper\DocumentHelper;
-use Kubnete\Resource\Model\Document;
+use Kubnete\Resource\Record\Document;
 use Kubnete\Resource\Table\DocumentTable;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
