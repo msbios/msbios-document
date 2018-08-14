@@ -61,7 +61,8 @@ $this->headScript()
             ]); ?>
 
             <?= $this->partial('partial/element.phtml', [
-                'element' => new Textarea('ace', ['attributes' => ['id' => 'ace']]),
+                'element' => (new Textarea('ace', ['attributes' => ['id' => 'ace']]))
+                    ->setValue($form->get('code')->getValue()),
                 'label' => $this->translate('Code')
             ]); ?>
 

@@ -7,6 +7,7 @@ namespace Kubnete\CPanel\Mvc\Controller;
 
 use MSBios\CPanel\Mvc\Controller\AbstractActionController as DefaultAbstractActionController;
 use MSBios\Resource\RecordRepositoryInterface;
+use Zend\EventManager\EventManagerInterface;
 use Zend\Form\FormInterface;
 use Zend\Http\PhpEnvironment\Request;
 use Zend\Paginator\Paginator;
@@ -93,25 +94,24 @@ class AbstractActionController extends DefaultAbstractActionController
             $data = $this->params()->fromPost();
             $this->form->setData($data);
 
+            /** @var EventManagerInterface $eventManager */
+            $eventManager = $this->getEventManager();
+
             if ($this->form->isValid()) {
 
                 /** @var array $values */
                 $values = $this->form->getData();
                 $row->exchangeArray($values);
 
-                // fire event
-                $this->getEventManager()->trigger(
-                    self::EVENT_PRE_PERSIST_DATA,
-                    $this,
+                $eventManager->trigger(
+                    self::EVENT_PRE_PERSIST_DATA, $this,
                     ['row' => $row, 'data' => $data, 'values' => $values]
                 );
 
                 $this->resource->save($row);
 
-                // fire event
-                $this->getEventManager()->trigger(
-                    self::EVENT_POST_PERSIST_DATA,
-                    $this,
+                $eventManager->trigger(
+                    self::EVENT_POST_PERSIST_DATA, $this,
                     ['row' => $row, 'data' => $data, 'values' => $values]
                 );
 
@@ -124,10 +124,8 @@ class AbstractActionController extends DefaultAbstractActionController
                     ->toRoute($matchedRouteName);
             } else {
 
-                // fire event
-                $this->getEventManager()->trigger(
-                    self::EVENT_VALIDATE_ERROR,
-                    $this,
+                $eventManager->trigger(
+                    self::EVENT_VALIDATE_ERROR, $this,
                     ['row' => $row, 'data' => $data]
                 );
             }
@@ -189,14 +187,18 @@ class AbstractActionController extends DefaultAbstractActionController
                 $values = $this->form->getData();
                 $row->exchangeArray($this->form->getData());
 
-                // fire event
                 $this->getEventManager()->trigger(
-                    self::EVENT_POST_PERSIST_DATA,
-                    $this,
+                    self::EVENT_PRE_MERGE_DATA, $this,
                     ['row' => $row, 'data' => $data, 'values' => $values]
                 );
 
                 $this->resource->save($row);
+
+                $this->getEventManager()->trigger(
+                    self::EVENT_POST_MERGE_DATA, $this,
+                    ['row' => $row, 'data' => $data, 'values' => $values]
+                );
+
                 $this->flashMessenger()
                     ->addSuccessMessage("Row '{$row['name']}' has been edited.");
 
@@ -222,7 +224,18 @@ class AbstractActionController extends DefaultAbstractActionController
         if ($row = $this->resource->fetch($id)) {
             $this->flashMessenger()
                 ->addSuccessMessage("Row '{$row['name']}' was deleted.");
+
+            /** @var EventManagerInterface $eventManager */
+            $eventManager = $this->getEventManager();
+            $eventManager->trigger(
+                self::EVENT_PRE_REMOVE_DATA, $this, ['row' => $row]
+            );
+
             $this->resource->delete($id);
+
+            $eventManager->trigger(
+                self::EVENT_POST_REMOVE_DATA, $this, ['row' => $row]
+            );
         }
 
         return $this
