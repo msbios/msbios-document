@@ -9,10 +9,8 @@ use MSBios\CPanel\Mvc\Controller\AbstractActionController as DefaultAbstractActi
 use MSBios\Resource\RecordRepositoryInterface;
 use Zend\EventManager\EventManagerInterface;
 use Zend\Form\FormInterface;
-use Zend\Http\PhpEnvironment\Request;
 use Zend\Paginator\Paginator;
 use Zend\Stdlib\ArrayObject;
-use Zend\Stdlib\Parameters;
 use Zend\View\Model\ViewModel;
 
 /**
@@ -87,49 +85,41 @@ class AbstractActionController extends DefaultAbstractActionController
 
         if ($this->getRequest()->isPost()) {
 
-            /** @var ArrayObject $row */
-            $row = static::factory();
+            /** @var array $argv */
+            $argv = [];
 
-            $this->form->setInputFilter($row->getInputFilter());
+            $argv[0] = static::factory();
+            $this->form->setInputFilter($argv[0]->getInputFilter());
 
-            /** @var array $data */
-            $data = $this->params()->fromPost();
-            $this->form->setData($data);
+            $argv[1] = $this->params()->fromPost();
+            $this->form->setData($argv[1]);
 
             /** @var EventManagerInterface $eventManager */
             $eventManager = $this->getEventManager();
 
             if ($this->form->isValid()) {
 
-                /** @var array $values */
-                $values = $this->form->getData();
-                $row->exchangeArray($values);
+                $argv[2] = $this->form->getData();
+                $argv[0]->exchangeArray($argv[2]);
 
-                $eventManager->trigger(
-                    self::EVENT_PRE_PERSIST_DATA, $this,
-                    ['row' => $row, 'data' => $data, 'values' => $values]
-                );
+                $eventManager
+                    ->trigger(self::EVENT_PRE_PERSIST_DATA, $this, $argv);
 
-                $this->resource->save($row);
+                $this->resource->save($argv[0]);
 
-                $eventManager->trigger(
-                    self::EVENT_POST_PERSIST_DATA, $this,
-                    ['row' => $row, 'data' => $data, 'values' => $values]
-                );
+                $eventManager
+                    ->trigger(self::EVENT_POST_PERSIST_DATA, $this, $argv);
 
                 $this
                     ->flashMessenger()
-                    ->addSuccessMessage("Row '{$row['name']}' was added.");
+                    ->addSuccessMessage("Row '{$argv[0]['name']}' was added.");
 
                 return $this
                     ->redirect()
                     ->toRoute($matchedRouteName);
             } else {
-
-                $eventManager->trigger(
-                    self::EVENT_VALIDATE_ERROR, $this,
-                    ['row' => $row, 'data' => $data]
-                );
+                $eventManager
+                    ->trigger(self::EVENT_VALIDATE_ERROR, $this, $argv);
             }
         }
 
