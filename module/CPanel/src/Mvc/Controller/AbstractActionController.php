@@ -89,7 +89,7 @@ class AbstractActionController extends DefaultAbstractActionController
             $row = static::factory();
             $this->form->setInputFilter($row->getInputFilter());
 
-            /** @var Parameters $data */
+            /** @var array $data */
             $data = $this->params()->fromPost();
             $this->form->setData($data);
 
@@ -107,6 +107,13 @@ class AbstractActionController extends DefaultAbstractActionController
                 );
 
                 $this->resource->save($row);
+
+                // fire event
+                $this->getEventManager()->trigger(
+                    self::EVENT_POST_PERSIST_DATA,
+                    $this,
+                    ['row' => $row, 'data' => $data, 'values' => $values]
+                );
 
                 $this
                     ->flashMessenger()
@@ -169,14 +176,26 @@ class AbstractActionController extends DefaultAbstractActionController
 
         $this->form->bind($row);
 
-        /** @var Request $request */
-        $request = $this->getRequest();
-        if ($request->isPost()) {
+        if ($this->getRequest()->isPost()) {
             $this->form->setInputFilter($row->getInputFilter());
-            $this->form->setData($request->getPost());
+
+            /** @var array $params */
+            $data = $this->params()->getPost();
+            $this->form->setData($data);
 
             if ($this->form->isValid()) {
+
+                /** @var array $values */
+                $values = $this->form->getData();
                 $row->exchangeArray($this->form->getData());
+
+                // fire event
+                $this->getEventManager()->trigger(
+                    self::EVENT_POST_PERSIST_DATA,
+                    $this,
+                    ['row' => $row, 'data' => $data, 'values' => $values]
+                );
+
                 $this->resource->save($row);
                 $this->flashMessenger()
                     ->addSuccessMessage("Row '{$row['name']}' has been edited.");

@@ -5,6 +5,7 @@
  */
 namespace Kubnete\Resource\Record;
 
+use MSBios\Resource\RecordInterface;
 use Zend\Db\TableGateway\Feature\GlobalAdapterFeature;
 use Zend\Filter\StringTrim;
 use Zend\Filter\StripTags;
@@ -22,39 +23,10 @@ use Zend\Validator\StringLength;
  * Class Template
  * @package Kubnete\Resource\Model
  */
-class Template extends ArrayObject implements InputFilterAwareInterface
+class Template extends ArrayObject implements RecordInterface, InputFilterAwareInterface
 {
-    public $id;
-    public $type;
-    public $identifier;
-    public $name;
-    public $description;
-    public $content;
-    public $createdAt;
-    public $updatedAt;
-
     /** @var  InputFilter */
     protected $inputFilter;
-
-//    /**
-//     * @param array|ArrayObject $data
-//     */
-//    public function exchangeArray($data)
-//    {
-//        parent::exchangeArray($data);
-//
-//        $this->parentId = (!isset($data['parent_id']))
-//            ?: $data['parent_id'];
-//
-//        $this->documentTypeId = (!isset($data['document_type_id']))
-//            ?: $data['document_type_id'];
-//
-//        $this->layoutId = (!isset($data['layout_id']))
-//            ?: $data['layout_id'];
-//
-//        $this->viewId = (!isset($data['view_id']))
-//            ?: $data['view_id'];
-//    }
 
     /**
      * @return InputFilter
