@@ -8,7 +8,7 @@ namespace Kubnete\Resource\Factory;
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
 use Kubnete\Resource\Form\Element\DataTypeElement;
-use Kubnete\Resource\Table\DataTypeTable;
+use Kubnete\Resource\Table\DataType;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
@@ -35,7 +35,7 @@ class DataTypeElementFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         return new DataTypeElement(
-            $container->get(DataTypeTable::class)
+            $container->get(DataType::class)
         );
     }
 }

@@ -9,9 +9,10 @@ use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
 use Kubnete\Resource\Record\Property;
 use Kubnete\Resource\Table\PropertyValueTable;
+use MSBios\Db\TableGateway\TableGateway;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
-use Zend\Db\TableGateway\TableGateway;
+
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
@@ -23,16 +24,9 @@ use Zend\ServiceManager\Factory\FactoryInterface;
 class PropertyValueTableFactory implements FactoryInterface
 {
     /**
-     * Create an object
-     *
-     * @param  ContainerInterface $container
-     * @param  string $requestedName
-     * @param  null|array $options
-     * @return object
-     * @throws ServiceNotFoundException if unable to resolve the service.
-     * @throws ServiceNotCreatedException if an exception is raised when
-     *     creating a service.
-     * @throws ContainerException if any other error occurs
+     * @param ContainerInterface $container
+     * @param string $requestedName
+     * @param array|null $options
      * @return PropertyValueTable
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)

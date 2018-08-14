@@ -16,7 +16,7 @@ use Zend\Db\Sql\Select;
  * Class DocumentTableGateway
  * @package Kubnete\Resource\Table
  */
-class DocumentTableGateway extends AbstractResourceTable
+class DocumentTableGateway extends AbstractResource
 {
     /**
      * @param Document $document

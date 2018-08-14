@@ -20,13 +20,13 @@ return [
         'factories' => [
             \Zend\Db\Adapter\AdapterInterface::class => Db\Adapter\AdapterServiceFactory::class,
 
-            Table\DataTypeTable::class => Factory\DataTypeTableFactory::class,
+            Table\DataType::class => Factory\DataTypeTableFactory::class,
             Table\DocumentTableGateway::class => Factory\DocumentTableFactory::class,
-            Table\DocumentTypeTableGateway::class => Factory\DocumentTypeTableFactory::class,
-            Table\PropertyTable::class => Factory\PropertyTableFactory::class,
+            Table\DocumentTypeGateway::class => Factory\DocumentTypeTableFactory::class,
+            Table\Property::class => Factory\PropertyTableFactory::class,
             Table\PropertyValueTable::class => Factory\PropertyValueTableFactory::class,
-            Table\TabTable::class => Factory\TabTableFactory::class,
-            Table\TemplateTableGateway::class => Factory\TemplateTableFactory::class,
+            Table\Tab::class => Factory\TabTableFactory::class,
+            Table\TemplateTableGateway::class => Factory\TemplateTableGatewayFactory::class,
         ],
     ],
 

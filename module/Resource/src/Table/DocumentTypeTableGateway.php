@@ -12,7 +12,7 @@ use Kubnete\Resource\Record\DocumentType;
  * Class DocumentTypeTableGateway
  * @package Kubnete\Resource\Table
  */
-class DocumentTypeTableGateway extends AbstractResourceTable
+class DocumentTypeGateway extends AbstractResource
 {
     /**
      * @param $id

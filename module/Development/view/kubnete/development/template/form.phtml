@@ -6,6 +6,8 @@
 namespace MSBios\CPanel;
 
 /** @var \Zend\Form\Form $form */
+use Zend\Form\Element\Textarea;
+
 $form = $this->form;
 $form->prepare();
 
@@ -59,13 +61,11 @@ $this->headScript()
             ]); ?>
 
             <?= $this->partial('partial/element.phtml', [
-                'element' => $form->get('content')
-                    ->setAttributes([
-                        'required' => 'required',
-                        'placeholder' => $this->translate('Enter template content')
-                    ]),
-                'label' => $this->translate('Content')
+                'element' => new Textarea('ace', ['attributes' => ['id' => 'ace']]),
+                'label' => $this->translate('Code')
             ]); ?>
+
+            <?= $this->formElement($form->get('code')); ?>
 
             <div class="text-right">
                 <?= $this->formRow($form->get('id')); ?>
@@ -88,10 +88,13 @@ $this->headScript()
 <?php $this->inlineScript()->captureStart();
 echo <<<'JS'
     // PHP editor
-    var editor = ace.edit("content");
+    var editor = ace.edit("ace");
         editor.setTheme("ace/theme/monokai");
         editor.getSession().setMode("ace/mode/php");
         editor.setShowPrintMargin(false);
+        editor.getSession().on("change", function () {
+            $('input[name="code"]').val(editor.getSession().getValue());
+        });
 JS;
 $this->inlineScript()->captureEnd();
 ?>

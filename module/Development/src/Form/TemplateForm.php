@@ -6,6 +6,7 @@
 namespace Kubnete\Development\Form;
 
 use Kubnete\Resource\Form\Element\TemplateTypeElement;
+use Zend\Form\Element\Hidden;
 use Zend\Form\Element\Text;
 use Zend\Form\Element\Textarea;
 use Zend\Form\Form;
@@ -74,8 +75,8 @@ class TemplateForm extends Form
         ]);
 
         $this->add([
-            'name' => 'content',
-            'type' => Textarea::class,
+            'name' => 'code',
+            'type' => Hidden::class,
             //'attributes' => [
             //    'id' => 'mirror',
             //],

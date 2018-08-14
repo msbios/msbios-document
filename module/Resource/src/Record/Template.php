@@ -29,6 +29,7 @@ class Template extends ArrayObject implements InputFilterAwareInterface
     public $identifier;
     public $name;
     public $description;
+    public $content;
     public $createdAt;
     public $updatedAt;
 
@@ -134,7 +135,7 @@ class Template extends ArrayObject implements InputFilterAwareInterface
             ]));
 
             $inputFilter->add($factory->createInput([
-                'name' => 'content',
+                'name' => 'code',
                 'required' => true,
                 'filters' => [
                     [

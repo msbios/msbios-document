@@ -14,7 +14,7 @@ use Zend\Db\Sql\Select;
  * Class TabTable
  * @package Kubnete\Resource\Table
  */
-class TabTable extends AbstractResourceTable
+class Tab extends AbstractResource
 {
     /**
      * @param DocumentType $objRow

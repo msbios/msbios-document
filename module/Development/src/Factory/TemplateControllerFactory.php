@@ -8,7 +8,7 @@ namespace Kubnete\Development\Factory;
 use Interop\Container\ContainerInterface;
 use Kubnete\Development\Controller\TemplateController;
 use Kubnete\Development\Form\TemplateForm;
-use Kubnete\Resource\Table\TemplateTableGateway;;
+use Kubnete\Resource\Table\TemplateTableGateway;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**

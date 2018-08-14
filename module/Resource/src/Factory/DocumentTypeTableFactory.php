@@ -7,7 +7,7 @@ namespace Kubnete\Resource\Factory;
 
 use Interop\Container\ContainerInterface;
 use Kubnete\Resource\Record\DocumentType;
-use Kubnete\Resource\Table\DocumentTypeTableGateway;
+use Kubnete\Resource\Table\DocumentTypeGateway;
 use MSBios\Db\TableGateway\TableGateway;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
@@ -23,7 +23,7 @@ class DocumentTypeTableFactory implements FactoryInterface
      * @param ContainerInterface $container
      * @param string $requestedName
      * @param array|null $options
-     * @return DocumentTypeTableGateway
+     * @return DocumentTypeGateway
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
@@ -39,6 +39,6 @@ class DocumentTypeTableFactory implements FactoryInterface
             $resultSetPrototype
         );
 
-        return new DocumentTypeTableGateway($tableGateway);
+        return new DocumentTypeGateway($tableGateway);
     }
 }

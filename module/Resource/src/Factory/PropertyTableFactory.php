@@ -8,7 +8,7 @@ namespace Kubnete\Resource\Factory;
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
 use Kubnete\Resource\Record\Property;
-use Kubnete\Resource\Table\PropertyTable;
+use Kubnete\Resource\Table\Property;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
@@ -33,7 +33,7 @@ class PropertyTableFactory implements FactoryInterface
      * @throws ServiceNotCreatedException if an exception is raised when
      *     creating a service.
      * @throws ContainerException if any other error occurs
-     * @return PropertyTable
+     * @return Property
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
@@ -49,6 +49,6 @@ class PropertyTableFactory implements FactoryInterface
             $resultSetPrototype
         );
 
-        return new PropertyTable($tableGateway);
+        return new Property($tableGateway);
     }
 }

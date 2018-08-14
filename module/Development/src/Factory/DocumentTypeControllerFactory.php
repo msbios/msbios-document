@@ -9,9 +9,9 @@ use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
 use Kubnete\Development\Controller\DocumentTypeController;
 use Kubnete\Development\Form\DocumentTypeForm;
-use Kubnete\Resource\Table\DocumentTypeTableGateway;
-use Kubnete\Resource\Table\PropertyTable;
-use Kubnete\Resource\Table\TabTable;
+use Kubnete\Resource\Table\DocumentTypeGateway;
+use Kubnete\Resource\Table\Property;
+use Kubnete\Resource\Table\Tab;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
@@ -38,9 +38,9 @@ class DocumentTypeControllerFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         return new DocumentTypeController(
-            $container->get(DocumentTypeTableGateway::class),
-            $container->get(TabTable::class),
-            $container->get(PropertyTable::class),
+            $container->get(DocumentTypeGateway::class),
+            $container->get(Tab::class),
+            $container->get(Property::class),
             $container->get('FormElementManager')
                 ->get(DocumentTypeForm::class)
         );

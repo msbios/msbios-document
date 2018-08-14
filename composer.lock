@@ -382,16 +382,16 @@
         },
         {
             "name": "msbios/cpanel",
-            "version": "v1.0.35",
+            "version": "v1.0.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/msbios/msbios-cpanel.git",
-                "reference": "0bdd62ae3ab6ed740495e97a97b1a1f48d97c694"
+                "reference": "e97a1d1396b4fcf50255057dcc7682f9294eb163"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/msbios/msbios-cpanel/zipball/0bdd62ae3ab6ed740495e97a97b1a1f48d97c694",
-                "reference": "0bdd62ae3ab6ed740495e97a97b1a1f48d97c694",
+                "url": "https://api.github.com/repos/msbios/msbios-cpanel/zipball/e97a1d1396b4fcf50255057dcc7682f9294eb163",
+                "reference": "e97a1d1396b4fcf50255057dcc7682f9294eb163",
                 "shasum": ""
             },
             "require": {
@@ -437,7 +437,7 @@
             "keywords": [
                 "php"
             ],
-            "time": "2018-08-12T19:35:13+00:00"
+            "time": "2018-08-14T14:00:48+00:00"
         },
         {
             "name": "msbios/db",
@@ -959,22 +959,23 @@
         },
         {
             "name": "msbios/resource",
-            "version": "v1.0.9",
+            "version": "v1.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/msbios/msbios-resource.git",
-                "reference": "28cffe656491e5d575538d847a57263f8654651f"
+                "reference": "68116b43415f94c7ba8b6eff6e2fec9dd7f89996"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/msbios/msbios-resource/zipball/28cffe656491e5d575538d847a57263f8654651f",
-                "reference": "28cffe656491e5d575538d847a57263f8654651f",
+                "url": "https://api.github.com/repos/msbios/msbios-resource/zipball/68116b43415f94c7ba8b6eff6e2fec9dd7f89996",
+                "reference": "68116b43415f94c7ba8b6eff6e2fec9dd7f89996",
                 "shasum": ""
             },
             "require": {
                 "msbios/db": "^1.0",
                 "msbios/form": "^1.0",
-                "msbios/stdlib": "^1.0"
+                "msbios/stdlib": "^1.0",
+                "zendframework/zend-paginator": "^2.8"
             },
             "require-dev": {
                 "msbios/debug": "^1.0",
@@ -1001,7 +1002,7 @@
             "keywords": [
                 "php"
             ],
-            "time": "2018-04-11T10:01:16+00:00"
+            "time": "2018-08-14T13:07:49+00:00"
         },
         {
             "name": "msbios/stdlib",
@@ -2112,16 +2113,16 @@
         },
         {
             "name": "zendframework/zend-http",
-            "version": "2.8.1",
+            "version": "2.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-http.git",
-                "reference": "44197164a270259116162a442f639085ea24094a"
+                "reference": "2c8aed3d25522618573194e7cc51351f8cd4a45b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-http/zipball/44197164a270259116162a442f639085ea24094a",
-                "reference": "44197164a270259116162a442f639085ea24094a",
+                "url": "https://api.github.com/repos/zendframework/zend-http/zipball/2c8aed3d25522618573194e7cc51351f8cd4a45b",
+                "reference": "2c8aed3d25522618573194e7cc51351f8cd4a45b",
                 "shasum": ""
             },
             "require": {
@@ -2163,7 +2164,7 @@
                 "zend",
                 "zf"
             ],
-            "time": "2018-08-01T13:50:48+00:00"
+            "time": "2018-08-13T18:47:03+00:00"
         },
         {
             "name": "zendframework/zend-hydrator",
@@ -5843,16 +5844,16 @@
         },
         {
             "name": "tracy/tracy",
-            "version": "v2.5.1",
+            "version": "v2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tracy.git",
-                "reference": "bea9df15a1cdbf3ec50ef3a75f5ada1ab536d679"
+                "reference": "93f89fbff33db4d583062104c71d6083b717371a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tracy/zipball/bea9df15a1cdbf3ec50ef3a75f5ada1ab536d679",
-                "reference": "bea9df15a1cdbf3ec50ef3a75f5ada1ab536d679",
+                "url": "https://api.github.com/repos/nette/tracy/zipball/93f89fbff33db4d583062104c71d6083b717371a",
+                "reference": "93f89fbff33db4d583062104c71d6083b717371a",
                 "shasum": ""
             },
             "require": {
@@ -5904,7 +5905,7 @@
                 "nette",
                 "profiler"
             ],
-            "time": "2018-07-03T11:34:33+00:00"
+            "time": "2018-08-13T16:46:17+00:00"
         },
         {
             "name": "webmozart/assert",

@@ -8,7 +8,7 @@ namespace Kubnete\Frontend\Controller;
 
 use Kubnete\Resource\Record\Document;
 use Kubnete\Resource\Record\Value;
-use Kubnete\Resource\Table\PropertyValueTable;
+use Kubnete\Resource\Table\PropertyValue;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -22,7 +22,7 @@ class IndexController extends AbstractActionController
     const EVENT_DOCUMENT = 'Document';
     const EVENT_DOCUMENT_POST = 'Document.Post';
 
-    /** @var PropertyValueTable */
+    /** @var PropertyValue */
     protected $propertyValueTable;
 
     /** @var Document */
@@ -30,11 +30,11 @@ class IndexController extends AbstractActionController
 
     /**
      * IndexController constructor.
-     * @param PropertyValueTable $propertyValueTable
+     * @param PropertyValue $propertyValueTable
      * @param Document|null $document
      */
     public function __construct(
-        PropertyValueTable $propertyValueTable,
+        PropertyValue $propertyValueTable,
         $document
     ) {
         $this->propertyValueTable = $propertyValueTable;

@@ -6,6 +6,7 @@
 namespace Kubnete\Resource\Record;
 
 use Kubnete\Resource\Record\Property\Value;
+use Kubnete\Resource\Table\PropertyValue;
 use Kubnete\Resource\Table\PropertyValueTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Filter\StringTrim;

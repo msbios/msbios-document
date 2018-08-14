@@ -7,9 +7,9 @@ namespace Kubnete\Development\Controller;
 
 use Kubnete\Development\Form\DocumentTypeForm;
 use Kubnete\Resource\Record\DocumentType;
-use Kubnete\Resource\Table\DocumentTypeTableGateway;
-use Kubnete\Resource\Table\PropertyTable;
-use Kubnete\Resource\Table\TabTable;
+use Kubnete\Resource\Table\DocumentTypeGateway;
+use Kubnete\Resource\Table\Property;
+use Kubnete\Resource\Table\Tab;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Paginator\Paginator;
@@ -21,13 +21,13 @@ use Zend\View\Model\ViewModel;
  */
 class DocumentTypeController extends AbstractActionController
 {
-    /** @var DocumentTypeTableGateway */
+    /** @var DocumentTypeGateway */
     protected $resource;
 
-    /** @var TabTable */
+    /** @var Tab */
     protected $tabTable;
 
-    /** @var PropertyTable */
+    /** @var Property */
     protected $propertyTable;
 
     /** @var DocumentTypeForm */
@@ -41,15 +41,15 @@ class DocumentTypeController extends AbstractActionController
 
     /**
      * DocumentTypeController constructor.
-     * @param DocumentTypeTableGateway $resource
-     * @param TabTable $tabTable
-     * @param PropertyTable $propertyTable
+     * @param DocumentTypeGateway $resource
+     * @param Tab $tabTable
+     * @param Property $propertyTable
      * @param DocumentTypeForm $form
      */
     public function __construct(
-        DocumentTypeTableGateway $resource,
-        TabTable $tabTable,
-        PropertyTable $propertyTable,
+        DocumentTypeGateway $resource,
+        Tab $tabTable,
+        Property $propertyTable,
         DocumentTypeForm $form
     ) {
 

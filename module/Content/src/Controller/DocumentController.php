@@ -15,10 +15,10 @@ use Kubnete\Resource\Record\Property;
 use Kubnete\Resource\Record\Tab;
 use Kubnete\Resource\Table\DocumentTableGateway;
 
-use Kubnete\Resource\Table\DocumentTypeTableGateway;
-use Kubnete\Resource\Table\PropertyTable;
-use Kubnete\Resource\Table\PropertyValueTable;
-use Kubnete\Resource\Table\TabTable;
+use Kubnete\Resource\Table\DocumentTypeGateway;
+use Kubnete\Resource\Table\Property;
+use Kubnete\Resource\Table\PropertyValue;
+use Kubnete\Resource\Table\Tab;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Debug\Debug;
 use Zend\Form\Factory;
@@ -38,16 +38,16 @@ class DocumentController extends AbstractActionController
     /** @var DocumentTableGateway */
     protected $documentTable;
 
-    /** @var DocumentTypeTableGateway */
+    /** @var DocumentTypeGateway */
     protected $documentTypeTable;
 
-    /** @var TabTable */
+    /** @var Tab */
     protected $tabTable;
 
-    /** @var PropertyTable */
+    /** @var Property */
     protected $propertyTable;
 
-    /** @var PropertyValueTable */
+    /** @var PropertyValue */
     protected $propertyValueTable;
 
     /** @var DocumentForm */
@@ -56,18 +56,18 @@ class DocumentController extends AbstractActionController
     /**
      * DocumentController constructor.
      * @param DocumentTableGateway $objDocumentTable
-     * @param DocumentTypeTableGateway $objDocumentTypeTable
-     * @param TabTable $objTabTable
-     * @param PropertyTable $objPropertyTable
-     * @param PropertyValueTable $objPropertyValueTable
+     * @param DocumentTypeGateway $objDocumentTypeTable
+     * @param Tab $objTabTable
+     * @param Property $objPropertyTable
+     * @param PropertyValue $objPropertyValueTable
      * @param DocumentForm $objDocumentForm
      */
     public function __construct(
         DocumentTableGateway $objDocumentTable,
-        DocumentTypeTableGateway $objDocumentTypeTable,
-        TabTable $objTabTable,
-        PropertyTable $objPropertyTable,
-        PropertyValueTable $objPropertyValueTable,
+        DocumentTypeGateway $objDocumentTypeTable,
+        Tab $objTabTable,
+        Property $objPropertyTable,
+        PropertyValue $objPropertyValueTable,
         DocumentForm $objDocumentForm
     ) {
 

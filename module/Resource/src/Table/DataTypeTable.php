@@ -21,7 +21,7 @@ use Zend\Debug\Debug;
  * Class DataTypeTable
  * @package Kubnete\Resource\Table
  */
-class DataTypeTable extends AbstractResourceTable
+class DataType extends AbstractResource
 {
     /**
      * @param $id

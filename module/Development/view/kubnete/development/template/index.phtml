@@ -59,7 +59,8 @@ $this->headScript()
 
                             &nbsp;
 
-                            <a href="<?= $this->url($this->matchedRouteName, ['action' => 'add']); ?>" class="btn btn-success">
+                            <a href="<?= $this->url($this->matchedRouteName, ['action' => 'add']); ?>"
+                               class="btn btn-success">
                                 <?= $this->translate('Create template'); ?>
                             </a>
                         </div>
@@ -93,55 +94,10 @@ $this->headScript()
                                 <td><?= $this->escapeHtml($item['createdat']); ?></td>
                                 <td class="text-center">
 
-                                    <?php /** @var string $identifierTrashModal */ ?>
-                                    <?php $identifierTrashModal = "modal-confirm-{$item['id']}"; ?>
-
-                                    <ul class="icons-list">
-
-                                        <li>
-                                            <a href="<?= $this->url('cpanel/template', [
-                                                'action' => 'edit',
-                                                'id' => $item['id']
-                                            ]); ?>">
-                                                <i class="icon-pencil"></i>
-                                            </a>
-                                        </li>
-
-                                        <li class="text-danger-600">
-                                            <a href="#"
-                                               data-toggle="modal"
-                                               data-target="#<?= $identifierTrashModal; ?>">
-                                                <i class="icon-trash"></i>
-                                            </a>
-                                        </li>
-
-                                    </ul>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade"
-                                         id="<?= $identifierTrashModal; ?>"
-                                         tabindex="-1" role="dialog">
-                                        <div class="modal-dialog modal-sm" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Are you sure?</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Do you want to delete the entry?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button"
-                                                            class="btn btn-default"
-                                                            data-dismiss="modal">
-                                                        Cancel
-                                                    </button>
-                                                    <a href="#" class="btn btn-primary">
-                                                        Yes, delete it!
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <?= $this->partial('partial/actions.phtml', [
+                                        'identifier' => $item['id'],
+                                        'matchedRouteName' => $this->matchedRouteName
+                                    ]); ?>
 
                                 </td>
                             </tr>

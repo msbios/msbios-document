@@ -8,7 +8,7 @@ namespace Kubnete\Resource\Factory;
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
 use Kubnete\Resource\Form\Element\DocumentTypeElement;
-use Kubnete\Resource\Table\DocumentTypeTableGateway;
+use Kubnete\Resource\Table\DocumentTypeGateway;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
@@ -35,7 +35,7 @@ class DocumentTypeElementFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         return new DocumentTypeElement(
-            $container->get(DocumentTypeTableGateway::class)
+            $container->get(DocumentTypeGateway::class)
         );
     }
 }

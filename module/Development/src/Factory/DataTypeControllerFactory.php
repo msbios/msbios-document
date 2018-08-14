@@ -10,7 +10,7 @@ use Interop\Container\Exception\ContainerException;
 use Kubnete\DataType\Form\Element\DataTypeExtensionElement;
 use Kubnete\Development\Controller\DataTypeController;
 use Kubnete\Development\Form\DataTypeForm;
-use Kubnete\Resource\Table\DataTypeTable;
+use Kubnete\Resource\Table\DataType;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
@@ -41,7 +41,7 @@ class DataTypeControllerFactory implements FactoryInterface
         //     ->get(DataTypeElement::class)); die();
 
         return new DataTypeController(
-            $container->get(DataTypeTable::class),
+            $container->get(DataType::class),
             $container->get('FormElementManager')
                 ->get(DataTypeForm::class)
         );

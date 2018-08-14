@@ -14,7 +14,7 @@ use Zend\Db\Sql\Select;
  * Class PropertyTable
  * @package Kubnete\Resource\Table
  */
-class PropertyTable extends AbstractResourceTable
+class Property extends AbstractResource
 {
     /**
      * @param $id

@@ -8,7 +8,7 @@ namespace Kubnete\Development\Controller;
 use Kubnete\Development\Form\DataTypeForm;
 use Kubnete\Development\Form\TemplateForm;
 use Kubnete\Resource\Record\DataType;
-use Kubnete\Resource\Table\DataTypeTable;
+use Kubnete\Resource\Table\DataType;
 use Kubnete\Resource\Table\TemplateTableGateway;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -27,10 +27,10 @@ class DataTypeController extends AbstractActionController
 
     /**
      * DataTypeController constructor.
-     * @param DataTypeTable $table
+     * @param DataType $table
      * @param DataTypeForm $form
      */
-    public function __construct(DataTypeTable $table, DataTypeForm $form)
+    public function __construct(DataType $table, DataTypeForm $form)
     {
         $this->table = $table;
         $this->form = $form;

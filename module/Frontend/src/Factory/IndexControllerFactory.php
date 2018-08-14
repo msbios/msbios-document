@@ -10,7 +10,7 @@ use Interop\Container\Exception\ContainerException;
 use Kubnete\Frontend\Controller\IndexController;
 use Kubnete\Resource\Record\Document;
 use Kubnete\Resource\Table\DocumentTableGateway;
-use Kubnete\Resource\Table\PropertyValueTable;
+use Kubnete\Resource\Table\PropertyValue;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
@@ -37,7 +37,7 @@ class IndexControllerFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         return new IndexController(
-            $container->get(PropertyValueTable::class),
+            $container->get(PropertyValue::class),
             $container->get(Document::class)
         );
     }

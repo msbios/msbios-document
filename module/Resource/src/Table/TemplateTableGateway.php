@@ -7,13 +7,12 @@ namespace Kubnete\Resource\Table;
 
 use Kubnete\Resource\Form\Element\TemplateTypeElement;
 use Zend\Db\ResultSet\ResultSet;
-use Zend\Stdlib\ArrayObject;
 
 /**
- * Class TemplateTable
+ * Class TemplateTableGateway
  * @package Kubnete\Resource\Table
  */
-class TemplateTableGateway extends AbstractResourceTable
+class TemplateTableGateway extends AbstractResource
 {
     /**
      * @param $type
