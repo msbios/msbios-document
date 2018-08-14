@@ -9,7 +9,7 @@ use Kubnete\Development\Form\DataTypeForm;
 use Kubnete\Development\Form\TemplateForm;
 use Kubnete\Resource\Record\DataType;
 use Kubnete\Resource\Table\DataTypeTable;
-use Kubnete\Resource\Table\TemplateTable;
+use Kubnete\Resource\Table\TemplateTableGateway;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -19,7 +19,7 @@ use Zend\View\Model\ViewModel;
  */
 class DataTypeController extends AbstractActionController
 {
-    /** @var TemplateTable */
+    /** @var TemplateTableGateway */
     protected $table;
 
     /** @var TemplateForm */

@@ -11,5 +11,5 @@ namespace Kubnete\Resource\Exception;
  */
 class RowNotFoundException extends \Exception
 {
-
+    // ...
 }

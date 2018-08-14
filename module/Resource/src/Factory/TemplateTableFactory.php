@@ -8,7 +8,7 @@ namespace Kubnete\Resource\Factory;
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
 use Kubnete\Resource\Record\Template;
-use Kubnete\Resource\Table\TemplateTable;
+use Kubnete\Resource\Table\TemplateTableGateway;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
@@ -33,7 +33,7 @@ class TemplateTableFactory implements FactoryInterface
      * @throws ServiceNotCreatedException if an exception is raised when
      *     creating a service.
      * @throws ContainerException if any other error occurs
-     * @return TemplateTable
+     * @return TemplateTableGateway
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
@@ -49,6 +49,6 @@ class TemplateTableFactory implements FactoryInterface
             $resultSetPrototype
         );
 
-        return new TemplateTable($tableGateway);
+        return new TemplateTableGateway($tableGateway);
     }
 }

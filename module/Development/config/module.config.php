@@ -55,6 +55,22 @@ return [
                         ],
                     ],
 
+                    'template' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => 'template/[:action[/[:id[/]]]]',
+                            'defaults' => [
+                                'controller' => Controller\TemplateController::class,
+                                'action' => 'index'
+                            ],
+                            'constraints' => [
+                                'action' => 'add|edit|drop',
+                                'document_id' => '[0-9]+',
+                                'id' => '[0-9]+'
+                            ],
+                        ],
+                    ],
+
                     'development' => [
                         'type' => \Zend\Router\Http\Segment::class,
                         'options' => [
@@ -62,9 +78,6 @@ return [
                         ],
                         'may_terminate' => true,
                         'child_routes' => [
-
-
-
                             //'document-type' => [
                             //    'type' => \Zend\Router\Http\Segment::class,
                             //    'options' => [
@@ -113,51 +126,51 @@ return [
                             //        ],
                             //    ],
                             //],
-                            'template' => [
-                                'type' => \Zend\Router\Http\Segment::class,
-                                'options' => [
-                                    'route' => 'template[/]',
-                                    'defaults' => [
-                                        'controller' => Controller\TemplateController::class,
-                                    ],
-                                    'constraints' => [
-                                        'id' => '[0-9]+',
-                                    ],
-                                ],
-                                'may_terminate' => true,
-                                'child_routes' => [
-                                    'add' => [
-                                        'type' => \Zend\Router\Http\Segment::class,
-                                        'options' => [
-                                            'route' => 'add[.html]',
-                                            'defaults' => [
-                                                'action' => 'add',
-                                            ],
-                                        ],
-                                        'may_terminate' => true
-                                    ],
-                                    'edit' => [
-                                        'type' => \Zend\Router\Http\Segment::class,
-                                        'options' => [
-                                            'route' => 'edit/:id[.html]',
-                                            'defaults' => [
-                                                'action' => 'edit',
-                                            ],
-                                        ],
-                                        'may_terminate' => true
-                                    ],
-                                    'delete' => [
-                                        'type' => 'Segment',
-                                        'options' => [
-                                            'route' => '/delete/:id[.html]',
-                                            'defaults' => [
-                                                'action' => 'delete',
-                                            ],
-                                        ],
-                                        'may_terminate' => true
-                                    ],
-                                ],
-                            ],
+                            //'template' => [
+                            //    'type' => \Zend\Router\Http\Segment::class,
+                            //    'options' => [
+                            //        'route' => 'template[/]',
+                            //        'defaults' => [
+                            //            'controller' => Controller\TemplateController::class,
+                            //        ],
+                            //        'constraints' => [
+                            //            'id' => '[0-9]+',
+                            //        ],
+                            //    ],
+                            //    'may_terminate' => true,
+                            //    'child_routes' => [
+                            //        'add' => [
+                            //            'type' => \Zend\Router\Http\Segment::class,
+                            //            'options' => [
+                            //                'route' => 'add[.html]',
+                            //                'defaults' => [
+                            //                    'action' => 'add',
+                            //                ],
+                            //            ],
+                            //            'may_terminate' => true
+                            //        ],
+                            //        'edit' => [
+                            //            'type' => \Zend\Router\Http\Segment::class,
+                            //            'options' => [
+                            //                'route' => 'edit/:id[.html]',
+                            //                'defaults' => [
+                            //                    'action' => 'edit',
+                            //                ],
+                            //            ],
+                            //            'may_terminate' => true
+                            //        ],
+                            //        'delete' => [
+                            //            'type' => 'Segment',
+                            //            'options' => [
+                            //                'route' => '/delete/:id[.html]',
+                            //                'defaults' => [
+                            //                    'action' => 'delete',
+                            //                ],
+                            //            ],
+                            //            'may_terminate' => true
+                            //        ],
+                            //    ],
+                            //],
                             'data-type' => [
                                 'type' => \Zend\Router\Http\Segment::class,
                                 'options' => [
@@ -215,6 +228,12 @@ return [
             'development' => __DIR__ . '/../view',
             'template' => './data/tmp'
         ],
+        'template_map' => [
+            'kubnete/development/template/add'
+                => __DIR__ . '/../view/kubnete/development/template/form.phtml',
+            'kubnete/development/template/edit'
+                => __DIR__ . '/../view/kubnete/development/template/form.phtml',
+        ],
     ],
 
     'navigation' => [
@@ -246,18 +265,18 @@ return [
                     'template' => [
                         'label' => 'Template',
                         'title' => 'List of Templates',
-                        'route' => 'cpanel/development/template',
+                        'route' => 'cpanel/template',
                         'order' => 200,
                         'class' => 'icon-insert-template position-left',
                         'pages' => [
                             [
                                 'label' => 'Add',
                                 'title' => 'To create a new template',
-                                'route' => 'cpanel/development/template/add',
+                                'route' => 'cpanel/template/add',
                             ], [
                                 'label' => 'Edit',
                                 'title' => 'Edit the selected template',
-                                'route' => 'cpanel/development/template/edit',
+                                'route' => 'cpanel/template/edit',
                             ]
                         ]
                     ],
@@ -287,6 +306,23 @@ return [
                     ],
                 ],
             ],
+        ],
+    ],
+
+    \MSBios\Guard\Module::class => [
+        'resource_providers' => [
+            \MSBios\Guard\Provider\ResourceProvider::class => [
+                Controller\TemplateController::class => [],
+            ],
+        ],
+
+        'rule_providers' => [
+            \MSBios\Guard\Provider\RuleProvider::class => [
+                'allow' => [
+                    [['DEVELOPER'], Controller\TemplateController::class],
+                ],
+                'deny' => []
+            ]
         ],
     ],
 ];

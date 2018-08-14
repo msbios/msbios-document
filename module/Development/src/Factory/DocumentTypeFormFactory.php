@@ -14,7 +14,7 @@ use Kubnete\Development\Form\DocumentTypeForm;
 use Kubnete\Development\Form\TemplateForm;
 use Kubnete\Development\Form\TypeTabFieldset;
 use Kubnete\Resource\Form\Element\ViewElement;
-use Kubnete\Resource\Table\TemplateTable;
+use Kubnete\Resource\Table\TemplateTableGateway;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;

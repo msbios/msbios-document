@@ -13,9 +13,9 @@ use Kubnete\Resource\Record\Document;
 use Kubnete\Resource\Record\DocumentType;
 use Kubnete\Resource\Record\Property;
 use Kubnete\Resource\Record\Tab;
-use Kubnete\Resource\Table\DocumentTable;
+use Kubnete\Resource\Table\DocumentTableGateway;
 
-use Kubnete\Resource\Table\DocumentTypeTable;
+use Kubnete\Resource\Table\DocumentTypeTableGateway;
 use Kubnete\Resource\Table\PropertyTable;
 use Kubnete\Resource\Table\PropertyValueTable;
 use Kubnete\Resource\Table\TabTable;
@@ -35,10 +35,10 @@ class DocumentController extends AbstractActionController
     /** @const ROUTE_PATH */
     const ROUTE_PATH = 'backend/content/document';
 
-    /** @var DocumentTable */
+    /** @var DocumentTableGateway */
     protected $documentTable;
 
-    /** @var DocumentTypeTable */
+    /** @var DocumentTypeTableGateway */
     protected $documentTypeTable;
 
     /** @var TabTable */
@@ -55,16 +55,16 @@ class DocumentController extends AbstractActionController
 
     /**
      * DocumentController constructor.
-     * @param DocumentTable $objDocumentTable
-     * @param DocumentTypeTable $objDocumentTypeTable
+     * @param DocumentTableGateway $objDocumentTable
+     * @param DocumentTypeTableGateway $objDocumentTypeTable
      * @param TabTable $objTabTable
      * @param PropertyTable $objPropertyTable
      * @param PropertyValueTable $objPropertyValueTable
      * @param DocumentForm $objDocumentForm
      */
     public function __construct(
-        DocumentTable $objDocumentTable,
-        DocumentTypeTable $objDocumentTypeTable,
+        DocumentTableGateway $objDocumentTable,
+        DocumentTypeTableGateway $objDocumentTypeTable,
         TabTable $objTabTable,
         PropertyTable $objPropertyTable,
         PropertyValueTable $objPropertyValueTable,

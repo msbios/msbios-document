@@ -21,12 +21,12 @@ return [
             \Zend\Db\Adapter\AdapterInterface::class => Db\Adapter\AdapterServiceFactory::class,
 
             Table\DataTypeTable::class => Factory\DataTypeTableFactory::class,
-            Table\DocumentTable::class => Factory\DocumentTableFactory::class,
-            Table\DocumentTypeTable::class => Factory\DocumentTypeTableFactory::class,
+            Table\DocumentTableGateway::class => Factory\DocumentTableFactory::class,
+            Table\DocumentTypeTableGateway::class => Factory\DocumentTypeTableFactory::class,
             Table\PropertyTable::class => Factory\PropertyTableFactory::class,
             Table\PropertyValueTable::class => Factory\PropertyValueTableFactory::class,
             Table\TabTable::class => Factory\TabTableFactory::class,
-            Table\TemplateTable::class => Factory\TemplateTableFactory::class,
+            Table\TemplateTableGateway::class => Factory\TemplateTableFactory::class,
         ],
     ],
 

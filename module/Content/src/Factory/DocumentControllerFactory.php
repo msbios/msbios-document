@@ -9,8 +9,8 @@ use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
 use Kubnete\Content\Controller\DocumentController;
 use Kubnete\Content\Form\DocumentForm;
-use Kubnete\Resource\Table\DocumentTable;
-use Kubnete\Resource\Table\DocumentTypeTable;
+use Kubnete\Resource\Table\DocumentTableGateway;
+use Kubnete\Resource\Table\DocumentTypeTableGateway;
 use Kubnete\Resource\Table\PropertyTable;
 use Kubnete\Resource\Table\PropertyValueTable;
 use Kubnete\Resource\Table\TabTable;
@@ -40,8 +40,8 @@ class DocumentControllerFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         return new DocumentController(
-            $container->get(DocumentTable::class),
-            $container->get(DocumentTypeTable::class),
+            $container->get(DocumentTableGateway::class),
+            $container->get(DocumentTypeTableGateway::class),
             $container->get(TabTable::class),
             $container->get(PropertyTable::class),
             $container->get(PropertyValueTable::class),

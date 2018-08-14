@@ -6,7 +6,7 @@
 namespace KubneteTest\Development\Controller;
 
 use Kubnete\Development\Controller\TemplateController;
-use Kubnete\Resource\Table\TemplateTable;
+use Kubnete\Resource\Table\TemplateTableGateway;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Stdlib\ArrayUtils;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
@@ -59,8 +59,8 @@ class TemplateControllerTest extends AbstractHttpControllerTestCase
 
     public function testAddActionRedirectAfterValidPost()
     {
-        /** @var TemplateTable $templateTableMock */
-        $templateTableMock = $this->getMockBuilder(TemplateTable::class)
+        /** @var TemplateTableGateway $templateTableMock */
+        $templateTableMock = $this->getMockBuilder(TemplateTableGateway::class)
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -71,7 +71,7 @@ class TemplateControllerTest extends AbstractHttpControllerTestCase
         /** @var ServiceLocatorInterface $serviceManager */
         $serviceManager = $this->getApplicationServiceLocator();
         $serviceManager->setAllowOverride(true);
-        $serviceManager->setService(TemplateTable::class, $templateTableMock);
+        $serviceManager->setService(TemplateTableGateway::class, $templateTableMock);
 
         /** @var array $postData */
         $postData = [

@@ -10,7 +10,7 @@ use Interop\Container\Exception\ContainerException;
 use Kubnete\Frontend\View\Helper\ChildrenHelper;
 use Kubnete\Frontend\View\Helper\DocumentHelper;
 use Kubnete\Resource\Record\Document;
-use Kubnete\Resource\Table\DocumentTable;
+use Kubnete\Resource\Table\DocumentTableGateway;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
@@ -37,7 +37,7 @@ class ChildrenHelperFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         return new ChildrenHelper(
-            $container->get(DocumentTable::class),
+            $container->get(DocumentTableGateway::class),
             $container->get(Document::class)
         );
     }

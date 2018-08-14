@@ -1,11 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: judzhin
- * Date: 19.01.17
- * Time: 12:08
+ * @access protected
+ * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-
 namespace Kubnete\Development\Form;
 
 use Kubnete\Resource\Form\Element\TemplateTypeElement;
@@ -57,38 +54,38 @@ class TemplateForm extends Form
         $this->add([
             'name' => 'identifier',
             'type' => Text::class,
-            'options' => [
-                'label' => 'Identifier',
-                'label_attributes' => [
-                    'class'  => 'control-label'
-                ],
-            ],
+            //'options' => [
+            //    'label' => 'Identifier',
+            //    'label_attributes' => [
+            //        'class'  => 'control-label'
+            //    ],
+            //],
         ]);
 
         $this->add([
             'name' => 'description',
             'type' => Text::class,
-            'options' => [
-                'label' => 'Description',
-                'label_attributes' => [
-                    'class'  => 'control-label'
-                ],
-            ],
+            //'options' => [
+            //    'label' => 'Description',
+            //    'label_attributes' => [
+            //        'class'  => 'control-label'
+            //    ],
+            //],
         ]);
 
         $this->add([
             'name' => 'content',
             'type' => Textarea::class,
-            'attributes' => [
-                'id' => 'mirror',
-            ],
-
-            'options' => [
-                'label' => 'Content',
-                'label_attributes' => [
-                    'class'  => 'control-label'
-                ],
-            ],
+            //'attributes' => [
+            //    'id' => 'mirror',
+            //],
+            //
+            //'options' => [
+            //    'label' => 'Content',
+            //    'label_attributes' => [
+            //        'class'  => 'control-label'
+            //    ],
+            //],
         ]);
     }
 }

@@ -8,7 +8,7 @@ namespace Kubnete\Resource\Factory;
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
 use Kubnete\Resource\Record\Tab;
-use Kubnete\Resource\Table\DocumentTable;
+use Kubnete\Resource\Table\DocumentTableGateway;
 use Kubnete\Resource\Table\TabTable;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
@@ -34,7 +34,7 @@ class TabTableFactory implements FactoryInterface
      * @throws ServiceNotCreatedException if an exception is raised when
      *     creating a service.
      * @throws ContainerException if any other error occurs
-     * @return DocumentTable
+     * @return DocumentTableGateway
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {

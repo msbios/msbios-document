@@ -7,7 +7,7 @@ namespace Kubnete\Development\Controller;
 
 use Kubnete\Development\Form\DocumentTypeForm;
 use Kubnete\Resource\Record\DocumentType;
-use Kubnete\Resource\Table\DocumentTypeTable;
+use Kubnete\Resource\Table\DocumentTypeTableGateway;
 use Kubnete\Resource\Table\PropertyTable;
 use Kubnete\Resource\Table\TabTable;
 use Zend\Db\ResultSet\ResultSet;
@@ -21,11 +21,8 @@ use Zend\View\Model\ViewModel;
  */
 class DocumentTypeController extends AbstractActionController
 {
-    /** @const ROUTE_PATH */
-    const ROUTE_PATH = 'cpanel/development/document-type';
-
-    /** @var DocumentTypeTable */
-    protected $typeTable;
+    /** @var DocumentTypeTableGateway */
+    protected $resource;
 
     /** @var TabTable */
     protected $tabTable;
@@ -36,21 +33,27 @@ class DocumentTypeController extends AbstractActionController
     /** @var DocumentTypeForm */
     protected $form;
 
+    /** @const DEFAULT_ITEM_COUNT_PER_PAGE */
+    const DEFAULT_ITEM_COUNT_PER_PAGE = 10;
+
+    /** @const DEFAULT_CURRENT_PAGE_NUMBER */
+    const DEFAULT_CURRENT_PAGE_NUMBER = 1;
+
     /**
      * DocumentTypeController constructor.
-     * @param DocumentTypeTable $typeTable
+     * @param DocumentTypeTableGateway $resource
      * @param TabTable $tabTable
      * @param PropertyTable $propertyTable
      * @param DocumentTypeForm $form
      */
     public function __construct(
-        DocumentTypeTable $typeTable,
+        DocumentTypeTableGateway $resource,
         TabTable $tabTable,
         PropertyTable $propertyTable,
         DocumentTypeForm $form
     ) {
 
-        $this->typeTable = $typeTable;
+        $this->resource = $resource;
         $this->tabTable = $tabTable;
         $this->propertyTable = $propertyTable;
         $this->form = $form;
@@ -62,7 +65,15 @@ class DocumentTypeController extends AbstractActionController
     public function indexAction()
     {
         /** @var Paginator $paginator */
-        $paginator = $this->typeTable->fetchAll();
+        $paginator = $this->resource->fetchAll();
+
+        $paginator->setItemCountPerPage(
+            (int)$this->params()->fromQuery('limit', self::DEFAULT_ITEM_COUNT_PER_PAGE)
+        );
+
+        $paginator->setCurrentPageNumber(
+            (int)$this->params()->fromQuery('page', self::DEFAULT_CURRENT_PAGE_NUMBER)
+        );
 
         return new ViewModel([
             'paginator' => $paginator
@@ -88,7 +99,7 @@ class DocumentTypeController extends AbstractActionController
 
             if ($this->form->isValid()) {
                 $row->exchangeArray($this->form->getData());
-                $this->typeTable->save($row);
+                $this->resource->save($row);
 
                 $this->flashMessenger()
                     ->addMessage(
@@ -120,7 +131,7 @@ class DocumentTypeController extends AbstractActionController
 
         try {
             /** @var DocumentType $type */
-            $type = $this->typeTable
+            $type = $this->resource
                 ->getDocumentType($id);
 
             /** @var ResultSet $tabs */
@@ -162,7 +173,7 @@ class DocumentTypeController extends AbstractActionController
                 $object = $this->form->getData();
 
                 $type->exchangeArray($this->form->getData());
-                $this->typeTable->save($type);
+                $this->resource->save($type);
 
                 foreach ($object['tabs'] as $tab) {
                     $tab['document_type_id'] = $type['id'];

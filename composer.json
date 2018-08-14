@@ -1,67 +1,67 @@
 {
-    "name": "msbios/document",
-    "description": "MSBios Document",
-    "license": "MIT",
-    "keywords": [
-        "php"
-    ],
-    "homepage": "https://github.com/msbios/msbios-document",
-    "minimum-stability": "stable",
-    "authors": [
-        {
-            "name": "Judzhin Miles",
-            "email": "info@msbios.com"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "MSBios\\Document\\": "src/",
-            "Kubnete\\CPanel\\": "module/CPanel/src/",
-            "Kubnete\\Config\\": "module/Config/src/",
-            "Kubnete\\Content\\": "module/Content/src/",
-            "Kubnete\\DataType\\": "module/DataType/src/",
-            "Kubnete\\Development\\": "module/Development/src/",
-            "Kubnete\\Frontend\\": "module/Frontend/src/",
-            "Kubnete\\Module\\": "module/Module/src/",
-            "Kubnete\\Resource\\": "module/Resource/src/",
-            "Kubnete\\Statistic\\": "module/Statistic/src/",
-            "Kubnete\\Terminal\\": "module/Terminal/src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "MSBiosTest\\Document\\": "tests/"
-        }
-    },
-    "require": {
-        "msbios/application": "^1.0",
-        "msbios/cpanel": "^1.0",
-        "msbios/resource": "^1.0",
-        "msbios/authentication": "^1.0",
-        "msbios/guard": "^1.0",
-        "msbios/guard-cpanel": "^1.0",
-        "msbios/guard-resource": "^1.0",
-        "zendframework/zend-paginator": "^2.8"
-    },
-    "require-dev": {
-        "msbios/debug": "^1.0",
-        "msbios/test": "^1.0"
-    },
-    "scripts": {
-        "cs-check": "phpcs",
-        "cs-fix": "phpcbf",
-        "test": [
-            "@cs-check",
-            "phpunit --colors=always"
-        ],
-        "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
-        "upload-coverage": "coveralls -v",
-        "serve": "php -S 0.0.0.0:3107 -t public public/index.php",
-        "commit": "git add . && git commit -a -m \"Lazy Composer Commiter\" && git push"
-    },
-    "extra": {
-        "zf": {
-            "component": "MSBios\\Document"
-        }
+  "name": "msbios/document",
+  "description": "MSBios Document",
+  "license": "MIT",
+  "keywords": [
+    "php"
+  ],
+  "homepage": "https://github.com/msbios/msbios-document",
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "Judzhin Miles",
+      "email": "info@msbios.com"
     }
+  ],
+  "autoload": {
+    "psr-4": {
+      "MSBios\\Document\\": "src/",
+      "Kubnete\\CPanel\\": "module/CPanel/src/",
+      "Kubnete\\Config\\": "module/Config/src/",
+      "Kubnete\\Content\\": "module/Content/src/",
+      "Kubnete\\DataType\\": "module/DataType/src/",
+      "Kubnete\\Development\\": "module/Development/src/",
+      "Kubnete\\Frontend\\": "module/Frontend/src/",
+      "Kubnete\\Module\\": "module/Module/src/",
+      "Kubnete\\Resource\\": "module/Resource/src/",
+      "Kubnete\\Statistic\\": "module/Statistic/src/",
+      "Kubnete\\Terminal\\": "module/Terminal/src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "MSBiosTest\\Document\\": "tests/"
+    }
+  },
+  "require": {
+    "msbios/application": "^1.0",
+    "msbios/cpanel": "^1.0",
+    "msbios/resource": "^1.0",
+    "msbios/authentication": "^1.0",
+    "msbios/guard": "^1.0",
+    "msbios/guard-cpanel": "^1.0",
+    "msbios/guard-resource": "^1.0",
+    "zendframework/zend-paginator": "^2.8"
+  },
+  "require-dev": {
+    "msbios/debug": "^1.0",
+    "msbios/test": "^1.0"
+  },
+  "scripts": {
+    "cs-check": "phpcs",
+    "cs-fix": "phpcbf",
+    "test": [
+      "@cs-check",
+      "phpunit --colors=always"
+    ],
+    "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
+    "upload-coverage": "coveralls -v",
+    "serve": "php -S 0.0.0.0:3107 -t public public/index.php",
+    "commit": "git add . && git commit -a -m \"Lazy Composer Commiter\" && git push"
+  },
+  "extra": {
+    "zf": {
+      "component": "MSBios\\Document"
+    }
+  }
 }

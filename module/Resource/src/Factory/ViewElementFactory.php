@@ -12,9 +12,9 @@ use Kubnete\Resource\Record\DataType;
 use Kubnete\Resource\Record\Document;
 use Kubnete\Resource\Record\Property\Value;
 use Kubnete\Resource\Table\DataTypeTable;
-use Kubnete\Resource\Table\DocumentTable;
+use Kubnete\Resource\Table\DocumentTableGateway;
 use Kubnete\Resource\Table\PropertyValueTable;
-use Kubnete\Resource\Table\TemplateTable;
+use Kubnete\Resource\Table\TemplateTableGateway;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
@@ -39,12 +39,12 @@ class ViewElementFactory implements FactoryInterface
      * @throws ServiceNotCreatedException if an exception is raised when
      *     creating a service.
      * @throws ContainerException if any other error occurs
-     * @return DocumentTable
+     * @return DocumentTableGateway
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         return new ViewElement(
-            $container->get(TemplateTable::class)
+            $container->get(TemplateTableGateway::class)
         );
     }
 }

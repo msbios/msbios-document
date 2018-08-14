@@ -7,7 +7,7 @@
 namespace Kubnete\Frontend\EventManager;
 
 use Kubnete\Resource\Record\Document;
-use Kubnete\Resource\Table\DocumentTable;
+use Kubnete\Resource\Table\DocumentTableGateway;
 use Zend\EventManager\AbstractListenerAggregate;
 use Zend\EventManager\EventInterface;
 use Zend\EventManager\EventManagerInterface;
@@ -47,8 +47,8 @@ class DocumentListener extends AbstractListenerAggregate
         $serviceManager = $event->getApplication()
             ->getServiceManager();
 
-        /** @var DocumentTable $table */
-        $table = $serviceManager->get(DocumentTable::class);
+        /** @var DocumentTableGateway $table */
+        $table = $serviceManager->get(DocumentTableGateway::class);
 
         /** @var string $path */
         $path = ltrim($event->getRouteMatch()
@@ -68,13 +68,13 @@ class DocumentListener extends AbstractListenerAggregate
             /** @var string $uriKey */
             foreach ($explodePath as $uriKey) {
                 /** @var Document $document */
-                $document = $table->findByUriAndAncestor($uriKey, $parentUriKey);
+                $document = $table->fetchOneByUriAndAncestor($uriKey, $parentUriKey);
                 $parentUriKey = $uriKey;
             }
         } else {
 
             /** @var Document $document */
-            $document = $table->findByUriAndAncestor('');
+            $document = $table->fetchOneByUriAndAncestor('');
         }
 
         $serviceManager->setService(

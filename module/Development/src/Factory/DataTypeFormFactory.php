@@ -11,7 +11,7 @@ use Kubnete\DataType\Form\Element\DataTypeExtensionElement;
 use Kubnete\Development\Controller\TemplateController;
 use Kubnete\Development\Form\DataTypeForm;
 use Kubnete\Development\Form\TemplateForm;
-use Kubnete\Resource\Table\TemplateTable;
+use Kubnete\Resource\Table\TemplateTableGateway;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;

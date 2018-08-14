@@ -32,36 +32,25 @@ abstract class AbstractResourceTable
         $this->tableGateway = $tableGateway;
     }
 
-    public function fetch($id) {
-
-    }
-
-    /**
-     * @return TableGateway
-     */
-    public function getTableGateway()
-    {
-        return $this->tableGateway;
-    }
-
     /**
      * @param $id
      * @return ArrayObject
      * @throws RowNotFoundException
      */
-    protected function find($id)
+    public function fetch($id)
     {
-
         /** @var int $id */
-        $id = (int) $id;
+        $id = (int)$id;
 
         /** @var ResultSet $resultSet */
-        $resultSet = $this->getTableGateway()->select(['id' => $id]);
+        $resultSet = $this
+            ->tableGateway
+            ->select(['id' => $id]);
 
         /** @var ArrayObject $row */
         $row = $resultSet->current();
 
-        if (! $row) {
+        if (!$row) {
             throw new RowNotFoundException("Could not find row {$id}");
         }
 
@@ -69,9 +58,10 @@ abstract class AbstractResourceTable
     }
 
     /**
+     * @param array $data
      * @return Paginator
      */
-    public function fetchAll()
+    public function fetchAll($data = [])
     {
         /** @var TableGatewayInterface $tableGateway */
         $tableGateway = $this->tableGateway;
@@ -90,11 +80,40 @@ abstract class AbstractResourceTable
     }
 
     /**
-     * @param $id
+     * @param ArrayObject $object
+     * @return int
+     * @throws \Exception
      */
-    protected function delete($id)
+    public function save(ArrayObject $object)
     {
-        $this->tableGateway
-            ->delete(['id' => (int) $id]);
+        /** @var array $data */
+        $data = $object->getArrayCopy();
+
+        /** @var int $id */
+        $id = (int)$object['id'];
+
+        if (!$id) {
+            return $this->tableGateway
+                ->insert($data);
+        }
+
+        try {
+            if ($this->fetch($id)) {
+                $this->tableGateway
+                    ->update($data, ['id' => $id]);
+            }
+        } catch (RowNotFoundException $exception) {
+            throw new \Exception('Row with id does not exist!');
+        }
+    }
+
+    /**
+     * @param $id
+     * @return int
+     */
+    public function delete($id)
+    {
+        return $this->tableGateway
+            ->delete(['id' => (int)$id]);
     }
 }

@@ -5,7 +5,7 @@
  */
 namespace Kubnete\Resource\Record;
 
-use Kubnete\Resource\Table\DocumentTable;
+use Kubnete\Resource\Table\DocumentTableGateway;
 use Zend\Stdlib\ArrayObject;
 
 /**

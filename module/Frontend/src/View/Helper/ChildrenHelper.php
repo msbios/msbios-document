@@ -9,7 +9,7 @@
 namespace Kubnete\Frontend\View\Helper;
 
 use Kubnete\Resource\Record\Document;
-use Kubnete\Resource\Table\DocumentTable;
+use Kubnete\Resource\Table\DocumentTableGateway;
 use Zend\View\Helper\AbstractHelper;
 
 /**
@@ -22,10 +22,10 @@ class ChildrenHelper extends DocumentHelper
 
     /**
      * ChildrenHelper constructor.
-     * @param DocumentTable $table
+     * @param DocumentTableGateway $table
      * @param Document $document
      */
-    public function __construct(DocumentTable $table, Document $document)
+    public function __construct(DocumentTableGateway $table, Document $document)
     {
         parent::__construct($document);
         $this->table = $table;

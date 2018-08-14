@@ -5,7 +5,7 @@
  */
 namespace Kubnete\Resource\Form\Element;
 
-use Kubnete\Resource\Table\TemplateTable;
+use Kubnete\Resource\Table\TemplateTableGateway;
 use Zend\Form\Element\Select;
 
 /**
@@ -16,12 +16,12 @@ class LayoutElement extends Select
 {
     /**
      * LayoutElement constructor.
-     * @param TemplateTable $objTable
+     * @param TemplateTableGateway $objTable
      * @param array|string $strName
      * @param array $arrOptions
      */
     public function __construct(
-        TemplateTable $objTable,
+        TemplateTableGateway $objTable,
         $strName = __CLASS__,
         array $arrOptions = []
     ) {
