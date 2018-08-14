@@ -86,8 +86,10 @@ class AbstractActionController extends DefaultAbstractActionController
         );
 
         if ($this->getRequest()->isPost()) {
+
             /** @var ArrayObject $row */
             $row = static::factory();
+
             $this->form->setInputFilter($row->getInputFilter());
 
             /** @var array $data */
