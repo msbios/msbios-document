@@ -145,10 +145,6 @@ class AbstractActionController extends DefaultAbstractActionController
         $matchedRouteName = $this->getMatchedRouteName();
 
         if (!$id) {
-
-            $this->flashMessenger()
-                ->addInfoMessage("Row with identifier '{$id}' was not found.");
-
             return $this->redirect()
                 ->toRoute($matchedRouteName, ['action' => 'add']);
         }
@@ -157,6 +153,9 @@ class AbstractActionController extends DefaultAbstractActionController
             /** @var ArrayObject $row */
             $row = $this->resource->fetch($id);
         } catch (\Exception $ex) {
+            $this->flashMessenger()
+                ->addInfoMessage($ex->getMessage());
+
             return $this->redirect()
                 ->toRoute($matchedRouteName);
         }
