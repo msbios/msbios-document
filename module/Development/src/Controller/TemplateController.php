@@ -44,12 +44,13 @@ class TemplateController extends AbstractActionController
         /** @var string $filename */
         $filename = './data/tmp';
 
-        if (is_dir(!$filename)) {
+        if (is_dir(! $filename)) {
             mkdir($filename, 0777, true);
         }
 
         $filename .= sprintf(
-            '/%s.phtml', $row['identifier']
+            '/%s.phtml',
+            $row['identifier']
         );
 
         file_put_contents($filename, $row['code']);

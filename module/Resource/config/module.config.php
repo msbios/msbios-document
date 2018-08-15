@@ -6,23 +6,14 @@
 namespace Kubnete\Resource;
 
 return [
-    'db' => [
-        'driver' => 'Pdo',
-        'dsn' => 'mysql:dbname=kubnete.dev;host=localhost',
-        'username' => 'root',
-        'password' => 'root',
-        'driver_options' => [
-            \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-        ],
-    ],
-
     'service_manager' => [
         'factories' => [
-            \Zend\Db\Adapter\AdapterInterface::class => Db\Adapter\AdapterServiceFactory::class,
+            // \Zend\Db\Adapter\AdapterInterface::class => Db\Adapter\AdapterServiceFactory::class,
 
             Table\DataType::class => Factory\DataTypeTableFactory::class,
             Table\DocumentTableGateway::class => Factory\DocumentTableFactory::class,
-            Table\DocumentTypeGateway::class => Factory\DocumentTypeTableFactory::class,
+            Table\DocumentTypeTableGateway::class =>
+                Factory\DocumentTypeTableGatewayFactory::class,
             Table\Property::class => Factory\PropertyTableFactory::class,
             Table\PropertyValueTable::class => Factory\PropertyValueTableFactory::class,
             Table\Tab::class => Factory\TabTableFactory::class,

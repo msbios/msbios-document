@@ -36,12 +36,12 @@ if (! empty($_POST)) {
         } else {
             $value = htmlspecialchars((string)$value);
         }
-?>
+        ?>
         <tr>
             <th style="vertical-align: top"><?php echo htmlspecialchars((string)$key); ?></th>
             <td><pre class="samples"><?php echo $value; ?></pre></td>
         </tr>
-    <?php
+        <?php
     }
 }
 ?>

@@ -9,10 +9,9 @@ use Kubnete\Resource\Record\Document;
 use Kubnete\Resource\Record\DocumentType;
 
 /**
- * Class DocumentTypeTableGateway
- * @package Kubnete\Resource\Table
+ * 
  */
-class DocumentTypeGateway extends AbstractResource
+class DocumentTypeTableGateway extends AbstractResource
 {
     /**
      * @param $id

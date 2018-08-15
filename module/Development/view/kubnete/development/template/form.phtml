@@ -62,11 +62,15 @@ $this->headScript()
 
             <?= $this->partial('partial/element.phtml', [
                 'element' => (new Textarea('ace', ['attributes' => ['id' => 'ace']]))
-                    ->setValue($form->get('code')->getValue()),
+                    ->setValue($form->get('code')->getValue())->setAttributes([
+                        'required' => 'required'
+                    ]),
                 'label' => $this->translate('Code')
             ]); ?>
 
-            <?= $this->formElement($form->get('code')); ?>
+            <?= $this->partial('partial/element.phtml', [
+                'element' => $form->get('code'),
+            ]); ?>
 
             <div class="text-right">
                 <?= $this->formRow($form->get('id')); ?>

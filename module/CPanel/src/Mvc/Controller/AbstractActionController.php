@@ -42,7 +42,8 @@ class AbstractActionController extends DefaultAbstractActionController
     /**
      * @return string
      */
-    protected function getMatchedRouteName() {
+    protected function getMatchedRouteName()
+    {
         return $this
             ->getEvent()
             ->getRouteMatch()
@@ -89,33 +90,35 @@ class AbstractActionController extends DefaultAbstractActionController
             $argv = [];
 
             $argv[0] = static::factory();
-            $this->form->setInputFilter($argv[0]->getInputFilter());
+            $this->form
+                ->setInputFilter($argv[0]->getInputFilter());
 
-            $argv[1] = $this->params()->fromPost();
-            $this->form->setData($argv[1]);
+            $argv[1] = $this->params()
+                ->fromPost();
+            $this->form
+                ->setData($argv[1]);
 
             /** @var EventManagerInterface $eventManager */
             $eventManager = $this->getEventManager();
 
             if ($this->form->isValid()) {
-
-                $argv[2] = $this->form->getData();
+                $argv[2] = $this->form
+                    ->getData();
                 $argv[0]->exchangeArray($argv[2]);
 
                 $eventManager
                     ->trigger(self::EVENT_PRE_PERSIST_DATA, $this, $argv);
 
-                $this->resource->save($argv[0]);
+                $this->resource
+                    ->save($argv[0]);
 
                 $eventManager
                     ->trigger(self::EVENT_POST_PERSIST_DATA, $this, $argv);
 
-                $this
-                    ->flashMessenger()
+                $this->flashMessenger()
                     ->addSuccessMessage("Row '{$argv[0]['name']}' was added.");
 
-                return $this
-                    ->redirect()
+                return $this->redirect()
                     ->toRoute($matchedRouteName);
             } else {
                 $eventManager
@@ -157,11 +160,10 @@ class AbstractActionController extends DefaultAbstractActionController
                 ->toRoute($matchedRouteName);
         }
 
-        $this->form->setAttribute('action',
-            $this->url()->fromRoute($matchedRouteName, [
-                'id' => $row['id']
-            ])
-        );
+        $this->form->setAttribute('action', $this->url()->fromRoute($matchedRouteName, [
+            'action' => 'edit',
+            'id' => $row['id']
+        ]));
 
         $this->form->bind($row);
 
@@ -169,7 +171,7 @@ class AbstractActionController extends DefaultAbstractActionController
             $this->form->setInputFilter($row->getInputFilter());
 
             /** @var array $params */
-            $data = $this->params()->getPost();
+            $data = $this->params()->fromPost();
             $this->form->setData($data);
 
             if ($this->form->isValid()) {
@@ -179,14 +181,16 @@ class AbstractActionController extends DefaultAbstractActionController
                 $row->exchangeArray($this->form->getData());
 
                 $this->getEventManager()->trigger(
-                    self::EVENT_PRE_MERGE_DATA, $this,
+                    self::EVENT_PRE_MERGE_DATA,
+                    $this,
                     ['row' => $row, 'data' => $data, 'values' => $values]
                 );
 
                 $this->resource->save($row);
 
                 $this->getEventManager()->trigger(
-                    self::EVENT_POST_MERGE_DATA, $this,
+                    self::EVENT_POST_MERGE_DATA,
+                    $this,
                     ['row' => $row, 'data' => $data, 'values' => $values]
                 );
 
@@ -212,6 +216,7 @@ class AbstractActionController extends DefaultAbstractActionController
         /** @var string $id */
         $id = $this->params()->fromRoute('id');
 
+        /** @var ArrayObject $row */
         if ($row = $this->resource->fetch($id)) {
             $this->flashMessenger()
                 ->addSuccessMessage("Row '{$row['name']}' was deleted.");
@@ -219,18 +224,21 @@ class AbstractActionController extends DefaultAbstractActionController
             /** @var EventManagerInterface $eventManager */
             $eventManager = $this->getEventManager();
             $eventManager->trigger(
-                self::EVENT_PRE_REMOVE_DATA, $this, ['row' => $row]
+                self::EVENT_PRE_REMOVE_DATA,
+                $this,
+                ['row' => $row]
             );
 
             $this->resource->delete($id);
 
             $eventManager->trigger(
-                self::EVENT_POST_REMOVE_DATA, $this, ['row' => $row]
+                self::EVENT_POST_REMOVE_DATA,
+                $this,
+                ['row' => $row]
             );
         }
 
-        return $this
-            ->redirect()
+        return $this->redirect()
             ->toRoute($this->getMatchedRouteName());
     }
 }

@@ -60,8 +60,8 @@ $this->headScript()
                 $hasError = (bool)count($messages);
                 ?>
                 <div class="form-group <?php if ($hasError) :
-?>has-warning has-feedback<?php
-endif; ?>">
+                    ?>has-warning has-feedback<?php
+                                       endif; ?>">
                     <?= $this->formLabel($element); ?>
                     <div class="col-lg-10">
                         <?= $this->formElement($element); ?>
@@ -89,8 +89,8 @@ endif; ?>">
                 $hasError = (bool)count($messages);
                 ?>
                 <div class="form-group <?php if ($hasError) :
-?>has-warning has-feedback<?php
-endif; ?>">
+                    ?>has-warning has-feedback<?php
+                                       endif; ?>">
                     <?= $this->formLabel($element); ?>
                     <div class="col-lg-10">
                         <?= $this->formElement($element); ?>

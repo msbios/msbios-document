@@ -47,7 +47,8 @@ class IndexController extends AbstractActionController
     public function indexAction()
     {
 
-        echo __METHOD__; die();
+        echo __METHOD__;
+        die();
 
         /** @var ViewModel $viewModel */
         $viewModel = new ViewModel;

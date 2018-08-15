@@ -39,8 +39,6 @@ return [
         'MSBios\Guard\CPanel',
         'MSBios\Guard\Resource',
 
-        'MSBios\Document',
-
         'Kubnete\Frontend',
         'Kubnete\CPanel',
         'Kubnete\Config',
@@ -51,6 +49,8 @@ return [
         'Kubnete\Resource',
         'Kubnete\Statistic',
         'Kubnete\Terminal',
+
+        'MSBios\Document',
 
         'Zend\Log',
         'ZendDeveloperTools',

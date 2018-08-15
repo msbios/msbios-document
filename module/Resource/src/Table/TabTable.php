@@ -22,7 +22,7 @@ class Tab extends AbstractResource
      */
     public function fetchByDocumentType(DocumentType $objRow)
     {
-        return $this->tableGateway->select(function(Select $objSelect) use ($objRow) {
+        return $this->tableGateway->select(function (Select $objSelect) use ($objRow) {
             $objSelect->where([
                 'document_type_id' => $objRow['id']
             ]);

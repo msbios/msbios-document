@@ -44,7 +44,7 @@ $this->headScript()
                     ?>
                     <div class="form-group <?php if ($hasError) :
                         ?>has-warning has-feedback<?php
-                    endif; ?>">
+                                           endif; ?>">
                         <?= $this->formLabel($element); ?>
                         <div class="col-lg-10">
                             <?= $this->formElement($element); ?>
@@ -73,7 +73,7 @@ $this->headScript()
                     ?>
                     <div class="form-group <?php if ($hasError) :
                         ?>has-warning has-feedback<?php
-                    endif; ?>">
+                                           endif; ?>">
                         <?= $this->formLabel($element); ?>
                         <div class="col-lg-10">
                             <?= $this->formElement($element); ?>
@@ -105,7 +105,7 @@ $this->headScript()
                     ?>
                     <div class="form-group <?php if ($hasError) :
                         ?>has-warning has-feedback<?php
-                    endif; ?>">
+                                           endif; ?>">
                         <?= $this->formLabel($element); ?>
                         <div class="col-lg-10">
                             <?= $this->formElement($element); ?>
@@ -143,9 +143,9 @@ $this->headScript()
                         <ul class="nav nav-tabs nav-tabs-highlight">
 
                             <?php foreach ($this->form->get('tabs') as $i => $tab) : ?>
-                                <li class="<?php if (!$i) :
+                                <li class="<?php if (! $i) :
                                     ?>active<?php
-                                endif; ?>">
+                                           endif; ?>">
                                     <a href="#tab-properties-<?= $i; ?>" data-toggle="tab">
                                         <?= $tab->get('name')->getValue(); ?>
                                     </a>
@@ -155,9 +155,9 @@ $this->headScript()
 
                         <div class="tab-content">
                             <?php foreach ($this->form->get('tabs') as $t => $tab) : ?>
-                                <div class="tab-pane <?php if (!$t) :
+                                <div class="tab-pane <?php if (! $t) :
                                     ?>active<?php
-                                endif; ?>"
+                                                     endif; ?>"
                                      id="tab-properties-<?= $t; ?>">
 
                                     <div class="panel-group accordion-sortable content-group-lg ui-sortable"
@@ -187,9 +187,9 @@ $this->headScript()
                                                 </div>
 
                                                 <div id="property-item-<?= $t; ?>-<?= $p; ?>"
-                                                     class="panel-collapse collapse <?php if (!$p) :
-                                                         ?>in<?php
-                                                     endif; ?>"
+                                                     class="panel-collapse collapse <?php if (! $p) :
+                                                            ?>in<?php
+                                                                                    endif; ?>"
                                                      aria-expanded="true">
                                                     <div class="panel-body">
 
@@ -206,7 +206,7 @@ $this->headScript()
                                                         <div
                                                                 class="form-group <?php if ($hasError) :
                                                                     ?>has-warning has-feedback<?php
-                                                                endif; ?>">
+                                                                                  endif; ?>">
                                                             <?= $this->formLabel($element); ?>
                                                             <div class="col-lg-10">
                                                                 <?= $this->formElement($element); ?>
@@ -236,7 +236,7 @@ $this->headScript()
                                                         <div
                                                                 class="form-group <?php if ($hasError) :
                                                                     ?>has-warning has-feedback<?php
-                                                                endif; ?>">
+                                                                                  endif; ?>">
                                                             <?= $this->formLabel($element); ?>
                                                             <div class="col-lg-10">
                                                                 <?= $this->formElement($element); ?>
@@ -266,7 +266,7 @@ $this->headScript()
                                                         <div
                                                                 class="form-group <?php if ($hasError) :
                                                                     ?>has-warning has-feedback<?php
-                                                                endif; ?>">
+                                                                                  endif; ?>">
                                                             <?= $this->formLabel($element); ?>
                                                             <div class="col-lg-10">
                                                                 <?= $this->formElement($element); ?>
@@ -296,7 +296,7 @@ $this->headScript()
                                                         <div
                                                                 class="form-group <?php if ($hasError) :
                                                                     ?>has-warning has-feedback<?php
-                                                                endif; ?>">
+                                                                                  endif; ?>">
                                                             <?= $this->formLabel($element); ?>
                                                             <div class="col-lg-10">
                                                                 <?= $this->formElement($element); ?>
@@ -389,7 +389,7 @@ $this->headScript()
                                     ?>
                                     <div class="<?php if ($hasError) :
                                         ?>has-warning has-feedback<?php
-                                    endif; ?>">
+                                                endif; ?>">
 
                                         <?= $this->formElement($element); ?>
                                         <?php if (count($messages)) : ?>
@@ -415,7 +415,7 @@ $this->headScript()
                                     ?>
                                     <div class="<?php if ($hasError) :
                                         ?>has-warning has-feedback<?php
-                                    endif; ?>">
+                                                endif; ?>">
 
                                         <?= $this->formElement($element); ?>
                                         <?php if (count($messages)) : ?>

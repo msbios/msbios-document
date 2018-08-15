@@ -39,8 +39,8 @@ namespace Kubnete\Content;
 
                     <?php foreach ($this->tabs as $i => $objTabRow) : ?>
                         <li<?php if (! $i) :
-?> class="active"<?php
-endif; ?>>
+                            ?> class="active"<?php
+                           endif; ?>>
                             <a href="#tab-item-<?= $i; ?>" data-toggle="tab">
                                 <?= $objTabRow['name']; ?>
                             </a>
@@ -58,8 +58,8 @@ endif; ?>>
 
                     <?php foreach ($this->tabs as $i => $objTabRow) : ?>
                         <div class="tab-pane<?php if (! $i) :
-?> active<?php
-endif; ?>"
+                            ?> active<?php
+                                            endif; ?>"
                              id="tab-item-<?= $i; ?>">
 
                             <?php foreach ($objTabRow['properties'] as $objPropertyRow) : ?>
@@ -76,8 +76,8 @@ endif; ?>"
                                 ?>
                                 <div
                                     class="form-group <?php if ($hasError) :
-?>has-warning has-feedback<?php
-endif; ?>">
+                                        ?>has-warning has-feedback<?php
+                                                      endif; ?>">
 
                                     <label class="control-label col-lg-2">
                                         <?= $objPropertyRow['name']; ?>
@@ -120,8 +120,8 @@ endif; ?>">
                         $hasError = (bool)count($messages);
                         ?>
                         <div class="form-group <?php if ($hasError) :
-?>has-warning has-feedback<?php
-endif; ?>">
+                            ?>has-warning has-feedback<?php
+                                               endif; ?>">
                             <?= $this->formLabel($element); ?>
                             <div class="col-lg-10">
                                 <?= $this->formElement($element); ?>
@@ -149,8 +149,8 @@ endif; ?>">
                         $hasError = (bool)count($messages);
                         ?>
                         <div class="form-group <?php if ($hasError) :
-?>has-warning has-feedback<?php
-endif; ?>">
+                            ?>has-warning has-feedback<?php
+                                               endif; ?>">
                             <?= $this->formLabel($element); ?>
                             <div class="col-lg-10">
                                 <?= $this->formElement($element); ?>
@@ -186,8 +186,8 @@ endif; ?>">
                         $hasError = (bool)count($messages);
                         ?>
                         <div class="form-group <?php if ($hasError) :
-?>has-warning has-feedback<?php
-endif; ?>">
+                            ?>has-warning has-feedback<?php
+                                               endif; ?>">
                             <?= $this->formLabel($element); ?>
                             <div class="col-lg-10">
                                 <?= $this->formElement($element); ?>
@@ -215,8 +215,8 @@ endif; ?>">
                         $hasError = (bool)count($messages);
                         ?>
                         <div class="form-group <?php if ($hasError) :
-?>has-warning has-feedback<?php
-endif; ?>">
+                            ?>has-warning has-feedback<?php
+                                               endif; ?>">
                             <?= $this->formLabel($element); ?>
                             <div class="col-lg-10">
                                 <?= $this->formElement($element); ?>

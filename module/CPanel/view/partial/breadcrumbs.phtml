@@ -10,7 +10,6 @@ $pages = $this->pages;
 ?>
 
 <?php if (count($pages)) : ?>
-
     <!-- Page header -->
     <div class="page-header">
         <div class="page-header-content">
@@ -27,7 +26,6 @@ $pages = $this->pages;
                     <li><a href="<?= $this->url('backend'); ?>">Dashboard</a></li>
 
                     <?php foreach ($pages as $key => $page) : ?>
-
                         <?php if ($key < count($this->pages) - 1) : ?>
                             <li>
                                 <a href="<?= $page->getHref(); ?>">

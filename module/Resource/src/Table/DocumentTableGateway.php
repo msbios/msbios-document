@@ -69,7 +69,7 @@ class DocumentTableGateway extends AbstractResource
                 $predicate->equalTo('cnt_t_documents.uri', $uri);
                 $predicateSet->addPredicate($predicate);
 
-                if (!is_null($ancestor)) {
+                if (! is_null($ancestor)) {
                     /** @var Predicate $predicate */
                     $predicate = new Predicate;
                     $predicate->equalTo('d.uri', $ancestor);

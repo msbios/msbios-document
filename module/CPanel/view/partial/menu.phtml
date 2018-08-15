@@ -9,7 +9,6 @@ namespace Kubnete\CPanel;
 <ul class="nav navbar-nav">
     <?php foreach ($this->container as $page) : ?>
         <?php if ($this->navigation()->accept($page)) : ?>
-
             <?php if (! $page->hasPages()) : ?>
                 <li>
                     <a href="<?= $page->getHref(); ?>">

@@ -12,7 +12,6 @@ use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\Sql\Predicate\Predicate;
 use Zend\Db\Sql\Select;
 
-
 /**
  * Class PropertyValueTable
  * @package Kubnete\Resource\Table
