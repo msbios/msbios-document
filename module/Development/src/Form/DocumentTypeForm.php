@@ -8,7 +8,7 @@
 
 namespace Kubnete\Development\Form;
 
-use Kubnete\DataType\Form\Element\DataTypeExtensionElement;
+use Kubnete\DataType\Form\Element\Select;
 use Kubnete\Resource\Form\Element\TemplateTypeElement;
 use Kubnete\Resource\Form\Element\ViewElement;
 use Zend\Form\Element\Collection;

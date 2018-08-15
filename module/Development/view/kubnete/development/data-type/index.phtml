@@ -16,7 +16,7 @@ $this->headScript()
 <div class="row">
     <div class="col-md-12">
 
-        <?php if (! $this->paginator->count()) : ?>
+        <?php if (!$this->paginator->count()) : ?>
             <div class="alert alert-info no-border" role="alert">
                 <h4><?= $this->translate('Information message'); ?></h4>
                 <p><?= $this->translate('The database is not created at the moment no datatypes, click "Create new datatype" to start working with the datatype.'); ?></p>
@@ -73,7 +73,7 @@ $this->headScript()
                         <tr>
                             <th style="width: 50px;">#</th>
                             <th><?= $this->translate('Name'); ?></th>
-                            <th><?= $this->translate('Default'); ?></th>
+                            <th><?= $this->translate('Description'); ?></th>
                             <th><?= $this->translate('Created At'); ?></th>
                             <th width="1px" class="text-center">
                                 <?= $this->translate('Actions'); ?>
@@ -87,7 +87,7 @@ $this->headScript()
                             <tr>
                                 <td><?= $this->escapeHtml($item['id']); ?></td>
                                 <td><?= $this->escapeHtml($item['name']); ?></td>
-                                <td><?= $this->escapeHtml($item['prevalue']); ?></td>
+                                <td><?= $this->escapeHtml($item['description']); ?></td>
                                 <td><?= $this->escapeHtml($item['createdat']); ?></td>
                                 <td class="text-center">
 

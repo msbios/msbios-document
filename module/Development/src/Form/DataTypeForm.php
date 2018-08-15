@@ -1,17 +1,13 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: judzhin
- * Date: 19.01.17
- * Time: 12:08
+ * @access protected
+ * @author Jduzhin Miles <info[woof-woof]msbios.com>
  */
 
 namespace Kubnete\Development\Form;
 
-use Kubnete\DataType\Form\Element\DataTypeExtensionElement;
-use Kubnete\Resource\Form\Element\TemplateTypeElement;
+use Kubnete\Development\Form\Element\FormElementSelect;
 use Zend\Form\Element\Text;
-use Zend\Form\Element\Textarea;
 use Zend\Form\Form;
 use Zend\Http\PhpEnvironment\Request;
 
@@ -23,33 +19,36 @@ class DataTypeForm extends Form
 {
     /**
      * DataTypeForm constructor.
-     * @param DataTypeExtensionElement $dataTypeId
-     * @param array|string $name
+     * @param int|null|string $name
      * @param array|null $options
      */
-    public function __construct(DataTypeExtensionElement $dataTypeId, $name = __CLASS__, array $options = null)
+    public function __construct($name = __CLASS__, array $options = null)
     {
         parent::__construct($name, $options);
         $this->setAttribute('method', Request::METHOD_POST);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
 
         $this->add([
             'name' => 'id',
             'type' => 'Hidden',
-        ]);
-
-        $this->add([
+        ])->add([
             'name' => 'name',
             'type' => Text::class,
-            'options' => [
-                'label' => 'Name',
-                'label_attributes' => [
-                    'class'  => 'control-label'
-                ],
-            ]
+        ])->add([
+            'name' => 'description',
+            'type' => Text::class,
+        ])->add([
+            'name' => 'form_element',
+            'type' => FormElementSelect::class
         ]);
-
-        $dataTypeId->setName('form_element');
-        $dataTypeId->setOptions(['label' => 'Element']);
-        $this->add($dataTypeId);
     }
+
+
 }

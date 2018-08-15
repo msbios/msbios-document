@@ -1,0 +1,80 @@
+<?php
+/**
+ * @access protected
+ * @author Judzhin Miles <info[woof-woof]msbios.com>
+ */
+namespace MSBios\CPanel;
+
+$form = $this->form;
+$form->prepare();
+
+$this->headScript()
+    ->appendFile($this->basePath('limitless/assets/js/plugins/editors/ace/ace.js'));
+
+?>
+
+    <div class="panel panel-flat">
+
+        <div class="panel-body">
+            <?= $this->form()->openTag($form->setAttributes([
+                'class' => 'form-horizontal',
+                'role' => 'form'
+            ])); ?>
+
+            <?= $this->partial('partial/element.phtml', [
+                'element' => $form->get('name')
+                    ->setAttributes([
+                        'required' => 'required',
+                        'placeholder' => $this->translate('Enter name')
+                    ]),
+                'label' => $this->translate('Name'),
+            ]); ?>
+
+            <?= $this->partial('partial/element.phtml', [
+                'element' => $form->get('description')
+                    ->setAttributes([
+                        'placeholder' => $this->translate('Enter name')
+                    ]),
+                'label' => $this->translate('Description'),
+            ]); ?>
+
+            <?= $this->partial('partial/element.phtml', [
+                'element' => $form->get('form_element')
+                    ->setAttributes([
+                        'required' => 'required',
+                        'placeholder' => $this->translate('Enter template name')
+                    ]),
+                'label' => $this->translate('Form Element')
+            ]); ?>
+
+            <div class="text-right">
+                <?= $this->formRow($form->get('id')); ?>
+                <a href="<?= $this->url($this->matchedRouteName); ?>" class="btn btn-link">
+                    <?= $this->translate('Back to the list of entries'); ?>
+                </a>
+                <button type="reset" class="btn btn-default">
+                    <?= $this->translate('Reset'); ?>
+                </button>
+                <button type="submit" class="btn btn-primary">
+                    <?= $this->translate('Submit'); ?>
+                    <i class="icon-arrow-right14 position-right"></i>
+                </button>
+            </div>
+
+            <?= $this->form()->closeTag(); ?>
+        </div>
+    </div>
+
+<?php $this->inlineScript()->captureStart();
+echo <<<'JS'
+    // PHP editor
+    var editor = ace.edit("ace");
+        editor.setTheme("ace/theme/monokai");
+        editor.getSession().setMode("ace/mode/php");
+        editor.setShowPrintMargin(false);
+        editor.getSession().on("change", function () {
+            $('input[name="code"]').val(editor.getSession().getValue());
+        });
+JS;
+$this->inlineScript()->captureEnd();
+?>

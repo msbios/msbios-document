@@ -43,7 +43,6 @@ return [
         'Kubnete\CPanel',
         'Kubnete\Config',
         'Kubnete\Content',
-        'Kubnete\DataType',
         'Kubnete\Development',
         'Kubnete\Module',
         'Kubnete\Resource',

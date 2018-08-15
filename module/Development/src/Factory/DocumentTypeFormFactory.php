@@ -7,7 +7,7 @@ namespace Kubnete\Development\Factory;
 
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
-use Kubnete\DataType\Form\Element\DataTypeExtensionElement;
+use Kubnete\DataType\Form\Element\Select;
 use Kubnete\Development\Controller\TemplateController;
 use Kubnete\Development\Form\DataTypeForm;
 use Kubnete\Development\Form\DocumentTypeForm;

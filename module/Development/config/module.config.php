@@ -5,9 +5,19 @@
  */
 namespace Kubnete\Development;
 
+use Zend\Form\Element\File;
+use Zend\Form\Element\Text;
+use Zend\Form\Element\Textarea;
 use Zend\Router\Http\Segment;
+use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
+
+    'service_manager' => [
+        'factories' => [
+            Module::class => Factory\ModuleFactory::class
+        ],
+    ],
 
     'controllers' => [
         'invokables' => [
@@ -21,16 +31,25 @@ return [
     ],
 
     'form_elements' => [
-        'invokables' => [
 
-            Form\TemplateForm::class => Form\TemplateForm::class,
-        ],
         'factories' => [
-            Form\TypeTab\PropertyFieldset::class => Factory\TypeTab\PropertyFieldsetFactory::class,
+            // Elements
 
-            Form\DataTypeForm::class => Factory\DataTypeFormFactory::class,
-            Form\DocumentTypeForm::class => Factory\DocumentTypeFormFactory::class,
-            Form\TypeTabFieldset::class => Factory\TypeTabFieldsetFactory::class,
+            Form\Element\FormElementSelect::class =>
+                Factory\FormElementSelectFactory::class,
+
+            Form\TypeTab\PropertyFieldset::class =>
+                Factory\TypeTab\PropertyFieldsetFactory::class,
+
+            // Forms
+            Form\TemplateForm::class =>
+                InvokableFactory::class,
+            Form\DataTypeForm::class =>
+                InvokableFactory::class,
+            Form\DocumentTypeForm::class =>
+                Factory\DocumentTypeFormFactory::class,
+            Form\TypeTabFieldset::class =>
+                Factory\TypeTabFieldsetFactory::class,
         ]
     ],
 
@@ -245,10 +264,16 @@ return [
             'template' => './data/tmp'
         ],
         'template_map' => [
-            'kubnete/development/template/add'
-                => __DIR__ . '/../view/kubnete/development/template/form.phtml',
-            'kubnete/development/template/edit'
-                => __DIR__ . '/../view/kubnete/development/template/form.phtml',
+
+            'kubnete/development/data-type/add' =>
+                __DIR__ . '/../view/kubnete/development/data-type/form.phtml',
+            'kubnete/development/data-type/edit' =>
+                __DIR__ . '/../view/kubnete/development/data-type/form.phtml',
+
+            'kubnete/development/template/add' =>
+                __DIR__ . '/../view/kubnete/development/template/form.phtml',
+            'kubnete/development/template/edit' =>
+                __DIR__ . '/../view/kubnete/development/template/form.phtml',
         ],
     ],
 
@@ -279,7 +304,7 @@ return [
                         ]
                     ],
                     'template' => [
-                        'label' => 'Template',
+                        'label' => 'Templates',
                         'title' => 'List of Templates',
                         'route' => 'cpanel/template',
                         'order' => 200,
@@ -341,4 +366,33 @@ return [
             ]
         ],
     ],
+
+    Module::class => [
+        'form_elements' => [
+            'textfield' => [
+                'name' => 'Zend\Form\Element\Text',
+                'description' => 'This element automatically adds a type attribute of value text.',
+                'author' => 'Zend Framework',
+                'date' => 2018,
+                'version' => '0.0.1',
+                'factory' => Text::class
+            ],
+            'textarea' => [
+                'name' => 'Zend\Form\Element\Textarea',
+                'description' => 'This element automatically adds a type attribute of value textarea.',
+                'author' => 'Zend Framework',
+                'date' => 2017,
+                'version' => '0.0.1',
+                'factory' => Textarea::class
+            ],
+            'file' => [
+                'name' => 'Zend\Form\Element\File',
+                'description' => 'This element automatically adds a type attribute of value file. It will also set the form\'s enctype to multipart/form-data during $form->prepare().',
+                'author' => 'Judzhin Miles <info[woof-woof]msbios.com>',
+                'date' => 2017,
+                'version' => '0.0.1',
+                'factory' => File::class
+            ]
+        ]
+    ]
 ];
