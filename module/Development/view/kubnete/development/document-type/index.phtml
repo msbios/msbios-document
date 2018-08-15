@@ -5,6 +5,8 @@
  */
 namespace MSBios\CPanel;
 
+use Kubnete\Resource\Record\DocumentType;
+
 $this->headScript()
     ->appendFile($this->basePath('limitless/assets/js/plugins/forms/styling/switch.min.js'))
     ->appendFile($this->basePath('limitless/assets/js/plugins/forms/styling/switchery.min.js'))
@@ -68,10 +70,9 @@ $this->headScript()
                         <tr>
                             <th style="width: 50px;">#</th>
                             <th><?= $this->translate('Name'); ?></th>
+                            <th><?= $this->translate('View'); ?></th>
                             <th><?= $this->translate('Description'); ?></th>
-
                             <th><?= $this->translate('Created At'); ?></th>
-
                             <th width="1px" class="text-center">
                                 <?= $this->translate('Actions'); ?>
                             </th>
@@ -80,64 +81,20 @@ $this->headScript()
                         </thead>
 
                         <tbody>
-                        <?php /** @var \MSBios\Resource\Entity\Setting $item */ ?>
+                        <?php /** @var DocumentType $item */ ?>
                         <?php foreach ($this->paginator as $item) : ?>
                             <tr>
                                 <td><?= $this->escapeHtml($item['id']); ?></td>
                                 <td><?= $this->escapeHtml($item['name']); ?></td>
+                                <td><?= $this->escapeHtml($item['view']); ?></td>
                                 <td><?= $this->escapeHtml($item['description']); ?></td>
-                                <td><?= $this->escapeHtml($item['created_at']); ?></td>
+                                <td><?= $this->escapeHtml($item['createdat']); ?></td>
                                 <td class="text-center">
 
-                                    <?php /** @var string $identifierTrashModal */ ?>
-                                    <?php $identifierTrashModal = "modal-confirm-{$item['id']}"; ?>
-
-                                    <ul class="icons-list">
-
-                                        <li>
-                                            <a href="<?= $this->url('cpanel/document-type', [
-                                                'action' => 'edit',
-                                                'id' => $item['id']
-                                            ]); ?>">
-                                                <i class="icon-pencil"></i>
-                                            </a>
-                                        </li>
-
-                                        <li class="text-danger-600">
-                                            <a href="#"
-                                               data-toggle="modal"
-                                               data-target="#<?= $identifierTrashModal; ?>">
-                                                <i class="icon-trash"></i>
-                                            </a>
-                                        </li>
-
-                                    </ul>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade"
-                                         id="<?= $identifierTrashModal; ?>"
-                                         tabindex="-1" role="dialog">
-                                        <div class="modal-dialog modal-sm" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Are you sure?</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Do you want to delete the entry?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button"
-                                                            class="btn btn-default"
-                                                            data-dismiss="modal">
-                                                        Cancel
-                                                    </button>
-                                                    <a href="#" class="btn btn-primary">
-                                                        Yes, delete it!
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <?= $this->partial('partial/actions.phtml', [
+                                        'identifier' => $item['id'],
+                                        'matchedRouteName' => $this->matchedRouteName
+                                    ]); ?>
 
                                 </td>
                             </tr>

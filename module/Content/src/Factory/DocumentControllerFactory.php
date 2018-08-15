@@ -13,7 +13,7 @@ use Kubnete\Resource\Table\DocumentTableGateway;
 use Kubnete\Resource\Table\DocumentTypeGateway;
 use Kubnete\Resource\Table\Property;
 use Kubnete\Resource\Table\PropertyValue;
-use Kubnete\Resource\Table\Tab;
+use Kubnete\Resource\Table\TabTableGateway;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
@@ -42,7 +42,7 @@ class DocumentControllerFactory implements FactoryInterface
         return new DocumentController(
             $container->get(DocumentTableGateway::class),
             $container->get(DocumentTypeGateway::class),
-            $container->get(Tab::class),
+            $container->get(TabTableGateway::class),
             $container->get(Property::class),
             $container->get(PropertyValue::class),
             $container->get('FormElementManager')

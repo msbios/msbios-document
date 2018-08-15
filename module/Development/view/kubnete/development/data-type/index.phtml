@@ -102,7 +102,9 @@ $this->headScript()
                         </tbody>
                     </table>
 
-                    <?= $this->paginationControl($this->paginator, 'sliding', 'partial/pagination.phtml'); ?>
+                    <?= $this->paginationControl($this->paginator, 'sliding', 'partial/pagination.phtml', [
+                        'route' => $this->matchedRouteName
+                    ]); ?>
 
                 </div>
 

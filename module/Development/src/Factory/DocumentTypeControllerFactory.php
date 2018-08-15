@@ -9,8 +9,6 @@ use Interop\Container\ContainerInterface;
 use Kubnete\Development\Controller\DocumentTypeController;
 use Kubnete\Development\Form\DocumentTypeForm;
 use Kubnete\Resource\Table\DocumentTypeTableGateway;
-use Kubnete\Resource\Table\Property;
-use Kubnete\Resource\Table\Tab;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
@@ -29,10 +27,7 @@ class DocumentTypeControllerFactory implements FactoryInterface
     {
         return new DocumentTypeController(
             $container->get(DocumentTypeTableGateway::class),
-            $container->get(Tab::class),
-            $container->get(Property::class),
-            $container->get('FormElementManager')
-                ->get(DocumentTypeForm::class)
+            $container->get('FormElementManager')->get(DocumentTypeForm::class)
         );
     }
 }

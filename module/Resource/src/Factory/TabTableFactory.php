@@ -9,7 +9,7 @@ use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
 use Kubnete\Resource\Record\Tab;
 use Kubnete\Resource\Table\DocumentTableGateway;
-use Kubnete\Resource\Table\Tab;
+use Kubnete\Resource\Table\TabTableGateway;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
@@ -40,7 +40,7 @@ class TabTableFactory implements FactoryInterface
     {
         /** @var ResultSet $resultSetPrototype */
         $resultSetPrototype = new ResultSet;
-        $resultSetPrototype->setArrayObjectPrototype(new Tab);
+        $resultSetPrototype->setArrayObjectPrototype(new TabTableGateway);
 
         /** @var TableGateway $tableGateway */
         $tableGateway = new TableGateway(
@@ -50,6 +50,6 @@ class TabTableFactory implements FactoryInterface
             $resultSetPrototype
         );
 
-        return new Tab($tableGateway);
+        return new TabTableGateway($tableGateway);
     }
 }

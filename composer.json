@@ -63,5 +63,8 @@
     "zf": {
       "component": "MSBios\\Document"
     }
+  },
+  "config": {
+    "bin-dir": "bin"
   }
 }

@@ -26,7 +26,7 @@ class Property extends AbstractResource
     }
 
     /**
-     * @param Tab $tab
+     * @param TabTableGateway $tab
      * @return \Zend\Db\ResultSet\ResultSet
      */
     public function fetchByTab(Tab $tab)

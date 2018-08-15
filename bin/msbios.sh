@@ -1,0 +1,1 @@
+../vendor/msbios/msbios/bin/msbios.sh

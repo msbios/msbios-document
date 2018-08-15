@@ -18,7 +18,7 @@ use Kubnete\Resource\Table\DocumentTableGateway;
 use Kubnete\Resource\Table\DocumentTypeGateway;
 use Kubnete\Resource\Table\Property;
 use Kubnete\Resource\Table\PropertyValue;
-use Kubnete\Resource\Table\Tab;
+use Kubnete\Resource\Table\TabTableGateway;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Debug\Debug;
 use Zend\Form\Factory;

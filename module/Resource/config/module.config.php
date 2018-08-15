@@ -16,7 +16,7 @@ return [
                 Factory\DocumentTypeTableGatewayFactory::class,
             Table\Property::class => Factory\PropertyTableFactory::class,
             Table\PropertyValueTable::class => Factory\PropertyValueTableFactory::class,
-            Table\Tab::class => Factory\TabTableFactory::class,
+            Table\TabTableGateway::class => Factory\TabTableFactory::class,
             Table\TemplateTableGateway::class => Factory\TemplateTableGatewayFactory::class,
         ],
     ],
