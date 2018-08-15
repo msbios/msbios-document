@@ -7,11 +7,10 @@ namespace Kubnete\CPanel\Mvc\Controller;
 
 use MSBios\CPanel\Mvc\Controller\AbstractActionController as DefaultAbstractActionController;
 use MSBios\Resource\RecordRepositoryInterface;
+use Zend\EventManager\EventManagerInterface;
 use Zend\Form\FormInterface;
-use Zend\Http\PhpEnvironment\Request;
 use Zend\Paginator\Paginator;
 use Zend\Stdlib\ArrayObject;
-use Zend\Stdlib\Parameters;
 use Zend\View\Model\ViewModel;
 
 /**
@@ -85,44 +84,42 @@ class AbstractActionController extends DefaultAbstractActionController
         );
 
         if ($this->getRequest()->isPost()) {
-            /** @var ArrayObject $row */
-            $row = static::factory();
-            $this->form->setInputFilter($row->getInputFilter());
 
-            /** @var Parameters $data */
-            $data = $this->params()->fromPost();
-            $this->form->setData($data);
+            /** @var array $argv */
+            $argv = [];
+
+            $argv[0] = static::factory();
+            $this->form->setInputFilter($argv[0]->getInputFilter());
+
+            $argv[1] = $this->params()->fromPost();
+            $this->form->setData($argv[1]);
+
+            /** @var EventManagerInterface $eventManager */
+            $eventManager = $this->getEventManager();
 
             if ($this->form->isValid()) {
 
-                /** @var array $values */
-                $values = $this->form->getData();
-                $row->exchangeArray($values);
+                $argv[2] = $this->form->getData();
+                $argv[0]->exchangeArray($argv[2]);
 
-                // fire event
-                $this->getEventManager()->trigger(
-                    self::EVENT_PRE_PERSIST_DATA,
-                    $this,
-                    ['row' => $row, 'data' => $data, 'values' => $values]
-                );
+                $eventManager
+                    ->trigger(self::EVENT_PRE_PERSIST_DATA, $this, $argv);
 
-                $this->resource->save($row);
+                $this->resource->save($argv[0]);
+
+                $eventManager
+                    ->trigger(self::EVENT_POST_PERSIST_DATA, $this, $argv);
 
                 $this
                     ->flashMessenger()
-                    ->addSuccessMessage("Row '{$row['name']}' was added.");
+                    ->addSuccessMessage("Row '{$argv[0]['name']}' was added.");
 
                 return $this
                     ->redirect()
                     ->toRoute($matchedRouteName);
             } else {
-
-                // fire event
-                $this->getEventManager()->trigger(
-                    self::EVENT_VALIDATE_ERROR,
-                    $this,
-                    ['row' => $row, 'data' => $data]
-                );
+                $eventManager
+                    ->trigger(self::EVENT_VALIDATE_ERROR, $this, $argv);
             }
         }
 
@@ -168,15 +165,31 @@ class AbstractActionController extends DefaultAbstractActionController
 
         $this->form->bind($row);
 
-        /** @var Request $request */
-        $request = $this->getRequest();
-        if ($request->isPost()) {
+        if ($this->getRequest()->isPost()) {
             $this->form->setInputFilter($row->getInputFilter());
-            $this->form->setData($request->getPost());
+
+            /** @var array $params */
+            $data = $this->params()->getPost();
+            $this->form->setData($data);
 
             if ($this->form->isValid()) {
+
+                /** @var array $values */
+                $values = $this->form->getData();
                 $row->exchangeArray($this->form->getData());
+
+                $this->getEventManager()->trigger(
+                    self::EVENT_PRE_MERGE_DATA, $this,
+                    ['row' => $row, 'data' => $data, 'values' => $values]
+                );
+
                 $this->resource->save($row);
+
+                $this->getEventManager()->trigger(
+                    self::EVENT_POST_MERGE_DATA, $this,
+                    ['row' => $row, 'data' => $data, 'values' => $values]
+                );
+
                 $this->flashMessenger()
                     ->addSuccessMessage("Row '{$row['name']}' has been edited.");
 
@@ -202,7 +215,18 @@ class AbstractActionController extends DefaultAbstractActionController
         if ($row = $this->resource->fetch($id)) {
             $this->flashMessenger()
                 ->addSuccessMessage("Row '{$row['name']}' was deleted.");
+
+            /** @var EventManagerInterface $eventManager */
+            $eventManager = $this->getEventManager();
+            $eventManager->trigger(
+                self::EVENT_PRE_REMOVE_DATA, $this, ['row' => $row]
+            );
+
             $this->resource->delete($id);
+
+            $eventManager->trigger(
+                self::EVENT_POST_REMOVE_DATA, $this, ['row' => $row]
+            );
         }
 
         return $this
