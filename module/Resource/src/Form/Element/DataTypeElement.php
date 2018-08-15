@@ -5,7 +5,7 @@
  */
 namespace Kubnete\Resource\Form\Element;
 
-use Kubnete\Resource\Table\DataType;
+use Kubnete\Resource\Table\DataTypeTableGateway;
 use Zend\Form\Element\Select;
 
 /**
@@ -16,11 +16,11 @@ class DataTypeElement extends Select
 {
     /**
      * DataTypeElement constructor.
-     * @param DataType $table
+     * @param DataTypeTableGateway $table
      * @param array|string $name
      * @param array $options
      */
-    public function __construct(DataType $table, $name = __CLASS__, array $options = [])
+    public function __construct(DataTypeTableGateway $table, $name = __CLASS__, array $options = [])
     {
         parent::__construct($name, $options);
 

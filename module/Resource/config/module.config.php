@@ -10,7 +10,7 @@ return [
         'factories' => [
             // \Zend\Db\Adapter\AdapterInterface::class => Db\Adapter\AdapterServiceFactory::class,
 
-            Table\DataType::class => Factory\DataTypeTableFactory::class,
+            Table\DataTypeTableGateway::class => Factory\DataTypeTableGatewayFactory::class,
             Table\DocumentTableGateway::class => Factory\DocumentTableFactory::class,
             Table\DocumentTypeTableGateway::class =>
                 Factory\DocumentTypeTableGatewayFactory::class,

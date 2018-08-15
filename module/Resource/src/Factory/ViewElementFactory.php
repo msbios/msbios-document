@@ -11,7 +11,7 @@ use Kubnete\Resource\Form\Element\ViewElement;
 use Kubnete\Resource\Record\DataType;
 use Kubnete\Resource\Record\Document;
 use Kubnete\Resource\Record\Property\Value;
-use Kubnete\Resource\Table\DataType;
+use Kubnete\Resource\Table\DataTypeTableGateway;
 use Kubnete\Resource\Table\DocumentTableGateway;
 use Kubnete\Resource\Table\PropertyValue;
 use Kubnete\Resource\Table\TemplateTableGateway;

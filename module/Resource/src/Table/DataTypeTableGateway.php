@@ -5,13 +5,11 @@
  */
 namespace Kubnete\Resource\Table;
 
-use MSBios\Resource\RecordRepository;
-
 /**
- * Class AbstractResource
+ * Class DataTypeTableGateway
  * @package Kubnete\Resource\Table
  */
-abstract class AbstractResource extends RecordRepository
+class DataTypeTableGateway extends AbstractResource
 {
     // ...
 }

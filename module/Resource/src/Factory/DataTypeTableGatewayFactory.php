@@ -7,7 +7,7 @@ namespace Kubnete\Resource\Factory;
 
 use Interop\Container\ContainerInterface;
 use Kubnete\Resource\Record\DataType;
-use Kubnete\Resource\Table\DataType;
+use Kubnete\Resource\Table\DataTypeTableGateway;
 use MSBios\Db\TableGateway\TableGateway;
 use MSBios\Db\TableGateway\TableGatewayInterface;
 use Zend\Db\Adapter\Adapter;
@@ -15,16 +15,16 @@ use Zend\Db\ResultSet\ResultSet;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
- * Class DataTypeTableFactory
+ * Class DataTypeTableGatewayFactory
  * @package Kubnete\Resource\Factory
  */
-class DataTypeTableFactory implements FactoryInterface
+class DataTypeTableGatewayFactory implements FactoryInterface
 {
     /**
      * @param ContainerInterface $container
      * @param string $requestedName
      * @param array|null $options
-     * @return DataType
+     * @return DataTypeTableGateway
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
@@ -40,6 +40,6 @@ class DataTypeTableFactory implements FactoryInterface
             $resultSetPrototype
         );
 
-        return new DataType($tableGateway);
+        return new DataTypeTableGateway($tableGateway);
     }
 }

@@ -5,6 +5,7 @@
  */
 namespace Kubnete\Resource\Record;
 
+use MSBios\Resource\RecordInterface;
 use Zend\Filter\StringTrim;
 use Zend\Filter\StripTags;
 use Zend\InputFilter\Factory as InputFactory;
@@ -16,9 +17,9 @@ use Zend\Validator\StringLength;
 
 /**
  * Class DataType
- * @package Kubnete\Resource\Model
+ * @package Kubnete\Resource\Record
  */
-class DataType extends ArrayObject implements InputFilterAwareInterface
+class DataType extends ArrayObject implements RecordInterface, InputFilterAwareInterface
 {
     /** @var  InputFilter */
     protected $inputFilter;

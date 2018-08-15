@@ -6,13 +6,9 @@
 namespace Kubnete\Development\Factory;
 
 use Interop\Container\ContainerInterface;
-use Interop\Container\Exception\ContainerException;
-use Kubnete\DataType\Form\Element\DataTypeExtensionElement;
 use Kubnete\Development\Controller\DataTypeController;
 use Kubnete\Development\Form\DataTypeForm;
-use Kubnete\Resource\Table\DataType;
-use Zend\ServiceManager\Exception\ServiceNotCreatedException;
-use Zend\ServiceManager\Exception\ServiceNotFoundException;
+use Kubnete\Resource\Table\DataTypeTableGateway;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
@@ -22,28 +18,16 @@ use Zend\ServiceManager\Factory\FactoryInterface;
 class DataTypeControllerFactory implements FactoryInterface
 {
     /**
-     * Create an object
-     *
-     * @param  ContainerInterface $container
-     * @param  string $requestedName
-     * @param  null|array $options
-     * @return object
-     * @throws ServiceNotFoundException if unable to resolve the service.
-     * @throws ServiceNotCreatedException if an exception is raised when
-     *     creating a service.
-     * @throws ContainerException if any other error occurs
+     * @param ContainerInterface $container
+     * @param string $requestedName
+     * @param array|null $options
      * @return DataTypeController
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-
-        // var_dump($container->get('FormElementManager')
-        //     ->get(DataTypeElement::class)); die();
-
         return new DataTypeController(
-            $container->get(DataType::class),
-            $container->get('FormElementManager')
-                ->get(DataTypeForm::class)
+            $container->get(DataTypeTableGateway::class),
+            $container->get('FormElementManager')->get(DataTypeForm::class)
         );
     }
 }

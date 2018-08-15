@@ -71,153 +71,169 @@ return [
                         ],
                     ],
 
-                    'development' => [
-                        'type' => \Zend\Router\Http\Segment::class,
+                    'data-type' => [
+                        'type' => Segment::class,
                         'options' => [
-                            'route' => 'development[/]',
-                        ],
-                        'may_terminate' => true,
-                        'child_routes' => [
-                            //'document-type' => [
-                            //    'type' => \Zend\Router\Http\Segment::class,
-                            //    'options' => [
-                            //        'route' => 'document-type[/]',
-                            //        'defaults' => [
-                            //            'controller' => Controller\DocumentTypeController::class,
-                            //        ],
-                            //    ],
-                            //    'may_terminate' => true,
-                            //    'child_routes' => [
-                            //        'add' => [
-                            //            'type' => \Zend\Router\Http\Segment::class,
-                            //            'options' => [
-                            //                'route' => 'add[.html]',
-                            //                'defaults' => [
-                            //                    'action' => 'add',
-                            //                ],
-                            //            ],
-                            //            'may_terminate' => true
-                            //        ],
-                            //        'edit' => [
-                            //            'type' => \Zend\Router\Http\Segment::class,
-                            //            'options' => [
-                            //                'route' => 'edit/:id[.html]',
-                            //                'defaults' => [
-                            //                    'action' => 'edit',
-                            //                ],
-                            //                'constraints' => [
-                            //                    'id' => '[0-9]+',
-                            //                ],
-                            //            ],
-                            //            'may_terminate' => true
-                            //        ],
-                            //        'delete' => [
-                            //            'type' => 'Segment',
-                            //            'options' => [
-                            //                'route' => '/delete/:id[.html]',
-                            //                'defaults' => [
-                            //                    'action' => 'delete',
-                            //                ],
-                            //                'constraints' => [
-                            //                    'id' => '[0-9]+',
-                            //                ],
-                            //            ],
-                            //            'may_terminate' => true
-                            //        ],
-                            //    ],
-                            //],
-                            //'template' => [
-                            //    'type' => \Zend\Router\Http\Segment::class,
-                            //    'options' => [
-                            //        'route' => 'template[/]',
-                            //        'defaults' => [
-                            //            'controller' => Controller\TemplateController::class,
-                            //        ],
-                            //        'constraints' => [
-                            //            'id' => '[0-9]+',
-                            //        ],
-                            //    ],
-                            //    'may_terminate' => true,
-                            //    'child_routes' => [
-                            //        'add' => [
-                            //            'type' => \Zend\Router\Http\Segment::class,
-                            //            'options' => [
-                            //                'route' => 'add[.html]',
-                            //                'defaults' => [
-                            //                    'action' => 'add',
-                            //                ],
-                            //            ],
-                            //            'may_terminate' => true
-                            //        ],
-                            //        'edit' => [
-                            //            'type' => \Zend\Router\Http\Segment::class,
-                            //            'options' => [
-                            //                'route' => 'edit/:id[.html]',
-                            //                'defaults' => [
-                            //                    'action' => 'edit',
-                            //                ],
-                            //            ],
-                            //            'may_terminate' => true
-                            //        ],
-                            //        'delete' => [
-                            //            'type' => 'Segment',
-                            //            'options' => [
-                            //                'route' => '/delete/:id[.html]',
-                            //                'defaults' => [
-                            //                    'action' => 'delete',
-                            //                ],
-                            //            ],
-                            //            'may_terminate' => true
-                            //        ],
-                            //    ],
-                            //],
-                            'data-type' => [
-                                'type' => \Zend\Router\Http\Segment::class,
-                                'options' => [
-                                    'route' => 'data-type[/]',
-                                    'defaults' => [
-                                        'controller' => Controller\DataTypeController::class,
-                                    ],
-                                    'constraints' => [
-                                        'id' => '[0-9]+',
-                                    ],
-                                ],
-                                'may_terminate' => true,
-                                'child_routes' => [
-                                    'add' => [
-                                        'type' => \Zend\Router\Http\Segment::class,
-                                        'options' => [
-                                            'route' => 'add[.html]',
-                                            'defaults' => [
-                                                'action' => 'add',
-                                            ],
-                                        ],
-                                        'may_terminate' => true
-                                    ],
-                                    'edit' => [
-                                        'type' => \Zend\Router\Http\Segment::class,
-                                        'options' => [
-                                            'route' => 'edit/:id[.html]',
-                                            'defaults' => [
-                                                'action' => 'edit',
-                                            ],
-                                        ],
-                                        'may_terminate' => true
-                                    ],
-                                    'delete' => [
-                                        'type' => 'Segment',
-                                        'options' => [
-                                            'route' => 'delete/:id[.html]',
-                                            'defaults' => [
-                                                'action' => 'delete',
-                                            ]
-                                        ],
-                                        'may_terminate' => true
-                                    ],
-                                ],
+                            'route' => 'data-type/[:action[/[:id[/]]]]',
+                            'defaults' => [
+                                'controller' => Controller\DataTypeController::class,
+                                'action' => 'index'
+                            ],
+                            'constraints' => [
+                                'action' => 'add|edit|drop',
+                                'document_id' => '[0-9]+',
+                                'id' => '[0-9]+'
                             ],
                         ],
                     ],
+
+                    //'development' => [
+                    //    'type' => \Zend\Router\Http\Segment::class,
+                    //    'options' => [
+                    //        'route' => 'development[/]',
+                    //    ],
+                    //    'may_terminate' => true,
+                    //    'child_routes' => [
+                    //        //'document-type' => [
+                    //        //    'type' => \Zend\Router\Http\Segment::class,
+                    //        //    'options' => [
+                    //        //        'route' => 'document-type[/]',
+                    //        //        'defaults' => [
+                    //        //            'controller' => Controller\DocumentTypeController::class,
+                    //        //        ],
+                    //        //    ],
+                    //        //    'may_terminate' => true,
+                    //        //    'child_routes' => [
+                    //        //        'add' => [
+                    //        //            'type' => \Zend\Router\Http\Segment::class,
+                    //        //            'options' => [
+                    //        //                'route' => 'add[.html]',
+                    //        //                'defaults' => [
+                    //        //                    'action' => 'add',
+                    //        //                ],
+                    //        //            ],
+                    //        //            'may_terminate' => true
+                    //        //        ],
+                    //        //        'edit' => [
+                    //        //            'type' => \Zend\Router\Http\Segment::class,
+                    //        //            'options' => [
+                    //        //                'route' => 'edit/:id[.html]',
+                    //        //                'defaults' => [
+                    //        //                    'action' => 'edit',
+                    //        //                ],
+                    //        //                'constraints' => [
+                    //        //                    'id' => '[0-9]+',
+                    //        //                ],
+                    //        //            ],
+                    //        //            'may_terminate' => true
+                    //        //        ],
+                    //        //        'delete' => [
+                    //        //            'type' => 'Segment',
+                    //        //            'options' => [
+                    //        //                'route' => '/delete/:id[.html]',
+                    //        //                'defaults' => [
+                    //        //                    'action' => 'delete',
+                    //        //                ],
+                    //        //                'constraints' => [
+                    //        //                    'id' => '[0-9]+',
+                    //        //                ],
+                    //        //            ],
+                    //        //            'may_terminate' => true
+                    //        //        ],
+                    //        //    ],
+                    //        //],
+                    //        //'template' => [
+                    //        //    'type' => \Zend\Router\Http\Segment::class,
+                    //        //    'options' => [
+                    //        //        'route' => 'template[/]',
+                    //        //        'defaults' => [
+                    //        //            'controller' => Controller\TemplateController::class,
+                    //        //        ],
+                    //        //        'constraints' => [
+                    //        //            'id' => '[0-9]+',
+                    //        //        ],
+                    //        //    ],
+                    //        //    'may_terminate' => true,
+                    //        //    'child_routes' => [
+                    //        //        'add' => [
+                    //        //            'type' => \Zend\Router\Http\Segment::class,
+                    //        //            'options' => [
+                    //        //                'route' => 'add[.html]',
+                    //        //                'defaults' => [
+                    //        //                    'action' => 'add',
+                    //        //                ],
+                    //        //            ],
+                    //        //            'may_terminate' => true
+                    //        //        ],
+                    //        //        'edit' => [
+                    //        //            'type' => \Zend\Router\Http\Segment::class,
+                    //        //            'options' => [
+                    //        //                'route' => 'edit/:id[.html]',
+                    //        //                'defaults' => [
+                    //        //                    'action' => 'edit',
+                    //        //                ],
+                    //        //            ],
+                    //        //            'may_terminate' => true
+                    //        //        ],
+                    //        //        'delete' => [
+                    //        //            'type' => 'Segment',
+                    //        //            'options' => [
+                    //        //                'route' => '/delete/:id[.html]',
+                    //        //                'defaults' => [
+                    //        //                    'action' => 'delete',
+                    //        //                ],
+                    //        //            ],
+                    //        //            'may_terminate' => true
+                    //        //        ],
+                    //        //    ],
+                    //        //],
+                    //        'data-type' => [
+                    //            'type' => \Zend\Router\Http\Segment::class,
+                    //            'options' => [
+                    //                'route' => 'data-type[/]',
+                    //                'defaults' => [
+                    //                    'controller' => Controller\DataTypeController::class,
+                    //                ],
+                    //                'constraints' => [
+                    //                    'id' => '[0-9]+',
+                    //                ],
+                    //            ],
+                    //            'may_terminate' => true,
+                    //            'child_routes' => [
+                    //                'add' => [
+                    //                    'type' => \Zend\Router\Http\Segment::class,
+                    //                    'options' => [
+                    //                        'route' => 'add[.html]',
+                    //                        'defaults' => [
+                    //                            'action' => 'add',
+                    //                        ],
+                    //                    ],
+                    //                    'may_terminate' => true
+                    //                ],
+                    //                'edit' => [
+                    //                    'type' => \Zend\Router\Http\Segment::class,
+                    //                    'options' => [
+                    //                        'route' => 'edit/:id[.html]',
+                    //                        'defaults' => [
+                    //                            'action' => 'edit',
+                    //                        ],
+                    //                    ],
+                    //                    'may_terminate' => true
+                    //                ],
+                    //                'delete' => [
+                    //                    'type' => 'Segment',
+                    //                    'options' => [
+                    //                        'route' => 'delete/:id[.html]',
+                    //                        'defaults' => [
+                    //                            'action' => 'delete',
+                    //                        ]
+                    //                    ],
+                    //                    'may_terminate' => true
+                    //                ],
+                    //            ],
+                    //        ],
+                    //    ],
+                    //],
                 ]
             ],
         ],
@@ -289,7 +305,7 @@ return [
                     'datatype' => [
                         'label' => 'Datatypes',
                         'title' => 'List of Data types',
-                        'route' => 'cpanel/development/data-type',
+                        'route' => 'cpanel/data-type',
                         'order' => 600,
                         'class' => 'icon-drive position-left',
                         'pages' => [
