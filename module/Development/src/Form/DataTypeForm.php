@@ -6,7 +6,7 @@
 
 namespace Kubnete\Development\Form;
 
-use Kubnete\Development\Form\Element\FormElementSelect;
+use Kubnete\Development\Form\Element\FieldSelect;
 use Zend\Form\Element\Text;
 use Zend\Form\Form;
 use Zend\Http\PhpEnvironment\Request;
@@ -45,8 +45,8 @@ class DataTypeForm extends Form
             'name' => 'description',
             'type' => Text::class,
         ])->add([
-            'name' => 'form_element',
-            'type' => FormElementSelect::class
+            'name' => 'field',
+            'type' => FieldSelect::class
         ]);
     }
 

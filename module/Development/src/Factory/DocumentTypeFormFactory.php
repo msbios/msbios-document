@@ -27,25 +27,15 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 class DocumentTypeFormFactory implements FactoryInterface
 {
     /**
-     * Create an object
-     *
-     * @param  ContainerInterface $container
-     * @param  string $requestedName
-     * @param  null|array $options
-     * @return object
-     * @throws ServiceNotFoundException if unable to resolve the service.
-     * @throws ServiceNotCreatedException if an exception is raised when
-     *     creating a service.
-     * @throws ContainerException if any other error occurs
-     * @return TemplateController
+     * @param ContainerInterface $container
+     * @param string $requestedName
+     * @param array|null $options
+     * @return DocumentTypeForm
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         /** @var ServiceLocatorInterface $formElementManager */
         $formElementManager = $container->get('FormElementManager');
-        return new DocumentTypeForm(
-            $formElementManager->get(ViewElement::class),
-            $formElementManager->get(TypeTabFieldset::class)
-        );
+        return new DocumentTypeForm;
     }
 }

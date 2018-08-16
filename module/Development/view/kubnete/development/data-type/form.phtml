@@ -39,12 +39,12 @@ $this->headScript()
             ]); ?>
 
             <?= $this->partial('partial/element.phtml', [
-                'element' => $form->get('form_element')
+                'element' => $form->get('field')
                     ->setAttributes([
                         'required' => 'required',
-                        'placeholder' => $this->translate('Enter template name')
+                        'placeholder' => $this->translate('Select field name')
                     ]),
-                'label' => $this->translate('Form Element')
+                'label' => $this->translate('Field name')
             ]); ?>
 
             <div class="text-right">

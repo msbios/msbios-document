@@ -7,15 +7,20 @@ namespace Kubnete\Development\Factory;
 
 use Interop\Container\ContainerInterface;
 use Kubnete\Development\Form\Element\FieldSelect;
+use Kubnete\Development\Form\Element\ViewSelect;
 use Kubnete\Development\Module;
+use Kubnete\Resource\Table\TemplateTableGateway;
+use MSBios\Resource\RecordRepository;
+use MSBios\Resource\RecordRepositoryInterface;
 use Zend\Form\ElementInterface;
+use Zend\Paginator\Paginator;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
- * Class FormElementSelectFactory
+ * Class ViewSelectFactory
  * @package Kubnete\Development\Factory
  */
-class FormElementSelectFactory implements FactoryInterface
+class ViewSelectFactory implements FactoryInterface
 {
     /**
      * @param ContainerInterface $container
@@ -29,14 +34,19 @@ class FormElementSelectFactory implements FactoryInterface
         $config = $container->get(Module::class);
 
         /** @var ElementInterface $instance */
-        $instance = new FieldSelect;
+        $instance = new ViewSelect;
+
+        /** @var RecordRepositoryInterface $tableGateway */
+        $tableGateway = $container->get(TemplateTableGateway::class);
+
+        /** @var Paginator $paginator */
+        $paginator = $tableGateway->fetchAll(['type' => 'VIEW']);
 
         /** @var array $valueOptions */
         $valueOptions = [];
 
-        /** @var array $datatypeInfo */
-        foreach ($config['form_elements'] as $formElementInfo) {
-            $valueOptions[$formElementInfo['factory']] = $formElementInfo['name'];
+        foreach ($paginator as $row) {
+            $valueOptions[$row['id']] = $row['name'];
         }
 
         $instance->setValueOptions($valueOptions);

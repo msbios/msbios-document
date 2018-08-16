@@ -34,9 +34,11 @@ return [
 
         'factories' => [
             // Elements
-
-            Form\Element\FormElementSelect::class =>
+            Form\Element\FieldSelect::class =>
                 Factory\FormElementSelectFactory::class,
+            Form\Element\ViewSelect::class =>
+                Factory\ViewSelectFactory::class,
+
 
             Form\TypeTab\PropertyFieldset::class =>
                 Factory\TypeTab\PropertyFieldsetFactory::class,
@@ -47,7 +49,7 @@ return [
             Form\DataTypeForm::class =>
                 InvokableFactory::class,
             Form\DocumentTypeForm::class =>
-                Factory\DocumentTypeFormFactory::class,
+                InvokableFactory::class,
             Form\TypeTabFieldset::class =>
                 Factory\TypeTabFieldsetFactory::class,
         ]
@@ -270,6 +272,11 @@ return [
             'kubnete/development/data-type/edit' =>
                 __DIR__ . '/../view/kubnete/development/data-type/form.phtml',
 
+            'kubnete/development/document-type/add' =>
+                __DIR__ . '/../view/kubnete/development/data-type/form.phtml',
+            'kubnete/development/document-type/edit' =>
+                __DIR__ . '/../view/kubnete/development/document-type/form.phtml',
+
             'kubnete/development/template/add' =>
                 __DIR__ . '/../view/kubnete/development/template/form.phtml',
             'kubnete/development/template/edit' =>
@@ -327,8 +334,8 @@ return [
                         'order' => 400,
                         'class' => 'icon-qrcode position-left'
                     ],
-                    'datatype' => [
-                        'label' => 'Datatypes',
+                    'data-type' => [
+                        'label' => 'Data types',
                         'title' => 'List of Data types',
                         'route' => 'cpanel/data-type',
                         'order' => 600,
@@ -353,6 +360,7 @@ return [
     \MSBios\Guard\Module::class => [
         'resource_providers' => [
             \MSBios\Guard\Provider\ResourceProvider::class => [
+                Controller\DocumentTypeController::class => [],
                 Controller\TemplateController::class => [],
             ],
         ],

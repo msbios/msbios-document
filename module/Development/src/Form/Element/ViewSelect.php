@@ -8,10 +8,10 @@ namespace Kubnete\Development\Form\Element;
 use Zend\Form\Element\Select;
 
 /**
- * Class FormElementSelect
+ * Class ViewSelect
  * @package Kubnete\Development\Form\Element
  */
-class FormElementSelect extends Select
+class ViewSelect extends Select
 {
     // ...
 }

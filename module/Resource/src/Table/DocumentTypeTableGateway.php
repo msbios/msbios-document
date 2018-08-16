@@ -37,7 +37,7 @@ class DocumentTypeTableGateway extends AbstractResource
         $select = $sql->select();
         $select->join(
             ['t' => 'sys_t_templates'],
-            'dev_t_document_types.defaultviewid = t.id',
+            'dev_t_document_types.templateid = t.id',
             ['view' => 'name'],
             Select::JOIN_LEFT
         );
