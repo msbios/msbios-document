@@ -3,7 +3,10 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
+
 namespace MSBios\CPanel;
+
+use Zend\Form\ElementInterface;
 
 $form = $this->form;
 $form->prepare();
@@ -224,65 +227,106 @@ $this->headScript()
                             </thead>
                             <tbody>
 
-                            <tr id="tabs-item-1">
-                                <td class="text-center">
-                                    <a href="#" class="btn btn-link btn-xs">
-                                        <i class="icon-move"></i>
-                                    </a>
-                                </td>
+                            <?php foreach ($form->get('tabs') as $i => $tabElement): ?>
 
-                                <td>
-                                    <div class="has-warning has-feedback">
-                                        <input class="form-control" name="" value="Some Value" />
-                                    </div>
-                                </td>
+                                <tr id="tabs-item-<?= $i; ?>">
+                                    <td class="text-center">
+                                        <a href="#" class="btn btn-link btn-xs">
+                                            <i class="icon-move"></i>
+                                        </a>
+                                    </td>
 
-                                <td>
-                                    <div class="has-warning has-feedback">
-                                        <input class="form-control" name="" value="Some Value" />
-                                    </div>
-                                </td>
+                                    <td>
+                                        <?php
+                                        /** @var ElementInterface $element */
+                                        $element = $tabElement->get('name');
+                                        $element->setAttribute('class', 'form-control');
+                                        $messages = $element->getMessages();
+                                        $hasError = count($messages);
+                                        ?>
 
-                                <td class="text-center">
+                                        <div class="<?php if ($hasError): ?>has-warning has-feedback<?php endif; ?>">
+                                            <?= $this->formElement($element); ?>
+                                            <?php if ($hasError): ?>
+                                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                                <span class="help-block">
+                                                    <?php foreach ($messages as $message): ?>
+                                                        <small><?= $message; ?></small>
+                                                    <?php endforeach; ?>
+                                                </span>
+                                            <?php endif; ?>
+                                        </div>
+                                    </td>
 
-                                    <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#tab-modal-alert-remove-1">
-                                        <i class="icon-trash-alt"></i>
-                                    </a>
+                                    <td>
+                                        <?php
+                                        /** @var ElementInterface $element */
+                                        $element = $tabElement->get('description');
+                                        $element->setAttribute('class', 'form-control');
+                                        $messages = $element->getMessages();
+                                        $hasError = count($messages);
+                                        ?>
 
-                                    <!-- Tab modal alert remove -->
-                                    <div id="tab-modal-alert-remove-1"
-                                         class="tab-remove modal fade text-left">
-                                        <div class="modal-dialog modal-sm">
-                                            <div class="modal-content">
-                                                <div class="modal-header bg-warning">
-                                                    <button type="button" class="close"
-                                                            data-dismiss="modal">&times;</button>
-                                                    <h6 class="modal-title">Information</h6>
-                                                </div>
+                                        <div class="<?php if ($hasError): ?>has-warning has-feedback<?php endif; ?>">
+                                            <?= $this->formElement($element); ?>
+                                            <?php if ($hasError): ?>
+                                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                                <span class="help-block">
+                                                    <?php foreach ($messages as $message): ?>
+                                                        <small><?= $message; ?></small>
+                                                    <?php endforeach; ?>
+                                                </span>
+                                            <?php endif; ?>
+                                        </div>
+                                    </td>
 
-                                                <div class="modal-body">
-                                                    <h6 class="text-semibold ">Confirmation to delete</h6>
-                                                    <p>You really want to delete the selected entry, return or repair is
-                                                        impossible</p>
-                                                </div>
+                                    <td class="text-center">
 
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-link" data-dismiss="modal">
-                                                        Cancel
-                                                    </button>
-                                                    <button type="button"
-                                                            class="btn btn-danger"
-                                                            data-tab-index="1">
-                                                        Remove
-                                                    </button>
+                                        <a href="#" class="btn btn-danger btn-xs" data-toggle="modal"
+                                           data-target="#tab-modal-remove-<?= $i; ?>">
+                                            <i class="icon-trash-alt"></i>
+                                        </a>
+
+                                        <div id="tab-modal-remove-<?= $i; ?>"
+                                             class="tab-remove modal fade text-left">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header bg-warning">
+                                                        <button type="button" class="close"
+                                                                data-dismiss="modal">&times;
+                                                        </button>
+                                                        <h6 class="modal-title">Information</h6>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <h6 class="text-semibold ">Confirmation to delete</h6>
+                                                        <p>You really want to delete the selected entry, return or
+                                                            repair is
+                                                            impossible</p>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-link" data-dismiss="modal">
+                                                            Cancel
+                                                        </button>
+                                                        <button type="button"
+                                                                class="btn btn-danger"
+                                                                data-tab-index="1">
+                                                            Remove
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- /tab modal alert remove -->
 
-                                </td>
-                            </tr>
+                                        <?= $this->formHidden($tabElement->get('id')); ?>
+                                        <?= $this->formHidden($tabElement->get('documenttypeid')); ?>
+                                        <?= $this->formHidden($tabElement->get('orderkey')); ?>
+
+                                    </td>
+                                </tr>
+
+                            <?php endforeach; ?>
 
                             </tbody>
                         </table>

@@ -3,17 +3,16 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
+
 namespace Kubnete\Development\Controller;
 
 use Kubnete\CPanel\Mvc\Controller\AbstractActionController;
-use Kubnete\Development\Form\DocumentTypeForm;
-use Kubnete\Resource\Record\DocumentType;
+use Zend\EventManager\EventInterface;
+use Zend\EventManager\EventManagerInterface;
+use Zend\Mvc\MvcEvent;
+use Zend\Stdlib\ArrayObject;
+
 // use Kubnete\Resource\Table\DocumentTypeGateway;
-use Kubnete\Resource\Table\Property;
-use Kubnete\Resource\Table\TabTableGateway;
-use Zend\Db\ResultSet\ResultSet;
-use Zend\Paginator\Paginator;
-use Zend\View\Model\ViewModel;
 
 /**
  * Class DocumentTypeController
@@ -21,6 +20,45 @@ use Zend\View\Model\ViewModel;
  */
 class DocumentTypeController extends AbstractActionController
 {
+
+    /**
+     * @param MvcEvent $e
+     * @return mixed
+     */
+    public function onDispatch(MvcEvent $e)
+    {
+        /** @var EventManagerInterface $eventManager */
+        $eventManager = $e->getTarget()
+            ->getEventManager();
+        $eventManager->attach(self::EVENT_PRE_BIND_DATA, [$this, 'onPreBindData']);
+        return parent::onDispatch($e);
+    }
+
+    /**
+     * @param EventInterface $e
+     */
+    public function onPreBindData(EventInterface $e)
+    {
+        /** @var ArrayObject $row */
+        $row = $e->getParam('row');
+        $row['tabs'] = [
+            [
+                'id' => 1,
+                'documenttypeid' => 1,
+                'name' => 'Name',
+                'description' => 'Description',
+                'orderkey' => 1,
+            ],
+            [
+                'id' => 1,
+                'documenttypeid' => 1,
+                'name' => 'Name',
+                'description' => 'Description',
+                'orderkey' => 1
+            ]
+        ];
+    }
+
 //    /** @var DocumentTypeGateway */
 //    protected $resource;
 //

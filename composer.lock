@@ -382,16 +382,16 @@
         },
         {
             "name": "msbios/cpanel",
-            "version": "v1.0.39",
+            "version": "v1.0.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/msbios/msbios-cpanel.git",
-                "reference": "5c5fd05f5880f97aaf7673cd5636b167b4e6b054"
+                "reference": "3a8544a5d0d5a266061f11c253def615a6e229f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/msbios/msbios-cpanel/zipball/5c5fd05f5880f97aaf7673cd5636b167b4e6b054",
-                "reference": "5c5fd05f5880f97aaf7673cd5636b167b4e6b054",
+                "url": "https://api.github.com/repos/msbios/msbios-cpanel/zipball/3a8544a5d0d5a266061f11c253def615a6e229f0",
+                "reference": "3a8544a5d0d5a266061f11c253def615a6e229f0",
                 "shasum": ""
             },
             "require": {
@@ -437,7 +437,7 @@
             "keywords": [
                 "php"
             ],
-            "time": "2018-08-16T11:45:56+00:00"
+            "time": "2018-08-16T20:09:50+00:00"
         },
         {
             "name": "msbios/db",
@@ -959,16 +959,16 @@
         },
         {
             "name": "msbios/resource",
-            "version": "v1.0.13",
+            "version": "v1.0.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/msbios/msbios-resource.git",
-                "reference": "7c00fa5f23093f87e516f8197b699d729e49daca"
+                "reference": "32c0aca028d026585909c200421e7b07340ec781"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/msbios/msbios-resource/zipball/7c00fa5f23093f87e516f8197b699d729e49daca",
-                "reference": "7c00fa5f23093f87e516f8197b699d729e49daca",
+                "url": "https://api.github.com/repos/msbios/msbios-resource/zipball/32c0aca028d026585909c200421e7b07340ec781",
+                "reference": "32c0aca028d026585909c200421e7b07340ec781",
                 "shasum": ""
             },
             "require": {
@@ -1002,7 +1002,7 @@
             "keywords": [
                 "php"
             ],
-            "time": "2018-08-15T12:35:14+00:00"
+            "time": "2018-08-17T10:10:35+00:00"
         },
         {
             "name": "msbios/stdlib",

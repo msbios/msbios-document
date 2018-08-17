@@ -25,9 +25,6 @@ class AbstractActionController extends DefaultAbstractActionController
     /** @var FormInterface */
     protected $form;
 
-    /** @const DEFAULT_CURRENT_PAGE_NUMBER */
-    const DEFAULT_CURRENT_PAGE_NUMBER = 1;
-
     /**
      * AbstractActionController constructor.
      * @param RecordRepositoryInterface $repository
@@ -89,34 +86,34 @@ class AbstractActionController extends DefaultAbstractActionController
             /** @var array $argv */
             $argv = [];
 
-            $argv[0] = static::factory();
+            $argv['row'] = static::factory();
             $this->form
-                ->setInputFilter($argv[0]->getInputFilter());
+                ->setInputFilter($argv['row']->getInputFilter());
 
-            $argv[1] = $this->params()
+            $argv['data'] = $this->params()
                 ->fromPost();
             $this->form
-                ->setData($argv[1]);
+                ->setData($argv['data']);
 
             /** @var EventManagerInterface $eventManager */
             $eventManager = $this->getEventManager();
 
             if ($this->form->isValid()) {
-                $argv[2] = $this->form
+                $argv['values'] = $this->form
                     ->getData();
-                $argv[0]->exchangeArray($argv[2]);
+                $argv['row']->exchangeArray($argv['values']);
 
                 $eventManager
                     ->trigger(self::EVENT_PRE_PERSIST_DATA, $this, $argv);
 
                 $this->resource
-                    ->save($argv[0]);
+                    ->save($argv['row']);
 
                 $eventManager
                     ->trigger(self::EVENT_POST_PERSIST_DATA, $this, $argv);
 
                 $this->flashMessenger()
-                    ->addSuccessMessage("Row '{$argv[0]['name']}' was added.");
+                    ->addSuccessMessage("Row '{$argv['row']['name']}' was added.");
 
                 return $this->redirect()
                     ->toRoute($matchedRouteName);
@@ -165,7 +162,17 @@ class AbstractActionController extends DefaultAbstractActionController
             'id' => $row['id']
         ]));
 
-        $this->form->bind($row);
+        /** @var array $argv */
+        $argv = ['row' => $row];
+
+        /** @var EventManagerInterface $eventManager */
+        $eventManager = $this->getEventManager();
+        $eventManager->trigger(self::EVENT_PRE_BIND_DATA, $this, $argv);
+
+         // r($row); die();
+
+        // $this->form->bind($row);
+        $this->form->setData($row);
 
         if ($this->getRequest()->isPost()) {
             $this->form->setInputFilter($row->getInputFilter());
@@ -178,9 +185,9 @@ class AbstractActionController extends DefaultAbstractActionController
 
                 /** @var array $values */
                 $values = $this->form->getData();
-                $row->exchangeArray($this->form->getData());
+                $row->exchangeArray($values);
 
-                $this->getEventManager()->trigger(
+                $eventManager->trigger(
                     self::EVENT_PRE_MERGE_DATA,
                     $this,
                     ['row' => $row, 'data' => $data, 'values' => $values]
@@ -188,7 +195,7 @@ class AbstractActionController extends DefaultAbstractActionController
 
                 $this->resource->save($row);
 
-                $this->getEventManager()->trigger(
+                $eventManager->trigger(
                     self::EVENT_POST_MERGE_DATA,
                     $this,
                     ['row' => $row, 'data' => $data, 'values' => $values]
