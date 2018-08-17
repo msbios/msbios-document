@@ -6,41 +6,30 @@
 namespace Kubnete\Resource\Factory;
 
 use Interop\Container\ContainerInterface;
-use Interop\Container\Exception\ContainerException;
 use Kubnete\Resource\Record\Tab;
-use Kubnete\Resource\Table\DocumentTableGateway;
 use Kubnete\Resource\Table\TabTableGateway;
+use MSBios\Db\TableGateway\TableGateway;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
-use Zend\Db\TableGateway\TableGateway;
-use Zend\ServiceManager\Exception\ServiceNotCreatedException;
-use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
- * Class TabTableFactory
+ * Class TabTableGatewayFactory
  * @package Kubnete\Resource\Factory
  */
-class TabTableFactory implements FactoryInterface
+class TabTableGatewayFactory implements FactoryInterface
 {
     /**
-     * Create an object
-     *
-     * @param  ContainerInterface $container
-     * @param  string $requestedName
-     * @param  null|array $options
-     * @return object
-     * @throws ServiceNotFoundException if unable to resolve the service.
-     * @throws ServiceNotCreatedException if an exception is raised when
-     *     creating a service.
-     * @throws ContainerException if any other error occurs
-     * @return DocumentTableGateway
+     * @param ContainerInterface $container
+     * @param string $requestedName
+     * @param array|null $options
+     * @return TabTableGateway
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         /** @var ResultSet $resultSetPrototype */
         $resultSetPrototype = new ResultSet;
-        $resultSetPrototype->setArrayObjectPrototype(new TabTableGateway);
+        $resultSetPrototype->setArrayObjectPrototype(new Tab);
 
         /** @var TableGateway $tableGateway */
         $tableGateway = new TableGateway(

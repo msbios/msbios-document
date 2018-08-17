@@ -10,6 +10,7 @@ use MSBios\Resource\RecordRepository;
 /**
  * Class AbstractResource
  * @package Kubnete\Resource\Table
+ * @deprecated Need remove this step in nested
  */
 abstract class AbstractResource extends RecordRepository
 {

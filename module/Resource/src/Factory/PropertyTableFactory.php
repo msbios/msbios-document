@@ -6,14 +6,13 @@
 namespace Kubnete\Resource\Factory;
 
 use Interop\Container\ContainerInterface;
-use Interop\Container\Exception\ContainerException;
 use Kubnete\Resource\Record\Property;
-use Kubnete\Resource\Table\Property;
+use Kubnete\Resource\Table\PropertyTableGateway;
+use MSBios\Db\TableGateway\TableGateway;
+use MSBios\Db\TableGateway\TableGatewayInterface;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
-use Zend\Db\TableGateway\TableGateway;
-use Zend\ServiceManager\Exception\ServiceNotCreatedException;
-use Zend\ServiceManager\Exception\ServiceNotFoundException;
+use Zend\Db\ResultSet\ResultSetInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
@@ -23,25 +22,18 @@ use Zend\ServiceManager\Factory\FactoryInterface;
 class PropertyTableFactory implements FactoryInterface
 {
     /**
-     * Create an object
-     *
-     * @param  ContainerInterface $container
-     * @param  string $requestedName
-     * @param  null|array $options
-     * @return object
-     * @throws ServiceNotFoundException if unable to resolve the service.
-     * @throws ServiceNotCreatedException if an exception is raised when
-     *     creating a service.
-     * @throws ContainerException if any other error occurs
-     * @return Property
+     * @param ContainerInterface $container
+     * @param string $requestedName
+     * @param array|null $options
+     * @return PropertyTableGateway
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        /** @var ResultSet $resultSetPrototype */
+        /** @var ResultSetInterface $resultSetPrototype */
         $resultSetPrototype = new ResultSet;
         $resultSetPrototype->setArrayObjectPrototype(new Property);
 
-        /** @var TableGateway $tableGateway */
+        /** @var TableGatewayInterface $tableGateway */
         $tableGateway = new TableGateway(
             'doc_t_properties',
             $container->get(Adapter::class),
@@ -49,6 +41,6 @@ class PropertyTableFactory implements FactoryInterface
             $resultSetPrototype
         );
 
-        return new Property($tableGateway);
+        return new PropertyTableGateway($tableGateway);
     }
 }

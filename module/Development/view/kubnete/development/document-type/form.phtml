@@ -75,134 +75,137 @@ $this->headScript()
                     </div>
                     <div class="tab-pane" id="tab-properties">
 
-                        <a data-toggle="modal"
-                           data-target="#property-modal-form-add"
-                           class="btn btn-default btn-xs" href="#">
+                        <button data-toggle="modal"
+                                data-target="#property-modal-form-add"
+                                class="btn btn-default btn-xs" href="#">
                             <i class="icon-plus2 position-left"></i> Add property
-                        </a>
+                        </button>
 
-                        <a data-toggle="modal"
-                           data-target="#tab-modal-form-add"
-                           class="btn btn-default btn-xs" href="#">
+                        <button data-toggle="modal"
+                                data-target="#tab-modal-form-add"
+                                class="btn btn-default btn-xs" href="#">
                             <i class="icon-plus2 position-left"></i> Add tab
-                        </a>
+                        </button>
 
                         <hr>
 
-                        <div class="tabbable">
+                        <?php $hasTabs = $form->get('tabs')->count(); ?>
+                        <div class="tabbable <?php if (!$hasTabs): ?>hide<?php endif; ?>">
 
                             <ul class="nav nav-tabs nav-tabs-highlight">
-
-                                <li class="active">
-                                    <a href="#tab-properties-1" data-toggle="tab">
-                                        Name 1
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="#tab-properties-2" data-toggle="tab">
-                                        Name 2
-                                    </a>
-                                </li>
+                                <?php foreach ($form->get('tabs') as $i => $tabElement): ?>
+                                    <li class="<?php if ($i): ?>active<?php endif; ?>">
+                                        <a href="#tab-properties-<?= $i; ?>" data-toggle="tab">
+                                            <?= $tabElement->get('name')->getValue(); ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
                             </ul>
 
                             <div class="tab-content">
-                                <div class="tab-pane active" id="tab-properties-1">
-
-                                    <div class="panel-group accordion-sortable content-group-lg ui-sortable"
-                                         id="accordion-controls-1">
-                                        <div class="property-item-1 panel panel-white">
-                                            <div class="panel-heading">
-                                                <h6 class="panel-title">
-                                                    <a data-toggle="collapse"
-                                                       data-parent="#accordion-controls-1"
-                                                       href="#property-item-1-1"
-                                                       aria-expanded="true" class="">
-                                                        Property name
-                                                    </a>
-                                                    <a class="heading-elements-toggle">
-                                                        <i class="icon-more"></i>
-                                                    </a>
-                                                </h6>
-                                                <div class="heading-elements">
-                                                    <ul class="icons-list">
-                                                        <li><a data-action="move" class="ui-sortable-handle"></a>
-                                                        </li>
-                                                        <li><a data-action="close"></a></li>
-                                                    </ul>
+                                <?php foreach ($form->get('tabs') as $i => $tabElement): ?>
+                                    <div class="tab-pane active" id="tab-properties-<?= $i; ?>">
+                                        <div class="panel-group accordion-sortable content-group-lg ui-sortable"
+                                             id="accordion-controls-1">
+                                            <div class="property-item-1 panel panel-white">
+                                                <div class="panel-heading">
+                                                    <h6 class="panel-title">
+                                                        <a data-toggle="collapse"
+                                                           data-parent="#accordion-controls-1"
+                                                           href="#property-item-1-1"
+                                                           aria-expanded="true" class="">
+                                                            Property name
+                                                        </a>
+                                                        <a class="heading-elements-toggle">
+                                                            <i class="icon-more"></i>
+                                                        </a>
+                                                    </h6>
+                                                    <div class="heading-elements">
+                                                        <ul class="icons-list">
+                                                            <li><a data-action="move" class="ui-sortable-handle"></a>
+                                                            </li>
+                                                            <li><a data-action="close"></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div id="property-item-1-1"
+                                                     class="panel-collapse collapse in"
+                                                     aria-expanded="true">
+                                                    <div class="panel-body">
+                                                        <?= $this->partial('partial/element.phtml', [
+                                                            'element' => $form->get('templateid')
+                                                                ->setAttributes([
+                                                                    'required' => 'required',
+                                                                    'placeholder' => $this->translate('Enter name')
+                                                                ]),
+                                                            'label' => $this->translate('Default View'),
+                                                        ]); ?>
+                                                        <?= $this->partial('partial/element.phtml', [
+                                                            'element' => $form->get('templateid')
+                                                                ->setAttributes([
+                                                                    'required' => 'required',
+                                                                    'placeholder' => $this->translate('Enter name')
+                                                                ]),
+                                                            'label' => $this->translate('Default View'),
+                                                        ]); ?>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div id="property-item-1-1"
-                                                 class="panel-collapse collapse in"
-                                                 aria-expanded="true">
-                                                <div class="panel-body">
-                                                    <?= $this->partial('partial/element.phtml', [
-                                                        'element' => $form->get('templateid')
-                                                            ->setAttributes([
-                                                                'required' => 'required',
-                                                                'placeholder' => $this->translate('Enter name')
-                                                            ]),
-                                                        'label' => $this->translate('Default View'),
-                                                    ]); ?>
-                                                    <?= $this->partial('partial/element.phtml', [
-                                                        'element' => $form->get('templateid')
-                                                            ->setAttributes([
-                                                                'required' => 'required',
-                                                                'placeholder' => $this->translate('Enter name')
-                                                            ]),
-                                                        'label' => $this->translate('Default View'),
-                                                    ]); ?>
+                                            <div class="property-item-2 panel panel-white">
+                                                <div class="panel-heading">
+                                                    <h6 class="panel-title">
+                                                        <a data-toggle="collapse"
+                                                           data-parent="#accordion-controls-1"
+                                                           href="#property-item-2-1"
+                                                           aria-expanded="true" class="">
+                                                            Property name
+                                                        </a>
+                                                        <a class="heading-elements-toggle">
+                                                            <i class="icon-more"></i>
+                                                        </a>
+                                                    </h6>
+                                                    <div class="heading-elements">
+                                                        <ul class="icons-list">
+                                                            <li><a data-action="move" class="ui-sortable-handle"></a>
+                                                            </li>
+                                                            <li><a data-action="close"></a></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="property-item-2 panel panel-white">
-                                            <div class="panel-heading">
-                                                <h6 class="panel-title">
-                                                    <a data-toggle="collapse"
-                                                       data-parent="#accordion-controls-1"
-                                                       href="#property-item-2-1"
-                                                       aria-expanded="true" class="">
-                                                        Property name
-                                                    </a>
-                                                    <a class="heading-elements-toggle">
-                                                        <i class="icon-more"></i>
-                                                    </a>
-                                                </h6>
-                                                <div class="heading-elements">
-                                                    <ul class="icons-list">
-                                                        <li><a data-action="move" class="ui-sortable-handle"></a>
-                                                        </li>
-                                                        <li><a data-action="close"></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div id="property-item-2-1"
-                                                 class="panel-collapse collapse in"
-                                                 aria-expanded="true">
-                                                <div class="panel-body">
-                                                    <?= $this->partial('partial/element.phtml', [
-                                                        'element' => $form->get('templateid')
-                                                            ->setAttributes([
-                                                                'required' => 'required',
-                                                                'placeholder' => $this->translate('Enter name')
-                                                            ]),
-                                                        'label' => $this->translate('Default View'),
-                                                    ]); ?>
-                                                    <?= $this->partial('partial/element.phtml', [
-                                                        'element' => $form->get('templateid')
-                                                            ->setAttributes([
-                                                                'required' => 'required',
-                                                                'placeholder' => $this->translate('Enter name')
-                                                            ]),
-                                                        'label' => $this->translate('Default View'),
-                                                    ]); ?>
+                                                <div id="property-item-2-1"
+                                                     class="panel-collapse collapse in"
+                                                     aria-expanded="true">
+                                                    <div class="panel-body">
+                                                        <?= $this->partial('partial/element.phtml', [
+                                                            'element' => $form->get('templateid')
+                                                                ->setAttributes([
+                                                                    'required' => 'required',
+                                                                    'placeholder' => $this->translate('Enter name')
+                                                                ]),
+                                                            'label' => $this->translate('Default View'),
+                                                        ]); ?>
+                                                        <?= $this->partial('partial/element.phtml', [
+                                                            'element' => $form->get('templateid')
+                                                                ->setAttributes([
+                                                                    'required' => 'required',
+                                                                    'placeholder' => $this->translate('Enter name')
+                                                                ]),
+                                                            'label' => $this->translate('Default View'),
+                                                        ]); ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                </div>
+                                <?php endforeach; ?>
                             </div>
 
+                        </div>
+
+                        <div class="alert alert-warning no-border <?php if ($hasTabs): ?>hide<?php endif; ?>"
+                             role="alert">
+                            <h4><?= $this->translate('Information message'); ?></h4>
+                            <p><?= $this->translate('To start working with properties, you must create at least one tab.'); ?></p>
                         </div>
 
                     </div>

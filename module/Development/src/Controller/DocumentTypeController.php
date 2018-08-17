@@ -7,12 +7,16 @@
 namespace Kubnete\Development\Controller;
 
 use Kubnete\CPanel\Mvc\Controller\AbstractActionController;
+use Kubnete\Resource\Table\PropertyTableGateway;
+use Kubnete\Resource\Table\TabTableGateway;
+use MSBios\Resource\RecordRepositoryInterface;
+use Zend\EventManager\Event;
 use Zend\EventManager\EventInterface;
 use Zend\EventManager\EventManagerInterface;
 use Zend\Mvc\MvcEvent;
+use Zend\Paginator\Paginator;
+use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Stdlib\ArrayObject;
-
-// use Kubnete\Resource\Table\DocumentTypeGateway;
 
 /**
  * Class DocumentTypeController
@@ -21,12 +25,24 @@ use Zend\Stdlib\ArrayObject;
 class DocumentTypeController extends AbstractActionController
 {
 
+    /** @var RecordRepositoryInterface */
+    protected $tabs;
+
+    /** @var RecordRepositoryInterface */
+    protected $properties;
+
     /**
      * @param MvcEvent $e
      * @return mixed
      */
     public function onDispatch(MvcEvent $e)
     {
+
+        /** @var ServiceLocatorInterface $serviceManager */
+        $serviceManager = $e->getApplication()->getServiceManager();
+        $this->tabs = $serviceManager->get(TabTableGateway::class);
+        $this->properties = $serviceManager->get(PropertyTableGateway::class);
+
         /** @var EventManagerInterface $eventManager */
         $eventManager = $e->getTarget()
             ->getEventManager();
@@ -35,28 +51,16 @@ class DocumentTypeController extends AbstractActionController
     }
 
     /**
-     * @param EventInterface $e
+     * @param EventInterface|Event $e
      */
     public function onPreBindData(EventInterface $e)
     {
         /** @var ArrayObject $row */
         $row = $e->getParam('row');
-        $row['tabs'] = [
-            [
-                'id' => 1,
-                'documenttypeid' => 1,
-                'name' => 'Name',
-                'description' => 'Description',
-                'orderkey' => 1,
-            ],
-            [
-                'id' => 1,
-                'documenttypeid' => 1,
-                'name' => 'Name',
-                'description' => 'Description',
-                'orderkey' => 1
-            ]
-        ];
+
+        /** @var Paginator $tabs */
+        $tabs = $this->tabs->fetchAll(['documenttypeid' => $row['id']]);
+        $row['tabs'] = $tabs;
     }
 
 //    /** @var DocumentTypeGateway */
