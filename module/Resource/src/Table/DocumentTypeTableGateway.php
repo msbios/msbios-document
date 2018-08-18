@@ -4,6 +4,7 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 namespace Kubnete\Resource\Table;
+
 use MSBios\Db\TableGateway\TableGateway;
 use MSBios\Db\TableGateway\TableGatewayInterface;
 use Zend\Db\Sql\Select;

@@ -79,6 +79,48 @@ class DocumentTypeForm extends Form
                                 'type' => Text::class,
                                 'name' => 'orderkey'
                             ]
+                        ], [
+                            'spec' => [
+                                'type' => Collection::class,
+                                'name' => 'properties',
+                                'options' => [
+                                    'should_create_template' => false,
+                                    'allow_add' => true,
+                                    'allow_remove' => true,
+                                    'count' => 0,
+                                    'target_element' => [
+                                        'type' => Fieldset::class,
+                                        'elements' => [
+                                            [
+                                                'spec' => [
+                                                    'type' => Text::class,
+                                                    'name' => 'id'
+                                                ]
+                                            ], [
+                                                'spec' => [
+                                                    'type' => Text::class,
+                                                    'name' => 'tabid'
+                                                ]
+                                            ], [
+                                                'spec' => [
+                                                    'type' => Text::class,
+                                                    'name' => 'datatypeid'
+                                                ]
+                                            ], [
+                                                'spec' => [
+                                                    'type' => Text::class,
+                                                    'name' => 'name'
+                                                ]
+                                            ], [
+                                                'spec' => [
+                                                    'type' => Text::class,
+                                                    'name' => 'required'
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                            ]
                         ]
                     ]
                 ]

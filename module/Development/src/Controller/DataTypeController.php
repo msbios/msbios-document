@@ -6,6 +6,7 @@
 namespace Kubnete\Development\Controller;
 
 use Kubnete\CPanel\Mvc\Controller\AbstractActionController;
+use Kubnete\Resource\Record\DataType;
 
 /**
  * Class DataTypeController
@@ -13,5 +14,11 @@ use Kubnete\CPanel\Mvc\Controller\AbstractActionController;
  */
 class DataTypeController extends AbstractActionController
 {
-
+    /**
+     * @return DataType
+     */
+    protected static function factory()
+    {
+        return new DataType;
+    }
 }

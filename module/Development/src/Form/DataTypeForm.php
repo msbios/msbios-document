@@ -9,7 +9,6 @@ namespace Kubnete\Development\Form;
 use Kubnete\Development\Form\Element\FieldSelect;
 use Zend\Form\Element\Text;
 use Zend\Form\Form;
-use Zend\Http\PhpEnvironment\Request;
 
 /**
  * Class DataTypeForm
@@ -17,17 +16,6 @@ use Zend\Http\PhpEnvironment\Request;
  */
 class DataTypeForm extends Form
 {
-    /**
-     * DataTypeForm constructor.
-     * @param int|null|string $name
-     * @param array|null $options
-     */
-    public function __construct($name = __CLASS__, array $options = null)
-    {
-        parent::__construct($name, $options);
-        $this->setAttribute('method', Request::METHOD_POST);
-    }
-
     /**
      * @inheritdoc
      */
@@ -49,6 +37,4 @@ class DataTypeForm extends Form
             'type' => FieldSelect::class
         ]);
     }
-
-
 }

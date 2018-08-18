@@ -3,13 +3,15 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
+
 namespace Kubnete\CPanel\Mvc\Controller;
 
 use MSBios\CPanel\Mvc\Controller\AbstractActionController as DefaultAbstractActionController;
 use MSBios\Resource\RecordRepositoryInterface;
 use Zend\EventManager\EventManagerInterface;
 use Zend\Form\FormInterface;
-use Zend\Paginator\Paginator;
+use Zend\Mvc\Controller\Plugin\Params;
+use Zend\Mvc\Controller\Plugin\PluginInterface;
 use Zend\Stdlib\ArrayObject;
 use Zend\View\Model\ViewModel;
 
@@ -52,20 +54,27 @@ class AbstractActionController extends DefaultAbstractActionController
      */
     public function indexAction()
     {
-        /** @var Paginator $paginator */
-        $paginator = $this->resource->fetchAll();
 
-        $paginator->setItemCountPerPage(
-            (int)$this->params()->fromQuery('limit', self::DEFAULT_ITEM_COUNT_PER_PAGE)
-        );
+        /** @var PluginInterface|Params $params */
+        $params = $this->params();
 
-        $paginator->setCurrentPageNumber(
-            (int)$this->params()->fromQuery('page', self::DEFAULT_CURRENT_PAGE_NUMBER)
+        /** @var string $matchedRouteName */
+        $matchedRouteName = $this->getMatchedRouteName();
+        $this->form->setAttribute(
+            'action',
+            $this->url()->fromRoute($matchedRouteName, ['action' => 'add'])
         );
 
         return new ViewModel([
-            'paginator' => $paginator,
-            'matchedRouteName' => $this->getMatchedRouteName()
+            'paginator' => $this->resource->fetchAll()
+                ->setItemCountPerPage(
+                    (int)$params->fromQuery('limit', self::DEFAULT_ITEM_COUNT_PER_PAGE)
+                )
+                ->setCurrentPageNumber(
+                    (int)$params->fromQuery('page', self::DEFAULT_CURRENT_PAGE_NUMBER)
+                ),
+            'form' => $this->form,
+            'matchedRouteName' => $matchedRouteName
         ]);
     }
 
@@ -78,7 +87,8 @@ class AbstractActionController extends DefaultAbstractActionController
         $matchedRouteName = $this->getMatchedRouteName();
 
         $this->form->setAttribute(
-            'action', $this->url()->fromRoute($matchedRouteName, ['action' => 'add'])
+            'action',
+            $this->url()->fromRoute($matchedRouteName, ['action' => 'add'])
         );
 
         if ($this->getRequest()->isPost()) {
@@ -118,6 +128,7 @@ class AbstractActionController extends DefaultAbstractActionController
                 return $this->redirect()
                     ->toRoute($matchedRouteName);
             } else {
+                $argv['messages'] = $this->form->getMessages();
                 $eventManager
                     ->trigger(self::EVENT_VALIDATE_ERROR, $this, $argv);
             }
@@ -141,7 +152,7 @@ class AbstractActionController extends DefaultAbstractActionController
         /** @var string $matchedRouteName */
         $matchedRouteName = $this->getMatchedRouteName();
 
-        if (!$id) {
+        if (! $id) {
             return $this->redirect()
                 ->toRoute($matchedRouteName, ['action' => 'add']);
         }
@@ -169,7 +180,7 @@ class AbstractActionController extends DefaultAbstractActionController
         $eventManager = $this->getEventManager();
         $eventManager->trigger(self::EVENT_PRE_BIND_DATA, $this, $argv);
 
-         // r($row); die();
+        // r($row); die();
 
         // $this->form->bind($row);
         $this->form->setData($row);

@@ -7,6 +7,7 @@
 namespace Kubnete\Development\Controller;
 
 use Kubnete\CPanel\Mvc\Controller\AbstractActionController;
+use Kubnete\Resource\Record\Tab;
 use Kubnete\Resource\Table\PropertyTableGateway;
 use Kubnete\Resource\Table\TabTableGateway;
 use MSBios\Resource\RecordRepositoryInterface;
@@ -37,7 +38,6 @@ class DocumentTypeController extends AbstractActionController
      */
     public function onDispatch(MvcEvent $e)
     {
-
         /** @var ServiceLocatorInterface $serviceManager */
         $serviceManager = $e->getApplication()->getServiceManager();
         $this->tabs = $serviceManager->get(TabTableGateway::class);
@@ -60,6 +60,18 @@ class DocumentTypeController extends AbstractActionController
 
         /** @var Paginator $tabs */
         $tabs = $this->tabs->fetchAll(['documenttypeid' => $row['id']]);
+
+        $tabs = $tabs->getCurrentItems();
+
+        /**
+         * @var int $i
+         * @var Tab $tab
+         */
+        foreach ($tabs as $i => $tab) {
+            $tab['properties'] = $this->properties->fetchAll(['tabid' => $tab['id']]);
+            $tabs[$i] = $tab;
+        }
+
         $row['tabs'] = $tabs;
     }
 

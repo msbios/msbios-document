@@ -90,20 +90,24 @@ $this->headScript()
                         <hr>
 
                         <?php $hasTabs = $form->get('tabs')->count(); ?>
-                        <div class="tabbable <?php if (!$hasTabs): ?>hide<?php endif; ?>">
+                        <div class="tabbable <?php if (! $hasTabs) :
+                            ?>hide<?php
+                                             endif; ?>">
 
                             <ul class="nav nav-tabs nav-tabs-highlight">
-                                <?php foreach ($form->get('tabs') as $i => $tabElement): ?>
-                                    <li class="<?php if ($i): ?>active<?php endif; ?>">
+                                <?php foreach ($form->get('tabs') as $i => $tabFieldset) : ?>
+                                    <li class="<?php if (! $i) :
+                                        ?>active<?php
+                                               endif; ?>">
                                         <a href="#tab-properties-<?= $i; ?>" data-toggle="tab">
-                                            <?= $tabElement->get('name')->getValue(); ?>
+                                            <?= $tabFieldset->get('name')->getValue(); ?>
                                         </a>
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
 
                             <div class="tab-content">
-                                <?php foreach ($form->get('tabs') as $i => $tabElement): ?>
+                                <?php foreach ($form->get('tabs') as $i => $tabFieldset) : ?>
                                     <div class="tab-pane active" id="tab-properties-<?= $i; ?>">
                                         <div class="panel-group accordion-sortable content-group-lg ui-sortable"
                                              id="accordion-controls-1">
@@ -202,7 +206,7 @@ $this->headScript()
 
                         </div>
 
-                        <div class="alert alert-warning no-border <?php if ($hasTabs): ?>hide<?php endif; ?>"
+                        <div class="alert alert-warning no-border <?php if ($hasTabs) :?>hide<?php endif; ?>"
                              role="alert">
                             <h4><?= $this->translate('Information message'); ?></h4>
                             <p><?= $this->translate('To start working with properties, you must create at least one tab.'); ?></p>
@@ -230,8 +234,7 @@ $this->headScript()
                             </thead>
                             <tbody>
 
-                            <?php foreach ($form->get('tabs') as $i => $tabElement): ?>
-
+                            <?php foreach ($form->get('tabs') as $i => $tabFieldset) : ?>
                                 <tr id="tabs-item-<?= $i; ?>">
                                     <td class="text-center">
                                         <a href="#" class="btn btn-link btn-xs">
@@ -242,18 +245,20 @@ $this->headScript()
                                     <td>
                                         <?php
                                         /** @var ElementInterface $element */
-                                        $element = $tabElement->get('name');
+                                        $element = $tabFieldset->get('name');
                                         $element->setAttribute('class', 'form-control');
                                         $messages = $element->getMessages();
                                         $hasError = count($messages);
                                         ?>
 
-                                        <div class="<?php if ($hasError): ?>has-warning has-feedback<?php endif; ?>">
+                                        <div class="<?php if ($hasError) :
+                                            ?>has-warning has-feedback<?php
+                                                    endif; ?>">
                                             <?= $this->formElement($element); ?>
-                                            <?php if ($hasError): ?>
+                                            <?php if ($hasError) : ?>
                                                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                                                 <span class="help-block">
-                                                    <?php foreach ($messages as $message): ?>
+                                                    <?php foreach ($messages as $message) : ?>
                                                         <small><?= $message; ?></small>
                                                     <?php endforeach; ?>
                                                 </span>
@@ -264,18 +269,20 @@ $this->headScript()
                                     <td>
                                         <?php
                                         /** @var ElementInterface $element */
-                                        $element = $tabElement->get('description');
+                                        $element = $tabFieldset->get('description');
                                         $element->setAttribute('class', 'form-control');
                                         $messages = $element->getMessages();
                                         $hasError = count($messages);
                                         ?>
 
-                                        <div class="<?php if ($hasError): ?>has-warning has-feedback<?php endif; ?>">
+                                        <div class="<?php if ($hasError) :
+                                            ?>has-warning has-feedback<?php
+                                                    endif; ?>">
                                             <?= $this->formElement($element); ?>
-                                            <?php if ($hasError): ?>
+                                            <?php if ($hasError) : ?>
                                                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                                                 <span class="help-block">
-                                                    <?php foreach ($messages as $message): ?>
+                                                    <?php foreach ($messages as $message) : ?>
                                                         <small><?= $message; ?></small>
                                                     <?php endforeach; ?>
                                                 </span>
@@ -322,9 +329,9 @@ $this->headScript()
                                             </div>
                                         </div>
 
-                                        <?= $this->formHidden($tabElement->get('id')); ?>
-                                        <?= $this->formHidden($tabElement->get('documenttypeid')); ?>
-                                        <?= $this->formHidden($tabElement->get('orderkey')); ?>
+                                        <?= $this->formHidden($tabFieldset->get('id')); ?>
+                                        <?= $this->formHidden($tabFieldset->get('documenttypeid')); ?>
+                                        <?= $this->formHidden($tabFieldset->get('orderkey')); ?>
 
                                     </td>
                                 </tr>

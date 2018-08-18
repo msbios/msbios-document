@@ -62,7 +62,7 @@ class DataType extends ArrayObject implements RecordInterface, InputFilterAwareI
             ]));
 
             $inputFilter->add($factory->createInput([
-                'name' => 'form_element',
+                'name' => 'field',
                 'required' => true,
                 'filters'  => [
                     ['name' => StripTags::class],
