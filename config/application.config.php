@@ -9,7 +9,6 @@ return [
         'Zend\Paginator',
         'Zend\Cache',
         'Zend\Serializer',
-
         'Zend\Db',
         'Zend\InputFilter',
         'Zend\Mvc\Plugin\Prg',
@@ -20,7 +19,6 @@ return [
         'Zend\Router',
         'Zend\Form',
         'Zend\I18n',
-
         'MSBios\Cache',
         'MSBios\Hydrator',
         'MSBios\Db',
@@ -38,7 +36,6 @@ return [
         'MSBios\CPanel',
         'MSBios\Guard\CPanel',
         'MSBios\Guard\Resource',
-
         'Kubnete\Frontend',
         'Kubnete\CPanel',
         'Kubnete\Config',
@@ -48,10 +45,7 @@ return [
         'Kubnete\Resource',
         'Kubnete\Statistic',
         'Kubnete\Terminal',
-
         'MSBios\Document',
-
-        'Zend\Log',
         'ZendDeveloperTools',
     ],
     // These are various options for the listeners attached to the ModuleManager

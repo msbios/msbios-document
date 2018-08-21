@@ -54,7 +54,6 @@ class AbstractActionController extends DefaultAbstractActionController
      */
     public function indexAction()
     {
-
         /** @var PluginInterface|Params $params */
         $params = $this->params();
 
@@ -90,6 +89,12 @@ class AbstractActionController extends DefaultAbstractActionController
             'action',
             $this->url()->fromRoute($matchedRouteName, ['action' => 'add'])
         );
+
+        /** @var array $variables */
+        $variables = [
+            'form' => $this->form,
+            'matchedRouteName' => $matchedRouteName
+        ];
 
         if ($this->getRequest()->isPost()) {
 
@@ -152,7 +157,7 @@ class AbstractActionController extends DefaultAbstractActionController
         /** @var string $matchedRouteName */
         $matchedRouteName = $this->getMatchedRouteName();
 
-        if (! $id) {
+        if (!$id) {
             return $this->redirect()
                 ->toRoute($matchedRouteName, ['action' => 'add']);
         }

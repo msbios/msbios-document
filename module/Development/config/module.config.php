@@ -34,12 +34,15 @@ return [
 
         'factories' => [
             // Elements
+            Form\Element\DataTypeSelect::class =>
+                Factory\DataTypeSelectFactory::class,
             Form\Element\FieldSelect::class =>
                 Factory\FormElementSelectFactory::class,
             Form\Element\ViewSelect::class =>
                 Factory\ViewSelectFactory::class,
 
 
+            // deprecated
             Form\TypeTab\PropertyFieldset::class =>
                 Factory\TypeTab\PropertyFieldsetFactory::class,
 

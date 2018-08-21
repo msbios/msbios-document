@@ -6,8 +6,11 @@
 
 namespace Kubnete\Development\Form;
 
+use Kubnete\Development\Form\Element\DataTypeSelect;
 use Kubnete\Development\Form\Element\ViewSelect;
+use Zend\Form\Element\Checkbox;
 use Zend\Form\Element\Collection;
+use Zend\Form\Element\Hidden;
 use Zend\Form\Element\Text;
 use Zend\Form\Fieldset;
 use Zend\Form\Form;
@@ -93,17 +96,17 @@ class DocumentTypeForm extends Form
                                         'elements' => [
                                             [
                                                 'spec' => [
-                                                    'type' => Text::class,
+                                                    'type' => Hidden::class,
                                                     'name' => 'id'
                                                 ]
                                             ], [
                                                 'spec' => [
-                                                    'type' => Text::class,
+                                                    'type' => Hidden::class,
                                                     'name' => 'tabid'
                                                 ]
                                             ], [
                                                 'spec' => [
-                                                    'type' => Text::class,
+                                                    'type' => DataTypeSelect::class,
                                                     'name' => 'datatypeid'
                                                 ]
                                             ], [
@@ -113,8 +116,27 @@ class DocumentTypeForm extends Form
                                                 ]
                                             ], [
                                                 'spec' => [
+                                                    'type' => Checkbox::class,
+                                                    'name' => 'required',
+                                                    'options' => [
+                                                        'checked_value' => 1,
+                                                        'unchecked_value' => 0
+                                                    ]
+                                                ]
+                                            ], [
+                                                'spec' => [
                                                     'type' => Text::class,
-                                                    'name' => 'required'
+                                                    'name' => 'identifier'
+                                                ]
+                                            ], [
+                                                'spec' => [
+                                                    'type' => Text::class,
+                                                    'name' => 'description'
+                                                ]
+                                            ], [
+                                                'spec' => [
+                                                    'type' => Hidden::class,
+                                                    'name' => 'orderkey'
                                                 ]
                                             ]
                                         ]

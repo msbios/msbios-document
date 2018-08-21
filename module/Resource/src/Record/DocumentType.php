@@ -80,7 +80,7 @@ class DocumentType extends ArrayObject implements InputFilterAwareInterface
             ]));
 
             $inputFilter->add($factory->createInput([
-                'name' => 'default_view_id',
+                'name' => 'templateid',
                 'required' => true
             ]));
 
