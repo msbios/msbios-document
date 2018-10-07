@@ -6,18 +6,13 @@
 namespace Kubnete\Resource\Factory;
 
 use Interop\Container\ContainerInterface;
-use Interop\Container\Exception\ContainerException;
 use Kubnete\Resource\Record\Document;
-use Kubnete\Resource\Record\Property\Value;
 use Kubnete\Resource\Table\DocumentTableGateway;
 
-use Kubnete\Resource\Table\PropertyValueTable;
+use Kubnete\Resource\Table\PropertyValueTableGateway;
 use MSBios\Db\TableGateway\TableGateway;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
-
-use Zend\ServiceManager\Exception\ServiceNotCreatedException;
-use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
@@ -50,7 +45,7 @@ class DocumentTableFactory implements FactoryInterface
         );
 
         $model->setPropertyValueTable(
-            $container->get(PropertyValueTable::class)
+            $container->get(PropertyValueTableGateway::class)
         );
 
         return new DocumentTableGateway($tableGateway);

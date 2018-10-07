@@ -6,34 +6,30 @@
 namespace Kubnete\Resource\Factory;
 
 use Interop\Container\ContainerInterface;
-use Interop\Container\Exception\ContainerException;
-use Kubnete\Resource\Record\Property;
-use Kubnete\Resource\Table\PropertyValueTable;
+use Kubnete\Resource\Record\Property\Value;
+use Kubnete\Resource\Table\PropertyValueTableGateway;
 use MSBios\Db\TableGateway\TableGateway;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
-
-use Zend\ServiceManager\Exception\ServiceNotCreatedException;
-use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
- * Class PropertyValueTableFactory
+ * Class PropertyValueTableGatewayFactory
  * @package Kubnete\Resource\Factory
  */
-class PropertyValueTableFactory implements FactoryInterface
+class PropertyValueTableGatewayFactory implements FactoryInterface
 {
     /**
      * @param ContainerInterface $container
      * @param string $requestedName
      * @param array|null $options
-     * @return PropertyValueTable
+     * @return PropertyValueTableGateway
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         /** @var ResultSet $resultSetPrototype */
         $resultSetPrototype = new ResultSet;
-        $resultSetPrototype->setArrayObjectPrototype(new Property\Value);
+        $resultSetPrototype->setArrayObjectPrototype(new Value);
 
         /** @var TableGateway $tableGateway */
         $tableGateway = new TableGateway(
@@ -43,6 +39,6 @@ class PropertyValueTableFactory implements FactoryInterface
             $resultSetPrototype
         );
 
-        return new PropertyValueTable($tableGateway);
+        return new PropertyValueTableGateway($tableGateway);
     }
 }

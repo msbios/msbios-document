@@ -20,15 +20,12 @@ class DocumentTableGateway extends AbstractResource
 {
     /**
      * @param Document $document
-     * @param bool $paginated
+     * @return mixed
      */
-    public function fetchAllByDocument(Document $document, $paginated = false)
+    public function fetchAllByDocument(Document $document)
     {
-        if ($paginated) {
-        }
-
         return $this->tableGateway->select([
-            'parent_id' => $document['id']
+            'parentid' => $document['id']
         ]);
     }
 
@@ -44,19 +41,19 @@ class DocumentTableGateway extends AbstractResource
             ->select(function (Select $select) use ($uri, $ancestor) {
                 $select->join(
                     ['d' => Tables::CNT_T_DOCUMENTS],
-                    sprintf('d.id = %s.parent_id', Tables::CNT_T_DOCUMENTS),
+                    sprintf('d.id = %s.parentid', Tables::CNT_T_DOCUMENTS),
                     ['aid' => 'id', 'ancestor' => 'uri'],
                     Select::JOIN_LEFT
                 );
                 $select->join(
                     ['l' => Tables::SYS_T_TEMPLATES],
-                    sprintf('l.id = %s.layout_id', Tables::CNT_T_DOCUMENTS),
+                    sprintf('l.id = %s.layoutid', Tables::CNT_T_DOCUMENTS),
                     ['layout' => 'identifier'],
                     Select::JOIN_LEFT
                 );
                 $select->join(
                     ['v' => Tables::SYS_T_TEMPLATES],
-                    sprintf('v.id = %s.view_id', Tables::CNT_T_DOCUMENTS),
+                    sprintf('v.id = %s.viewid', Tables::CNT_T_DOCUMENTS),
                     ['view' => 'identifier'],
                     Select::JOIN_LEFT
                 );
@@ -81,41 +78,4 @@ class DocumentTableGateway extends AbstractResource
 
         return $resultSet->current();
     }
-
-//    /**
-//     * @param Document $document
-//     * @throws \Exception
-//     */
-//    public function save(Document $document)
-//    {
-//        /** @var array $data */
-//        $data = [
-//            'name' => $document['name'],
-//            'uri' => $document['uri'],
-//            'document_type_id' => $document['document_type_id']
-//        ];
-//
-//        /** @var int $id */
-//        $id = (int)$document['id'];
-//
-//        if (!$id) {
-//            $this->getTableGateway()
-//                ->insert($data);
-//        } else {
-//            if ($this->getDocument($id)) {
-//                $this->getTableGateway()
-//                    ->update($data, ['id' => $id]);
-//            } else {
-//                throw new \Exception('Document id does not exist');
-//            }
-//        }
-//    }
-//
-//    /**
-//     * @param $id
-//     */
-//    public function deleteDocument($id)
-//    {
-//        $this->delete($id);
-//    }
 }

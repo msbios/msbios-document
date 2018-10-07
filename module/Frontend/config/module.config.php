@@ -19,21 +19,21 @@ return [
         ]
     ],
 
-    'router' => [
-        'routes' => [
-            'home' => [
-                'type' => Regex::class,
-                'options' => [
-                    'regex' => '^/(?!cpanel?/)(?<path>.*)',
-                    'defaults' => [
-                        'controller' => Controller\IndexController::class,
-                        'action' => 'index',
-                    ],
-                    'spec' => '/%path%',
-                ],
-            ],
-        ],
-    ],
+//    'router' => [
+//        'routes' => [
+//            'home' => [
+//                'type' => Regex::class,
+//                'options' => [
+//                    'regex' => '^/(?!cpanel?/)(?<path>.*)',
+//                    'defaults' => [
+//                        'controller' => Controller\IndexController::class,
+//                        'action' => 'index',
+//                    ],
+//                    'spec' => '/%path%',
+//                ],
+//            ],
+//        ],
+//    ],
 
     'service_manager' => [
         'invokables' => [
@@ -52,7 +52,7 @@ return [
         ]
     ],
 
-    'listeners' => [
-        EventManager\DocumentListener::class
-    ]
+//    'listeners' => [
+//        EventManager\DocumentListener::class
+//    ]
 ];

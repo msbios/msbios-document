@@ -12,8 +12,5 @@ return [
     ],
 
     \MSBios\Theme\Module::class => [
-        // 'default_global_paths' => [
-        //     'default_global_paths' => __DIR__ . '/../../themes/'
-        // ]
     ]
 ];

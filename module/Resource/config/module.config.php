@@ -18,8 +18,8 @@ return [
                 Factory\DocumentTypeTableGatewayFactory::class,
             Table\PropertyTableGateway::class =>
                 Factory\PropertyTableFactory::class,
-            Table\PropertyValueTable::class =>
-                Factory\PropertyValueTableFactory::class,
+            Table\PropertyValueTableGateway::class =>
+                Factory\PropertyValueTableGatewayFactory::class,
             Table\TabTableGateway::class =>
                 Factory\TabTableGatewayFactory::class,
             Table\TemplateTableGateway::class =>

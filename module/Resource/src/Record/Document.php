@@ -7,7 +7,7 @@ namespace Kubnete\Resource\Record;
 
 use Kubnete\Resource\Record\Property\Value;
 use Kubnete\Resource\Table\PropertyValue;
-use Kubnete\Resource\Table\PropertyValueTable;
+use Kubnete\Resource\Table\PropertyValueTableGateway;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Filter\StringTrim;
 use Zend\Filter\StripTags;
@@ -41,7 +41,7 @@ class Document extends ArrayObject implements InputFilterAwareInterface
     public $userId;
     public $updatedAt;
 
-    /** @var PropertyValueTable */
+    /** @var PropertyValueTableGateway */
     protected $table;
 
     /** @var null */
@@ -71,10 +71,10 @@ class Document extends ArrayObject implements InputFilterAwareInterface
     }
 
     /**
-     * @param PropertyValueTable $table
+     * @param PropertyValueTableGateway $table
      * @return $this
      */
-    public function setPropertyValueTable(PropertyValueTable $table)
+    public function setPropertyValueTable(PropertyValueTableGateway $table)
     {
         $this->table = $table;
         return $this;
