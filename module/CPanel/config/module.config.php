@@ -6,6 +6,7 @@
 
 namespace MSBios\Document\CPanel;
 
+use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
@@ -19,56 +20,70 @@ return [
 
     'controllers' => [
         'factories' => [
+            Controller\DataTypeController::class =>
+                Factory\DataTypeControllerFactory::class,
+            Controller\DocumentTypeController::class =>
+                Factory\DocumentTypeControllerFactory::class,
             Controller\IndexController::class =>
-                InvokableFactory::class
+                InvokableFactory::class,
+            Controller\TemplateController::class =>
+                Factory\TemplateControllerFactory::class
         ],
     ],
 
     'router' => [
         'routes' => [
-            //'cpanel' => [
-            //    // 'type' => \Zend\Router\Http\Segment::class,
-            //    // 'options' => [
-            //    //     'route' => '/admin[/]',
-            //    //     'defaults' => [
-            //
-            //    //     ],
-            //    // ],
-            //    // 'may_terminate' => true,
-            //    'child_routes' => [
-            //        'changelog' => [
-            //            'type' => 'Segment',
-            //            'options' => [
-            //                'route' => 'changelog[/]',
-            //                'defaults' => [
-            //                    'controller' => Controller\IndexController::class,
-            //                    'action' => 'changelog',
-            //                ],
-            //            ],
-            //            'may_terminate' => true
-            //        ],
-            //        'login' => [
-            //            'type' => 'Segment',
-            //            'options' => [
-            //                'route' => 'login[/:redirect]',
-            //                'defaults' => [
-            //                    'action' => 'login',
-            //                ],
-            //            ],
-            //            'may_terminate' => true
-            //        ],
-            //        'logout' => [
-            //            'type' => 'Segment',
-            //            'options' => [
-            //                'route' => 'logout[/]',
-            //                'defaults' => [
-            //                    'action' => 'logout',
-            //                ],
-            //            ],
-            //            'may_terminate' => true
-            //        ],
-            //    ]
-            //],
+            'cpanel' => [
+                'child_routes' => [
+                    'document-type' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => 'document-type/[:action[/[:id[/]]]]',
+                            'defaults' => [
+                                'controller' => Controller\DocumentTypeController::class,
+                                'action' => 'index'
+                            ],
+                            'constraints' => [
+                                'action' => 'add|edit|drop',
+                                'document_id' => '[0-9]+',
+                                'id' => '[0-9]+'
+                            ],
+                        ],
+                    ],
+
+                    'template' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => 'template/[:action[/[:id[/]]]]',
+                            'defaults' => [
+                                'controller' => Controller\TemplateController::class,
+                                'action' => 'index'
+                            ],
+                            'constraints' => [
+                                'action' => 'add|edit|drop',
+                                'document_id' => '[0-9]+',
+                                'id' => '[0-9]+'
+                            ],
+                        ],
+                    ],
+
+                    'data-type' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => 'data-type/[:action[/[:id[/]]]]',
+                            'defaults' => [
+                                'controller' => Controller\DataTypeController::class,
+                                'action' => 'index'
+                            ],
+                            'constraints' => [
+                                'action' => 'add|edit|drop',
+                                'document_id' => '[0-9]+',
+                                'id' => '[0-9]+'
+                            ],
+                        ],
+                    ],
+                ]
+            ],
         ],
     ],
 
@@ -76,6 +91,21 @@ return [
         'template_map' => [
             'layout/layout' => __DIR__ . '/../view/layout/layout.phtml',
             'error/404' => __DIR__ . '/../view/error/404.phtml',
+
+            'ms-bios/document/c-panel/data-type/add' =>
+                __DIR__ . '/../view/ms-bios/document/c-panel/data-type/form.phtml',
+            'ms-bios/document/c-panel/data-type/edit' =>
+                __DIR__ . '/../view/ms-bios/document/c-panel/data-type/form.phtml',
+
+            'ms-bios/document/c-panel/document-type/add' =>
+                __DIR__ . '/../view/ms-bios/document/c-panel/data-type/form.phtml',
+            'ms-bios/document/c-panel/document-type/edit' =>
+                __DIR__ . '/../view/ms-bios/document/c-panel/document-type/form.phtml',
+
+            'ms-bios/document/c-panel/template/add' =>
+                __DIR__ . '/../view/ms-bios/document/c-panel/template/form.phtml',
+            'ms-bios/document/c-panel/template/edit' =>
+                __DIR__ . '/../view/ms-bios/document/c-panel/template/form.phtml',
         ],
         'template_path_stack' => [
             __NAMESPACE__ => __DIR__ . '/../view',
@@ -83,7 +113,6 @@ return [
     ],
 
     'translator' => [
-        // 'locale' => 'en_US',
         'translation_file_patterns' => [
             [
                 'type' => 'gettext',

@@ -1,7 +1,7 @@
 <?php
 /**
  * @access protected
- * @author
+ * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 namespace MSBios\Document\Resource;
 
@@ -11,6 +11,7 @@ namespace MSBios\Document\Resource;
  */
 class Module
 {
+    /** @const VERSION */
     const VERSION = '0.0.1dev';
 
     /**

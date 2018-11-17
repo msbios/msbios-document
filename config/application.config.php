@@ -40,7 +40,7 @@ return [
         'MSBios\Guard\Resource',
 
         // 'MSBios\Document\Frontend',
-        // 'MSBios\Document\CPanel',
+        'MSBios\Document\CPanel',
         // 'MSBios\Document\Config',
         'MSBios\Document\Content',
         'MSBios\Document\Development',

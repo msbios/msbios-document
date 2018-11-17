@@ -46,6 +46,7 @@ return [
         ],
         'template_path_stack' => [
             __DIR__ . '/../view',
+            './data/MSBiosDocument/cache'
         ],
     ],
 

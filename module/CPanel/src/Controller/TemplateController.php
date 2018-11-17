@@ -4,7 +4,7 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace MSBios\Document\Development\Controller;
+namespace MSBios\Document\CPanel\Controller;
 
 use MSBios\Document\CPanel\Mvc\Controller\AbstractActionController;
 use MSBios\Document\Resource\Record\Template;
@@ -15,7 +15,7 @@ use Zend\Mvc\MvcEvent;
 
 /**
  * Class TemplateController
- * @package MSBios\Document\Development\Controller
+ * @package MSBios\Document\CPanel\Controller
  */
 class TemplateController extends AbstractActionController
 {

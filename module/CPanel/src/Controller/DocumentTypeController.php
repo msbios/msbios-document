@@ -4,7 +4,7 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace MSBios\Document\Development\Controller;
+namespace MSBios\Document\CPanel\Controller;
 
 use MSBios\Document\CPanel\Mvc\Controller\AbstractActionController;
 use MSBios\Document\Resource\Record\Tab;
@@ -16,13 +16,12 @@ use Zend\EventManager\Event;
 use Zend\EventManager\EventInterface;
 use Zend\EventManager\EventManagerInterface;
 use Zend\Mvc\MvcEvent;
-use Zend\Paginator\Paginator;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Stdlib\ArrayObject;
 
 /**
  * Class DocumentTypeController
- * @package MSBios\Document\Development\Controller
+ * @package MSBios\Document\CPanel\Controller
  */
 class DocumentTypeController extends AbstractActionController
 {
