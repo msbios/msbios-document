@@ -10,7 +10,8 @@ use MSBios\Document\Resource\Record\Tab;
 use MSBios\Document\Resource\Table\TabTableGateway;
 use MSBios\Db\TableGateway\TableGateway;
 use Zend\Db\Adapter\Adapter;
-use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\Adapter\AdapterInterface;
+use Zend\Db\TableGateway\Feature\RowGatewayFeature;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
@@ -23,22 +24,23 @@ class TabTableGatewayFactory implements FactoryInterface
      * @param ContainerInterface $container
      * @param string $requestedName
      * @param array|null $options
-     * @return TabTableGateway
+     * @return TabTableGateway|object
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        /** @var ResultSet $resultSetPrototype */
-        $resultSetPrototype = new ResultSet;
-        $resultSetPrototype->setArrayObjectPrototype(new Tab);
+        /** @var AdapterInterface $adapter */
+        $adapter = $container->get(Adapter::class);
+
+        /** @var Tab $record */
+        $record = new Tab('id', 'doc_t_tabs', $adapter);
 
         /** @var TableGateway $tableGateway */
         $tableGateway = new TableGateway(
-            'doc_t_tabs',
-            $container->get(Adapter::class),
-            null,
-            $resultSetPrototype
+            $record->getTable(),
+            $adapter,
+            new RowGatewayFeature($record)
         );
 
-        return new TabTableGateway($tableGateway);
+        return new $requestedName($tableGateway);
     }
 }

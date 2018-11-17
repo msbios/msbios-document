@@ -7,10 +7,12 @@ namespace MSBios\Document\Resource\Factory;
 
 use Interop\Container\ContainerInterface;
 use MSBios\Document\Resource\Record\DocumentType;
+use MSBios\Document\Resource\Resources;
 use MSBios\Document\Resource\Table\DocumentTypeTableGateway;
 use MSBios\Db\TableGateway\TableGateway;
 use Zend\Db\Adapter\Adapter;
-use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\Adapter\AdapterInterface;
+use Zend\Db\TableGateway\Feature\RowGatewayFeature;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
@@ -23,22 +25,23 @@ class DocumentTypeTableGatewayFactory implements FactoryInterface
      * @param ContainerInterface $container
      * @param string $requestedName
      * @param array|null $options
-     * @return DocumentTypeTableGateway
+     * @return DocumentTypeTableGateway|object
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        /** @var ResultSet $resultSetPrototype */
-        $resultSetPrototype = new ResultSet;
-        $resultSetPrototype->setArrayObjectPrototype(new DocumentType);
+        /** @var AdapterInterface $adapter */
+        $adapter = $container->get(Adapter::class);
+
+        /** @var DocumentType $record */
+        $record = new DocumentType('id', Resources::DEV_T_DOCUMENT_TYPES, $adapter);
 
         /** @var TableGateway $tableGateway */
         $tableGateway = new TableGateway(
-            'dev_t_document_types',
-            $container->get(Adapter::class),
-            null,
-            $resultSetPrototype
+            $record->getTable(),
+            $adapter,
+            new RowGatewayFeature($record)
         );
 
-        return new DocumentTypeTableGateway($tableGateway);
+        return new $requestedName($tableGateway);
     }
 }

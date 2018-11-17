@@ -6,18 +6,25 @@
 
 namespace MSBios\Document\CPanel\Controller;
 
+use MSBios\Db\TableGateway\TableGateway;
+use MSBios\Db\TableGateway\TableGatewayInterface;
 use MSBios\Document\CPanel\Mvc\Controller\AbstractActionController;
 use MSBios\Document\Resource\Record\Tab;
+use MSBios\Document\Resource\Resources;
 use MSBios\Document\Resource\Table\PropertyTableGateway;
 use MSBios\Document\Resource\Table\TabTableGateway;
 use MSBios\Document\Resource\Table\TemplateTableGateway;
 use MSBios\Resource\RecordRepositoryInterface;
+use Zend\Db\Sql\Select;
 use Zend\EventManager\Event;
 use Zend\EventManager\EventInterface;
 use Zend\EventManager\EventManagerInterface;
 use Zend\Mvc\MvcEvent;
+use Zend\Paginator\Adapter\DbSelect;
+use Zend\Paginator\Paginator;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Stdlib\ArrayObject;
+use Zend\View\Model\ViewModel;
 
 /**
  * Class DocumentTypeController
@@ -55,6 +62,51 @@ class DocumentTypeController extends AbstractActionController
         $eventManager->attach(self::EVENT_PRE_BIND_DATA, [$this, 'onPreBindData']);
         $eventManager->attach(self::EVENT_PRE_MERGE_DATA, [$this, 'onPreMergeData']);
         return parent::onDispatch($e);
+    }
+
+    /**
+     * @return ViewModel
+     */
+    public function indexAction()
+    {
+        /** @var ViewModel $viewModel */
+        $viewModel = parent::indexAction();
+
+        /**
+         * @param TableGatewayInterface $tableGateway
+         * @return DbSelect
+         */
+        $fetchBy = function (TableGatewayInterface $tableGateway) {
+
+            /** @var Select|TableGateway $select */
+            $select = $tableGateway
+                ->getSql()
+                ->select();
+
+            $select->join(
+                ['t' => Resources::SYS_T_TEMPLATES],
+                't.id = templateid',
+                ['view' => 'name'],
+                Select::JOIN_LEFT
+            );
+
+            return new DbSelect($select, $tableGateway->getAdapter());
+        };
+
+        /** @var Paginator $paginator */
+        $paginator = $this->repository
+            ->fetchAll($fetchBy);
+
+        /** @var Paginator $defaultPaginator */
+        $defaultPaginator = $viewModel
+            ->getVariable('paginator');
+
+        $paginator
+            ->setItemCountPerPage($defaultPaginator->getItemCountPerPage())
+            ->setCurrentPageNumber($defaultPaginator->getCurrentPageNumber());
+
+        return $viewModel
+            ->setVariable('paginator', $paginator);
     }
 
     /**

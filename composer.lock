@@ -653,16 +653,16 @@
         },
         {
             "name": "msbios/guard-resource",
-            "version": "v1.0.22",
+            "version": "v1.0.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/msbios/msbios-guard-resource.git",
-                "reference": "d7f0c581e1ad996209c48cf89b56667132f298f6"
+                "reference": "8ab23bc463bf1a81bd81dbbd721f6823eda36966"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/msbios/msbios-guard-resource/zipball/d7f0c581e1ad996209c48cf89b56667132f298f6",
-                "reference": "d7f0c581e1ad996209c48cf89b56667132f298f6",
+                "url": "https://api.github.com/repos/msbios/msbios-guard-resource/zipball/8ab23bc463bf1a81bd81dbbd721f6823eda36966",
+                "reference": "8ab23bc463bf1a81bd81dbbd721f6823eda36966",
                 "shasum": ""
             },
             "require-dev": {
@@ -697,7 +697,7 @@
             "keywords": [
                 "php"
             ],
-            "time": "2018-08-15T12:14:58+00:00"
+            "time": "2018-11-17T22:44:30+00:00"
         },
         {
             "name": "msbios/hydrator",
@@ -961,16 +961,16 @@
         },
         {
             "name": "msbios/resource",
-            "version": "v1.0.16",
+            "version": "v1.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/msbios/msbios-resource.git",
-                "reference": "6998d3d832d469138ea96452d408fa49a566ce8b"
+                "reference": "c80e4e5f93034edff1da33542f74098b7800c261"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/msbios/msbios-resource/zipball/6998d3d832d469138ea96452d408fa49a566ce8b",
-                "reference": "6998d3d832d469138ea96452d408fa49a566ce8b",
+                "url": "https://api.github.com/repos/msbios/msbios-resource/zipball/c80e4e5f93034edff1da33542f74098b7800c261",
+                "reference": "c80e4e5f93034edff1da33542f74098b7800c261",
                 "shasum": ""
             },
             "require": {
@@ -1005,7 +1005,7 @@
             "keywords": [
                 "php"
             ],
-            "time": "2018-11-17T22:19:18+00:00"
+            "time": "2018-11-17T22:59:33+00:00"
         },
         {
             "name": "msbios/stdlib",

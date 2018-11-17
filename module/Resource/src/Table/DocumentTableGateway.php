@@ -6,7 +6,7 @@
 namespace MSBios\Document\Resource\Table;
 
 use MSBios\Document\Resource\Record\Document;
-use MSBios\Document\Resource\Tables;
+use MSBios\Document\Resource\Resources;
 use MSBios\Resource\RecordRepository;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\Sql\Predicate\Predicate;
@@ -41,20 +41,20 @@ class DocumentTableGateway extends RecordRepository
         $resultSet = $this->tableGateway
             ->select(function (Select $select) use ($uri, $ancestor) {
                 $select->join(
-                    ['d' => Tables::CNT_T_DOCUMENTS],
-                    sprintf('d.id = %s.parentid', Tables::CNT_T_DOCUMENTS),
+                    ['d' => Resources::CNT_T_DOCUMENTS],
+                    sprintf('d.id = %s.parentid', Resources::CNT_T_DOCUMENTS),
                     ['aid' => 'id', 'ancestor' => 'uri'],
                     Select::JOIN_LEFT
                 );
                 $select->join(
-                    ['l' => Tables::SYS_T_TEMPLATES],
-                    sprintf('l.id = %s.layoutid', Tables::CNT_T_DOCUMENTS),
+                    ['l' => Resources::SYS_T_TEMPLATES],
+                    sprintf('l.id = %s.layoutid', Resources::CNT_T_DOCUMENTS),
                     ['layout' => 'identifier'],
                     Select::JOIN_LEFT
                 );
                 $select->join(
-                    ['v' => Tables::SYS_T_TEMPLATES],
-                    sprintf('v.id = %s.viewid', Tables::CNT_T_DOCUMENTS),
+                    ['v' => Resources::SYS_T_TEMPLATES],
+                    sprintf('v.id = %s.viewid', Resources::CNT_T_DOCUMENTS),
                     ['view' => 'identifier'],
                     Select::JOIN_LEFT
                 );

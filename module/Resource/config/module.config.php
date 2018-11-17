@@ -11,7 +11,7 @@ return [
             Table\DataTypeTableGateway::class =>
                 Factory\DataTypeTableGatewayFactory::class,
             Table\DocumentTableGateway::class =>
-                Factory\DocumentTableFactory::class,
+                Factory\DocumentTableGatewayFactory::class,
             Table\DocumentTypeTableGateway::class =>
                 Factory\DocumentTypeTableGatewayFactory::class,
             Table\PropertyTableGateway::class =>

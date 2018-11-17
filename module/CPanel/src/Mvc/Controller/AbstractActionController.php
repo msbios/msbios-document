@@ -8,7 +8,6 @@ namespace MSBios\Document\CPanel\Mvc\Controller;
 
 use MSBios\CPanel\Mvc\Controller\AbstractActionController as DefaultAbstractActionController;
 use MSBios\Resource\RecordRepositoryInterface;
-use Zend\Db\Sql\Select;
 use Zend\EventManager\EventManagerInterface;
 use Zend\Form\FormInterface;
 use Zend\InputFilter\InputFilterAwareInterface;
