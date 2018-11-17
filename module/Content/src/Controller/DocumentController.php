@@ -1,9 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: judzhin
- * Date: 17.01.17
- * Time: 17:35
+ * @access protected
+ * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
 namespace Kubnete\Content\Controller;
@@ -14,16 +12,8 @@ use Kubnete\Resource\Record\DocumentType;
 use Kubnete\Resource\Record\Property;
 use Kubnete\Resource\Record\Tab;
 use Kubnete\Resource\Table\DocumentTableGateway;
-
-use Kubnete\Resource\Table\DocumentTypeGateway;
-use Kubnete\Resource\Table\Property;
-use Kubnete\Resource\Table\PropertyValue;
-use Kubnete\Resource\Table\TabTableGateway;
+use MSBios\CPanel\Mvc\Controller\AbstractActionController;
 use Zend\Db\ResultSet\ResultSet;
-use Zend\Debug\Debug;
-use Zend\Form\Factory;
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\Stdlib\ArrayObject;
 use Zend\View\Model\ViewModel;
 
 /**
@@ -58,7 +48,7 @@ class DocumentController extends AbstractActionController
      * @param DocumentTableGateway $objDocumentTable
      * @param DocumentTypeGateway $objDocumentTypeTable
      * @param Tab $objTabTable
-     * @param Property $objPropertyTable
+     * @param \Kubnete\Content\Controller\Property $objPropertyTable
      * @param PropertyValue $objPropertyValueTable
      * @param DocumentForm $objDocumentForm
      */

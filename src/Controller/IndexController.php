@@ -7,7 +7,8 @@
 namespace MSBios\Document\Controller;
 
 use MSBios\Application\Controller\IndexController as DefaultIndexController;
-use MSBios\Document\DocumentService;
+use MSBios\Document\DocumentServiceAwareInterface;
+use MSBios\Document\DocumentServiceAwareTrait;
 use MSBios\Document\DocumentServiceInterface;
 use Zend\EventManager\EventManagerInterface;
 use Zend\View\Model\ModelInterface;
@@ -16,16 +17,15 @@ use Zend\View\Model\ModelInterface;
  * Class IndexController
  * @package MSBios\Document\Controller
  */
-class IndexController extends DefaultIndexController
+class IndexController extends DefaultIndexController implements DocumentServiceAwareInterface
 {
+    use DocumentServiceAwareTrait;
+
     /** @const EVENT_DOCUMENT */
     const EVENT_DOCUMENT = 'document';
 
     /** @const EVENT_POST_DOCUMENT */
     const EVENT_POST_DOCUMENT = 'post.document';
-
-    /** @var  DocumentService|DocumentServiceInterface */
-    protected $documentService;
 
     /**
      * IndexController constructor.
@@ -33,7 +33,7 @@ class IndexController extends DefaultIndexController
      */
     public function __construct(DocumentServiceInterface $documentService)
     {
-        $this->documentService = $documentService;
+        $this->setDocumentService($documentService);
     }
 
     /**
@@ -50,11 +50,26 @@ class IndexController extends DefaultIndexController
             'viewModel' => $viewModel
         ]);
 
-        if (!$this->documentService->hasDocument()) {
+        /** @var DocumentServiceInterface $documentService */
+        $documentService = $this->getDocumentService();
+
+        if (!$documentService->hasDocument()) {
             return $this->notFoundAction();
         }
 
+        if (!$documentService->hasLayout() || $this->getRequest()->isXmlHttpRequest()) {
+            $viewModel
+                ->setTerminal(true);
+        } elseif ($documentService->hasLayout()) {
+            $this
+                ->layout()
+                ->setTemplate($documentService->getLayout())
+                ->setVariables($documentService->getVariables());
+        }
 
+        $viewModel
+            ->setTemplate($documentService->getView())
+            ->setVariables($documentService->getVariables());
 
         return $viewModel;
     }

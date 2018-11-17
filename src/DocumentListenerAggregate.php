@@ -7,7 +7,6 @@
 namespace MSBios\Document;
 
 use Kubnete\Resource\Record\Document;
-use Kubnete\Resource\Table\DocumentTableGateway;
 use MSBios\Resource\RecordRepositoryInterface;
 use Zend\EventManager\AbstractListenerAggregate;
 use Zend\EventManager\EventInterface;
@@ -16,21 +15,21 @@ use Zend\Mvc\MvcEvent;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
- * Class DocumentListener
+ * Class DocumentListenerAggregate
  * @package MSBios\Document
  */
-class DocumentListener extends AbstractListenerAggregate
+class DocumentListenerAggregate extends AbstractListenerAggregate
 {
     /** @var RecordRepositoryInterface */
-    protected $documentRepository;
+    protected $repository;
 
     /**
-     * DocumentListener constructor.
-     * @param RecordRepositoryInterface $documentRepository
+     * DocumentListenerAggregate constructor.
+     * @param RecordRepositoryInterface $repository
      */
-    public function __construct(RecordRepositoryInterface $documentRepository)
+    public function __construct(RecordRepositoryInterface $repository)
     {
-        $this->documentRepository = $documentRepository;
+        $this->repository = $repository;
     }
 
     /**
@@ -56,9 +55,6 @@ class DocumentListener extends AbstractListenerAggregate
         $serviceManager = $e->getApplication()
             ->getServiceManager();
 
-        // /** @var DocumentTableGateway $table */
-        // $table = $serviceManager->get(DocumentTableGateway::class);
-
         /** @var string $path */
         $path = ltrim($e->getRouteMatch()->getParam('path'), '/');
 
@@ -75,18 +71,21 @@ class DocumentListener extends AbstractListenerAggregate
 
             /** @var string $uriKey */
             foreach ($explodePath as $uriKey) {
+
                 /** @var Document $document */
-                $document = $this->documentRepository->fetchOneByUriAndAncestor($uriKey, $parentUriKey);
+                $document = $this->repository
+                    ->fetchOneByUriAndAncestor($uriKey, $parentUriKey);
+
                 $parentUriKey = $uriKey;
             }
         } else {
             /** @var Document $document */
-            $document = $this->documentRepository->fetchOneByUriAndAncestor('');
+            $document = $this->repository->fetchOneByUriAndAncestor('');
         }
 
         $serviceManager->setService(
             DocumentService::class,
-            !$document ?: new DocumentService($document)
+            new DocumentService($serviceManager, $document ? $document : null)
         );
     }
 

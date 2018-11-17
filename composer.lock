@@ -173,16 +173,16 @@
         },
         {
             "name": "msbios/application",
-            "version": "v1.0.10",
+            "version": "v1.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/msbios/msbios-application.git",
-                "reference": "2501150d5b96bcf3c2dfc505a7882b52aafa4235"
+                "reference": "f44a42b4611be943057fb3f3a404a63918fd4864"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/msbios/msbios-application/zipball/2501150d5b96bcf3c2dfc505a7882b52aafa4235",
-                "reference": "2501150d5b96bcf3c2dfc505a7882b52aafa4235",
+                "url": "https://api.github.com/repos/msbios/msbios-application/zipball/f44a42b4611be943057fb3f3a404a63918fd4864",
+                "reference": "f44a42b4611be943057fb3f3a404a63918fd4864",
                 "shasum": ""
             },
             "require": {
@@ -224,7 +224,7 @@
             "keywords": [
                 "php"
             ],
-            "time": "2018-04-18T08:51:04+00:00"
+            "time": "2018-11-06T11:08:06+00:00"
         },
         {
             "name": "msbios/assetic",
@@ -281,16 +281,16 @@
         },
         {
             "name": "msbios/authentication",
-            "version": "v1.0.11",
+            "version": "v1.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/msbios/msbios-authentication.git",
-                "reference": "8947eb9d8c3f615819b3102c22a8d1bb06899335"
+                "reference": "9bf9b29e70e0a01d51e7f7b3947417a11c737e7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/msbios/msbios-authentication/zipball/8947eb9d8c3f615819b3102c22a8d1bb06899335",
-                "reference": "8947eb9d8c3f615819b3102c22a8d1bb06899335",
+                "url": "https://api.github.com/repos/msbios/msbios-authentication/zipball/9bf9b29e70e0a01d51e7f7b3947417a11c737e7e",
+                "reference": "9bf9b29e70e0a01d51e7f7b3947417a11c737e7e",
                 "shasum": ""
             },
             "require": {
@@ -327,7 +327,7 @@
             "keywords": [
                 "php"
             ],
-            "time": "2018-03-03T21:15:50+00:00"
+            "time": "2018-11-09T11:44:18+00:00"
         },
         {
             "name": "msbios/cache",
@@ -382,16 +382,16 @@
         },
         {
             "name": "msbios/cpanel",
-            "version": "v1.0.42",
+            "version": "v1.0.44",
             "source": {
                 "type": "git",
                 "url": "https://github.com/msbios/msbios-cpanel.git",
-                "reference": "3088afb12b953d2428e874ba98106b54274ec15c"
+                "reference": "def58f1fe5fba1351e894b4c7664aab410c69911"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/msbios/msbios-cpanel/zipball/3088afb12b953d2428e874ba98106b54274ec15c",
-                "reference": "3088afb12b953d2428e874ba98106b54274ec15c",
+                "url": "https://api.github.com/repos/msbios/msbios-cpanel/zipball/def58f1fe5fba1351e894b4c7664aab410c69911",
+                "reference": "def58f1fe5fba1351e894b4c7664aab410c69911",
                 "shasum": ""
             },
             "require": {
@@ -437,7 +437,7 @@
             "keywords": [
                 "php"
             ],
-            "time": "2018-08-21T13:33:44+00:00"
+            "time": "2018-11-16T13:22:20+00:00"
         },
         {
             "name": "msbios/db",
@@ -546,16 +546,16 @@
         },
         {
             "name": "msbios/guard",
-            "version": "v1.0.23",
+            "version": "v1.0.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/msbios/msbios-guard.git",
-                "reference": "4e7f4e3afcdd24caba1f7273a12a2bb2019090c9"
+                "reference": "8ebcc4a8f94e0bb172d6d0538d9eec19b4270780"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/msbios/msbios-guard/zipball/4e7f4e3afcdd24caba1f7273a12a2bb2019090c9",
-                "reference": "4e7f4e3afcdd24caba1f7273a12a2bb2019090c9",
+                "url": "https://api.github.com/repos/msbios/msbios-guard/zipball/8ebcc4a8f94e0bb172d6d0538d9eec19b4270780",
+                "reference": "8ebcc4a8f94e0bb172d6d0538d9eec19b4270780",
                 "shasum": ""
             },
             "require": {
@@ -597,7 +597,7 @@
             "keywords": [
                 "php"
             ],
-            "time": "2018-08-12T19:31:42+00:00"
+            "time": "2018-11-10T17:31:24+00:00"
         },
         {
             "name": "msbios/guard-cpanel",
@@ -864,16 +864,16 @@
         },
         {
             "name": "msbios/msbios",
-            "version": "v1.0.6",
+            "version": "v1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/msbios/msbios-msbios.git",
-                "reference": "3db910564d610ee2a0a737cbc94089bc933ef759"
+                "reference": "24fc90f18acce199ca01b31c67dcac13c2b0e1c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/msbios/msbios-msbios/zipball/3db910564d610ee2a0a737cbc94089bc933ef759",
-                "reference": "3db910564d610ee2a0a737cbc94089bc933ef759",
+                "url": "https://api.github.com/repos/msbios/msbios-msbios/zipball/24fc90f18acce199ca01b31c67dcac13c2b0e1c4",
+                "reference": "24fc90f18acce199ca01b31c67dcac13c2b0e1c4",
                 "shasum": ""
             },
             "require": {
@@ -884,7 +884,7 @@
                 "msbios/test": "^1.0"
             },
             "bin": [
-                "bin/msbios.sh"
+                "msbios.sh"
             ],
             "type": "library",
             "autoload": {
@@ -907,7 +907,7 @@
             "keywords": [
                 "php"
             ],
-            "time": "2018-03-07T10:56:01+00:00"
+            "time": "2018-11-08T20:31:25+00:00"
         },
         {
             "name": "msbios/navigation",
@@ -961,22 +961,23 @@
         },
         {
             "name": "msbios/resource",
-            "version": "v1.0.14",
+            "version": "v1.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/msbios/msbios-resource.git",
-                "reference": "32c0aca028d026585909c200421e7b07340ec781"
+                "reference": "fbf82dd3ad21508b0165229f2350c56bd4308e24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/msbios/msbios-resource/zipball/32c0aca028d026585909c200421e7b07340ec781",
-                "reference": "32c0aca028d026585909c200421e7b07340ec781",
+                "url": "https://api.github.com/repos/msbios/msbios-resource/zipball/fbf82dd3ad21508b0165229f2350c56bd4308e24",
+                "reference": "fbf82dd3ad21508b0165229f2350c56bd4308e24",
                 "shasum": ""
             },
             "require": {
                 "msbios/db": "^1.0",
                 "msbios/form": "^1.0",
                 "msbios/stdlib": "^1.0",
+                "msbios/validator": "^1.0",
                 "zendframework/zend-paginator": "^2.8"
             },
             "require-dev": {
@@ -1004,7 +1005,7 @@
             "keywords": [
                 "php"
             ],
-            "time": "2018-08-17T10:10:35+00:00"
+            "time": "2018-10-24T14:01:01+00:00"
         },
         {
             "name": "msbios/stdlib",
@@ -1108,6 +1109,55 @@
             "time": "2018-04-05T09:39:36+00:00"
         },
         {
+            "name": "msbios/validator",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/msbios/msbios-validator.git",
+                "reference": "14adbda6a3008968db8b297d8f868c762aa2c95f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/msbios/msbios-validator/zipball/14adbda6a3008968db8b297d8f868c762aa2c95f",
+                "reference": "14adbda6a3008968db8b297d8f868c762aa2c95f",
+                "shasum": ""
+            },
+            "require": {
+                "msbios/msbios": "^1.0",
+                "zendframework/zend-validator": "^2.10"
+            },
+            "require-dev": {
+                "msbios/test": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "zf": {
+                    "component": "MSBios\\Validator"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MSBios\\Validator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Judzhin Miles",
+                    "email": "info@msbios.com"
+                }
+            ],
+            "description": "MSBios Validator",
+            "homepage": "https://github.com/msbios/msbios-validator",
+            "keywords": [
+                "php"
+            ],
+            "time": "2018-10-24T10:20:45+00:00"
+        },
+        {
             "name": "msbios/view",
             "version": "v1.0.6",
             "source": {
@@ -1160,16 +1210,16 @@
         },
         {
             "name": "msbios/widget",
-            "version": "v1.0.5",
+            "version": "v1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/msbios/msbios-widget.git",
-                "reference": "ce80f537fb07b1638de3b94510b9ef44643ba2be"
+                "reference": "e4f74499ea88fa2a673da752d4adb74056c9a290"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/msbios/msbios-widget/zipball/ce80f537fb07b1638de3b94510b9ef44643ba2be",
-                "reference": "ce80f537fb07b1638de3b94510b9ef44643ba2be",
+                "url": "https://api.github.com/repos/msbios/msbios-widget/zipball/e4f74499ea88fa2a673da752d4adb74056c9a290",
+                "reference": "e4f74499ea88fa2a673da752d4adb74056c9a290",
                 "shasum": ""
             },
             "require": {
@@ -1191,7 +1241,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL"
+                "MIT"
             ],
             "authors": [
                 {
@@ -1204,7 +1254,7 @@
             "keywords": [
                 "php"
             ],
-            "time": "2017-11-03T23:54:20+00:00"
+            "time": "2018-11-01T15:57:27+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -1459,16 +1509,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v3.4.14",
+            "version": "v3.4.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "0414db29bd770ec5a4152683e655f55efd4fa60f"
+                "reference": "35c2914a9f50519bd207164c353ae4d59182c2cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/0414db29bd770ec5a4152683e655f55efd4fa60f",
-                "reference": "0414db29bd770ec5a4152683e655f55efd4fa60f",
+                "url": "https://api.github.com/repos/symfony/process/zipball/35c2914a9f50519bd207164c353ae4d59182c2cb",
+                "reference": "35c2914a9f50519bd207164c353ae4d59182c2cb",
                 "shasum": ""
             },
             "require": {
@@ -1504,7 +1554,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-26T11:19:56+00:00"
+            "time": "2018-10-14T17:33:21+00:00"
         },
         {
             "name": "zendframework/zend-authentication",
@@ -3339,16 +3389,16 @@
         },
         {
             "name": "zendframework/zend-stdlib",
-            "version": "3.2.0",
+            "version": "3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-stdlib.git",
-                "reference": "cd164b4a18b5d1aeb69be2c26db035b5ed6925ae"
+                "reference": "66536006722aff9e62d1b331025089b7ec71c065"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/cd164b4a18b5d1aeb69be2c26db035b5ed6925ae",
-                "reference": "cd164b4a18b5d1aeb69be2c26db035b5ed6925ae",
+                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/66536006722aff9e62d1b331025089b7ec71c065",
+                "reference": "66536006722aff9e62d1b331025089b7ec71c065",
                 "shasum": ""
             },
             "require": {
@@ -3381,7 +3431,7 @@
                 "stdlib",
                 "zf"
             ],
-            "time": "2018-04-30T13:50:40+00:00"
+            "time": "2018-08-28T21:34:05+00:00"
         },
         {
             "name": "zendframework/zend-uri",
@@ -3779,16 +3829,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "99e29d3596b16dabe4982548527d5ddf90232e99"
+                "reference": "100633629bf76d57430b86b7098cd6beb996a35a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/99e29d3596b16dabe4982548527d5ddf90232e99",
-                "reference": "99e29d3596b16dabe4982548527d5ddf90232e99",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/100633629bf76d57430b86b7098cd6beb996a35a",
+                "reference": "100633629bf76d57430b86b7098cd6beb996a35a",
                 "shasum": ""
             },
             "require": {
@@ -3797,8 +3847,7 @@
                 "php": ">=5.6.0"
             },
             "require-dev": {
-                "phpdocumentor/phpdocumentor": "^2.9",
-                "phpunit/phpunit": "~5.7.10|~6.5"
+                "phpunit/phpunit": "~5.7.10|~6.5|~7.0"
             },
             "type": "library",
             "extra": {
@@ -3841,7 +3890,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2018-05-08T08:54:48+00:00"
+            "time": "2018-10-02T21:52:37+00:00"
         },
         {
             "name": "msbios/debug",
@@ -4417,16 +4466,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "6.0.7",
+            "version": "6.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "865662550c384bc1db7e51d29aeda1c2c161d69a"
+                "reference": "807e6013b00af69b6c5d9ceb4282d0393dbb9d8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/865662550c384bc1db7e51d29aeda1c2c161d69a",
-                "reference": "865662550c384bc1db7e51d29aeda1c2c161d69a",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/807e6013b00af69b6c5d9ceb4282d0393dbb9d8d",
+                "reference": "807e6013b00af69b6c5d9ceb4282d0393dbb9d8d",
                 "shasum": ""
             },
             "require": {
@@ -4437,7 +4486,7 @@
                 "phpunit/php-text-template": "^1.2.1",
                 "phpunit/php-token-stream": "^3.0",
                 "sebastian/code-unit-reverse-lookup": "^1.0.1",
-                "sebastian/environment": "^3.1",
+                "sebastian/environment": "^3.1 || ^4.0",
                 "sebastian/version": "^2.0.1",
                 "theseer/tokenizer": "^1.1"
             },
@@ -4450,7 +4499,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.0-dev"
+                    "dev-master": "6.1-dev"
                 }
             },
             "autoload": {
@@ -4476,24 +4525,27 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-06-01T07:51:50+00:00"
+            "time": "2018-10-31T16:06:48+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
-                "reference": "cecbc684605bb0cc288828eb5d65d93d5c676d3c"
+                "reference": "050bedf145a257b1ff02746c31894800e5122946"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/cecbc684605bb0cc288828eb5d65d93d5c676d3c",
-                "reference": "cecbc684605bb0cc288828eb5d65d93d5c676d3c",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/050bedf145a257b1ff02746c31894800e5122946",
+                "reference": "050bedf145a257b1ff02746c31894800e5122946",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.1"
             },
             "type": "library",
             "extra": {
@@ -4523,7 +4575,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2018-06-11T11:44:00+00:00"
+            "time": "2018-09-13T20:33:42+00:00"
         },
         {
             "name": "phpunit/php-text-template",
@@ -4617,16 +4669,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "21ad88bbba7c3d93530d93994e0a33cd45f02ace"
+                "reference": "c99e3be9d3e85f60646f152f9002d46ed7770d18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/21ad88bbba7c3d93530d93994e0a33cd45f02ace",
-                "reference": "21ad88bbba7c3d93530d93994e0a33cd45f02ace",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/c99e3be9d3e85f60646f152f9002d46ed7770d18",
+                "reference": "c99e3be9d3e85f60646f152f9002d46ed7770d18",
                 "shasum": ""
             },
             "require": {
@@ -4662,20 +4714,20 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2018-02-01T13:16:43+00:00"
+            "time": "2018-10-30T05:52:18+00:00"
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.3.1",
+            "version": "7.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "f9b14c17860eccb440a0352a117a81eb754cff5a"
+                "reference": "b1be2c8530c4c29c3519a052c9fb6cee55053bbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f9b14c17860eccb440a0352a117a81eb754cff5a",
-                "reference": "f9b14c17860eccb440a0352a117a81eb754cff5a",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b1be2c8530c4c29c3519a052c9fb6cee55053bbd",
+                "reference": "b1be2c8530c4c29c3519a052c9fb6cee55053bbd",
                 "shasum": ""
             },
             "require": {
@@ -4696,11 +4748,11 @@
                 "phpunit/php-timer": "^2.0",
                 "sebastian/comparator": "^3.0",
                 "sebastian/diff": "^3.0",
-                "sebastian/environment": "^3.1",
+                "sebastian/environment": "^3.1 || ^4.0",
                 "sebastian/exporter": "^3.1",
                 "sebastian/global-state": "^2.0",
                 "sebastian/object-enumerator": "^3.0.3",
-                "sebastian/resource-operations": "^1.0",
+                "sebastian/resource-operations": "^2.0",
                 "sebastian/version": "^2.0.1"
             },
             "conflict": {
@@ -4720,7 +4772,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "7.3-dev"
+                    "dev-master": "7.4-dev"
                 }
             },
             "autoload": {
@@ -4746,7 +4798,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-08-07T06:44:28+00:00"
+            "time": "2018-11-14T16:52:02+00:00"
         },
         {
             "name": "san/san-session-toolbar",
@@ -5287,25 +5339,25 @@
         },
         {
             "name": "sebastian/resource-operations",
-            "version": "1.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/resource-operations.git",
-                "reference": "ce990bb21759f94aeafd30209e8cfcdfa8bc3f52"
+                "reference": "4d7a795d35b889bf80a0cc04e08d77cedfa917a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/resource-operations/zipball/ce990bb21759f94aeafd30209e8cfcdfa8bc3f52",
-                "reference": "ce990bb21759f94aeafd30209e8cfcdfa8bc3f52",
+                "url": "https://api.github.com/repos/sebastianbergmann/resource-operations/zipball/4d7a795d35b889bf80a0cc04e08d77cedfa917a9",
+                "reference": "4d7a795d35b889bf80a0cc04e08d77cedfa917a9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6.0"
+                "php": "^7.1"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
@@ -5325,7 +5377,7 @@
             ],
             "description": "Provides a list of PHP built-in functions that operate on resources",
             "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
-            "time": "2015-07-28T20:34:47+00:00"
+            "time": "2018-10-04T04:07:39+00:00"
         },
         {
             "name": "sebastian/version",
@@ -5372,16 +5424,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.3.1",
+            "version": "3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "628a481780561150481a9ec74709092b9759b3ec"
+                "reference": "6ad28354c04b364c3c71a34e4a18b629cc3b231e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/628a481780561150481a9ec74709092b9759b3ec",
-                "reference": "628a481780561150481a9ec74709092b9759b3ec",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/6ad28354c04b364c3c71a34e4a18b629cc3b231e",
+                "reference": "6ad28354c04b364c3c71a34e4a18b629cc3b231e",
                 "shasum": ""
             },
             "require": {
@@ -5419,20 +5471,20 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-07-26T23:47:18+00:00"
+            "time": "2018-09-23T23:08:17+00:00"
         },
         {
             "name": "symfony/config",
-            "version": "v4.1.3",
+            "version": "v4.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "c868972ac26e4e19860ce11b300bb74145246ff9"
+                "reference": "991fec8bbe77367fc8b48ecbaa8a4bd6e905a238"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/c868972ac26e4e19860ce11b300bb74145246ff9",
-                "reference": "c868972ac26e4e19860ce11b300bb74145246ff9",
+                "url": "https://api.github.com/repos/symfony/config/zipball/991fec8bbe77367fc8b48ecbaa8a4bd6e905a238",
+                "reference": "991fec8bbe77367fc8b48ecbaa8a4bd6e905a238",
                 "shasum": ""
             },
             "require": {
@@ -5482,20 +5534,20 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-26T11:24:31+00:00"
+            "time": "2018-10-31T09:09:42+00:00"
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v4.1.3",
+            "version": "v4.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "f4f401fc2766eb8d766fc6043d9e6489b37a41e4"
+                "reference": "e72ee2c23d952e4c368ee98610fa22b79b89b483"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/f4f401fc2766eb8d766fc6043d9e6489b37a41e4",
-                "reference": "f4f401fc2766eb8d766fc6043d9e6489b37a41e4",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/e72ee2c23d952e4c368ee98610fa22b79b89b483",
+                "reference": "e72ee2c23d952e4c368ee98610fa22b79b89b483",
                 "shasum": ""
             },
             "require": {
@@ -5553,20 +5605,20 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
-            "time": "2018-08-01T08:24:03+00:00"
+            "time": "2018-10-31T10:54:16+00:00"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v4.1.3",
+            "version": "v4.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "2e30335e0aafeaa86645555959572fe7cea22b43"
+                "reference": "fd7bd6535beb1f0a0a9e3ee960666d0598546981"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/2e30335e0aafeaa86645555959572fe7cea22b43",
-                "reference": "2e30335e0aafeaa86645555959572fe7cea22b43",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/fd7bd6535beb1f0a0a9e3ee960666d0598546981",
+                "reference": "fd7bd6535beb1f0a0a9e3ee960666d0598546981",
                 "shasum": ""
             },
             "require": {
@@ -5603,11 +5655,11 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-26T11:24:31+00:00"
+            "time": "2018-10-30T13:18:25+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.9.0",
+            "version": "v1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
@@ -5705,16 +5757,16 @@
         },
         {
             "name": "tracy/tracy",
-            "version": "v2.5.2",
+            "version": "v2.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tracy.git",
-                "reference": "93f89fbff33db4d583062104c71d6083b717371a"
+                "reference": "35fa649b483b28e16f61de07110ea0585fc8d6ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tracy/zipball/93f89fbff33db4d583062104c71d6083b717371a",
-                "reference": "93f89fbff33db4d583062104c71d6083b717371a",
+                "url": "https://api.github.com/repos/nette/tracy/zipball/35fa649b483b28e16f61de07110ea0585fc8d6ea",
+                "reference": "35fa649b483b28e16f61de07110ea0585fc8d6ea",
                 "shasum": ""
             },
             "require": {
@@ -5724,7 +5776,8 @@
             },
             "require-dev": {
                 "nette/di": "~2.3",
-                "nette/tester": "~1.7"
+                "nette/tester": "~1.7",
+                "nette/utils": "~2.3"
             },
             "suggest": {
                 "https://nette.org/donate": "Please support Tracy via a donation"
@@ -5766,7 +5819,7 @@
                 "nette",
                 "profiler"
             ],
-            "time": "2018-08-13T16:46:17+00:00"
+            "time": "2018-11-05T15:10:59+00:00"
         },
         {
             "name": "webmozart/assert",

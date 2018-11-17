@@ -42,7 +42,7 @@ class TemplateController extends AbstractActionController
         $row = $e->getParam('row');
 
         /** @var string $filename */
-        $filename = './data/tmp';
+        $filename = './data/MSBiosDocument/cache';
 
         if (is_dir(! $filename)) {
             mkdir($filename, 0777, true);

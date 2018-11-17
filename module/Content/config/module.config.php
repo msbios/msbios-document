@@ -3,40 +3,32 @@
  * @access protected
  * @author
  */
+
 namespace Kubnete\Content;
 
+use Zend\Router\Http\Segment;
+
 return [
-
-    'service_manager' => [
-        'aliases' => [
-            'translator' => 'MvcTranslator',
-        ],
-    ],
-
     'controllers' => [
-        'invokables' => [
-
-        ],
         'factories' => [
-            Controller\DocumentController::class => Factory\DocumentControllerFactory::class
+            Controller\DocumentController::class =>
+                Factory\DocumentControllerFactory::class
         ]
     ],
 
     'form_elements' => [
-        'invokables' => [
-
-        ],
         'factories' => [
-            Form\DocumentForm::class => Factory\DocumentFormFactory::class
+            Form\DocumentForm::class =>
+                Factory\DocumentFormFactory::class
         ]
     ],
 
     'router' => [
         'routes' => [
-            'backend' => [
+            'cpanel' => [
                 'child_routes' => [
                     'content' => [
-                        'type' => \Zend\Router\Http\Segment::class,
+                        'type' => Segment::class,
                         'options' => [
                             'route' => 'content[/]',
                             'defaults' => [
@@ -46,7 +38,7 @@ return [
                         'may_terminate' => true,
                         'child_routes' => [
                             'document' => [
-                                'type' => \Zend\Router\Http\Segment::class,
+                                'type' => Segment::class,
                                 'options' => [
                                     'route' => 'document[/]',
                                     'defaults' => [
@@ -60,7 +52,7 @@ return [
                                 'may_terminate' => true,
                                 'child_routes' => [
                                     'add' => [
-                                        'type' => \Zend\Router\Http\Segment::class,
+                                        'type' => Segment::class,
                                         'options' => [
                                             'route' => 'add[.html]',
                                             'defaults' => [
@@ -70,7 +62,7 @@ return [
                                         'may_terminate' => true
                                     ],
                                     'edit' => [
-                                        'type' => \Zend\Router\Http\Segment::class,
+                                        'type' => Segment::class,
                                         'options' => [
                                             'route' => 'edit/:id[.html]',
                                             'defaults' => [
@@ -80,7 +72,7 @@ return [
                                         'may_terminate' => true
                                     ],
                                     'delete' => [
-                                        'type' => \Zend\Router\Http\Segment::class,
+                                        'type' => Segment::class,
                                         'options' => [
                                             'route' => 'delete/:id[.html]',
                                             'defaults' => [
@@ -100,7 +92,7 @@ return [
 
     'view_manager' => [
         'template_path_stack' => [
-            'content' => __DIR__ . '/../view',
+            __NAMESPACE__ => __DIR__ . '/../view',
         ],
     ],
 
@@ -108,7 +100,7 @@ return [
         \MSBios\CPanel\Navigation\Sidebar::class => [
             'content' => [
                 'label' => 'Content',
-                'route' => 'backend/content',
+                'route' => 'cpanel/content',
                 'class' => 'icon-pencil7 position-left',
                 'order' => 200,
                 'pages' => [
@@ -127,18 +119,18 @@ return [
                     'document' => [
                         'label' => 'Document',
                         'title' => 'List of documents',
-                        'route' => 'backend/content/document',
+                        'route' => 'cpanel/content/document',
                         'class' => 'icon-files-empty position-left',
                         'order' => 400,
                         'pages' => [
                             [
                                 'label' => 'Add',
                                 'title' => 'To create a new document type',
-                                'route' => 'backend/content/document/add',
+                                'route' => 'cpanel/content/document/add',
                             ], [
                                 'label' => 'Edit',
                                 'title' => 'Edit the selected document',
-                                'route' => 'backend/content/document/edit',
+                                'route' => 'cpanel/content/document/edit',
                             ]
                         ]
                     ],

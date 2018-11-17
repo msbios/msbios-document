@@ -24,9 +24,12 @@ return [
 
         ],
         'factories' => [
-            Controller\DataTypeController::class => Factory\DataTypeControllerFactory::class,
-            Controller\DocumentTypeController::class => Factory\DocumentTypeControllerFactory::class,
-            Controller\TemplateController::class => Factory\TemplateControllerFactory::class
+            Controller\DataTypeController::class =>
+                Factory\DataTypeControllerFactory::class,
+            Controller\DocumentTypeController::class =>
+                Factory\DocumentTypeControllerFactory::class,
+            Controller\TemplateController::class =>
+                Factory\TemplateControllerFactory::class
         ],
     ],
 
@@ -265,8 +268,8 @@ return [
 
     'view_manager' => [
         'template_path_stack' => [
-            'development' => __DIR__ . '/../view',
-            'template' => './data/tmp'
+            __NAMESPACE__ => __DIR__ . '/../view',
+            './data/MSBiosDocument/cache'
         ],
         'template_map' => [
 

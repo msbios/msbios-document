@@ -1,1 +1,7 @@
 <h1>MSBios Document</h1>
+<dl>
+    <?php foreach ($this->vars() as $property => $value): ?>
+        <dt><?= $property; ?></dt>
+        <dd><?= $value; ?></dd>
+    <?php endforeach; ?>
+</dl>

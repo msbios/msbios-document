@@ -3,14 +3,17 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-
 namespace MSBios\Document;
 
 use Kubnete\Resource\Record\Document;
 use Kubnete\Resource\Record\Property\Value;
+use Kubnete\Resource\Record\Template;
 use Kubnete\Resource\Table\PropertyValueTableGateway;
-use MSBios\Resource\RecordRepositoryInterface;
+use Kubnete\Resource\Table\TemplateTableGateway;
+use MSBios\Db\TablePluginManager;
+use Psr\Container\ContainerInterface;
 use Zend\Paginator\Paginator;
+use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Stdlib\ArrayObject;
 
 /**
@@ -19,16 +22,20 @@ use Zend\Stdlib\ArrayObject;
  */
 class DocumentService implements DocumentServiceInterface
 {
+    /** @var ContainerInterface */
+    protected $container;
 
-    /** @var ArrayObject */
+    /** @var Document */
     protected $document;
 
     /**
      * DocumentService constructor.
-     * @param ArrayObject|null $document
+     * @param ContainerInterface $container
+     * @param Document|null $document
      */
-    public function __construct(ArrayObject $document = null)
+    public function __construct(ContainerInterface $container, Document $document = null)
     {
+        $this->container = $container;
         $this->document = $document;
     }
 
@@ -41,6 +48,60 @@ class DocumentService implements DocumentServiceInterface
     }
 
     /**
+     * @return bool
+     */
+    public function hasLayout()
+    {
+
+        if (!$this->hasDocument()) {
+            return false;
+        }
+
+        return !empty($this->document['layoutid']);
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     * @throws \MSBios\Resource\Exception\RowNotFoundException
+     */
+    protected function templateIdentifier($id)
+    {
+        /** @var TemplateTableGateway $templateRepository */
+        $templateRepository =$this->container
+            ->get(TemplateTableGateway::class);
+
+        /** @var Template $templateRow */
+        $templateRow = $templateRepository->fetch($id);
+        return $templateRow['identifier'];
+    }
+
+    /**
+     * @return mixed|null
+     * @throws \MSBios\Resource\Exception\RowNotFoundException
+     */
+    public function getLayout()
+    {
+        if ($this->hasDocument() && $this->hasLayout()) {
+            return $this->templateIdentifier($this->document['layoutid']);
+        }
+        return null;
+    }
+
+    /**
+     * @return mixed|null
+     * @throws \MSBios\Resource\Exception\RowNotFoundException
+     */
+    public function getView()
+    {
+        if ($this->hasDocument()) {
+            return $this->templateIdentifier($this->document['viewid']);
+        }
+
+        return null;
+    }
+
+    /**
      * @return array
      */
     public function getVariables()
@@ -48,21 +109,27 @@ class DocumentService implements DocumentServiceInterface
         /** @var array $variables */
         $variables = [];
 
-        /** @var Paginator $paginator */
-        $paginator = $this->propertyValueRepository->fetchAll(['document_id' => 5]);
+        if ($this->hasDocument()) {
 
-        /** @var Value $record */
-        foreach ($paginator as $record) {
+            /** @var TablePluginManager $tableManager */
+            $tableManager = $this->container
+                ->get(TablePluginManager::class);
 
-            /** @var mixed $value */
-            $value = $record['value'];
+            /** @var PropertyValueTableGateway $propertyValueRepository */
+            $propertyValueRepository =$this->container
+                ->get(PropertyValueTableGateway::class);
 
-            if ($this->isSerialized($value)) {
-                $value = unserialize($value);
+            /** @var Paginator $paginator */
+            $paginator = $propertyValueRepository
+                ->fetchByDocument($this->document);
+
+            /** @var Value $record */
+            foreach ($paginator as $record) {
+                if ($this->isSerialized($record['value'])) {
+                    $record['value'] = unserialize($record['value']);
+                }
+                $variables[$record['identifier']] = $record['value'];
             }
-
-            $variables[] = $value;
-
         }
 
         return $variables;

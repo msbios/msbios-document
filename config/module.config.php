@@ -7,7 +7,6 @@
 namespace MSBios\Document;
 
 use Zend\Router\Http\Regex;
-use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
@@ -35,10 +34,8 @@ return [
 
     'service_manager' => [
         'factories' => [
-            DocumentListener::class =>
+            DocumentListenerAggregate::class =>
                 Factory\DocumentListenerFactory::class,
-            // DocumentService::class =>
-            //     Factory\DocumentServiceFactory::class
         ],
     ],
 
@@ -53,6 +50,7 @@ return [
     ],
 
     'listeners' => [
-        DocumentListener::class
+        DocumentListenerAggregate::class =>
+            DocumentListenerAggregate::class
     ]
 ];

@@ -10,8 +10,10 @@ use MSBios\CPanel\Mvc\Controller\AbstractActionController as DefaultAbstractActi
 use MSBios\Resource\RecordRepositoryInterface;
 use Zend\EventManager\EventManagerInterface;
 use Zend\Form\FormInterface;
+use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\Mvc\Controller\Plugin\Params;
 use Zend\Mvc\Controller\Plugin\PluginInterface;
+use Zend\Paginator\Paginator;
 use Zend\Stdlib\ArrayObject;
 use Zend\View\Model\ViewModel;
 
@@ -22,7 +24,7 @@ use Zend\View\Model\ViewModel;
 class AbstractActionController extends DefaultAbstractActionController
 {
     /** @var RecordRepositoryInterface */
-    protected $resource;
+    protected $repository;
 
     /** @var FormInterface */
     protected $form;
@@ -34,7 +36,7 @@ class AbstractActionController extends DefaultAbstractActionController
      */
     public function __construct(RecordRepositoryInterface $repository, FormInterface $form)
     {
-        $this->resource = $repository;
+        $this->repository = $repository;
         $this->form = $form;
     }
 
@@ -64,14 +66,17 @@ class AbstractActionController extends DefaultAbstractActionController
             $this->url()->fromRoute($matchedRouteName, ['action' => 'add'])
         );
 
+        /** @var Paginator $paginator */
+        $paginator = $this->repository->fetchAll();
+        $paginator->setItemCountPerPage(
+            (int)$params->fromQuery('limit', self::DEFAULT_ITEM_COUNT_PER_PAGE)
+        );
+        $paginator->setCurrentPageNumber(
+            (int)$params->fromQuery('page', self::DEFAULT_CURRENT_PAGE_NUMBER)
+        );
+
         return new ViewModel([
-            'paginator' => $this->resource->fetchAll()
-                ->setItemCountPerPage(
-                    (int)$params->fromQuery('limit', self::DEFAULT_ITEM_COUNT_PER_PAGE)
-                )
-                ->setCurrentPageNumber(
-                    (int)$params->fromQuery('page', self::DEFAULT_CURRENT_PAGE_NUMBER)
-                ),
+            'paginator' => $paginator,
             'form' => $this->form,
             'matchedRouteName' => $matchedRouteName
         ]);
@@ -90,23 +95,19 @@ class AbstractActionController extends DefaultAbstractActionController
             $this->url()->fromRoute($matchedRouteName, ['action' => 'add'])
         );
 
-        /** @var array $variables */
-        $variables = [
-            'form' => $this->form,
-            'matchedRouteName' => $matchedRouteName
-        ];
-
         if ($this->getRequest()->isPost()) {
 
             /** @var array $argv */
             $argv = [];
 
             $argv['row'] = static::factory();
-            $this->form
-                ->setInputFilter($argv['row']->getInputFilter());
 
-            $argv['data'] = $this->params()
-                ->fromPost();
+            if ($argv['row'] instanceof InputFilterAwareInterface) {
+                $this->form
+                    ->setInputFilter($argv['row']->getInputFilter());
+            }
+
+            $argv['data'] = $this->params()->fromPost();
             $this->form
                 ->setData($argv['data']);
 
@@ -121,7 +122,7 @@ class AbstractActionController extends DefaultAbstractActionController
                 $eventManager
                     ->trigger(self::EVENT_PRE_PERSIST_DATA, $this, $argv);
 
-                $this->resource
+                $this->repository
                     ->save($argv['row']);
 
                 $eventManager
@@ -164,7 +165,7 @@ class AbstractActionController extends DefaultAbstractActionController
 
         try {
             /** @var ArrayObject $row */
-            $row = $this->resource->fetch($id);
+            $row = $this->repository->fetch($id);
         } catch (\Exception $ex) {
             $this->flashMessenger()
                 ->addInfoMessage($ex->getMessage());
@@ -185,9 +186,6 @@ class AbstractActionController extends DefaultAbstractActionController
         $eventManager = $this->getEventManager();
         $eventManager->trigger(self::EVENT_PRE_BIND_DATA, $this, $argv);
 
-        // r($row); die();
-
-        // $this->form->bind($row);
         $this->form->setData($row);
 
         if ($this->getRequest()->isPost()) {
@@ -209,7 +207,7 @@ class AbstractActionController extends DefaultAbstractActionController
                     ['row' => $row, 'data' => $data, 'values' => $values]
                 );
 
-                $this->resource->save($row);
+                $this->repository->save($row);
 
                 $eventManager->trigger(
                     self::EVENT_POST_MERGE_DATA,
@@ -240,7 +238,7 @@ class AbstractActionController extends DefaultAbstractActionController
         $id = $this->params()->fromRoute('id');
 
         /** @var ArrayObject $row */
-        if ($row = $this->resource->fetch($id)) {
+        if ($row = $this->repository->fetch($id)) {
             $this->flashMessenger()
                 ->addSuccessMessage("Row '{$row['name']}' was deleted.");
 
@@ -252,7 +250,7 @@ class AbstractActionController extends DefaultAbstractActionController
                 ['row' => $row]
             );
 
-            $this->resource->delete($id);
+            $this->repository->delete($id);
 
             $eventManager->trigger(
                 self::EVENT_POST_REMOVE_DATA,

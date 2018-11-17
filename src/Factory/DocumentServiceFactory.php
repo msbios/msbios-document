@@ -19,10 +19,10 @@ class DocumentServiceFactory implements FactoryInterface
      * @param ContainerInterface $container
      * @param string $requestedName
      * @param array|null $options
-     * @return DocumentService
+     * @return DocumentService|object
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        return new DocumentService;
+        return new DocumentService($container);
     }
 }

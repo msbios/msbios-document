@@ -1,1 +1,1 @@
-../vendor/msbios/msbios/bin/msbios.sh
+../vendor/msbios/msbios/msbios.sh

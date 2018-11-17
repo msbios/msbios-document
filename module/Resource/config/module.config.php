@@ -8,8 +8,6 @@ namespace Kubnete\Resource;
 return [
     'service_manager' => [
         'factories' => [
-            // \Zend\Db\Adapter\AdapterInterface::class => Db\Adapter\AdapterServiceFactory::class,
-
             Table\DataTypeTableGateway::class =>
                 Factory\DataTypeTableGatewayFactory::class,
             Table\DocumentTableGateway::class =>

@@ -8,7 +8,7 @@ namespace MSBios\Document\Factory;
 
 use Interop\Container\ContainerInterface;
 use Kubnete\Resource\Table\DocumentTableGateway;
-use MSBios\Document\DocumentListener;
+use MSBios\Document\DocumentListenerAggregate;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
@@ -23,11 +23,11 @@ class DocumentListenerFactory implements FactoryInterface
      * @param ContainerInterface $container
      * @param string $requestedName
      * @param array|null $options
-     * @return DocumentListener
+     * @return DocumentListenerAggregate
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        return new DocumentListener(
+        return new DocumentListenerAggregate(
             $container->get(DocumentTableGateway::class)
         );
     }
