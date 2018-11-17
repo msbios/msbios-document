@@ -5,20 +5,20 @@
  */
 namespace MSBios\Document\Resource\Record;
 
+use MSBios\Resource\Record;
 use Zend\Filter\StringTrim;
 use Zend\Filter\StripTags;
 use Zend\InputFilter\Factory as InputFactory;
 use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
-use Zend\Stdlib\ArrayObject;
 use Zend\Validator\StringLength;
 
 /**
  * Class Tab
- * @package MSBios\Document\Resource\Model
+ * @package MSBios\Document\Resource\Record
  */
-class Tab extends ArrayObject implements InputFilterAwareInterface
+class Tab extends Record implements InputFilterAwareInterface
 {
     /** @var  InputFilter */
     protected $inputFilter;
@@ -100,9 +100,4 @@ class Tab extends ArrayObject implements InputFilterAwareInterface
     {
         throw new \Exception("Not used");
     }
-
-//    public function getName()
-//    {
-//        return $this['name'];
-//    }
 }

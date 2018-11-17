@@ -7,6 +7,7 @@ namespace MSBios\Document\Resource\Table;
 
 use MSBios\Document\Resource\Record\Document;
 use MSBios\Document\Resource\Tables;
+use MSBios\Resource\RecordRepository;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\Sql\Predicate\Predicate;
 use Zend\Db\Sql\Predicate\PredicateSet;
@@ -16,7 +17,7 @@ use Zend\Db\Sql\Select;
  * Class DocumentTableGateway
  * @package MSBios\Document\Resource\Table
  */
-class DocumentTableGateway extends AbstractResource
+class DocumentTableGateway extends RecordRepository
 {
     /**
      * @param Document $document

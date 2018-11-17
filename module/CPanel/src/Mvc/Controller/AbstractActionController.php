@@ -8,6 +8,7 @@ namespace MSBios\Document\CPanel\Mvc\Controller;
 
 use MSBios\CPanel\Mvc\Controller\AbstractActionController as DefaultAbstractActionController;
 use MSBios\Resource\RecordRepositoryInterface;
+use Zend\Db\Sql\Select;
 use Zend\EventManager\EventManagerInterface;
 use Zend\Form\FormInterface;
 use Zend\InputFilter\InputFilterAwareInterface;
@@ -67,7 +68,8 @@ class AbstractActionController extends DefaultAbstractActionController
         );
 
         /** @var Paginator $paginator */
-        $paginator = $this->repository->fetchAll();
+        $paginator = $this->repository
+            ->fetchAll();
         $paginator->setItemCountPerPage(
             (int)$params->fromQuery('limit', self::DEFAULT_ITEM_COUNT_PER_PAGE)
         );

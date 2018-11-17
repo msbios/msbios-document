@@ -3,16 +3,18 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
+
 namespace MSBios\Document\Resource\Factory;
 
 use Interop\Container\ContainerInterface;
+use MSBios\Db\TableGateway\TableGateway;
 use MSBios\Document\Resource\Record\Document;
 use MSBios\Document\Resource\Table\DocumentTableGateway;
-
 use MSBios\Document\Resource\Table\PropertyValueTableGateway;
-use MSBios\Db\TableGateway\TableGateway;
 use Zend\Db\Adapter\Adapter;
+use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\TableGateway\Feature\RowGatewayFeature;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
@@ -29,23 +31,25 @@ class DocumentTableFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        /** @var ResultSet $resultSetPrototype */
-        $resultSetPrototype = new ResultSet;
+        /** @var AdapterInterface $adapter */
+        $adapter = $container->get(Adapter::class);
 
-        /** @var Document $model */
-        $model = new Document;
-        $resultSetPrototype->setArrayObjectPrototype($model);
+        /** @var Document $record */
+        $record = new Document('id', 'cnt_t_documents', $adapter);
+
+        /** @var RowGatewayFeature $feature */
+        $feature = new RowGatewayFeature($record);
+
+        // /** @var ResultSet $resultSetPrototype */
+        // $resultSetPrototype = new ResultSet;
+        // $resultSetPrototype->setArrayObjectPrototype($record);
 
         /** @var TableGateway $tableGateway */
         $tableGateway = new TableGateway(
-            'cnt_t_documents',
-            $container->get(Adapter::class),
-            null,
-            $resultSetPrototype
-        );
-
-        $model->setPropertyValueTable(
-            $container->get(PropertyValueTableGateway::class)
+            $record->getTable(),
+            $adapter,
+            $feature //,
+            // $resultSetPrototype
         );
 
         return new DocumentTableGateway($tableGateway);

@@ -5,13 +5,13 @@
  */
 namespace MSBios\Document\Resource\Record\Property;
 
-use Zend\Stdlib\ArrayObject;
+use MSBios\Resource\Record;
 
 /**
  * Class Value
- * @package MSBios\Document\Resource\Model\Property
+ * @package MSBios\Document\Resource\Record\Property
  */
-class Value extends ArrayObject
+class Value extends Record
 {
-
+    // ...
 }

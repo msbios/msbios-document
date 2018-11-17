@@ -11,7 +11,9 @@ use MSBios\Document\Resource\Table\TemplateTableGateway;
 use MSBios\Db\TableGateway\TableGateway;
 use MSBios\Db\TableGateway\TableGatewayInterface;
 use Zend\Db\Adapter\Adapter;
+use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\TableGateway\Feature\RowGatewayFeature;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
@@ -28,16 +30,24 @@ class TemplateTableGatewayFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        /** @var ResultSet $resultSetPrototype */
-        $resultSetPrototype = new ResultSet;
-        $resultSetPrototype->setArrayObjectPrototype(new Template);
+        /** @var AdapterInterface $adapter */
+        $adapter = $container->get(Adapter::class);
+
+        /** @var Template $record */
+        $record = new Template('id', 'sys_t_templates', $adapter);
+
+        /** @var RowGatewayFeature $feature */
+        $feature = new RowGatewayFeature($record);
+
+        // /** @var ResultSet $resultSetPrototype */
+        // $resultSetPrototype = new ResultSet;
+        // $resultSetPrototype->setArrayObjectPrototype(new Template);
 
         /** @var TableGatewayInterface $tableGateway */
         $tableGateway = new TableGateway(
-            'sys_t_templates',
-            $container->get(Adapter::class),
-            null,
-            $resultSetPrototype
+            $record->getTable(),
+            $adapter,
+            $feature
         );
 
         return new TemplateTableGateway($tableGateway);

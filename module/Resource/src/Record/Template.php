@@ -5,7 +5,7 @@
  */
 namespace MSBios\Document\Resource\Record;
 
-use MSBios\Resource\RecordInterface;
+use MSBios\Resource\Record;
 use Zend\Db\TableGateway\Feature\GlobalAdapterFeature;
 use Zend\Filter\StringTrim;
 use Zend\Filter\StripTags;
@@ -13,7 +13,6 @@ use Zend\InputFilter\Factory as InputFactory;
 use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
-use Zend\Stdlib\ArrayObject;
 use Zend\Validator\Db\NoRecordExists;
 use Zend\Validator\NotEmpty;
 use Zend\Validator\Regex;
@@ -21,9 +20,9 @@ use Zend\Validator\StringLength;
 
 /**
  * Class Template
- * @package MSBios\Document\Resource\Model
+ * @package MSBios\Document\Resource\Record
  */
-class Template extends ArrayObject implements RecordInterface, InputFilterAwareInterface
+class Template extends Record implements InputFilterAwareInterface
 {
     /** @var  InputFilter */
     protected $inputFilter;

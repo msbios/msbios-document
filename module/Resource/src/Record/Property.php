@@ -5,14 +5,13 @@
  */
 namespace MSBios\Document\Resource\Record;
 
-use MSBios\Document\Resource\Table\DocumentTableGateway;
-use Zend\Stdlib\ArrayObject;
+use MSBios\Resource\Record;
 
 /**
  * Class Property
- * @package MSBios\Document\Resource\Model
+ * @package MSBios\Document\Resource\Record
  */
-class Property extends ArrayObject
+class Property extends Record
 {
-
+    // ...
 }

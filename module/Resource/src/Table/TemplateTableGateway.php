@@ -6,13 +6,14 @@
 namespace MSBios\Document\Resource\Table;
 
 use MSBios\Document\Resource\Form\Element\TemplateTypeElement;
+use MSBios\Resource\RecordRepository;
 use Zend\Db\ResultSet\ResultSet;
 
 /**
  * Class TemplateTableGateway
  * @package MSBios\Document\Resource\Table
  */
-class TemplateTableGateway extends AbstractResource
+class TemplateTableGateway extends RecordRepository
 {
     /**
      * @param $type
@@ -40,29 +41,4 @@ class TemplateTableGateway extends AbstractResource
     {
         return $this->fetchByType(TemplateTypeElement::LAYOUT);
     }
-
-//    /**
-//     * @param ArrayObject $object
-//     * @throws \Exception
-//     */
-//    public function save(ArrayObject $object)
-//    {
-//        /** @var array $data */
-//        $data = $object->getArrayCopy();
-//
-//        /** @var int $id */
-//        $id = (int) $object['id'];
-//
-//        if (! $id) {
-//            $this->getTableGateway()
-//                ->insert($data);
-//        } else {
-//            if ($this->getTemplate($id)) {
-//                $this->getTableGateway()
-//                    ->update($data, ['id' => $id]);
-//            } else {
-//                throw new \Exception('Document id does not exist');
-//            }
-//        }
-//    }
 }

@@ -5,20 +5,20 @@
  */
 namespace MSBios\Document\Resource\Record;
 
+use MSBios\Resource\Record;
 use Zend\Filter\StringTrim;
 use Zend\Filter\StripTags;
 use Zend\InputFilter\Factory as InputFactory;
 use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
-use Zend\Stdlib\ArrayObject;
 use Zend\Validator\StringLength;
 
 /**
  * Class DocumentType
- * @package MSBios\Document\Resource\Model
+ * @package MSBios\Document\Resource\Record
  */
-class DocumentType extends ArrayObject implements InputFilterAwareInterface
+class DocumentType extends Record implements InputFilterAwareInterface
 {
     /** @var  InputFilter */
     protected $inputFilter;
