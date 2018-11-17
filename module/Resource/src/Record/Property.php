@@ -3,14 +3,14 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Record;
+namespace MSBios\Document\Resource\Record;
 
-use Kubnete\Resource\Table\DocumentTableGateway;
+use MSBios\Document\Resource\Table\DocumentTableGateway;
 use Zend\Stdlib\ArrayObject;
 
 /**
  * Class Property
- * @package Kubnete\Resource\Model
+ * @package MSBios\Document\Resource\Model
  */
 class Property extends ArrayObject
 {

@@ -3,7 +3,7 @@
  * @access protected
  * @author
  */
-namespace Kubnete\Frontend;
+namespace MSBios\Document\Frontend;
 
 use Zend\Router\Http\Regex;
 

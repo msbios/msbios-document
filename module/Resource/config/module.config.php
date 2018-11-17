@@ -3,7 +3,7 @@
  * @access protected
  * @author
  */
-namespace Kubnete\Resource;
+namespace MSBios\Document\Resource;
 
 return [
     'service_manager' => [

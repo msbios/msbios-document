@@ -5,11 +5,11 @@
  */
 namespace MSBios\Document;
 
-use Kubnete\Resource\Record\Document;
-use Kubnete\Resource\Record\Property\Value;
-use Kubnete\Resource\Record\Template;
-use Kubnete\Resource\Table\PropertyValueTableGateway;
-use Kubnete\Resource\Table\TemplateTableGateway;
+use MSBios\Document\Resource\Record\Document;
+use MSBios\Document\Resource\Record\Property\Value;
+use MSBios\Document\Resource\Record\Template;
+use MSBios\Document\Resource\Table\PropertyValueTableGateway;
+use MSBios\Document\Resource\Table\TemplateTableGateway;
 use MSBios\Db\TablePluginManager;
 use Psr\Container\ContainerInterface;
 use Zend\Paginator\Paginator;

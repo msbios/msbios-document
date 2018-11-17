@@ -3,11 +3,11 @@
  * @access protected
  * @author
  */
-namespace Kubnete\Statistic;
+namespace MSBios\Document\Statistic;
 
 /**
  * Class Module
- * @package Kubnete\Statistic
+ * @package MSBios\Document\Statistic
  */
 class Module
 {

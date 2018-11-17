@@ -3,16 +3,16 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Table;
+namespace MSBios\Document\Resource\Table;
 
-use Kubnete\Resource\Record\DocumentType;
-use Kubnete\Resource\Record\Tab;
+use MSBios\Document\Resource\Record\DocumentType;
+use MSBios\Document\Resource\Record\Tab;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\Sql\Select;
 
 /**
  * Class TabTableGateway
- * @package Kubnete\Resource\Table
+ * @package MSBios\Document\Resource\Table
  */
 class TabTableGateway extends AbstractResource
 {

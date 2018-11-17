@@ -4,13 +4,13 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace Kubnete\DataType\Form\Element;
+namespace MSBios\Document\DataType\Form\Element;
 
 use Zend\Form\Element\Select as DefaultSelect;
 
 /**
  * Class Select
- * @package Kubnete\DataType\Form\Element
+ * @package MSBios\Document\DataType\Form\Element
  */
 class Select extends DefaultSelect
 {

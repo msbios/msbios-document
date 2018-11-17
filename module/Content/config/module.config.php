@@ -4,7 +4,7 @@
  * @author
  */
 
-namespace Kubnete\Content;
+namespace MSBios\Document\Content;
 
 use Zend\Router\Http\Segment;
 

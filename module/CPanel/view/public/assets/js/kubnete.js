@@ -1,4 +1,4 @@
-var Kubnete = function () {
+var MSBios\Document = function () {
 
     return {
         /**

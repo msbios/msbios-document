@@ -3,15 +3,15 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace KubneteTest\Content\Controller;
+namespace MSBios\DocumentTest\Content\Controller;
 
-use Kubnete\Content\Controller\DocumentController;
+use MSBios\Document\Content\Controller\DocumentController;
 use Zend\Stdlib\ArrayUtils;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 /**
  * Class DocumentControllerTest
- * @package KubneteTest\Content\Controller
+ * @package MSBios\DocumentTest\Content\Controller
  */
 class DocumentControllerTest extends AbstractHttpControllerTestCase
 {

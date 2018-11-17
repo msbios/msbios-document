@@ -7,7 +7,7 @@
 namespace MSBios\Document\Factory;
 
 use Interop\Container\ContainerInterface;
-use Kubnete\Resource\Table\DocumentTableGateway;
+use MSBios\Document\Resource\Table\DocumentTableGateway;
 use MSBios\Document\DocumentListenerAggregate;
 use Zend\ServiceManager\Factory\FactoryInterface;
 

@@ -3,15 +3,15 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Development\Factory;
+namespace MSBios\Document\Development\Factory;
 
 use Interop\Container\ContainerInterface;
-use Kubnete\Development\Module;
+use MSBios\Document\Development\Module;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class ModuleFactory
- * @package Kubnete\Development\Factory
+ * @package MSBios\Document\Development\Factory
  */
 class ModuleFactory implements FactoryInterface
 {

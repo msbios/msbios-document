@@ -3,18 +3,18 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Content\Factory;
+namespace MSBios\Document\Content\Factory;
 
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
-use Kubnete\Content\Form\DocumentForm;
+use MSBios\Document\Content\Form\DocumentForm;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class DocumentFormFactory
- * @package Kubnete\Content\Factory
+ * @package MSBios\Document\Content\Factory
  */
 class DocumentFormFactory implements FactoryInterface
 {

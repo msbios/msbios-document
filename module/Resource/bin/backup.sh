@@ -4,7 +4,7 @@
 user="root"
 password="root"
 host="localhost"
-db_name="kubnete.dev"
+db_name="MSBios\Document.dev"
 
 # Other options
 backup_path="../data"

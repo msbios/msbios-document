@@ -3,19 +3,19 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Frontend\Factory;
+namespace MSBios\Document\Frontend\Factory;
 
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
-use Kubnete\Frontend\View\Helper\DocumentHelper;
-use Kubnete\Resource\Record\Document;
+use MSBios\Document\Frontend\View\Helper\DocumentHelper;
+use MSBios\Document\Resource\Record\Document;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class DocumentHelperFactory
- * @package Kubnete\Frontend\Factory
+ * @package MSBios\Document\Frontend\Factory
  */
 class DocumentHelperFactory implements FactoryInterface
 {

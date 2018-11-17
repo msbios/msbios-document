@@ -4,7 +4,7 @@
 // * @author Judzhin Miles <info[woof-woof]msbios.com>
 // */
 //
-//namespace Kubnete\Resource\Db\Adapter;
+//namespace MSBios\Document\Resource\Db\Adapter;
 //
 //use Interop\Container\ContainerInterface;
 //use Interop\Container\Exception\ContainerException;
@@ -16,7 +16,7 @@
 //
 ///**
 // * Class AdapterServiceFactory
-// * @package Kubnete\Resource\Db\Adapter
+// * @package MSBios\Document\Resource\Db\Adapter
 // */
 //class AdapterServiceFactory extends DefaultAdapterServiceFactory
 //{

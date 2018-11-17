@@ -3,11 +3,11 @@
  * @access protected
  * @author
  */
-namespace Kubnete\CPanel;
+namespace MSBios\Document\CPanel;
 
 /**
  * Class Module
- * @package Kubnete\CPanel
+ * @package MSBios\Document\CPanel
  */
 class Module
 {

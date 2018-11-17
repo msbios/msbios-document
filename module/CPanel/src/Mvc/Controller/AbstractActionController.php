@@ -4,7 +4,7 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace Kubnete\CPanel\Mvc\Controller;
+namespace MSBios\Document\CPanel\Mvc\Controller;
 
 use MSBios\CPanel\Mvc\Controller\AbstractActionController as DefaultAbstractActionController;
 use MSBios\Resource\RecordRepositoryInterface;
@@ -19,7 +19,7 @@ use Zend\View\Model\ViewModel;
 
 /**
  * Class AbstractActionController
- * @package Kubnete\CPanel\Mvc\Controller
+ * @package MSBios\Document\CPanel\Mvc\Controller
  */
 class AbstractActionController extends DefaultAbstractActionController
 {

@@ -6,10 +6,10 @@
  * Time: 14:51
  */
 
-namespace Kubnete\Development\Form\TypeTab;
+namespace MSBios\Document\Development\Form\TypeTab;
 
-use Kubnete\Resource\Form\Element\DataTypeElement;
-use Kubnete\Resource\Record\Property;
+use MSBios\Document\Resource\Form\Element\DataTypeElement;
+use MSBios\Document\Resource\Record\Property;
 use Zend\Form\Element\Checkbox;
 use Zend\Form\Element\Hidden;
 use Zend\Form\Element\Text;
@@ -23,7 +23,7 @@ use Zend\Validator\StringLength;
 
 /**
  * Class PropertyFieldset
- * @package Kubnete\Development\Form\TypeTab
+ * @package MSBios\Document\Development\Form\TypeTab
  */
 class PropertyFieldset extends Fieldset implements InputFilterProviderInterface
 {

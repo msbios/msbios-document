@@ -4,18 +4,18 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace Kubnete\Frontend\Controller;
+namespace MSBios\Document\Frontend\Controller;
 
-use Kubnete\Resource\Record\Document;
-use Kubnete\Resource\Record\Value;
-use Kubnete\Resource\Table\PropertyValue;
+use MSBios\Document\Resource\Record\Document;
+use MSBios\Document\Resource\Record\Value;
+use MSBios\Document\Resource\Table\PropertyValue;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 /**
  * Class IndexController
- * @package Kubnete\Frontend\Controller
+ * @package MSBios\Document\Frontend\Controller
  */
 class IndexController extends AbstractActionController
 {

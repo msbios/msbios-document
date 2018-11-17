@@ -3,19 +3,19 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Factory;
+namespace MSBios\Document\Resource\Factory;
 
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
-use Kubnete\Resource\Form\Element\DocumentTypeElement;
-use Kubnete\Resource\Table\DocumentTypeGateway;
+use MSBios\Document\Resource\Form\Element\DocumentTypeElement;
+use MSBios\Document\Resource\Table\DocumentTypeGateway;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class DocumentTypeElementFactory
- * @package Kubnete\Resource\Factory
+ * @package MSBios\Document\Resource\Factory
  */
 class DocumentTypeElementFactory implements FactoryInterface
 {

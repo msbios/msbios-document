@@ -3,14 +3,14 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Form\Element;
+namespace MSBios\Document\Resource\Form\Element;
 
-use Kubnete\Resource\Table\TemplateTableGateway;
+use MSBios\Document\Resource\Table\TemplateTableGateway;
 use Zend\Form\Element\Select;
 
 /**
  * Class LayoutElement
- * @package Kubnete\Resource\Form\Element
+ * @package MSBios\Document\Resource\Form\Element
  */
 class LayoutElement extends Select
 {

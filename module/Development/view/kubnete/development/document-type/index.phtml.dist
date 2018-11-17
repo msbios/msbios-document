@@ -3,7 +3,7 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Development;
+namespace MSBios\Document\Development;
 
 $this->headLink()
     ->appendStylesheet($this->basePath('backend/assets/js/plugins/codemirror/lib/codemirror.css'));

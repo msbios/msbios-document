@@ -3,19 +3,19 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Factory;
+namespace MSBios\Document\Resource\Factory;
 
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
-use Kubnete\Resource\Form\Element\LayoutElement;
-use Kubnete\Resource\Table\TemplateTableGateway;
+use MSBios\Document\Resource\Form\Element\LayoutElement;
+use MSBios\Document\Resource\Table\TemplateTableGateway;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class LayoutElementFactory
- * @package Kubnete\Resource\Factory
+ * @package MSBios\Document\Resource\Factory
  */
 class LayoutElementFactory implements FactoryInterface
 {

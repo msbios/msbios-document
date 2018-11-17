@@ -3,7 +3,7 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Record;
+namespace MSBios\Document\Resource\Record;
 
 use MSBios\Resource\RecordInterface;
 use Zend\Filter\StringTrim;
@@ -17,7 +17,7 @@ use Zend\Validator\StringLength;
 
 /**
  * Class DataType
- * @package Kubnete\Resource\Record
+ * @package MSBios\Document\Resource\Record
  */
 class DataType extends ArrayObject implements RecordInterface, InputFilterAwareInterface
 {

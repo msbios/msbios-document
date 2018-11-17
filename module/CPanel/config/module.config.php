@@ -4,7 +4,7 @@
  * @author
  */
 
-namespace Kubnete\CPanel;
+namespace MSBios\Document\CPanel;
 
 use Zend\ServiceManager\Factory\InvokableFactory;
 

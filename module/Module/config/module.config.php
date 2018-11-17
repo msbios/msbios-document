@@ -3,7 +3,7 @@
  * @access protected
  * @author
  */
-namespace Kubnete\Module;
+namespace MSBios\Document\Module;
 
 return [
 

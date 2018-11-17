@@ -6,13 +6,13 @@
  * Time: 12:08
  */
 
-namespace Kubnete\Content\Form;
+namespace MSBios\Document\Content\Form;
 
-use Kubnete\Resource\Form\Element\DocumentTypeElement;
-use Kubnete\Resource\Form\Element\LayoutElement;
-use Kubnete\Resource\Form\Element\ViewElement;
-use Kubnete\Resource\Record\Document;
-use Kubnete\Resource\Record\Property;
+use MSBios\Document\Resource\Form\Element\DocumentTypeElement;
+use MSBios\Document\Resource\Form\Element\LayoutElement;
+use MSBios\Document\Resource\Form\Element\ViewElement;
+use MSBios\Document\Resource\Record\Document;
+use MSBios\Document\Resource\Record\Property;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Form\Element\Hidden;
 use Zend\Form\Element\Text;
@@ -23,7 +23,7 @@ use Zend\ServiceManager\AbstractPluginManager;
 
 /**
  * Class DocumentForm
- * @package Kubnete\Content\Form
+ * @package MSBios\Document\Content\Form
  */
 class DocumentForm extends Form
 {

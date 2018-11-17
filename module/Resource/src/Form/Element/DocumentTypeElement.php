@@ -3,14 +3,14 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Form\Element;
+namespace MSBios\Document\Resource\Form\Element;
 
-use Kubnete\Resource\Table\DocumentTypeGateway;
+use MSBios\Document\Resource\Table\DocumentTypeGateway;
 use Zend\Form\Element\Select;
 
 /**
  * Class DocumentTypeElement
- * @package Kubnete\Resource\Form\Element
+ * @package MSBios\Document\Resource\Form\Element
  */
 class DocumentTypeElement extends Select
 {

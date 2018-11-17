@@ -3,21 +3,21 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Frontend\Factory;
+namespace MSBios\Document\Frontend\Factory;
 
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
-use Kubnete\Frontend\Controller\IndexController;
-use Kubnete\Resource\Record\Document;
-use Kubnete\Resource\Table\DocumentTableGateway;
-use Kubnete\Resource\Table\PropertyValue;
+use MSBios\Document\Frontend\Controller\IndexController;
+use MSBios\Document\Resource\Record\Document;
+use MSBios\Document\Resource\Table\DocumentTableGateway;
+use MSBios\Document\Resource\Table\PropertyValue;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class IndexControllerFactory
- * @package Kubnete\Frontend\Factory
+ * @package MSBios\Document\Frontend\Factory
  */
 class IndexControllerFactory implements FactoryInterface
 {

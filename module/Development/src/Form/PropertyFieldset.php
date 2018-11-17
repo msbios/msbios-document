@@ -4,10 +4,10 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace Kubnete\Development\Form;
+namespace MSBios\Document\Development\Form;
 
-use Kubnete\Resource\Form\Element\DataTypeElement;
-use Kubnete\Resource\Record\Property;
+use MSBios\Document\Resource\Form\Element\DataTypeElement;
+use MSBios\Document\Resource\Record\Property;
 use Zend\Form\Element\Checkbox;
 use Zend\Form\Element\Hidden;
 use Zend\Form\Element\Text;
@@ -21,7 +21,7 @@ use Zend\Validator\StringLength;
 
 /**
  * Class PropertyFieldset
- * @package Kubnete\Development\Form
+ * @package MSBios\Document\Development\Form
  */
 class PropertyFieldset extends Fieldset implements InputFilterProviderInterface
 {

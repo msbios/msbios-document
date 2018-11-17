@@ -3,17 +3,17 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Development\Factory;
+namespace MSBios\Document\Development\Factory;
 
 use Interop\Container\ContainerInterface;
-use Kubnete\Development\Form\Element\FieldSelect;
-use Kubnete\Development\Module;
+use MSBios\Document\Development\Form\Element\FieldSelect;
+use MSBios\Document\Development\Module;
 use Zend\Form\ElementInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class FormElementSelectFactory
- * @package Kubnete\Development\Factory
+ * @package MSBios\Document\Development\Factory
  */
 class FormElementSelectFactory implements FactoryInterface
 {

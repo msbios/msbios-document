@@ -3,11 +3,11 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Exception;
+namespace MSBios\Document\Resource\Exception;
 
 /**
  * Class RowNotFoundException
- * @package Kubnete\Resource\Exception
+ * @package MSBios\Document\Resource\Exception
  */
 class RowNotFoundException extends \Exception
 {

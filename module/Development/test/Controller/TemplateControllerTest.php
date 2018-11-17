@@ -3,17 +3,17 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace KubneteTest\Development\Controller;
+namespace MSBios\DocumentTest\Development\Controller;
 
-use Kubnete\Development\Controller\TemplateController;
-use Kubnete\Resource\Table\TemplateTableGateway;
+use MSBios\Document\Development\Controller\TemplateController;
+use MSBios\Document\Resource\Table\TemplateTableGateway;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Stdlib\ArrayUtils;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 /**
  * Class TemplateControllerTest
- * @package KubneteTest\Development\Controller
+ * @package MSBios\DocumentTest\Development\Controller
  */
 class TemplateControllerTest extends AbstractHttpControllerTestCase
 {

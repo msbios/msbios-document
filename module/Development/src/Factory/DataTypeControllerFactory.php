@@ -3,17 +3,17 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Development\Factory;
+namespace MSBios\Document\Development\Factory;
 
 use Interop\Container\ContainerInterface;
-use Kubnete\Development\Controller\DataTypeController;
-use Kubnete\Development\Form\DataTypeForm;
-use Kubnete\Resource\Table\DataTypeTableGateway;
+use MSBios\Document\Development\Controller\DataTypeController;
+use MSBios\Document\Development\Form\DataTypeForm;
+use MSBios\Document\Resource\Table\DataTypeTableGateway;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class DataTypeControllerFactory
- * @package Kubnete\Development\Factory
+ * @package MSBios\Document\Development\Factory
  */
 class DataTypeControllerFactory implements FactoryInterface
 {

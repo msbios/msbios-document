@@ -3,11 +3,11 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Factory;
+namespace MSBios\Document\Resource\Factory;
 
 use Interop\Container\ContainerInterface;
-use Kubnete\Resource\Record\Tab;
-use Kubnete\Resource\Table\TabTableGateway;
+use MSBios\Document\Resource\Record\Tab;
+use MSBios\Document\Resource\Table\TabTableGateway;
 use MSBios\Db\TableGateway\TableGateway;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
@@ -15,7 +15,7 @@ use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class TabTableGatewayFactory
- * @package Kubnete\Resource\Factory
+ * @package MSBios\Document\Resource\Factory
  */
 class TabTableGatewayFactory implements FactoryInterface
 {

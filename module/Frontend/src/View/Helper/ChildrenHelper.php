@@ -6,15 +6,15 @@
  * Time: 12:23 AM
  */
 
-namespace Kubnete\Frontend\View\Helper;
+namespace MSBios\Document\Frontend\View\Helper;
 
-use Kubnete\Resource\Record\Document;
-use Kubnete\Resource\Table\DocumentTableGateway;
+use MSBios\Document\Resource\Record\Document;
+use MSBios\Document\Resource\Table\DocumentTableGateway;
 use Zend\View\Helper\AbstractHelper;
 
 /**
  * Class ChildrenHelper
- * @package Kubnete\Frontend\View\Helper
+ * @package MSBios\Document\Frontend\View\Helper
  */
 class ChildrenHelper extends DocumentHelper
 {

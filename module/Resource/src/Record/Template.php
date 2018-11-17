@@ -3,7 +3,7 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Record;
+namespace MSBios\Document\Resource\Record;
 
 use MSBios\Resource\RecordInterface;
 use Zend\Db\TableGateway\Feature\GlobalAdapterFeature;
@@ -21,7 +21,7 @@ use Zend\Validator\StringLength;
 
 /**
  * Class Template
- * @package Kubnete\Resource\Model
+ * @package MSBios\Document\Resource\Model
  */
 class Template extends ArrayObject implements RecordInterface, InputFilterAwareInterface
 {

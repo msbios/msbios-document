@@ -3,7 +3,7 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Table;
+namespace MSBios\Document\Resource\Table;
 
 use MSBios\Db\TableGateway\TableGateway;
 use MSBios\Db\TableGateway\TableGatewayInterface;
@@ -15,7 +15,7 @@ use Zend\Paginator\Paginator;
 
 /**
  * Class DocumentTypeTableGateway
- * @package Kubnete\Resource\Table
+ * @package MSBios\Document\Resource\Table
  */
 class DocumentTypeTableGateway extends AbstractResource
 {

@@ -3,7 +3,7 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace KubneteTest\Resource;
+namespace MSBios\DocumentTest\Resource;
 
 use Zend\Mvc\Application;
 use Zend\ServiceManager\ServiceLocatorInterface;
@@ -11,7 +11,7 @@ use Zend\Stdlib\ArrayUtils;
 
 /**
  * Class ModuleTest
- * @package KubneteTest\Resource
+ * @package MSBios\DocumentTest\Resource
  */
 class ModuleTest extends \PHPUnit_Framework_TestCase
 {

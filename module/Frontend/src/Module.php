@@ -2,12 +2,12 @@
 /**
  * This source file is part of GotCms.
  *
- * Kubnete is free software: you can redistribute it and/or modify
+ * MSBios\Document is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Kubnete is distributed in the hope that it will be useful,
+ * MSBios\Document is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU Lesser General Public License for more details.
@@ -17,18 +17,18 @@
  *
  * PHP Version >=5.6
  *
- * @category Kubnete
+ * @category MSBios\Document
  * @package Frontend
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  * @license GNU/LGPL http://www.gnu.org/licenses/lgpl-3.0.html
  * @link http://msbios.com
  */
-namespace Kubnete\Frontend;
+namespace MSBios\Document\Frontend;
 
 /**
  * Class Module
- * @package Kubnete\Frontend
+ * @package MSBios\Document\Frontend
  */
 class Module
 {

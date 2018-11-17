@@ -4,21 +4,21 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace Kubnete\Content\Controller;
+namespace MSBios\Document\Content\Controller;
 
-use Kubnete\Content\Form\DocumentForm as DocumentForm;
-use Kubnete\Resource\Record\Document;
-use Kubnete\Resource\Record\DocumentType;
-use Kubnete\Resource\Record\Property;
-use Kubnete\Resource\Record\Tab;
-use Kubnete\Resource\Table\DocumentTableGateway;
+use MSBios\Document\Content\Form\DocumentForm as DocumentForm;
+use MSBios\Document\Resource\Record\Document;
+use MSBios\Document\Resource\Record\DocumentType;
+use MSBios\Document\Resource\Record\Property;
+use MSBios\Document\Resource\Record\Tab;
+use MSBios\Document\Resource\Table\DocumentTableGateway;
 use MSBios\CPanel\Mvc\Controller\AbstractActionController;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\View\Model\ViewModel;
 
 /**
  * Class DocumentController
- * @package Kubnete\Content\Controller
+ * @package MSBios\Document\Content\Controller
  */
 class DocumentController extends AbstractActionController
 {
@@ -48,7 +48,7 @@ class DocumentController extends AbstractActionController
      * @param DocumentTableGateway $objDocumentTable
      * @param DocumentTypeGateway $objDocumentTypeTable
      * @param Tab $objTabTable
-     * @param \Kubnete\Content\Controller\Property $objPropertyTable
+     * @param \MSBios\Document\Content\Controller\Property $objPropertyTable
      * @param PropertyValue $objPropertyValueTable
      * @param DocumentForm $objDocumentForm
      */

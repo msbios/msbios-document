@@ -3,7 +3,7 @@
  * @access protected
  * @author
  */
-namespace Kubnete\Development;
+namespace MSBios\Document\Development;
 
 use Zend\Form\Element\File;
 use Zend\Form\Element\Text;
@@ -273,20 +273,20 @@ return [
         ],
         'template_map' => [
 
-            'kubnete/development/data-type/add' =>
-                __DIR__ . '/../view/kubnete/development/data-type/form.phtml',
-            'kubnete/development/data-type/edit' =>
-                __DIR__ . '/../view/kubnete/development/data-type/form.phtml',
+            'MSBios\Document/development/data-type/add' =>
+                __DIR__ . '/../view/MSBios\Document/development/data-type/form.phtml',
+            'MSBios\Document/development/data-type/edit' =>
+                __DIR__ . '/../view/MSBios\Document/development/data-type/form.phtml',
 
-            'kubnete/development/document-type/add' =>
-                __DIR__ . '/../view/kubnete/development/data-type/form.phtml',
-            'kubnete/development/document-type/edit' =>
-                __DIR__ . '/../view/kubnete/development/document-type/form.phtml',
+            'MSBios\Document/development/document-type/add' =>
+                __DIR__ . '/../view/MSBios\Document/development/data-type/form.phtml',
+            'MSBios\Document/development/document-type/edit' =>
+                __DIR__ . '/../view/MSBios\Document/development/document-type/form.phtml',
 
-            'kubnete/development/template/add' =>
-                __DIR__ . '/../view/kubnete/development/template/form.phtml',
-            'kubnete/development/template/edit' =>
-                __DIR__ . '/../view/kubnete/development/template/form.phtml',
+            'MSBios\Document/development/template/add' =>
+                __DIR__ . '/../view/MSBios\Document/development/template/form.phtml',
+            'MSBios\Document/development/template/edit' =>
+                __DIR__ . '/../view/MSBios\Document/development/template/form.phtml',
         ],
     ],
 

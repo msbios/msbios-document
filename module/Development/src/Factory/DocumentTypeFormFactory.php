@@ -3,18 +3,18 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Development\Factory;
+namespace MSBios\Document\Development\Factory;
 
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
-use Kubnete\DataType\Form\Element\Select;
-use Kubnete\Development\Controller\TemplateController;
-use Kubnete\Development\Form\DataTypeForm;
-use Kubnete\Development\Form\DocumentTypeForm;
-use Kubnete\Development\Form\TemplateForm;
-use Kubnete\Development\Form\TypeTabFieldset;
-use Kubnete\Resource\Form\Element\ViewElement;
-use Kubnete\Resource\Table\TemplateTableGateway;
+use MSBios\Document\DataType\Form\Element\Select;
+use MSBios\Document\Development\Controller\TemplateController;
+use MSBios\Document\Development\Form\DataTypeForm;
+use MSBios\Document\Development\Form\DocumentTypeForm;
+use MSBios\Document\Development\Form\TemplateForm;
+use MSBios\Document\Development\Form\TypeTabFieldset;
+use MSBios\Document\Resource\Form\Element\ViewElement;
+use MSBios\Document\Resource\Table\TemplateTableGateway;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
@@ -22,7 +22,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Class DocumentTypeFormFactory
- * @package Kubnete\Development\Factory
+ * @package MSBios\Document\Development\Factory
  */
 class DocumentTypeFormFactory implements FactoryInterface
 {

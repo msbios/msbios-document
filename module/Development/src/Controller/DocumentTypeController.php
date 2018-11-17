@@ -4,13 +4,13 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace Kubnete\Development\Controller;
+namespace MSBios\Document\Development\Controller;
 
-use Kubnete\CPanel\Mvc\Controller\AbstractActionController;
-use Kubnete\Resource\Record\Tab;
-use Kubnete\Resource\Table\PropertyTableGateway;
-use Kubnete\Resource\Table\TabTableGateway;
-use Kubnete\Resource\Table\TemplateTableGateway;
+use MSBios\Document\CPanel\Mvc\Controller\AbstractActionController;
+use MSBios\Document\Resource\Record\Tab;
+use MSBios\Document\Resource\Table\PropertyTableGateway;
+use MSBios\Document\Resource\Table\TabTableGateway;
+use MSBios\Document\Resource\Table\TemplateTableGateway;
 use MSBios\Resource\RecordRepositoryInterface;
 use Zend\EventManager\Event;
 use Zend\EventManager\EventInterface;
@@ -22,7 +22,7 @@ use Zend\Stdlib\ArrayObject;
 
 /**
  * Class DocumentTypeController
- * @package Kubnete\Development\Controller
+ * @package MSBios\Document\Development\Controller
  */
 class DocumentTypeController extends AbstractActionController
 {

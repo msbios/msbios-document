@@ -3,7 +3,7 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Record;
+namespace MSBios\Document\Resource\Record;
 
 use Zend\Filter\StringTrim;
 use Zend\Filter\StripTags;
@@ -16,7 +16,7 @@ use Zend\Validator\StringLength;
 
 /**
  * Class DocumentType
- * @package Kubnete\Resource\Model
+ * @package MSBios\Document\Resource\Model
  */
 class DocumentType extends ArrayObject implements InputFilterAwareInterface
 {

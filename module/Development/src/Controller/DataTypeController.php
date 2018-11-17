@@ -3,14 +3,14 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Development\Controller;
+namespace MSBios\Document\Development\Controller;
 
-use Kubnete\CPanel\Mvc\Controller\AbstractActionController;
-use Kubnete\Resource\Record\DataType;
+use MSBios\Document\CPanel\Mvc\Controller\AbstractActionController;
+use MSBios\Document\Resource\Record\DataType;
 
 /**
  * Class DataTypeController
- * @package Kubnete\Development\Controller
+ * @package MSBios\Document\Development\Controller
  */
 class DataTypeController extends AbstractActionController
 {

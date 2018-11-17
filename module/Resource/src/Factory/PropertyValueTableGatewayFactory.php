@@ -3,11 +3,11 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Factory;
+namespace MSBios\Document\Resource\Factory;
 
 use Interop\Container\ContainerInterface;
-use Kubnete\Resource\Record\Property\Value;
-use Kubnete\Resource\Table\PropertyValueTableGateway;
+use MSBios\Document\Resource\Record\Property\Value;
+use MSBios\Document\Resource\Table\PropertyValueTableGateway;
 use MSBios\Db\TableGateway\TableGateway;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
@@ -15,7 +15,7 @@ use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class PropertyValueTableGatewayFactory
- * @package Kubnete\Resource\Factory
+ * @package MSBios\Document\Resource\Factory
  */
 class PropertyValueTableGatewayFactory implements FactoryInterface
 {

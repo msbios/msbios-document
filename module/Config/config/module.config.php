@@ -3,7 +3,7 @@
  * @access protected
  * @author
  */
-namespace Kubnete\Config;
+namespace MSBios\Document\Config;
 
 return [
 

@@ -3,17 +3,17 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Development\Factory;
+namespace MSBios\Document\Development\Factory;
 
 use Interop\Container\ContainerInterface;
-use Kubnete\Development\Controller\TemplateController;
-use Kubnete\Development\Form\TemplateForm;
-use Kubnete\Resource\Table\TemplateTableGateway;
+use MSBios\Document\Development\Controller\TemplateController;
+use MSBios\Document\Development\Form\TemplateForm;
+use MSBios\Document\Resource\Table\TemplateTableGateway;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class TemplateControllerFactory
- * @package Kubnete\Development\Factory
+ * @package MSBios\Document\Development\Factory
  */
 class TemplateControllerFactory implements FactoryInterface
 {

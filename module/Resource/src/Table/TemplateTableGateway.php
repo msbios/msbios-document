@@ -3,14 +3,14 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Table;
+namespace MSBios\Document\Resource\Table;
 
-use Kubnete\Resource\Form\Element\TemplateTypeElement;
+use MSBios\Document\Resource\Form\Element\TemplateTypeElement;
 use Zend\Db\ResultSet\ResultSet;
 
 /**
  * Class TemplateTableGateway
- * @package Kubnete\Resource\Table
+ * @package MSBios\Document\Resource\Table
  */
 class TemplateTableGateway extends AbstractResource
 {

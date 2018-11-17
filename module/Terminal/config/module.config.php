@@ -3,7 +3,7 @@
  * @access protected
  * @author
  */
-namespace Kubnete\Terminal;
+namespace MSBios\Document\Terminal;
 
 return [
     'controllers' => [

@@ -3,21 +3,21 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Development\Factory;
+namespace MSBios\Document\Development\Factory;
 
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
-use Kubnete\Development\Controller\DataTypeController;
-use Kubnete\Development\Form\TypeTab\PropertyFieldset;
-use Kubnete\Development\Form\TypeTabFieldset;
-use Kubnete\Resource\Form\Element\DataTypeElement;
+use MSBios\Document\Development\Controller\DataTypeController;
+use MSBios\Document\Development\Form\TypeTab\PropertyFieldset;
+use MSBios\Document\Development\Form\TypeTabFieldset;
+use MSBios\Document\Resource\Form\Element\DataTypeElement;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class TypeTabFieldsetFactory
- * @package Kubnete\Development\Factory
+ * @package MSBios\Document\Development\Factory
  */
 class TypeTabFieldsetFactory implements FactoryInterface
 {

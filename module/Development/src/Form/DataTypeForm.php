@@ -4,15 +4,15 @@
  * @author Jduzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace Kubnete\Development\Form;
+namespace MSBios\Document\Development\Form;
 
-use Kubnete\Development\Form\Element\FieldSelect;
+use MSBios\Document\Development\Form\Element\FieldSelect;
 use Zend\Form\Element\Text;
 use Zend\Form\Form;
 
 /**
  * Class DataTypeForm
- * @package Kubnete\Development\Form
+ * @package MSBios\Document\Development\Form
  */
 class DataTypeForm extends Form
 {

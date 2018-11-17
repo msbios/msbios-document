@@ -3,7 +3,7 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Development;
+namespace MSBios\Document\Development;
 
 use Zend\Form\Element\Checkbox;
 use Zend\Form\Element\Select;
@@ -11,7 +11,7 @@ use Zend\Form\Element\Text;
 
 $this->headScript()
     ->appendFile($this->basePath('backend/assets/js/plugins/tmpl/jquery.tmpl.min.js'))
-    ->appendFile($this->basePath('backend/assets/js/kubnete.js'))
+    ->appendFile($this->basePath('backend/assets/js/MSBios\Document.js'))
 ?>
 
 <?= $this->form()->openTag($this->form->setAttribute('class', 'form-horizontal')->prepare()); ?>
@@ -777,7 +777,7 @@ $this->headScript()
 
 <?php $this->inlineScript()->captureStart();
 echo <<<'JS'
-    Kubnete.initDocumentType({
+    MSBios\Document.initDocumentType({
         $property: $("#property-item-tmpl"),
         $tabHeader: $("#tab-properties-header-tmpl"),
         $tabContent: $("#tab-properties-content-tmpl"),

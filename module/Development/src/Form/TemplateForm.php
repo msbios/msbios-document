@@ -3,9 +3,9 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Development\Form;
+namespace MSBios\Document\Development\Form;
 
-use Kubnete\Resource\Form\Element\TemplateTypeElement;
+use MSBios\Document\Resource\Form\Element\TemplateTypeElement;
 use Zend\Form\Element\Hidden;
 use Zend\Form\Element\Text;
 use Zend\Form\Element\Textarea;
@@ -14,7 +14,7 @@ use Zend\Http\PhpEnvironment\Request;
 
 /**
  * Class TemplateForm
- * @package Kubnete\Development\Form
+ * @package MSBios\Document\Development\Form
  */
 class TemplateForm extends Form
 {

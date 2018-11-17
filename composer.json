@@ -16,16 +16,16 @@
   "autoload": {
     "psr-4": {
       "MSBios\\Document\\": "src/",
-      "Kubnete\\CPanel\\": "module/CPanel/src/",
-      "Kubnete\\Config\\": "module/Config/src/",
-      "Kubnete\\Content\\": "module/Content/src/",
-      "Kubnete\\DataType\\": "module/DataType/src/",
-      "Kubnete\\Development\\": "module/Development/src/",
-      "Kubnete\\Frontend\\": "module/Frontend/src/",
-      "Kubnete\\Module\\": "module/Module/src/",
-      "Kubnete\\Resource\\": "module/Resource/src/",
-      "Kubnete\\Statistic\\": "module/Statistic/src/",
-      "Kubnete\\Terminal\\": "module/Terminal/src/"
+      "MSBios\\Document\\CPanel\\": "module/CPanel/src/",
+      "MSBios\\Document\\Config\\": "module/Config/src/",
+      "MSBios\\Document\\Content\\": "module/Content/src/",
+      "MSBios\\Document\\DataType\\": "module/DataType/src/",
+      "MSBios\\Document\\Development\\": "module/Development/src/",
+      "MSBios\\Document\\Frontend\\": "module/Frontend/src/",
+      "MSBios\\Document\\Module\\": "module/Module/src/",
+      "MSBios\\Document\\Resource\\": "module/Resource/src/",
+      "MSBios\\Document\\Statistic\\": "module/Statistic/src/",
+      "MSBios\\Document\\Terminal\\": "module/Terminal/src/"
     }
   },
   "autoload-dev": {

@@ -3,11 +3,11 @@
  * @access protected
  * @author
  */
-namespace Kubnete\Terminal;
+namespace MSBios\Document\Terminal;
 
 /**
  * Class Module
- * @package Kubnete\Console
+ * @package MSBios\Document\Console
  */
 class Module
 {

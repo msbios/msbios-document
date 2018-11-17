@@ -3,14 +3,14 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\CPanel\Controller;
+namespace MSBios\Document\CPanel\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 /**
  * Class IndexController
- * @package Kubnete\Backend\Controller
+ * @package MSBios\Document\Backend\Controller
  */
 class IndexController extends AbstractActionController
 {

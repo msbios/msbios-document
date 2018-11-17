@@ -3,11 +3,11 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource;
+namespace MSBios\Document\Resource;
 
 /**
  * Class Tables
- * @package Kubnete\Resource
+ * @package MSBios\Document\Resource
  */
 abstract class Tables
 {

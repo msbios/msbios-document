@@ -4,13 +4,13 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace Kubnete\Terminal\Controller;
+namespace MSBios\Document\Terminal\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 
 /**
  * Class TemplateController
- * @package Kubnete\Console\Controller
+ * @package MSBios\Document\Console\Controller
  */
 class TemplateController extends AbstractActionController
 {

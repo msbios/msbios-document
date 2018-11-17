@@ -3,7 +3,7 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Content;
+namespace MSBios\Document\Content;
 
 $this->headLink()
     ->appendStylesheet($this->basePath('backend/assets/js/plugins/codemirror/lib/codemirror.css'));
@@ -43,7 +43,7 @@ $this->headScript()
                 set to <code>width: 100%;</code> by default. Wrap labels and controls in <code>.form-group</code> for
                 optimum spacing. Labels in horizontal form require <code>.control-label</code> class.</p>
 
-            <?= $this->partial('kubnete/development/document-type/form.phtml');  ?>
+            <?= $this->partial('MSBios\Document/development/document-type/form.phtml');  ?>
 
         </div>
     </div>

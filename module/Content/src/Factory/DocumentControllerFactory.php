@@ -3,24 +3,24 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Content\Factory;
+namespace MSBios\Document\Content\Factory;
 
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
-use Kubnete\Content\Controller\DocumentController;
-use Kubnete\Content\Form\DocumentForm;
-use Kubnete\Resource\Table\DocumentTableGateway;
-use Kubnete\Resource\Table\DocumentTypeGateway;
-use Kubnete\Resource\Table\Property;
-use Kubnete\Resource\Table\PropertyValue;
-use Kubnete\Resource\Table\TabTableGateway;
+use MSBios\Document\Content\Controller\DocumentController;
+use MSBios\Document\Content\Form\DocumentForm;
+use MSBios\Document\Resource\Table\DocumentTableGateway;
+use MSBios\Document\Resource\Table\DocumentTypeGateway;
+use MSBios\Document\Resource\Table\Property;
+use MSBios\Document\Resource\Table\PropertyValue;
+use MSBios\Document\Resource\Table\TabTableGateway;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class DocumentControllerFactory
- * @package Kubnete\Content\Factory
+ * @package MSBios\Document\Content\Factory
  */
 class DocumentControllerFactory implements FactoryInterface
 {

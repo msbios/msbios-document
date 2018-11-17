@@ -4,10 +4,10 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace Kubnete\Development\Form;
+namespace MSBios\Document\Development\Form;
 
-use Kubnete\Development\Form\Element\DataTypeSelect;
-use Kubnete\Development\Form\Element\ViewSelect;
+use MSBios\Document\Development\Form\Element\DataTypeSelect;
+use MSBios\Document\Development\Form\Element\ViewSelect;
 use Zend\Form\Element\Checkbox;
 use Zend\Form\Element\Collection;
 use Zend\Form\Element\Hidden;
@@ -17,7 +17,7 @@ use Zend\Form\Form;
 
 /**
  * Class DocumentTypeForm
- * @package Kubnete\Development\Form
+ * @package MSBios\Document\Development\Form
  */
 class DocumentTypeForm extends Form
 {

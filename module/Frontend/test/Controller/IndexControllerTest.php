@@ -3,15 +3,15 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace KubneteTest\Frontend\Controller;
+namespace MSBios\DocumentTest\Frontend\Controller;
 
-use Kubnete\Frontend\Controller\IndexController;
+use MSBios\Document\Frontend\Controller\IndexController;
 use Zend\Stdlib\ArrayUtils;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 /**
  * Class IndexControllerTest
- * @package KubneteTest\Frontend\Controller
+ * @package MSBios\DocumentTest\Frontend\Controller
  */
 class IndexControllerTest extends AbstractHttpControllerTestCase
 {
@@ -35,7 +35,7 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
     {
         $this->dispatch('/', 'GET');
         $this->assertResponseStatusCode(200);
-        // $this->assertModuleName('kubnete');
+        // $this->assertModuleName('MSBios\Document');
         $this->assertControllerName(IndexController::class); // as specified in router's controller name alias
         $this->assertControllerClass('IndexController');
         $this->assertMatchedRouteName('frontend');

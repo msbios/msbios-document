@@ -3,15 +3,15 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Development\Factory;
+namespace MSBios\Document\Development\Factory;
 
 use Interop\Container\ContainerInterface;
-use Kubnete\Development\Form\Element\DataTypeSelect;
-use Kubnete\Development\Form\Element\FieldSelect;
-use Kubnete\Development\Form\Element\ViewSelect;
-use Kubnete\Development\Module;
-use Kubnete\Resource\Table\DataTypeTableGateway;
-use Kubnete\Resource\Table\TemplateTableGateway;
+use MSBios\Document\Development\Form\Element\DataTypeSelect;
+use MSBios\Document\Development\Form\Element\FieldSelect;
+use MSBios\Document\Development\Form\Element\ViewSelect;
+use MSBios\Document\Development\Module;
+use MSBios\Document\Resource\Table\DataTypeTableGateway;
+use MSBios\Document\Resource\Table\TemplateTableGateway;
 use MSBios\Resource\RecordRepository;
 use MSBios\Resource\RecordRepositoryInterface;
 use Zend\Form\ElementInterface;
@@ -20,7 +20,7 @@ use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class DataTypeSelectFactory
- * @package Kubnete\Development\Factory
+ * @package MSBios\Document\Development\Factory
  */
 class DataTypeSelectFactory implements FactoryInterface
 {

@@ -6,18 +6,18 @@
  * Time: 11:01 PM
  */
 
-namespace Kubnete\Terminal\Factory;
+namespace MSBios\Document\Terminal\Factory;
 
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
-use Kubnete\Terminal\Controller\TemplateController;
+use MSBios\Document\Terminal\Controller\TemplateController;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class TemplateControllerFactory
- * @package Kubnete\Console\Factory
+ * @package MSBios\Document\Console\Factory
  */
 class TemplateControllerFactory implements FactoryInterface
 {

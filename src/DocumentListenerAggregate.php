@@ -6,7 +6,7 @@
 
 namespace MSBios\Document;
 
-use Kubnete\Resource\Record\Document;
+use MSBios\Document\Resource\Record\Document;
 use MSBios\Resource\RecordRepositoryInterface;
 use Zend\EventManager\AbstractListenerAggregate;
 use Zend\EventManager\EventInterface;

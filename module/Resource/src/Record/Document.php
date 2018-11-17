@@ -3,11 +3,11 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\Resource\Record;
+namespace MSBios\Document\Resource\Record;
 
-use Kubnete\Resource\Record\Property\Value;
-use Kubnete\Resource\Table\PropertyValue;
-use Kubnete\Resource\Table\PropertyValueTableGateway;
+use MSBios\Document\Resource\Record\Property\Value;
+use MSBios\Document\Resource\Table\PropertyValue;
+use MSBios\Document\Resource\Table\PropertyValueTableGateway;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Filter\StringTrim;
 use Zend\Filter\StripTags;
@@ -21,7 +21,7 @@ use Zend\Validator\StringLength;
 
 /**
  * Class Document
- * @package Kubnete\Resource\Model
+ * @package MSBios\Document\Resource\Model
  */
 class Document extends ArrayObject implements InputFilterAwareInterface
 {

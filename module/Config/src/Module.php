@@ -3,11 +3,11 @@
  * @access protected
  * @author
  */
-namespace Kubnete\Config;
+namespace MSBios\Document\Config;
 
 /**
  * Class Module
- * @package Kubnete\Config
+ * @package MSBios\Document\Config
  */
 class Module
 {

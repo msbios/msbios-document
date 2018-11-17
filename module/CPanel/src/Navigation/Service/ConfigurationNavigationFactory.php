@@ -3,13 +3,13 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace Kubnete\CPanel\Navigation\Service;
+namespace MSBios\Document\CPanel\Navigation\Service;
 
 use Zend\Navigation\Service\DefaultNavigationFactory;
 
 /**
  * Class ConfigurationNavigationFactory
- * @package Kubnete\Backend\Navigation\Service
+ * @package MSBios\Document\Backend\Navigation\Service
  */
 class ConfigurationNavigationFactory extends DefaultNavigationFactory
 {

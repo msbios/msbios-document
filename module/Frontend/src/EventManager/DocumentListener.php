@@ -4,10 +4,10 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace Kubnete\Frontend\EventManager;
+namespace MSBios\Document\Frontend\EventManager;
 
-use Kubnete\Resource\Record\Document;
-use Kubnete\Resource\Table\DocumentTableGateway;
+use MSBios\Document\Resource\Record\Document;
+use MSBios\Document\Resource\Table\DocumentTableGateway;
 use Zend\EventManager\AbstractListenerAggregate;
 use Zend\EventManager\EventInterface;
 use Zend\EventManager\EventManagerInterface;
@@ -16,7 +16,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Class DocumentListener
- * @package Kubnete\Frontend\EventManager
+ * @package MSBios\Document\Frontend\EventManager
  */
 class DocumentListener extends AbstractListenerAggregate
 {

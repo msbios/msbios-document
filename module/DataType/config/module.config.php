@@ -3,7 +3,7 @@
  * @access protected
  * @author
  */
-namespace Kubnete\DataType;
+namespace MSBios\Document\DataType;
 
 use Zend\Form\Element;
 

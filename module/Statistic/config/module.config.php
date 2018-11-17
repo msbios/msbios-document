@@ -3,7 +3,7 @@
  * @access protected
  * @author
  */
-namespace Kubnete\Statistic;
+namespace MSBios\Document\Statistic;
 
 return [
 

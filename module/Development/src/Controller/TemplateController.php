@@ -4,10 +4,10 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace Kubnete\Development\Controller;
+namespace MSBios\Document\Development\Controller;
 
-use Kubnete\CPanel\Mvc\Controller\AbstractActionController;
-use Kubnete\Resource\Record\Template;
+use MSBios\Document\CPanel\Mvc\Controller\AbstractActionController;
+use MSBios\Document\Resource\Record\Template;
 use MSBios\Resource\RecordInterface;
 use Zend\EventManager\EventInterface;
 use Zend\EventManager\EventManagerInterface;
@@ -15,7 +15,7 @@ use Zend\Mvc\MvcEvent;
 
 /**
  * Class TemplateController
- * @package Kubnete\Development\Controller
+ * @package MSBios\Document\Development\Controller
  */
 class TemplateController extends AbstractActionController
 {

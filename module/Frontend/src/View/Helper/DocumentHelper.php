@@ -6,14 +6,14 @@
  * Time: 12:23 AM
  */
 
-namespace Kubnete\Frontend\View\Helper;
+namespace MSBios\Document\Frontend\View\Helper;
 
-use Kubnete\Resource\Record\Document;
+use MSBios\Document\Resource\Record\Document;
 use Zend\View\Helper\AbstractHelper;
 
 /**
  * Class DocumentHelper
- * @package Kubnete\Frontend\View\Helper
+ * @package MSBios\Document\Frontend\View\Helper
  */
 class DocumentHelper extends AbstractHelper
 {

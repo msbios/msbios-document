@@ -1,6 +1,6 @@
 -- MySQL dump 10.16  Distrib 10.1.34-MariaDB, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: kubnete.dev
+-- Host: localhost    Database: MSBios\Document.dev
 -- ------------------------------------------------------
 -- Server version	10.1.34-MariaDB-0ubuntu0.18.04.1
 
@@ -596,7 +596,7 @@ INSERT INTO `sys_t_templates` VALUES (1,'VIEW','index','Index View','Some Descri
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'kubnete.dev'
+-- Dumping routines for database 'MSBios\Document.dev'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
