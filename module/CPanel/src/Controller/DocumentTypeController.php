@@ -95,7 +95,8 @@ class DocumentTypeController extends AbstractActionController
         /** @var ArrayObject $templates */
         $templates = $row['templates'];
 
-        var_dump($templates); die();
+        var_dump($templates);
+        die();
 
         /** @var ArrayObject $tabs */
         $tabs = $row['tabs'];

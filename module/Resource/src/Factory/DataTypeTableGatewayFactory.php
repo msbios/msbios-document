@@ -24,7 +24,7 @@ class DataTypeTableGatewayFactory implements FactoryInterface
      * @param ContainerInterface $container
      * @param string $requestedName
      * @param array|null $options
-     * @return DataTypeTableGateway
+     * @return DataTypeTableGateway|object
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {

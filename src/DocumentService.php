@@ -53,11 +53,11 @@ class DocumentService implements DocumentServiceInterface
     public function hasLayout()
     {
 
-        if (!$this->hasDocument()) {
+        if (! $this->hasDocument()) {
             return false;
         }
 
-        return !empty($this->document['layoutid']);
+        return ! empty($this->document['layoutid']);
     }
 
     /**
@@ -68,7 +68,7 @@ class DocumentService implements DocumentServiceInterface
     protected function templateIdentifier($id)
     {
         /** @var TemplateTableGateway $templateRepository */
-        $templateRepository =$this->container
+        $templateRepository = $this->container
             ->get(TemplateTableGateway::class);
 
         /** @var Template $templateRow */
@@ -116,7 +116,7 @@ class DocumentService implements DocumentServiceInterface
                 ->get(TablePluginManager::class);
 
             /** @var PropertyValueTableGateway $propertyValueRepository */
-            $propertyValueRepository =$this->container
+            $propertyValueRepository = $this->container
                 ->get(PropertyValueTableGateway::class);
 
             /** @var Paginator $paginator */

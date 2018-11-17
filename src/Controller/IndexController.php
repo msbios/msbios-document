@@ -53,11 +53,11 @@ class IndexController extends DefaultIndexController implements DocumentServiceA
         /** @var DocumentServiceInterface $documentService */
         $documentService = $this->getDocumentService();
 
-        if (!$documentService->hasDocument()) {
+        if (! $documentService->hasDocument()) {
             return $this->notFoundAction();
         }
 
-        if (!$documentService->hasLayout() || $this->getRequest()->isXmlHttpRequest()) {
+        if (! $documentService->hasLayout() || $this->getRequest()->isXmlHttpRequest()) {
             $viewModel
                 ->setTerminal(true);
         } elseif ($documentService->hasLayout()) {
@@ -73,5 +73,4 @@ class IndexController extends DefaultIndexController implements DocumentServiceA
 
         return $viewModel;
     }
-
 }

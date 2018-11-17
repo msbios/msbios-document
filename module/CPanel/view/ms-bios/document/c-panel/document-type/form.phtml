@@ -19,7 +19,7 @@ $this->headScript()
 
         <div class="panel-body">
 
-            <?php if($messages = $this->form->getMessages()): ?>
+            <?php if ($messages = $this->form->getMessages()) : ?>
                 <?= r($messages); ?>
             <?php endif; ?>
 
@@ -93,15 +93,15 @@ $this->headScript()
                         <hr>
 
                         <?php $hasTabs = $form->get('tabs')->count(); ?>
-                        <div class="tabbable <?php if (!$hasTabs) :
+                        <div class="tabbable <?php if (! $hasTabs) :
                             ?>hide<?php
-                        endif; ?>">
+                                             endif; ?>">
 
                             <ul class="nav nav-tabs nav-tabs-highlight">
                                 <?php foreach ($form->get('tabs') as $i => $tab) : ?>
-                                    <li class="<?php if (!$i) :
+                                    <li class="<?php if (! $i) :
                                         ?>active<?php
-                                    endif; ?>">
+                                               endif; ?>">
                                         <a href="#tab-properties-<?= $i; ?>" data-toggle="tab">
                                             <?= $tab->get('name')->getValue(); ?>
                                         </a>
@@ -112,11 +112,13 @@ $this->headScript()
                             <div class="tab-content">
                                 <?php foreach ($form->get('tabs') as $i => $tab) : ?>
                                     <div id="tab-properties-<?= $i; ?>"
-                                         class="tab-pane <?php if (!$i): ?>active<?php endif; ?>">
+                                         class="tab-pane <?php if (! $i) :
+                                                ?>active<?php
+                                                         endif; ?>">
                                         <div id="accordion-controls-<?= $i; ?>"
                                              class="panel-group accordion-sortable content-group-lg ui-sortable">
 
-                                            <?php foreach ($tab->get('properties') as $j => $property): ?>
+                                            <?php foreach ($tab->get('properties') as $j => $property) : ?>
                                                 <div class="property-item-<?= $i; ?>-<?= $j; ?> panel panel-white">
                                                     <div class="panel-heading">
                                                         <h6 class="panel-title">
@@ -197,7 +199,9 @@ $this->headScript()
 
                         </div>
 
-                        <div class="alert alert-warning no-border <?php if ($hasTabs) : ?>hide<?php endif; ?>"
+                        <div class="alert alert-warning no-border <?php if ($hasTabs) :
+                            ?>hide<?php
+                                                                  endif; ?>"
                              role="alert">
                             <h4><?= $this->translate('Information message'); ?></h4>
                             <p><?= $this->translate('To start working with properties, you must create at least one tab.'); ?></p>
@@ -244,7 +248,7 @@ $this->headScript()
 
                                         <div class="<?php if ($hasError) :
                                             ?>has-warning has-feedback<?php
-                                        endif; ?>">
+                                                    endif; ?>">
                                             <?= $this->formElement($element); ?>
                                             <?php if ($hasError) : ?>
                                                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
@@ -268,7 +272,7 @@ $this->headScript()
 
                                         <div class="<?php if ($hasError) :
                                             ?>has-warning has-feedback<?php
-                                        endif; ?>">
+                                                    endif; ?>">
                                             <?= $this->formElement($element); ?>
                                             <?php if ($hasError) : ?>
                                                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>

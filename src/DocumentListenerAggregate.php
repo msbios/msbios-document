@@ -42,7 +42,8 @@ class DocumentListenerAggregate extends AbstractListenerAggregate
     {
         $this->listeners[] = $events->attach(
             MvcEvent::EVENT_ROUTE,
-            [$this, 'onRoute'], $priority
+            [$this, 'onRoute'],
+            $priority
         );
     }
 
@@ -61,7 +62,7 @@ class DocumentListenerAggregate extends AbstractListenerAggregate
         /** @var Document $document */
         $document = null;
 
-        if (!empty($path)) {
+        if (! empty($path)) {
 
             /** @var array $explodePath */
             $explodePath = $this->explodePath($path);

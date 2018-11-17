@@ -158,7 +158,7 @@ class AbstractActionController extends DefaultAbstractActionController
         /** @var string $matchedRouteName */
         $matchedRouteName = $this->getMatchedRouteName();
 
-        if (!$id) {
+        if (! $id) {
             return $this->redirect()
                 ->toRoute($matchedRouteName, ['action' => 'add']);
         }
