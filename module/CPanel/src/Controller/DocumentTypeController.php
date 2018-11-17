@@ -9,11 +9,13 @@ namespace MSBios\Document\CPanel\Controller;
 use MSBios\Db\TableGateway\TableGateway;
 use MSBios\Db\TableGateway\TableGatewayInterface;
 use MSBios\Document\CPanel\Mvc\Controller\AbstractActionController;
+use MSBios\Document\Resource\Record\DocumentType;
 use MSBios\Document\Resource\Record\Tab;
 use MSBios\Document\Resource\Resources;
 use MSBios\Document\Resource\Table\PropertyTableGateway;
 use MSBios\Document\Resource\Table\TabTableGateway;
 use MSBios\Document\Resource\Table\TemplateTableGateway;
+use MSBios\Resource\RecordInterface;
 use MSBios\Resource\RecordRepositoryInterface;
 use Zend\Db\Sql\Select;
 use Zend\EventManager\Event;
@@ -155,4 +157,14 @@ class DocumentTypeController extends AbstractActionController
 
         unset($row['templates'], $row['tabs']);
     }
+
+    /**
+     * @return DocumentType|RecordInterface
+     */
+    protected static function factory()
+    {
+        return new DocumentType;
+    }
+
+
 }
