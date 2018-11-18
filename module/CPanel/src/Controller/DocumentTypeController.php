@@ -6,9 +6,9 @@
 
 namespace MSBios\Document\CPanel\Controller;
 
+use MSBios\CPanel\Mvc\Controller\AbstractActionController;
 use MSBios\Db\TableGateway\TableGateway;
 use MSBios\Db\TableGateway\TableGatewayInterface;
-use MSBios\Document\CPanel\Mvc\Controller\AbstractActionController;
 use MSBios\Document\Resource\Record\DocumentType;
 use MSBios\Document\Resource\Record\Tab;
 use MSBios\Document\Resource\Resources;
@@ -121,7 +121,7 @@ class DocumentTypeController extends AbstractActionController
 
         /** @var array $tabs */
         $tabs = $this->tabs
-            ->fetchAll(['documenttypeid' => $row['id']])
+            ->fetchAll(['documenttypeid' => $row->getId()])
             ->getCurrentItems();
 
         /**
@@ -129,7 +129,17 @@ class DocumentTypeController extends AbstractActionController
          * @var Tab $tab
          */
         foreach ($tabs as $i => $tab) {
-            $tab['properties'] = $this->properties->fetchAll(['tabid' => $tab['id']]);
+
+            $tab = $tab->toArray();
+            $tab['properties'] = [];
+
+            /** @var Paginator $properties */
+            $properties = $this->properties->fetchAll(['tabid' => $tab['id']]);
+
+            foreach ($properties as $property) {
+                $tab['properties'][] = $property->toArray();
+            }
+
             $tabs[$i] = $tab;
         }
 
@@ -165,6 +175,4 @@ class DocumentTypeController extends AbstractActionController
     {
         return new DocumentType;
     }
-
-
 }

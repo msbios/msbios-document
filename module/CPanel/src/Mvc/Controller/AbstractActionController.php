@@ -20,6 +20,7 @@ use Zend\View\Model\ViewModel;
 /**
  * Class AbstractActionController
  * @package MSBios\Document\CPanel\Mvc\Controller
+ * @deprecated
  */
 abstract class AbstractActionController extends DefaultAbstractActionController
 {

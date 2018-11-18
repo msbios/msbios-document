@@ -5,7 +5,7 @@
  */
 namespace MSBios\Document\CPanel\Controller;
 
-use MSBios\Document\CPanel\Mvc\Controller\AbstractActionController;
+use MSBios\CPanel\Mvc\Controller\AbstractActionController;
 use MSBios\Document\Resource\Record\DataType;
 
 /**

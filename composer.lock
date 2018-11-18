@@ -382,16 +382,16 @@
         },
         {
             "name": "msbios/cpanel",
-            "version": "v1.0.44",
+            "version": "v1.0.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/msbios/msbios-cpanel.git",
-                "reference": "def58f1fe5fba1351e894b4c7664aab410c69911"
+                "reference": "1b3535db7f45f888df86c8e0156b826df41c77ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/msbios/msbios-cpanel/zipball/def58f1fe5fba1351e894b4c7664aab410c69911",
-                "reference": "def58f1fe5fba1351e894b4c7664aab410c69911",
+                "url": "https://api.github.com/repos/msbios/msbios-cpanel/zipball/1b3535db7f45f888df86c8e0156b826df41c77ea",
+                "reference": "1b3535db7f45f888df86c8e0156b826df41c77ea",
                 "shasum": ""
             },
             "require": {
@@ -437,7 +437,7 @@
             "keywords": [
                 "php"
             ],
-            "time": "2018-11-16T13:22:20+00:00"
+            "time": "2018-11-17T23:54:32+00:00"
         },
         {
             "name": "msbios/db",
