@@ -4,10 +4,10 @@
 user="root"
 password="root"
 host="localhost"
-db_name="MSBios\Document.dev"
+db_name="kubnete.dev"
 
 # Other options
-backup_path="../data"
+backup_path="./data/cache"
 date=$(date +"%d-%b-%Y")
 
 # Set default file permissions
