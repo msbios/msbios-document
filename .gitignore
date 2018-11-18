@@ -115,3 +115,4 @@ composer.phar
 # composer.lock
 
 public/default
+data/MSBiosDocument/cache
