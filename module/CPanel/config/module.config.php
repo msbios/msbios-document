@@ -195,5 +195,28 @@ return [
 //                ]
 //            ]
 //        ]
-    ]
+    ],
+
+    \MSBios\Guard\Module::class => [
+        'resource_providers' => [
+            \MSBios\Guard\Provider\ResourceProvider::class => [
+                Controller\IndexController::class => [],
+                Controller\DocumentTypeController::class => [],
+                Controller\TemplateController::class => [],
+                Controller\DataTypeController::class => [],
+            ],
+        ],
+
+        'rule_providers' => [
+            \MSBios\Guard\Provider\RuleProvider::class => [
+                'allow' => [
+                    [['DEVELOPER'], Controller\IndexController::class],
+                    [['DEVELOPER'], Controller\DocumentTypeController::class],
+                    [['DEVELOPER'], Controller\TemplateController::class],
+                    [['DEVELOPER'], Controller\DataTypeController::class],
+                ],
+                'deny' => []
+            ]
+        ],
+    ],
 ];

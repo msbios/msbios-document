@@ -6,6 +6,7 @@
 return [
     // Retrieve list of modules used in this application.
     'modules' => [
+        'MSBios\Guard\DeveloperTools',
         'Zend\Paginator',
         'Zend\Cache',
         'Zend\Serializer',
